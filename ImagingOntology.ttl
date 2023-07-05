@@ -1,0 +1,364 @@
+@prefix schema: <http://schema.org/>.
+@prefix sd: <https://w3id.org/okn/o/sd#>.
+@prefix bio: <https://bioschemas.org/>.
+@prefix spe: <https://openschemas.github.io/spec-container/specifications/>.
+@prefix rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sh:   <http://www.w3.org/ns/shacl#> .
+@prefix xsd:  <http://www.w3.org/2001/XMLSchema#> .
+@prefix shsh: <http://www.w3.org/ns/shacl-shacl#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix ex: <http://example.com/ns#> .
+@prefix md4i: <http://w3id.org/nfdi4ing/metadata4ing#>.
+
+
+<http://example.org/my-shapes>
+	a owl:Ontology ;
+	.
+
+schema:SoftwareSourceCode
+  a rdfs:Class ;
+  rdfs:comment "A software application." ;
+  rdfs:label "Software application" ;
+  rdfs:subClassOf schema:CreativeWork .
+
+schema:license a rdf:Property;
+  rdfs:comment "A license document that applies to this content, typically indicated by URL.";
+  rdfs:label "license" .
+
+schema:citation a rdf:Property;
+  rdfs:comment "A citation or reference to another creative work, such as another publication, web page, scholarly article, etc. Should always be a full and valid DOI URL.";
+  rdfs:label "citation" .
+
+schema:dateCreated a rdf:Property;
+  rdfs:comment "The date on which the CreativeWork was created or the item was added to a DataFeed.";
+  rdfs:label "dateCreated" .
+
+schema:datePublished a rdf:Property;
+  rdfs:comment "Date of first broadcast/publication.";
+  rdfs:label "datePublished" .
+
+schema:maintainer a rdf:Property;
+  rdfs:comment """A maintainer of a [[Dataset]], software package ([[SoftwareApplication]]), or other [[Project]]. A maintainer is a [[Person]] or [[Organization]] that manages contributions to, and/or publication of, some (typically complex) artifact. It is common for distributions of software and data to be based on \"upstream\" sources. When [[maintainer]] is applied to a specific version of something e.g. a particular version or packaging of a [[Dataset]], it is always  possible that the upstream source has a different maintainer. The [[isBasedOn]] property can be used to indicate such relationships between datasets to make the different maintenance roles clear. Similarly in the case of software, a package may have dedicated maintainers working on integration into software distributions such as Ubuntu, as well as upstream maintainers of the underlying work.
+      """;
+  rdfs:label "maintainer" .
+
+schema:name a rdf:Property;
+  rdfs:comment "The name of the item.";
+  rdfs:label "name";
+  rdfs:subPropertyOf rdfs:label .
+
+schema:memoryRequirements a rdf:Property;
+  rdfs:comment "Minimum memory requirements.";
+  rdfs:label "memoryRequirements" .
+
+ex:fairLevel a rdf:Property;
+  rdfs:comment "A score of 1-5 rating the Findability, Accessibility, Interoperability and Reusability of a piece of software based on the presence of certain properties for an instance of software";
+  rdfs:label "FAIR Level" .
+
+schema:applicationCategory a rdf:Property;
+  rdfs:comment "Type of software application, e.g. 'Game, Multimedia'.";
+  rdfs:label "applicationCategory" .
+
+schema:codeRepository a rdf:Property;
+  rdfs:comment "Link to the repository where the un-compiled, human readable code and related code is located (SVN, GitHub, CodePlex).";
+  rdfs:label "codeRepository" .
+
+schema:conditionsOfAccess a rdf:Property;
+  rdfs:comment "Conditions that affect the availability of, or method(s) of access to, an item. Typically used for real world items such as an [[ArchiveComponent]] held by an [[ArchiveOrganization]]. This property is not suitable for use as a general Web access control mechanism. It is expressed only in natural language.\\n\\nFor example \"Available by appointment from the Reading Room\" or \"Accessible only from logged-in accounts \". ";
+  rdfs:label "conditionsOfAccess" .
+
+schema:description a rdf:Property;
+  rdfs:comment "A description of the item.";
+  rdfs:label "description" .
+
+schema:featureList a rdf:Property;
+  rdfs:comment "Features or modules provided by this application (and possibly required by other applications).";
+  rdfs:label "featureList" .
+
+schema:image a rdf:Property;
+  rdfs:comment "An image of the item. This can be a [[URL]] or a fully described [[ImageObject]].";
+  rdfs:label "image" .
+
+schema:isAccessibleForFree a rdf:Property;
+  rdfs:comment "A flag to signal that the item, event, or place is accessible for free.";
+  rdfs:label "isAccessibleForFree" .
+
+schema:isBasedOn a rdf:Property;
+  rdfs:comment "A resource from which this work is derived or from which it is a modification or adaption.";
+  rdfs:label "isBasedOn" .
+
+schema:email a rdf:Property;
+  rdfs:comment "Email address.";
+  rdfs:label "email" .
+
+schema:familyName a rdf:Property;
+  rdfs:comment "Family name. In the U.S., the last name of a Person.";
+  rdfs:label "familyName" .
+
+schema:givenName a rdf:Property;
+  rdfs:comment "Given name. In the U.S., the first name of a Person.";
+  rdfs:label "givenName" .
+
+md4i:orcidId a rdf:Property ;
+  rdfs:comment "The ORCID ID of a person" ;
+  rdfs:label "has ORCID ID" .
+
+md4i:hasRorId a rdf:Property ;
+  rdfs:comment "A Research Organization Registry identifier, that points to a research organization" ;
+  rdfs:label "has ROR ID" .
+
+schema:legalName a rdf:Property;
+  rdfs:comment "The official name of the organization, e.g. the registered company name.";
+  rdfs:label "legalName" .
+
+schema:operatingSystem a rdf:Property;
+  rdfs:comment "Operating systems supported (Windows 7, OS X 10.6, Android 1.6).";
+  rdfs:label "operatingSystem" .
+
+schema:producer a rdf:Property;
+  rdfs:comment "The person or organization who produced the work (e.g. music album, movie, TV/radio series etc.).";
+  rdfs:label "producer" .
+
+schema:programmingLanguage a rdf:Property;
+  rdfs:comment "The computer programming language.";
+  rdfs:label "programmingLanguage" .
+
+schema:softwareRequirements a rdf:Property;
+  rdfs:comment "Component dependency requirements for application. This includes runtime environments and shared libraries that are not included in the application distribution package, but required to run the application (examples: DirectX, Java or .NET runtime).";
+  rdfs:label "softwareRequirements" .
+
+schema:softwareVersion a rdf:Property;
+  rdfs:comment "Version of the software instance.";
+  rdfs:label "softwareVersion" .
+
+schema:url a rdf:Property;
+  rdfs:comment "URL of the item.";
+  rdfs:label "url" .
+
+schema:identifier a rdf:Property;
+  rdfs:comment """The identifier property represents any kind of identifier for any kind of [[Thing]], such as ISBNs, GTIN codes, UUIDs etc. Schema.org provides dedicated properties for representing many of these, either as textual strings or as URL (URI) links. See [background notes](/docs/datamodel.html#identifierBg) for more details.
+        """;
+  rdfs:label "identifier" .
+
+schema:defaultValue a rdf:Property;
+  rdfs:comment "The default value of the input.  For properties that expect a literal, the default is a literal value, for properties that expect an object, it's an ID reference to one of the current values.";
+  rdfs:label "defaultValue" .
+
+schema:valueRequired a rdf:Property;
+  rdfs:comment "Whether the property must be filled in to complete the action.  Default is false.";
+  rdfs:label "valueRequired" .
+
+schema:supportingData a rdf:Property;
+  rdfs:comment "Supporting data for a SoftwareApplication.";
+  rdfs:label "supportingData" .
+
+schema:distribution a rdf:Property;
+  rdfs:comment "A downloadable form of this dataset, at a specific location, in a specific format. This property can be repeated if different variations are available. There is no expectation that different downloadable distributions must contain exactly equivalent information (see also [DCAT](https://www.w3.org/TR/vocab-dcat-3/#Class:Distribution) on this point). Different distributions might include or exclude different subsets of the entire dataset, for example.";
+  rdfs:label "distribution" .
+
+schema:encodingFormat a rdf:Property;
+  rdfs:comment """Media type typically expressed using a MIME format (see [IANA site](http://www.iana.org/assignments/media-types/media-types.xhtml) and [MDN reference](https://developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/MIME_types)), e.g. application/zip for a SoftwareApplication binary, audio/mpeg for .mp3 etc.
+
+In cases where a [[CreativeWork]] has several media type representations, [[encoding]] can be used to indicate each [[MediaObject]] alongside particular [[encodingFormat]] information.
+
+Unregistered or niche encoding and file formats can be indicated instead via the most appropriate URL, e.g. defining Web page or a Wikipedia/Wikidata entry.""";
+  rdfs:label "encodingFormat" .
+
+schema:measurementTechnique a rdf:Property;
+  rdfs:comment """A technique or technology used in a [[Dataset]] (or [[DataDownload]], [[DataCatalog]]),
+corresponding to the method used for measuring the corresponding variable(s) (described using [[variableMeasured]]). This is oriented towards scientific and scholarly dataset publication but may have broader applicability; it is not intended as a full representation of measurement, but rather as a high level summary for dataset discovery.
+
+For example, if [[variableMeasured]] is: molecule concentration, [[measurementTechnique]] could be: \"mass spectrometry\" or \"nmr spectroscopy\" or \"colorimetry\" or \"immunofluorescence\".
+
+If the [[variableMeasured]] is \"depression rating\", the [[measurementTechnique]] could be \"Zung Scale\" or \"HAM-D\" or \"Beck Depression Inventory\".
+
+If there are several [[variableMeasured]] properties recorded for some given data object, use a [[PropertyValue]] for each [[variableMeasured]] and attach the corresponding [[measurementTechnique]].
+      """;
+  rdfs:label "measurementTechnique" .
+
+schema:variableMeasured a rdf:Property;
+  rdfs:comment "The variableMeasured property can indicate (repeated as necessary) the  variables that are measured in some dataset, either described as text or as pairs of identifier and description using PropertyValue.";
+  rdfs:label "variableMeasured" .
+
+schema:fundedItem a rdf:Property;
+  rdfs:comment "Indicates something directly or indirectly funded or sponsored through a [[Grant]]. See also [[ownershipFundingInfo]].";
+  rdfs:label "fundedItem" .
+
+schema:sponsor a rdf:Property;
+  rdfs:comment "A person or organization that supports a thing through a pledge, promise, or financial contribution. E.g. a sponsor of a Medical Study or a corporate sponsor of an event.";
+  rdfs:label "sponsor" .
+
+ex:imagingModality a rdf:Property;
+  rdfs:comment "An imaging modality refers to a technique or method used to create images of the interior of a body or an object. In the context of software, it is the modality for which this software has been designed.";
+  rdfs:label "Imaging Modality" .
+
+schema:creativeWorkStatus a rdf:Property;
+  rdfs:comment "The status of a creative work in terms of its stage in a lifecycle. Example terms include Incomplete, Draft, Published, Obsolete. Some organizations define a set of terms for the stages of their publication lifecycle.";
+  rdfs:label "creativeWorkStatus" .
+
+schema:keywords a rdf:Property;
+  rdfs:comment "The keywords/tags used to describe this content."@en;
+  rdfs:label "Keywords"@en .
+
+ex:requiresGPU a rdf:Property;
+  rdfs:comment "Stipulates whether something requires a graphical processing unit such as a NVIDEA or AMD graphics card";
+  rdfs:label "Requires GPU" .
+
+schema:usageInfo a rdf:Property;
+  rdfs:comment """The schema.org [[usageInfo]] property indicates further information about a [[CreativeWork]]. This property is applicable both to works that are freely available and to those that require payment or other transactions. It can reference additional information, e.g. community expectations on preferred linking and citation conventions, as well as purchasing details. For something that can be commercially licensed, usageInfo can provide detailed, resource-specific information about licensing options.
+
+This property can be used alongside the license property which indicates license(s) applicable to some piece of content. The usageInfo property can provide information about other licensing options, e.g. acquiring commercial usage rights for an image that is also available under non-commercial creative commons licenses.""";
+  rdfs:label "usageInfo" .
+
+schema:processorRequirements a rdf:Property;
+  rdfs:comment "Processor architecture required to run the application (e.g. IA64).";
+  rdfs:label "processorRequirements" .
+
+sd:hasInput a owl:ObjectProperty;
+  rdfs:comment "Property that links a model configuration to the input types expected by it."@en;
+  rdfs:label "has input"@en .
+
+sd:hasOutput a owl:ObjectProperty;
+  rdfs:comment "Property that expresses what are the outputs of a model"@en;
+  rdfs:label "has output"@en .
+
+sd:hasParameter a owl:ObjectProperty;
+  rdfs:comment "Property that indicates the parameters of a model configuration"@en;
+  rdfs:label "has parameter"@en .
+
+sd:hasFunding a owl:ObjectProperty;
+  rdfs:comment "Property that links a software project to its funding information"@en;
+  rdfs:label "has funding information"@en .
+
+sd:hasSoftwareImage a owl:ObjectProperty;
+  rdfs:comment "Function to link a function with its corresponding container"@en;
+  rdfs:label "has software image"@en .
+
+sd:fundingSource a owl:ObjectProperty;
+  rdfs:comment "Link to the organization funding a software component"@en;
+  rdfs:label "funding source"@en;
+  rdfs:subPropertyOf owl:topObjectProperty .
+
+sd:readme a owl:DatatypeProperty;
+  rdfs:comment "URl to the readme file of a software component"@en;
+  rdfs:label "readme"@en;
+  rdfs:subPropertyOf <https://codemeta.github.io/terms/readme> .
+
+sd:hasDocumentation a owl:DatatypeProperty;
+  rdfs:comment "Pointer to the documentation of the model"@en;
+  rdfs:label "has documentation"@en .
+
+sd:hasExecutableInstructions a owl:DatatypeProperty;
+  rdfs:comment "Instructions that indicate how a software component should be executed. The difference with `hasExecutionCommand` is that the execution instructions aim to be human-readable, and have explanations between the different commands and instructions"@en;
+  rdfs:label "has executable instructions"@en .
+
+sd:hasExecutableNotebook a owl:DatatypeProperty;
+  rdfs:comment "Property that links a software component with an executable notebook (e.g., Jupyter notebook) that illustrates how to use it in an executable manner."@en;
+  rdfs:label "has executable notebook"@en .
+
+sd:hasAcknowledgements a owl:DatatypeProperty;
+  rdfs:comment "String with the people, organizations and other contributors acknowledged by the authors."@en;
+  rdfs:label "has acknowledgements"@en .
+
+sd:fundingGrant a owl:DatatypeProperty;
+  rdfs:comment "Grant number used for funding"@en;
+  rdfs:label "funding grant"@en;
+  rdfs:subPropertyOf <https://codemeta.github.io/terms/funding> .
+
+sd:hasFormat a owl:DatatypeProperty;
+  rdfs:comment "Format followed by a file. For example, txt, nc, etc."@en;
+  rdfs:label "has format"@en .
+
+sd:availableInRegistry a owl:DatatypeProperty;
+  rdfs:comment "Property that indicates in which registry the software image being described can be found. For example, https://hub.docker.com"@en;
+  rdfs:label "available in registry"@en .
+
+sd:hasDimensionality a owl:DatatypeProperty;
+  rdfs:comment "Property to indicate dimensionality of the input or output of a dataset specification"@en;
+  rdfs:label "has dimensionality"@en .
+
+
+#__________________________________________#
+
+
+
+schema:Person
+  a rdfs:Class ;
+  schema:source <http://www.w3.org/wiki/WebSchemas/SchemaDotOrgSources#source_rNews> ;
+  rdfs:comment "A person (alive, dead, undead, or fictional)." ;
+  rdfs:label "Person" ;
+  rdfs:subClassOf schema:Thing ;
+  owl:equivalentClass <http://xmlns.com/foaf/0.1/Person> ;
+.
+
+schema:Organization
+  a rdfs:Class ;
+  rdfs:comment "An organization such as a school, NGO, corporation, club, etc." ;
+  rdfs:label "Organization" ;
+  rdfs:subClassOf schema:Thing ;
+.
+
+schema:ComputerLanguage
+  a rdfs:Class ;
+  rdfs:comment "This type covers computer programming languages such as Scheme and Lisp, as well as other language-like computer representations. Natural languages are best represented with the [[Language]] type." ;
+  rdfs:label "Computer language" ;
+  rdfs:subClassOf schema:Intangible ;
+.
+
+
+schema:DataFeed
+  a rdfs:Class ;
+  rdfs:comment "A single feed providing structured information about one or more entities or topics." ;
+  rdfs:label "Data feed" ;
+  rdfs:subClassOf schema:Dataset ;
+.   
+
+
+schema:Grant
+  a rdfs:Class ;
+  schema:isPartOf <http://pending.schema.org> ;
+  schema:source <https://github.com/schemaorg/schemaorg/issues/383> ;
+  schema:source <https://www.w3.org/wiki/WebSchemas/SchemaDotOrgSources#FundInfoCollab> ;
+  rdfs:comment """A grant, typically financial or otherwise quantifiable, of resources. Typically a [[funder]] sponsors some [[MonetaryAmount]] to an [[Organization]] or [[Person]],
+    sometimes not necessarily via a dedicated or long-lived [[Project]], resulting in one or more outputs, or [[fundedItem]]s. For financial sponsorship, indicate the [[funder]] of a [[MonetaryGrant]]. For non-financial support, indicate [[sponsor]] of [[Grant]]s of resources (e.g. office space).
+
+Grants support  activities directed towards some agreed collective goals, often but not always organized as [[Project]]s. Long-lived projects are sometimes sponsored by a variety of grants over time, but it is also common for a project to be associated with a single grant.
+
+The amount of a [[Grant]] is represented using [[amount]] as a [[MonetaryAmount]].
+    """ ;
+  rdfs:label "Grant" ;
+  rdfs:subClassOf schema:Intangible ;
+.
+
+sd:FundingInformation
+    rdfs:comment "A class to represent the funding information of a software project"@en ;
+    rdfs:label "Funding Information"@en ; 
+    .
+
+sd:DatasetSpecification
+    rdfs:subClassOf <http://purl.org/linked-data/cube#DataStructureDefinition> ;
+    rdfs:comment "Class designed to describe a type of input or output used or produced by a model. For example, Topoflow has several inputs. One of them is a text file with precipitation values. The representation of this input is an instance of a dataset specification."@en ;
+    rdfs:label "Dataset Specification"@en ;
+    .
+
+bio:FormalParameter
+    rdfs:subClassOf <http://purl.org/linked-data/cube#DataStructureDefinition> ;
+    rdfs:comment "A FormalParameter is an identified variable used to stand for the actual value(s) that are consumed/produced by a set of steps"@en ;
+    rdfs:label "Formal Parameter"@en ;
+
+    .
+
+sd:SoftwareImage    
+    rdfs:subClassOf sd:Software ;
+    rdfs:comment "An image that virtualizes the functionality of a given software. For example, a Docker container."@en ;
+    rdfs:label "Software Image"@en ;
+    .
+
+spe:ContainerImage 
+
+    rdfs:subClassOf owl:Thing ;
+    rdfs:comment "This Container profile specification presents a representation of a Container such as Docker or Singularity that is used in scientific compute." ;
+    rdfs:label "Container Image"@en ;
+    .
