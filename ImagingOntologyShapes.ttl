@@ -160,6 +160,7 @@ sh:property schema:SoftwareApplication-applicationCategory ,
 
 ex:fairLevelShape a sh:PropertyShape ;
 sh:path ex:fairLevel ;
+sh:datatype xsd:string ;
   sh:minCount 1 ;
   .
 
@@ -196,7 +197,7 @@ schema:CreativeWork-citation
   a sh:PropertyShape ;
   sh:path schema:citation ;
   sh:datatype xsd:string ;
-  sh:pattern "(/^10\\.\\d{4,9}[-._;()/:A-Z0-9]+$/i)";
+  sh:pattern "^10\\.\\d{4,9}[-._;()/:A-Za-z0-9]+$" ;
 .
 schema:SoftwareSourceCode-codeRepository
   a sh:PropertyShape ;
@@ -295,9 +296,7 @@ schema:CreativeWork-keywords
   a sh:PropertyShape ;
   sh:path schema:keywords ;
   sh:or (
-      [
-        sh:class schema:DefinedTerm ;
-      ]
+
       [
         sh:nodeKind sh:IRI ;
       ]
@@ -534,7 +533,7 @@ sh:property schema:Thing-description ,
 
 schema:DataDownload-contentURL
   a sh:PropertyShape ;
-  sh:path schema:distribution ;
+  sh:path schema:contentUrl ;
   sh:nodeKind sh:IRI ;
   sh:minCount 1 ;
 .
