@@ -9,11 +9,11 @@
 @prefix shsh: <http://www.w3.org/ns/shacl-shacl#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
-@prefix ex: <http://example.com/ns#> .
+@prefix ex: <https://epfl.ch/example/> .
 @prefix md4i: <http://w3id.org/nfdi4ing/metadata4ing#>.
 
 
-<http://example.org/my-shapes>
+<https://epfl.ch/example/ImagingOntology>
 	a owl:Ontology ;
 	.
 
