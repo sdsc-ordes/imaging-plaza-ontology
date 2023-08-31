@@ -7,4 +7,5 @@ This repo contains the SHACL shapes and the IP Ontology used for:
 
 ## Changelog
 
-- **v0.1**: Initial release, ex: prefixes updated.
+- **v0.1**: Initial release, ex: prefixes updated, sh:nodekind sh:IRI replaced with a regex.
+
