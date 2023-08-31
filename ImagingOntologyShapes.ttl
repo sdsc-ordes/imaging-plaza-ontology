@@ -197,12 +197,12 @@ schema:CreativeWork-citation
   a sh:PropertyShape ;
   sh:path schema:citation ;
   sh:datatype xsd:string ;
-  sh:pattern "^http.+(10\\.\\d{2,9}[-._;()\\/:A-Za-z0-9]+)" ;
+  sh:pattern "^http.*.+(10\\.\\d{2,9}[-._;()\\/:A-Za-z0-9]+)" ;
 .
 schema:SoftwareSourceCode-codeRepository
   a sh:PropertyShape ;
   sh:path schema:codeRepository ;
-  sh:pattern "^http" ;
+  sh:pattern "^http.*" ;
   sh:minCount 1 ;
 .
 
@@ -264,7 +264,7 @@ schema:Thing-image
         sh:class schema:ImageObject ;
       ]
       [
-        sh:pattern "^http" ;
+        sh:pattern "^http.*" ;
       ]
     ) ;
   sh:minCount 1 ;
@@ -289,7 +289,7 @@ schema:CreativeWork-isBasedOn
       [
         sh:nodeKind sh:IRI ;
       ]
-      [sh:pattern "^http" ;
+      [sh:pattern "^http.*" ;
       ]
     ) ;
 .
@@ -302,7 +302,7 @@ schema:CreativeWork-keywords
       [
         sh:nodeKind sh:IRI ;
       ]
-      [sh:pattern "^http" ;
+      [sh:pattern "^http.*" ;
       ]
       [
         sh:datatype xsd:string ;
@@ -453,7 +453,7 @@ schema:SoftwareApplication-supportingData
 schema:Thing-url
   a sh:PropertyShape ;
   sh:path schema:url ;
-  sh:pattern "^http" ;
+  sh:pattern "^http.*" ;
   sh:minCount 1 ;
 .
 
@@ -466,7 +466,7 @@ sd:SoftwareApplication-hasAcknowledgements
 sd:SoftwareApplication-hasDocumentation
     a sh:PropertyShape ;
     sh:path sd:hasDocumentation ;
-    sh:pattern "^http" ;
+    sh:pattern "^http.*" ;
     .
 
 sd:SoftwareApplication-hasExecutableInstructions
@@ -478,7 +478,7 @@ sd:SoftwareApplication-hasExecutableInstructions
 sd:SoftwareApplication-hasExecutableNotebook
     a sh:PropertyShape ;
     sh:path sd:hasExecutableNotebook ;
-    sh:pattern "^http" ;
+    sh:pattern "^http.*" ;
     .
 
 sd:SoftwareApplication-hasInput
@@ -502,7 +502,7 @@ sd:SoftwareApplication-hasParameter
 sd:SoftwareApplication-readme
     a sh:PropertyShape ;
     sh:path sd:readme ;
-    sh:pattern "^http" ;
+    sh:pattern "^http.*" ;
   .
 
 schema:CreativeWork-creativeWorkStatus
@@ -531,7 +531,7 @@ sh:property schema:Thing-description ,
 schema:DataDownload-contentURL
   a sh:PropertyShape ;
   sh:path schema:contentUrl ;
-  sh:pattern "^http" ;
+  sh:pattern "^http.*" ;
   sh:minCount 1 ;
 .
 
@@ -681,7 +681,7 @@ spe:ContainerImage
 
 sd:SoftwareImage-availableInRegistry
     a sh:PropertyShape ;
-    sh:pattern "^http" ;
+    sh:pattern "^http.*" ;
     sh:path sd:availableInRegistry ;
     sh:minCount 1 ;
     .
@@ -722,7 +722,7 @@ schema:Organization-legalName
 md4i:hasRorId
   a sh:PropertyShape ;
   sh:path md4i:hasRorId ;
-  sh:pattern "^http" ;
+  sh:pattern "^http.*" ;
   .
 
 schema:Grant-fundedItem
