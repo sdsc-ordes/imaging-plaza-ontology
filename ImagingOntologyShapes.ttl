@@ -186,6 +186,7 @@ schema:SoftwareApplication-processorRequirements
   a sh:PropertyShape ;
   sh:path schema:processorRequirements ;
   sh:datatype xsd:string ;
+  sh:in ("ARM64" "AMD64")
   .
 
 ex:SoftwareApplication-requiresGPU 
@@ -196,14 +197,17 @@ ex:SoftwareApplication-requiresGPU
 schema:CreativeWork-citation
   a sh:PropertyShape ;
   sh:path schema:citation ;
+  sh:minCount 1 ;
+  sh:maxCount 1 ;
   sh:datatype xsd:string ;
-  sh:pattern "^http.*.+(10\\.\\d{2,9}[-._;()\\/:A-Za-z0-9]+)" ;
+  sh:pattern "^http.*" ;
 .
 schema:SoftwareSourceCode-codeRepository
   a sh:PropertyShape ;
   sh:path schema:codeRepository ;
   sh:pattern "^http.*" ;
   sh:minCount 1 ;
+  sh:maxCount 1 ;
 .
 
 schema:CreativeWork-conditionsOfAccess
@@ -389,7 +393,7 @@ schema:Thing-name
 schema:SoftwareApplication-operatingSystem
   a sh:PropertyShape ;
   sh:path schema:operatingSystem ;
-  sh:datatype xsd:string ;
+  sh:in ("Linux" "Windows" "MacOS") ;
 .
 
 schema:CreativeWork-producer
@@ -454,7 +458,6 @@ schema:Thing-url
   a sh:PropertyShape ;
   sh:path schema:url ;
   sh:pattern "^http.*" ;
-  sh:minCount 1 ;
 .
 
 sd:SoftwareApplication-hasAcknowledgements
@@ -510,9 +513,6 @@ schema:CreativeWork-creativeWorkStatus
   sh:path schema:creativeWorkStatus ;
   sh:or (
       [
-        sh:class schema:DefinedTerm ;
-      ]
-      [
         sh:datatype xsd:string ;
       ]
     ) ;
@@ -557,7 +557,7 @@ a sh:NodeShape ;
   sh:property schema:Grant-sponsor ;
   sh:property schema:Thing-identifier ;
   sh:property sd:FundingInformation-fundingGrant ;
-  sh:property sd:FundingInformation-fundingSource ;
+
 .
 
 schema:Thing-identifier
@@ -644,9 +644,6 @@ schema:PropertyValueSpecification-defaultValue
   sh:path schema:defaultValue ;
   sh:or (
       [
-        sh:class schema:Thing ;
-      ]
-      [
         sh:datatype xsd:string ;
       ]
     ) ;
@@ -661,7 +658,7 @@ schema:PropertyValueSpecification-valueRequired
 sd:SoftwareConfiguration-hasSoftwareImage
     a sh:PropertyShape ;
     sh:path sd:hasSoftwareImage ;
-    sh:class sd:SoftwareImage, spe:ContainerImage ;
+    sh:class sd:SoftwareImage;
     .
 
 sd:SoftwareImage    a sh:NodeShape ;
@@ -671,19 +668,12 @@ sd:SoftwareImage    a sh:NodeShape ;
                 sd:SoftwareImage-availableInRegistry ;
     .
 
-spe:ContainerImage 
-    a sh:NodeShape ;
-    sh:property schema:Thing-name ,
-                schema:Thing-description ,
-                schema:SoftwareApplication-softwareVersion ,
-                sd:SoftwareImage-availableInRegistry ;
-    .
+
 
 sd:SoftwareImage-availableInRegistry
     a sh:PropertyShape ;
     sh:pattern "^http.*" ;
     sh:path sd:availableInRegistry ;
-    sh:minCount 1 ;
     .
 
 schema:Dataset-measurementTechnique
@@ -728,7 +718,7 @@ md4i:hasRorId
 schema:Grant-fundedItem
   a sh:PropertyShape ;
   sh:path schema:fundedItem ;
-  sh:class schema:Thing ;
+  sh:datatype xsd:string ;
 .
 
 schema:Grant-sponsor
