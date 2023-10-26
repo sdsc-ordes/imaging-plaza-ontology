@@ -41,12 +41,15 @@ ex:fairlevel2Shape a sh:NodeShape ;
 .
 
 ex:fairlevel3Shape a sh:NodeShape ;
-			sh:property sd:SoftwareApplication-hasInput ,
-                  [sh:path sd:hasInput ;
-                  sh:minCount 1],
-                  sd:SoftwareApplication-hasOutput ,
-                  [sh:path sd:hasOutput ;
-                  sh:minCount 1] ;
+			sh:property schema:SoftwareApplication-softwareRequirements ,
+                  [sh:path schema:SoftwareApplication-softwareRequirements ;
+                  sh:minCount 1 ] ;
+                  # sd:SoftwareApplication-hasInput ,
+                  # [sh:path sd:hasInput ;
+                  # sh:minCount 1],
+                  # sd:SoftwareApplication-hasOutput ,
+                  # [sh:path sd:hasOutput ;
+                  # sh:minCount 1] ;
       sh:and (ex:fairlevel2Shape) 
 .
 
@@ -107,8 +110,8 @@ sh:property schema:SoftwareApplication-applicationCategory ,
               sd:SoftwareApplication-hasDocumentation ,
               sd:SoftwareApplication-hasExecutableInstructions ,
               sd:SoftwareApplication-hasExecutableNotebook ,
-              sd:SoftwareApplication-hasInput ,
-              sd:SoftwareApplication-hasOutput ,
+              # sd:SoftwareApplication-hasInput ,
+              # sd:SoftwareApplication-hasOutput ,
               sd:SoftwareApplication-hasParameter ,
               sd:SoftwareApplication-readme ,
               sd:SoftwareApplication-hasFunding ,
@@ -159,8 +162,8 @@ sh:property schema:SoftwareApplication-applicationCategory ,
 .
 
 ex:fairLevelShape a sh:PropertyShape ;
-sh:path ex:fairLevel ;
-sh:datatype xsd:string ;
+  sh:path ex:fairLevel ;
+  sh:datatype xsd:string ;
   sh:minCount 1 ;
   .
 
@@ -173,15 +176,8 @@ ex:SoftwareApplication-imagingModalityShape
 schema:SoftwareApplication-applicationCategory
   a sh:PropertyShape ;
   sh:path schema:applicationCategory ;
-  sh:or (
-      [
-        sh:nodeKind sh:IRI ;
-      ]
-      [
-        sh:datatype xsd:string ;
-      ]
-    ) ;
-.
+  sh:datatype xsd:string ;
+  .
 schema:SoftwareApplication-processorRequirements
   a sh:PropertyShape ;
   sh:path schema:processorRequirements ;
@@ -222,27 +218,13 @@ schema:CreativeWork-dateCreated
   sh:path schema:dateCreated ;
   sh:minCount 1 ;
   sh:maxCount 1 ;
-  sh:or (
-      [
-        sh:datatype xsd:date ;
-      ]
-      [
-        sh:datatype xsd:dateTime ;
-      ]
-    ) ;
-.
+  sh:datatype xsd:date ;
+  .
 
 schema:CreativeWork-datePublished
   a sh:PropertyShape ;
   sh:path schema:datePublished ;
-  sh:or (
-      [
-        sh:datatype xsd:date ;
-      ]
-      [
-        sh:datatype xsd:dateTime ;
-      ]
-    ) ;
+  sh:datatype xsd:date ;  
   sh:minCount 1 ;
 .
 
@@ -263,16 +245,16 @@ schema:SoftwareApplication-featureList
 schema:Thing-image
   a sh:PropertyShape ;
   sh:path schema:image ;
-  sh:or (
-      [
-        sh:class schema:ImageObject ;
-      ]
-      [
-        sh:pattern "^http.*" ;
-      ]
-    ) ;
+  sh:class schema:ImageObject ; 
   sh:minCount 1 ;
 .
+
+schema:ImagingObject 
+  a sh:NodeShape, rdfs:Class ;
+  sh:property schema:Thing-url ;
+  sh:property schema:CreativeWork-keywords ;
+  .
+
 
 schema:CreativeWork-isAccessibleForFree
   a sh:PropertyShape ;
@@ -283,36 +265,16 @@ schema:CreativeWork-isAccessibleForFree
 schema:CreativeWork-isBasedOn
   a sh:PropertyShape ;
   sh:path schema:isBasedOn ;
-  sh:or (
-      [
-        sh:class schema:CreativeWork ;
-      ]
-      [
-        sh:class schema:Product ;
-      ]
-      [
-        sh:nodeKind sh:IRI ;
-      ]
-      [sh:pattern "^http.*" ;
-      ]
-    ) ;
-.
+  sh:pattern "^http.*" ;
+  .
 
 schema:CreativeWork-keywords
   a sh:PropertyShape ;
   sh:path schema:keywords ;
-  sh:or (
-
-      [
-        sh:nodeKind sh:IRI ;
-      ]
-      [sh:pattern "^http.*" ;
-      ]
-      [
-        sh:datatype xsd:string ;
-      ]
-    ) ;
-    sh:minCount 1 ;
+  sh:datatype xsd:string ;
+  sh:in ("logo" "illustrative image" "before image" "after image") ;
+  sh:minCount 1 ;
+  sh:maxCount 1 ;
 .
 
 schema:CreativeWork-license
@@ -393,7 +355,7 @@ schema:Thing-name
 schema:SoftwareApplication-operatingSystem
   a sh:PropertyShape ;
   sh:path schema:operatingSystem ;
-  sh:in ("Linux" "Windows" "MacOS") ;
+  sh:in ("Linux" "Windows" "MacOS" "Other") ;
 .
 
 schema:CreativeWork-producer
@@ -413,38 +375,21 @@ schema:CreativeWork-producer
 schema:SoftwareSourceCode-programmingLanguage
   a sh:PropertyShape ;
   sh:path schema:programmingLanguage ;
-  sh:or (
-      [
-        sh:class schema:ComputerLanguage ;
-      ]
-      [
-        sh:datatype xsd:string ;
-      ]
-    ) ;
+  sh:class schema:ComputerLanguage ;
 .
 
-schema:ComputerLanguage
-a sh:NodeShape ;
-.
 
 schema:SoftwareApplication-softwareRequirements
   a sh:PropertyShape ;
   sh:path schema:softwareRequirements ;
-  sh:or (
-      [
-        sh:nodeKind sh:IRI ;
-      ]
-      [
-        sh:datatype xsd:string ;
-      ]
-    ) ;
-.
+  sh:datatype xsd:string ;
+  .
 
 schema:SoftwareApplication-softwareVersion
   a sh:PropertyShape ;
   sh:path schema:softwareVersion ;
   sh:datatype xsd:string ;
-  sh:pattern "[1-9]+\\.[1-9]+\\.[1-9]+" ;
+  sh:pattern "[0-9]+\\.[0-9]+\\.[0-9]+" ;
   sh:minCount 1 ;
 .
 
@@ -484,17 +429,17 @@ sd:SoftwareApplication-hasExecutableNotebook
     sh:pattern "^http.*" ;
     .
 
-sd:SoftwareApplication-hasInput
-    a sh:PropertyShape ;
-    sh:path sd:hasInput ;
-    sh:class sd:DatasetSpecification ;
-    .
+# sd:SoftwareApplication-hasInput
+#     a sh:PropertyShape ;
+#     sh:path sd:hasInput ;
+#     sh:class sd:DatasetSpecification ;
+#     .
 
-sd:SoftwareApplication-hasOutput
-    a sh:PropertyShape ;
-    sh:path sd:hasOutput ;
-    sh:class sd:DatasetSpecification ;
-    .
+# sd:SoftwareApplication-hasOutput
+#     a sh:PropertyShape ;
+#     sh:path sd:hasOutput ;
+#     sh:class sd:DatasetSpecification ;
+#     .
 
 sd:SoftwareApplication-hasParameter
     a sh:PropertyShape ;
@@ -511,12 +456,8 @@ sd:SoftwareApplication-readme
 schema:CreativeWork-creativeWorkStatus
   a sh:PropertyShape ;
   sh:path schema:creativeWorkStatus ;
-  sh:or (
-      [
-        sh:datatype xsd:string ;
-      ]
-    ) ;
-.
+  sh:datatype xsd:string ;
+  .
 
 schema:DataFeed
 a sh:NodeShape ;
@@ -540,49 +481,33 @@ schema:DataDownload-contentURL
 sd:SoftwareApplication-hasFunding
     a sh:PropertyShape ;
     sh:path sd:hasFunding ;
-    sh:or (
-      [
-        sh:class schema:Grant ;
-      ]
-      [
-        sh:class sd:FundingInformation ;
-      ]) ;
-      .
+    sh:class sd:FundingInformation ;
+    .
     
 
 
-schema:Grant
-a sh:NodeShape ;
-  sh:property schema:Grant-fundedItem ;
-  sh:property schema:Grant-sponsor ;
-  sh:property schema:Thing-identifier ;
-  sh:property sd:FundingInformation-fundingGrant ;
+# schema:Grant
+# a sh:NodeShape ;
+#   sh:property schema:Grant-fundedItem ;
+#   sh:property schema:Grant-sponsor ;
+#   sh:property schema:Thing-identifier ;
+#   sh:property sd:FundingInformation-fundingGrant ;
 
-.
+# .
 
 schema:Thing-identifier
   a sh:PropertyShape ;
   sh:path schema:identifier ;
-  sh:or (
-      [
-        sh:class schema:PropertyValue ;
-      ]
-      [
-        sh:nodeKind sh:IRI ;
-      ]
-      [
-        sh:datatype xsd:string ;
-      ]
-    ) ;
+  sh:datatype xsd:string ;
   sh:minCount 1 ;
 .
 
-sd:FundingInformation-fundingGrant
-    a sh:PropertyShape ;
-    sh:path sd:fundingGrant ;
-    sh:datatype xsd:string ;
-    sh:minCount 1 ;
-    .
+# sd:FundingInformation-fundingGrant
+#     a sh:PropertyShape ;
+#     sh:path sd:fundingGrant ;
+#     sh:datatype xsd:string ;
+#     sh:minCount 1 ;
+#     .
 
 sd:FundingInformation-fundingSource
     a sh:PropertyShape ;
@@ -598,17 +523,17 @@ sd:FundingInformation
                 sd:FundingInformation-fundingSource ;
     .
 
-sd:DatasetSpecification
-    a sh:NodeShape ;
-    sh:property 
-                # schema:Thing-description ,
-                # schema:CreativeWork-encodingFormat,
-                # schema:Thing-name,
-                sd:DatasetSpecification-hasDimensionality;
-                # sd:DatasetSpecification-hasFormat ,
-                # schema:PropertyValueSpecification-defaultValue, 
-                # schema:PropertyValueSpecification-valueRequired
-    .
+# sd:DatasetSpecification
+#     a sh:NodeShape ;
+#     sh:property 
+#                 # schema:Thing-description ,
+#                 # schema:CreativeWork-encodingFormat,
+#                 # schema:Thing-name,
+#                 sd:DatasetSpecification-hasDimensionality;
+#                 # sd:DatasetSpecification-hasFormat ,
+#                 # schema:PropertyValueSpecification-defaultValue, 
+#                 # schema:PropertyValueSpecification-valueRequired
+#     .
 
 bio:FormalParameter
     a sh:NodeShape ;
@@ -631,6 +556,7 @@ sd:DatasetSpecification-hasDimensionality
     a sh:PropertyShape ;
     sh:path sd:hasDimensionality ;
     sh:datatype xsd:integer ;
+    sh:minExclusive 0 ;
     .
 
 sd:DatasetSpecification-hasFormat
@@ -715,22 +641,22 @@ md4i:hasRorId
   sh:pattern "^http.*" ;
   .
 
-schema:Grant-fundedItem
-  a sh:PropertyShape ;
-  sh:path schema:fundedItem ;
-  sh:datatype xsd:string ;
-.
+# schema:Grant-fundedItem
+#   a sh:PropertyShape ;
+#   sh:path schema:fundedItem ;
+#   sh:datatype xsd:string ;
+# .
 
-schema:Grant-sponsor
-  a sh:PropertyShape ;
-  sh:path schema:sponsor ;
-  sh:or (
-      [
-        sh:class schema:Organization ;
-      ]
-      [
-        sh:class schema:Person ;
-      ]
-    ) ;
-  sh:minCount 1 ;
-.
+# schema:Grant-sponsor
+#   a sh:PropertyShape ;
+#   sh:path schema:sponsor ;
+#   sh:or (
+#       [
+#         sh:class schema:Organization ;
+#       ]
+#       [
+#         sh:class schema:Person ;
+#       ]
+#     ) ;
+#   sh:minCount 1 ;
+# .

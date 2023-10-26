@@ -42,19 +42,15 @@ ex:fairlevel2Shape a sh:NodeShape ;
       sh:targetClass schema:SoftwareSourceCode ;
 			sh:property sd:SoftwareApplication-readme ,
                   [sh:path sd:readme ;
-                  sh:minCount 1;
+                  sh:minCount 1 ;
                   sh:message "Fair level 2"] ;
       sh:and (ex:fairlevel1Shape)
 .
 
 ex:fairlevel3Shape a sh:NodeShape ;
       sh:targetClass schema:SoftwareSourceCode ;
-			sh:property sd:SoftwareApplication-hasInput ,
-                  [sh:path sd:hasInput ;
-                  sh:minCount 1 ;
-                  sh:message "Fair level 3"],
-                  sd:SoftwareApplication-hasOutput ,
-                  [sh:path sd:hasOutput ;
+			sh:property schema:SoftwareApplication-softwareRequirements ,
+                  [sh:path schema:SoftwareApplication-softwareRequirements ;
                   sh:minCount 1 ;
                   sh:message "Fair level 3"] ;
       sh:and (ex:fairlevel2Shape) 
