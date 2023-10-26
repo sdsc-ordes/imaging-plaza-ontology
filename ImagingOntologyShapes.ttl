@@ -429,18 +429,6 @@ sd:SoftwareApplication-hasExecutableNotebook
     sh:pattern "^http.*" ;
     .
 
-# sd:SoftwareApplication-hasInput
-#     a sh:PropertyShape ;
-#     sh:path sd:hasInput ;
-#     sh:class sd:DatasetSpecification ;
-#     .
-
-# sd:SoftwareApplication-hasOutput
-#     a sh:PropertyShape ;
-#     sh:path sd:hasOutput ;
-#     sh:class sd:DatasetSpecification ;
-#     .
-
 sd:SoftwareApplication-hasParameter
     a sh:PropertyShape ;
     sh:path sd:hasParameter ;
@@ -485,29 +473,12 @@ sd:SoftwareApplication-hasFunding
     .
     
 
-
-# schema:Grant
-# a sh:NodeShape ;
-#   sh:property schema:Grant-fundedItem ;
-#   sh:property schema:Grant-sponsor ;
-#   sh:property schema:Thing-identifier ;
-#   sh:property sd:FundingInformation-fundingGrant ;
-
-# .
-
 schema:Thing-identifier
   a sh:PropertyShape ;
   sh:path schema:identifier ;
   sh:datatype xsd:string ;
   sh:minCount 1 ;
 .
-
-# sd:FundingInformation-fundingGrant
-#     a sh:PropertyShape ;
-#     sh:path sd:fundingGrant ;
-#     sh:datatype xsd:string ;
-#     sh:minCount 1 ;
-#     .
 
 sd:FundingInformation-fundingSource
     a sh:PropertyShape ;
@@ -523,17 +494,6 @@ sd:FundingInformation
                 sd:FundingInformation-fundingSource ;
     .
 
-# sd:DatasetSpecification
-#     a sh:NodeShape ;
-#     sh:property 
-#                 # schema:Thing-description ,
-#                 # schema:CreativeWork-encodingFormat,
-#                 # schema:Thing-name,
-#                 sd:DatasetSpecification-hasDimensionality;
-#                 # sd:DatasetSpecification-hasFormat ,
-#                 # schema:PropertyValueSpecification-defaultValue, 
-#                 # schema:PropertyValueSpecification-valueRequired
-#     .
 
 bio:FormalParameter
     a sh:NodeShape ;
@@ -568,11 +528,8 @@ sd:DatasetSpecification-hasFormat
 schema:PropertyValueSpecification-defaultValue
   a sh:PropertyShape ;
   sh:path schema:defaultValue ;
-  sh:or (
-      [
-        sh:datatype xsd:string ;
-      ]
-    ) ;
+  sh:datatype xsd:string ;
+
 .
 
 schema:PropertyValueSpecification-valueRequired
@@ -605,27 +562,13 @@ sd:SoftwareImage-availableInRegistry
 schema:Dataset-measurementTechnique
   a sh:PropertyShape ;
   sh:path schema:measurementTechnique ;
-  sh:or (
-      [
-        sh:nodeKind sh:IRI ;
-      ]
-      [
-        sh:datatype xsd:string ;
-      ]
-    ) ;
+  sh:datatype xsd:string ;
 .
 
 schema:Dataset-variableMeasured
   a sh:PropertyShape ;
   sh:path schema:variableMeasured ;
-  sh:or (
-      [
-        sh:class schema:PropertyValue ;
-      ]
-      [
         sh:datatype xsd:string ;
-      ]
-    ) ;
 .
 
 schema:Organization-legalName
@@ -641,22 +584,3 @@ md4i:hasRorId
   sh:pattern "^http.*" ;
   .
 
-# schema:Grant-fundedItem
-#   a sh:PropertyShape ;
-#   sh:path schema:fundedItem ;
-#   sh:datatype xsd:string ;
-# .
-
-# schema:Grant-sponsor
-#   a sh:PropertyShape ;
-#   sh:path schema:sponsor ;
-#   sh:or (
-#       [
-#         sh:class schema:Organization ;
-#       ]
-#       [
-#         sh:class schema:Person ;
-#       ]
-#     ) ;
-#   sh:minCount 1 ;
-# .

@@ -40,7 +40,7 @@ schema:datePublished a rdf:Property;
   rdfs:label "Date published" .
 
 schema:maintainer a rdf:Property;
-  rdfs:comment """A maintainer of a Dataset, software package (SoftwareApplication), or other Project. A maintainer is a Person or Organization that manages contributions to, and/or publication of, some (typically complex) artifact. It is common for distributions of software and data to be based on upstream sources. When maintainer is applied to a specific version of something e.g. a particular version or packaging of a Dataset, it is always  possible that the upstream source has a different maintainer. The isBasedOn property can be used to indicate such relationships between datasets to make the different maintenance roles clear. Similarly in the case of software, a package may have dedicated maintainers working on integration into software distributions such as Ubuntu, as well as upstream maintainers of the underlying work.""";
+  rdfs:comment "A maintainer of a Dataset, software package or other Project. A maintainer is a Person or Organization that manages contributions to, and/or publication of, some (typically complex) artifact.";
   rdfs:label "Maintainer" .
 
 schema:name a rdf:Property;
@@ -157,7 +157,7 @@ schema:supportingData a rdf:Property;
   rdfs:label "Supporting data" .
 
 schema:distribution a rdf:Property;
-  rdfs:comment "A downloadable form of this dataset, at a specific location, in a specific format. This property can be repeated if different variations are available. There is no expectation that different downloadable distributions must contain exactly equivalent information (see also DCAT(https://www.w3.org/TR/vocab-dcat-3/#Class:Distribution) on this point). Different distributions might include or exclude different subsets of the entire dataset, for example.";
+  rdfs:comment "A downloadable form of this dataset, at a specific location, in a specific format." ;
   rdfs:label "Distribution" .
 
 schema:encodingFormat a rdf:Property;
@@ -165,35 +165,19 @@ schema:encodingFormat a rdf:Property;
   rdfs:label "Encoding format" .
 
 schema:measurementTechnique a rdf:Property;
-  rdfs:comment """A technique or technology used in a Dataset (or DataDownload, DataCatalog),
-corresponding to the method used for measuring the corresponding variable(s) (described using variableMeasured). This is oriented towards scientific and scholarly dataset publication but may have broader applicability; it is not intended as a full representation of measurement, but rather as a high level summary for dataset discovery.
-
-For example, if variableMeasured is: molecule concentration, measurementTechnique could be: mass spectrometry or nmr spectroscopy or colorimetry or immunofluorescence.
-
-If the variableMeasured is depression rating, the measurementTechnique could be Zung Scale or HAM-D or Beck Depression Inventory.
-
-If there are several variableMeasured properties recorded for some given data object, use a PropertyValue for each variableMeasured and attach the corresponding measurementTechnique.
-      """;
+  rdfs:comment """A technique or technology used in a Dataset corresponding to the method used for measuring the corresponding variable(s)."
   rdfs:label "Measurement technique" .
 
 schema:variableMeasured a rdf:Property;
-  rdfs:comment "The variableMeasured property can indicate (repeated as necessary) the  variables that are measured in some dataset, either described as text or as pairs of identifier and description using PropertyValue.";
+  rdfs:comment "The variables that are measured in some dataset, described as text.";
   rdfs:label "Variable measured" .
 
-schema:fundedItem a rdf:Property;
-  rdfs:comment "Indicates something directly or indirectly funded or sponsored through a Grant. See also ownershipFundingInfo.";
-  rdfs:label "Funded item" .
-
-schema:sponsor a rdf:Property;
-  rdfs:comment "A person or organization that supports a thing through a pledge, promise, or financial contribution. E.g. a sponsor of a Medical Study or a corporate sponsor of an event.";
-  rdfs:label "Sponsor" .
-
 ex:imagingModality a rdf:Property;
-  rdfs:comment "An imaging modality refers to a technique or method used to create images of the interior of a body or an object. In the context of software, it is the modality for which this software has been designed.";
+  rdfs:comment "Technique or method used to create images of the interior of a body or an object for which this software was designed.";
   rdfs:label "Imaging modality" .
 
 schema:creativeWorkStatus a rdf:Property;
-  rdfs:comment "The status of a creative work in terms of its stage in a lifecycle. e.g. Incomplete, Draft, Published, Obsolete. Some organizations define a set of terms for the stages of their publication lifecycle.";
+  rdfs:comment "The status of a creative work in terms of its stage in a lifecycle. e.g. Incomplete, Draft, Published, Obsolete.";
   rdfs:label "Creative work status" .
 
 schema:keywords a rdf:Property;
@@ -278,7 +262,6 @@ sd:hasDimensionality a owl:DatatypeProperty;
 
 schema:Person
   a rdfs:Class ;
-  schema:source <http://www.w3.org/wiki/WebSchemas/SchemaDotOrgSources#source_rNews> ;
   rdfs:comment "A person (alive, dead, undead, or fictional)." ;
   rdfs:label "Person" ;
   rdfs:subClassOf schema:Thing ;
@@ -310,16 +293,7 @@ schema:DataFeed
 
 schema:Grant
   a rdfs:Class ;
-  schema:isPartOf <http://pending.schema.org> ;
-  schema:source <https://github.com/schemaorg/schemaorg/issues/383> ;
-  schema:source <https://www.w3.org/wiki/WebSchemas/SchemaDotOrgSources#FundInfoCollab> ;
-  rdfs:comment """A grant, typically financial or otherwise quantifiable, of resources. Typically a funder sponsors some MonetaryAmount to an Organization or Person,
-    sometimes not necessarily via a dedicated or long-lived Project, resulting in one or more outputs, or fundedItems. For financial sponsorship, indicate the funder of a MonetaryGrant. For non-financial support, indicate sponsor of Grants of resources (e.g. office space).
-
-Grants support  activities directed towards some agreed collective goals, often but not always organized as Projects. Long-lived projects are sometimes sponsored by a variety of grants over time, but it is also common for a project to be associated with a single grant.
-
-The amount of a Grant is represented using amount as a MonetaryAmount.
-    """ ;
+  rdfs:comment "A grant, typically financial or otherwise quantifiable, of resources." ;
   rdfs:label "Grant" ;
   rdfs:subClassOf schema:Intangible ;
 .
