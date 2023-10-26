@@ -165,7 +165,7 @@ schema:encodingFormat a rdf:Property;
   rdfs:label "Encoding format" .
 
 schema:measurementTechnique a rdf:Property;
-  rdfs:comment "A technique or technology used in a Dataset corresponding to the method used for measuring the corresponding variable(s)."
+  rdfs:comment "A technique or technology used in a Dataset corresponding to the method used for measuring the corresponding variable(s)." ;
   rdfs:label "Measurement technique" .
 
 schema:variableMeasured a rdf:Property;
@@ -192,66 +192,66 @@ schema:processorRequirements a rdf:Property;
   rdfs:comment "Processor architecture required to run the application.";
   rdfs:label "Processor requirements" .
 
-sd:hasInput a owl:ObjectProperty;
+sd:hasInput a rdf:Property;
   rdfs:comment "Property that links a model configuration to the input types expected by it."@en;
   rdfs:label "Has input"@en .
 
-sd:hasOutput a owl:ObjectProperty;
+sd:hasOutput a rdf:Property;
   rdfs:comment "Property that expresses what are the outputs of a model"@en;
   rdfs:label "Has output"@en .
 
-sd:hasParameter a owl:ObjectProperty;
+sd:hasParameter a rdf:Property;
   rdfs:comment "Property that indicates the parameters of a model configuration"@en;
   rdfs:label "Has parameter"@en .
 
-sd:hasFunding a owl:ObjectProperty;
+sd:hasFunding a rdf:Property;
   rdfs:comment "Property that links a software project to its funding information"@en;
   rdfs:label "Has funding information"@en .
 
-sd:hasSoftwareImage a owl:ObjectProperty;
+sd:hasSoftwareImage a rdf:Property;
   rdfs:comment "Function to link a function with its corresponding container"@en;
   rdfs:label "Has software image"@en .
 
-sd:fundingSource a owl:ObjectProperty;
+sd:fundingSource a rdf:Property;
   rdfs:comment "Link to the organization funding a software component"@en;
   rdfs:label "Funding source"@en;
   rdfs:subPropertyOf owl:topObjectProperty .
 
-sd:readme a owl:DatatypeProperty;
+sd:readme a rdf:Property;
   rdfs:comment "URl to the readme file of a software component"@en;
   rdfs:label "Readme"@en;
   rdfs:subPropertyOf <https://codemeta.github.io/terms/readme> .
 
-sd:hasDocumentation a owl:DatatypeProperty;
+sd:hasDocumentation a rdf:Property;
   rdfs:comment "Pointer to the documentation of the model"@en;
   rdfs:label "Has documentation"@en .
 
-sd:hasExecutableInstructions a owl:DatatypeProperty;
+sd:hasExecutableInstructions a rdf:Property;
   rdfs:comment "Human-readable instructions that indicate how a software component should be executed."@en;
   rdfs:label "Has executable instructions"@en .
 
-sd:hasExecutableNotebook a owl:DatatypeProperty;
+sd:hasExecutableNotebook a rdf:Property;
   rdfs:comment "Property that links a software component with an executable notebook (e.g., Jupyter notebook)."@en;
   rdfs:label "Has executable notebook"@en .
 
-sd:hasAcknowledgements a owl:DatatypeProperty;
+sd:hasAcknowledgements a rdf:Property;
   rdfs:comment "String with the people, organizations and other contributors acknowledged by the authors."@en;
   rdfs:label "Has acknowledgements"@en .
 
-sd:fundingGrant a owl:DatatypeProperty;
+sd:fundingGrant a rdf:Property;
   rdfs:comment "Grant number used for funding"@en;
   rdfs:label "Funding grant"@en;
   rdfs:subPropertyOf <https://codemeta.github.io/terms/funding> .
 
-sd:hasFormat a owl:DatatypeProperty;
+sd:hasFormat a rdf:Property;
   rdfs:comment "Format followed by a file. For example, txt, nc, etc."@en;
   rdfs:label "Has format"@en .
 
-sd:availableInRegistry a owl:DatatypeProperty;
+sd:availableInRegistry a rdf:Property;
   rdfs:comment "URL to registry of where software image can be found. For example, https://hub.docker.com/r/pytorch/pytorch"@en;
   rdfs:label "Available in registry"@en .
 
-sd:hasDimensionality a owl:DatatypeProperty;
+sd:hasDimensionality a rdf:Property;
   rdfs:comment "Property to indicate dimensionality of the input or output of a dataset specification"@en;
   rdfs:label "Has dimensionality"@en .
 
