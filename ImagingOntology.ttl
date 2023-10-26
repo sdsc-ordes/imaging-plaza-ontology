@@ -165,7 +165,7 @@ schema:encodingFormat a rdf:Property;
   rdfs:label "Encoding format" .
 
 schema:measurementTechnique a rdf:Property;
-  rdfs:comment """A technique or technology used in a Dataset corresponding to the method used for measuring the corresponding variable(s)."
+  rdfs:comment "A technique or technology used in a Dataset corresponding to the method used for measuring the corresponding variable(s)."
   rdfs:label "Measurement technique" .
 
 schema:variableMeasured a rdf:Property;
