@@ -101,7 +101,6 @@ sh:property schema:SoftwareApplication-applicationCategory ,
               schema:SoftwareApplication-softwareRequirements ,
               schema:SoftwareApplication-processorRequirements ,
               ex:SoftwareApplication-requiresGPU ,
-              schema:SoftwareApplication-softwareVersion ,
               schema:SoftwareApplication-supportingData ,
               schema:CreativeWork-creativeWorkStatus , 
               schema:Thing-url ,
@@ -176,7 +175,7 @@ ex:SoftwareApplication-imagingModalityShape
 schema:SoftwareApplication-applicationCategory
   a sh:PropertyShape ;
   sh:path schema:applicationCategory ;
-  sh:datatype xsd:string ;
+  sh:in ("Feature extraction" "Segmentation" "Conversion" );
   .
 schema:SoftwareApplication-processorRequirements
   a sh:PropertyShape ;
@@ -383,7 +382,7 @@ schema:SoftwareApplication-softwareRequirements
   a sh:PropertyShape ;
   sh:path schema:softwareRequirements ;
   sh:datatype xsd:string ;
-  .
+.
 
 schema:SoftwareApplication-softwareVersion
   a sh:PropertyShape ;
@@ -391,7 +390,7 @@ schema:SoftwareApplication-softwareVersion
   sh:datatype xsd:string ;
   sh:pattern "[0-9]+\\.[0-9]+\\.[0-9]+" ;
   sh:minCount 1 ;
-.
+  .
 
 schema:SoftwareApplication-supportingData
   a sh:PropertyShape ;
