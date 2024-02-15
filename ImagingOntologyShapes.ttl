@@ -19,9 +19,11 @@
 		sh:prefix "ex" ;
 		sh:namespace <https://epfl.ch/example/> ;
 	] .
-ex:fairlevel0Shape a sh:NodeShape    
+ex:fairlevel0Shape a sh:NodeShape ;
+      sh:targetClass schema:SoftwareSourceCode ;
 .
 ex:fairlevel1Shape a sh:NodeShape ;
+      sh:targetClass schema:SoftwareSourceCode ;
 			sh:property schema:CreativeWork-license ,
                   [sh:path schema:license ;
                   sh:minCount 1] ,
@@ -34,6 +36,7 @@ ex:fairlevel1Shape a sh:NodeShape ;
 .
 
 ex:fairlevel2Shape a sh:NodeShape ;
+      sh:targetClass schema:SoftwareSourceCode ;
 			sh:property sd:SoftwareApplication-readme ,
                   [sh:path sd:readme ;
                   sh:minCount 1] ;
@@ -41,19 +44,16 @@ ex:fairlevel2Shape a sh:NodeShape ;
 .
 
 ex:fairlevel3Shape a sh:NodeShape ;
+      sh:targetClass schema:SoftwareSourceCode ;
 			sh:property schema:SoftwareApplication-softwareRequirements ,
                   [sh:path schema:SoftwareApplication-softwareRequirements ;
-                  sh:minCount 1 ] ;
-                  # sd:SoftwareApplication-hasInput ,
-                  # [sh:path sd:hasInput ;
-                  # sh:minCount 1],
-                  # sd:SoftwareApplication-hasOutput ,
-                  # [sh:path sd:hasOutput ;
-                  # sh:minCount 1] ;
+                  sh:minCount 1 ;
+                  sh:message "Fair level 3"] ;
       sh:and (ex:fairlevel2Shape) 
 .
 
 ex:fairlevel4Shape a sh:NodeShape ;
+      sh:targetClass schema:SoftwareSourceCode ;
 			sh:property schema:SoftwareApplication-memoryRequirements ,
                   [sh:path schema:memoryRequirements ;
                   sh:minCount 1] ,
@@ -67,6 +67,7 @@ ex:fairlevel4Shape a sh:NodeShape ;
 .
 
 ex:fairlevel5Shape a sh:NodeShape ;
+      sh:targetClass schema:SoftwareSourceCode ;
 			sh:property sd:SoftwareApplication-hasExecutableInstructions ,
                   [sh:path sd:hasExecutableInstructions ;
                   sh:minCount 1] ,

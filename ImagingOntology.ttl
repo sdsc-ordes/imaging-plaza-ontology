@@ -129,7 +129,7 @@ schema:programmingLanguage a rdf:Property;
   rdfs:label "Programming Language" .
 
 schema:softwareRequirements a rdf:Property;
-  rdfs:comment "Component dependency requirements, including runtime envs + libraries that are not included in the application distribution package (examples: DirectX, Java or .NET runtime).";
+  rdfs:comment "Special third party dependencies (e.g. CUDA, GPU related requirements).";
   rdfs:label "Software requirements" .
 
 schema:softwareVersion a rdf:Property;
