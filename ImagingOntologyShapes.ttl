@@ -46,7 +46,7 @@ ex:fairlevel2Shape a sh:NodeShape ;
 ex:fairlevel3Shape a sh:NodeShape ;
       sh:targetClass schema:SoftwareSourceCode ;
 			sh:property schema:SoftwareApplication-softwareRequirements ,
-                  [sh:path schema:SoftwareApplication-softwareRequirements ;
+                  [sh:path schema:softwareRequirements ;
                   sh:minCount 1 ;
                   sh:message "Fair level 3"] ;
       sh:and (ex:fairlevel2Shape) 
