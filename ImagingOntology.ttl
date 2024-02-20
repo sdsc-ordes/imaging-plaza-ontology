@@ -129,7 +129,7 @@ schema:programmingLanguage a rdf:Property;
   rdfs:label "Programming Language" .
 
 schema:softwareRequirements a rdf:Property;
-  rdfs:comment "Special third party dependencies (e.g. CUDA, GPU related requirements).";
+  rdfs:comment "Special third party dependencies (e.g. CUDA, Tensorflow etc. related requirements).";
   rdfs:label "Software requirements" .
 
 schema:softwareVersion a rdf:Property;
