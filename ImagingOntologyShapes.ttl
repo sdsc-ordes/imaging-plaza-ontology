@@ -19,33 +19,37 @@
 		sh:prefix "ex" ;
 		sh:namespace <https://epfl.ch/example/> ;
 	] .
-ex:fairlevel0Shape a sh:NodeShape ;
-      sh:targetClass schema:SoftwareSourceCode ;
+
+ex:fairlevel0Shape a sh:NodeShape    
 .
 ex:fairlevel1Shape a sh:NodeShape ;
       sh:targetClass schema:SoftwareSourceCode ;
-			sh:property schema:CreativeWork-license ,
+			sh:property
                   [sh:path schema:license ;
-                  sh:minCount 1] ,
-                  schema:CreativeWork-citation,
+                  sh:minCount 1;
+                  sh:message "Fair level 1"] ,
+                  
                   [sh:path schema:citation ;
-                  sh:minCount 1] ,
-                  schema:Thing-name ,
+                  sh:minCount 1;
+                  sh:message "Fair level 1"] ,
+                  
                   [sh:path schema:name ;
-                  sh:minCount 1];    
+                  sh:minCount 1;
+                  sh:message "Fair level 1"];    
 .
 
 ex:fairlevel2Shape a sh:NodeShape ;
       sh:targetClass schema:SoftwareSourceCode ;
-			sh:property sd:SoftwareApplication-readme ,
+			sh:property 
                   [sh:path sd:readme ;
-                  sh:minCount 1] ;
+                  sh:minCount 1 ;
+                  sh:message "Fair level 2"] ;
       sh:and (ex:fairlevel1Shape)
 .
 
 ex:fairlevel3Shape a sh:NodeShape ;
       sh:targetClass schema:SoftwareSourceCode ;
-			sh:property schema:SoftwareApplication-softwareRequirements ,
+			sh:property 
                   [sh:path schema:softwareRequirements ;
                   sh:minCount 1 ;
                   sh:message "Fair level 3"] ;
@@ -54,30 +58,33 @@ ex:fairlevel3Shape a sh:NodeShape ;
 
 ex:fairlevel4Shape a sh:NodeShape ;
       sh:targetClass schema:SoftwareSourceCode ;
-			sh:property schema:SoftwareApplication-memoryRequirements ,
+			sh:property 
                   [sh:path schema:memoryRequirements ;
-                  sh:minCount 1] ,
-                  sd:SoftwareApplication-hasDocumentation ,
+                  sh:minCount 1;
+                  sh:message "Fair level 4"] ,
+                  
                   [sh:path sd:hasDocumentation ;
-                  sh:minCount 1] ,
-                  sd:SoftwareApplication-hasParameter ,
+                  sh:minCount 1;
+                  sh:message "Fair level 4"] ,
+                  
                   [sh:path sd:hasParameter ;
-                  sh:minCount 1] ;
+                  sh:minCount 1;
+                  sh:message "Fair level 4"] ;
       sh:and (ex:fairlevel3Shape)
 .
 
 ex:fairlevel5Shape a sh:NodeShape ;
       sh:targetClass schema:SoftwareSourceCode ;
-			sh:property sd:SoftwareApplication-hasExecutableInstructions ,
+			sh:property
                   [sh:path sd:hasExecutableInstructions ;
-                  sh:minCount 1] ,
-                  sd:SoftwareApplication-hasExecutableNotebook ,
+                  sh:minCount 1;
+                  sh:message "Fair level 5"] ,
+                 
                   [sh:path sd:hasExecutableNotebook ;
-                  sh:minCount 1];
+                  sh:minCount 1;
+                  sh:message "Fair level 5"];
       sh:and (ex:fairlevel4Shape) 
 .
-
-
 
 schema:SoftwareSourceCode
 a sh:NodeShape, rdfs:Class ;
@@ -101,7 +108,7 @@ sh:property schema:SoftwareApplication-applicationCategory ,
               schema:SoftwareSourceCode-programmingLanguage ,
               schema:SoftwareApplication-softwareRequirements ,
               schema:SoftwareApplication-processorRequirements ,
-              ex:SoftwareApplication-requiresGPU ,
+              ex:SoftwareApplication-requiresGPUShape ,
               schema:SoftwareApplication-supportingData ,
               schema:CreativeWork-creativeWorkStatus , 
               schema:Thing-url ,
@@ -110,8 +117,6 @@ sh:property schema:SoftwareApplication-applicationCategory ,
               sd:SoftwareApplication-hasDocumentation ,
               sd:SoftwareApplication-hasExecutableInstructions ,
               sd:SoftwareApplication-hasExecutableNotebook ,
-              # sd:SoftwareApplication-hasInput ,
-              # sd:SoftwareApplication-hasOutput ,
               sd:SoftwareApplication-hasParameter ,
               sd:SoftwareApplication-readme ,
               sd:SoftwareApplication-hasFunding ,
@@ -160,7 +165,6 @@ sh:property schema:SoftwareApplication-applicationCategory ,
 		sh:condition ex:fairlevel5Shape
 	] ;
 .
-
 ex:fairLevelShape a sh:PropertyShape ;
   sh:path ex:fairLevel ;
   sh:datatype xsd:string ;
@@ -185,7 +189,7 @@ schema:SoftwareApplication-processorRequirements
   sh:in ("ARM64" "AMD64")
   .
 
-ex:SoftwareApplication-requiresGPU 
+ex:SoftwareApplication-requiresGPUShape
   a sh:PropertyShape ;
   sh:path ex:requiresGPU ;
   sh:datatype xsd:boolean .
@@ -326,7 +330,7 @@ schema:Person-givenName
   sh:minCount 1 ;
 .
 
-md4i:orcidId
+md4i:orcidIdShape
   a sh:PropertyShape ;
   sh:path md4i:orcidId ;
   sh:datatype xsd:string ;
@@ -486,6 +490,10 @@ sd:FundingInformation-fundingSource
     sh:class schema:Organization ;
     sh:minCount 1 ;
     .
+sd:FundingInformation-fundingGrant a sh:PropertyShape ;
+	sh:path sd:fundingGrant ;
+	sh:datatype xsd:string ;
+	sh:minCount 1.
 
 sd:FundingInformation
     a sh:NodeShape ;
@@ -493,6 +501,7 @@ sd:FundingInformation
                 sd:FundingInformation-fundingGrant,
                 sd:FundingInformation-fundingSource ;
     .
+
 
 
 bio:FormalParameter
@@ -578,7 +587,7 @@ schema:Organization-legalName
   sh:minCount 1 ;
 .
 
-md4i:hasRorId
+md4i:hasRorIdShape
   a sh:PropertyShape ;
   sh:path md4i:hasRorId ;
   sh:pattern "^http.*" ;
