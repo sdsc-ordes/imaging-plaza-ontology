@@ -28,15 +28,19 @@ schema:license a rdf:Property;
   rdfs:label "License" .
 
 schema:citation a rdf:Property;
-  rdfs:comment "A DOI URL citation to publication about this software. Should always be a full and valid DOI URL.";
-  rdfs:label "Citation" .
+  rdfs:comment "A DOI https URL citation to publication about this software. Use Zenodo to generate if needed. e.g. https://doi.org/10.1016/j.procs.2017.03.009";
+  rdfs:label "Citation DOI" .
+
+schema:contentURL a rdf:Property;
+  rdfs:comment "Actual bytes of the media object, for example the image file or video file.";
+  rdfs:label "Content URL".
 
 schema:dateCreated a rdf:Property;
   rdfs:comment "The date on which the repository was created.";
   rdfs:label "Date created" .
 
 schema:datePublished a rdf:Property;
-  rdfs:comment "Date of the latest published release.";
+  rdfs:comment "Latest published git release date, else, the publish date of the doi.";
   rdfs:label "Date published" .
 
 schema:maintainer a rdf:Property;
@@ -49,15 +53,19 @@ schema:name a rdf:Property;
   rdfs:subPropertyOf rdfs:label .
 
 schema:memoryRequirements a rdf:Property;
-  rdfs:comment "Minimum memory requirements.";
+  rdfs:comment "Minimum RAM requirements in GB to run the software, 0 if not applicable.";
   rdfs:label "Memory requirements" .
 
 ex:fairLevel a rdf:Property;
   rdfs:comment "A score of 1-5 rating the Findability, Accessibility, Interoperability and Reusability of a piece of software based on the presence of certain properties for an instance of software";
   rdfs:label "FAIR Level" .
 
+schema:affiliation a rdf:Property;
+  rdfs:comment "An organization that this person is affiliated with. For example, a university (EPFL/ETHZ), lab, company." ;
+  rdfs:label "Affiliation". 
+
 schema:applicationCategory a rdf:Property;
-  rdfs:comment "Type of software application, e.g. 'Game, Multimedia'.";
+  rdfs:comment "Type of software application, e.g. 'Plugin, gui, desktop app, library'.";
   rdfs:label "Application category" .
 
 schema:codeRepository a rdf:Property;
@@ -77,7 +85,7 @@ schema:featureList a rdf:Property;
   rdfs:label "Feature list" .
 
 schema:image a rdf:Property;
-  rdfs:comment "An image of the item. This can be a URL or a fully described ImageObject.";
+  rdfs:comment "An image of the item.";
   rdfs:label "Image" .
 
 schema:isAccessibleForFree a rdf:Property;

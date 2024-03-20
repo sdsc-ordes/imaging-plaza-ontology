@@ -198,7 +198,6 @@ schema:CreativeWork-citation
   a sh:PropertyShape ;
   sh:path schema:citation ;
   sh:minCount 1 ;
-  sh:maxCount 1 ;
   sh:datatype xsd:string ;
   sh:pattern "^http.*" ;
 .
@@ -308,6 +307,7 @@ a sh:NodeShape ;
   sh:property schema:Person-familyName ;
   sh:property schema:Person-givenName ;
   sh:property md4i:orcidIdShape ;
+  sh:property schema:Person-affiliation 
 .
 
 schema:Person-email
@@ -336,6 +336,12 @@ md4i:orcidIdShape
   sh:datatype xsd:string ;
   .
 
+schema:Person-affiliation
+  a sh:PropertyShape ;
+  sh:path schema:affiliation ;
+  sh:datatype xsd:string ;
+.
+
 schema:Organization
 a sh:NodeShape ;
 sh:property schema:Organization-legalName ;
@@ -345,7 +351,9 @@ sh:property md4i:hasRorIdShape ;
 schema:SoftwareApplication-memoryRequirements
   a sh:PropertyShape ;
   sh:path schema:memoryRequirements ;
-  sh:datatype xsd:string ;
+  sh:or (
+    [sh:datatype xsd:string ]
+    [sh:hasValue "None"])
 .
 
 schema:Thing-name
