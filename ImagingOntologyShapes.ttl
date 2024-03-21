@@ -199,7 +199,7 @@ ex:SoftwareApplication-imagingModalityShape
 schema:SoftwareApplication-applicationCategory
   a sh:PropertyShape ;
   sh:path schema:applicationCategory ;
-  sh:in ("Feature extraction" "Segmentation" "Conversion" );
+  sh:in ("Plugin" "GUI" "Desktop app" "Library" );
   .
 schema:SoftwareApplication-processorRequirements
   a sh:PropertyShape ;
@@ -261,7 +261,7 @@ schema:Thing-description
 schema:SoftwareApplication-featureList
   a sh:PropertyShape ;
   sh:path schema:featureList ;
-  sh:datatype xsd:string ;
+  sh:class ex:Feature ;
 .
 
 schema:Thing-image
