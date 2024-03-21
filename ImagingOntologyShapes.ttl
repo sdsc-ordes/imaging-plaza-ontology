@@ -86,6 +86,24 @@ ex:fairlevel5Shape a sh:NodeShape ;
       sh:and (ex:fairlevel4Shape) 
 .
 
+ex:FeatureTaggerRule a sh:SPARQLRule ;
+    sh:name "Feature tagger" ;
+    sh:description "This rule is used to extend the initial tagging of a software with it's higher level tags, for ease of retrieval/filtering" ;
+	sh:construct """
+    PREFIX ex: <http://example.org/>
+    PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+			CONSTRUCT {
+				$this ex:hasFeature ?parentFeatureLabel .
+                $this ex:hasFeature ?feature .
+			}
+			WHERE {
+				$this ex:hasFeature ?feature .
+                ?featureClass rdfs:label ?feature .
+				?featureClass rdfs:subClassOf ?parentFeature.
+                ?parentFeature rdfs:label ?parentFeatureLabel .
+			}
+			""" .
+
 schema:SoftwareSourceCode
 a sh:NodeShape, rdfs:Class ;
 sh:property schema:SoftwareApplication-applicationCategory ,
@@ -164,6 +182,7 @@ sh:property schema:SoftwareApplication-applicationCategory ,
 		sh:object "Fair level 5" ;
 		sh:condition ex:fairlevel5Shape
 	] ;
+sh:rule ex:FeatureTaggerRule
 .
 ex:fairLevelShape a sh:PropertyShape ;
   sh:path ex:fairLevel ;
@@ -601,3 +620,283 @@ md4i:hasRorIdShape
   sh:pattern "^http.*" ;
   .
 
+ex:Annotation rdf:type ex:Feature ;
+    rdfs:label "Annotation" ;
+    rdfs:comment "A process of adding metadata or additional information to a resource." .
+
+ex:Labelling rdf:type ex:Feature ;
+    rdfs:label "Labelling" ;
+    rdfs:comment "The act of assigning labels or tags to objects or data." .
+
+ex:Drawing rdf:type ex:Feature ;
+    rdfs:label "Drawing" ;
+    rdfs:comment "The creation of visual representations or illustrations." .
+
+ex:OpticalFlow rdf:type ex:Feature ;
+    rdfs:label "Optical Flow" ;
+    rdfs:comment "The pattern of apparent motion of objects, surfaces, and edges in a visual scene caused by the relative motion between an observer and the scene." .
+
+ex:DigitalImageCorrelation rdf:type ex:Feature ;
+    rdfs:label "Digital Image Correlation" ;
+    rdfs:comment "A technique for analyzing the deformation and motion of objects based on tracking the changes in pixel intensities between images." .
+
+ex:MotionEstimation rdf:type ex:Feature ;
+    rdfs:label "Motion Estimation" ;
+    rdfs:comment "The process of determining the motion of objects or cameras in a sequence of images or video frames." .
+
+ex:Registration rdf:type ex:Feature ;
+    rdfs:label "Registration" ;
+    rdfs:comment "The process of aligning or matching two or more images or point clouds to establish a correspondence between them." .
+
+ex:Stitching rdf:type ex:Feature ;
+    rdfs:label "Stitching" ;
+    rdfs:comment "The process of combining multiple images or videos to create a larger composite image or video." .
+
+ex:DriftCorrection rdf:type ex:Feature ;
+    rdfs:label "Drift Correction" ;
+    rdfs:comment "The correction of systematic errors or drifts in measurements or observations." .
+
+ex:Denoising rdf:type ex:Feature ;
+    rdfs:label "Denoising" ;
+    rdfs:comment "The process of reducing noise or unwanted artifacts from an image or signal." .
+
+ex:Deblurring rdf:type ex:Feature ;
+    rdfs:label "Deblurring" ;
+    rdfs:comment "The process of removing blurriness or out-of-focus effects from an image." .
+
+ex:Smoothing rdf:type ex:Feature ;
+    rdfs:label "Smoothing" ;
+    rdfs:comment "The process of reducing sharp variations or noise in an image or signal." .
+
+ex:Deconvolution rdf:type ex:Feature ;
+    rdfs:label "Deconvolution" ;
+    rdfs:comment "The process of recovering the original image or signal from a blurred or distorted version." .
+
+ex:Preprocessing rdf:type ex:Feature ;
+    rdfs:label "Preprocessing" ;
+    rdfs:comment "The initial processing steps performed on data or signals before further analysis or interpretation." .
+
+ex:Filtering rdf:type ex:Feature ;
+    rdfs:label "Filtering" ;
+    rdfs:comment "The process of modifying or extracting specific components or frequencies from a signal or image." .
+
+ex:ImageSimplification rdf:type ex:Feature ;
+    rdfs:label "Image Simplification" ;
+    rdfs:comment "The process of reducing the complexity or detail of an image while preserving its essential features." .
+
+ex:ImageEnhancement rdf:type ex:Feature ;
+    rdfs:label "Image Enhancement" ;
+    rdfs:comment "The process of improving the visual quality or appearance of an image." .
+
+ex:Segmentation rdf:type ex:Feature ;
+    rdfs:label "Segmentation" ;
+    rdfs:comment "The process of partitioning an image or data into meaningful or homogeneous regions." .
+
+ex:Classification rdf:type ex:Feature ;
+    rdfs:label "Classification" ;
+    rdfs:comment "The process of assigning predefined categories or labels to objects or data based on their characteristics or properties." .
+
+ex:ObjectDetection rdf:type ex:Feature ;
+    rdfs:label "Object Detection" ;
+    rdfs:comment "The process of identifying and localizing objects of interest in an image or video." .
+
+ex:ObjectRecognition rdf:type ex:Feature ;
+    rdfs:label "Object Recognition" ;
+    rdfs:comment "The process of identifying or classifying objects based on their appearance or features." .
+
+ex:Clustering rdf:type ex:Feature ;
+    rdfs:label "Clustering" ;
+    rdfs:comment "The process of grouping similar objects or data points into clusters or categories." .
+
+ex:Grouping rdf:type ex:Feature ;
+    rdfs:label "Grouping" ;
+    rdfs:comment "The process of organizing or grouping objects or data based on their similarities or relationships." .
+
+ex:PatternRecognition rdf:type ex:Feature ;
+    rdfs:label "Pattern Recognition" ;
+    rdfs:comment "The process of identifying or recognizing patterns or regularities in data or signals." .
+
+ex:TemplateMatching rdf:type ex:Feature ;
+    rdfs:label "Template Matching" ;
+    rdfs:comment "The process of finding occurrences of a template or pattern within an image or signal." .
+
+ex:InstanceSegmentation rdf:type ex:Feature ;
+    rdfs:label "Instance Segmentation" ;
+    rdfs:comment "The process of identifying and delineating individual instances or objects within an image or scene." .
+
+ex:PixelClassification rdf:type ex:Feature ;
+    rdfs:label "Pixel Classification" ;
+    rdfs:comment "The process of assigning labels or categories to individual pixels in an image." .
+
+ex:FeatureExtraction rdf:type ex:Feature ;
+    rdfs:label "Feature Extraction" ;
+    rdfs:comment "The process of extracting or selecting relevant features or characteristics from data or signals." .
+
+ex:DimensionalityReduction rdf:type ex:Feature ;
+    rdfs:label "Dimensionality Reduction" ;
+    rdfs:comment "The process of reducing the number of variables or dimensions in a dataset while preserving its essential information." .
+
+ex:DirectionalImageAnalysis rdf:type ex:Feature ;
+    rdfs:label "Directional Image Analysis" ;
+    rdfs:comment "The analysis of image data with respect to directional or oriented features or structures." .
+
+ex:PoseEstimation rdf:type ex:Feature ;
+    rdfs:label "Pose Estimation" ;
+    rdfs:comment "The process of estimating the position, orientation, or pose of an object or entity in a given coordinate system." .
+
+ex:PoseInformation rdf:type ex:Feature ;
+    rdfs:label "Pose Information" ;
+    rdfs:comment "Information about the position, orientation, or pose of an object or entity in a given coordinate system." .
+
+ex:PoseDetection rdf:type ex:Feature ;
+    rdfs:label "Pose Detection" ;
+    rdfs:comment "The process of detecting or localizing the position, orientation, or pose of objects or entities in an image or video." .
+
+ex:OrientationAnalysis rdf:type ex:Feature ;
+    rdfs:label "Orientation Analysis" ;
+    rdfs:comment "The analysis of the orientation or directionality of features or structures in an image or data." .
+
+ex:SceneReconstruction rdf:type ex:Feature ;
+    rdfs:label "Scene Reconstruction" ;
+    rdfs:comment "The process of creating a three-dimensional representation or model of a scene or environment." .
+
+ex:3dReconstruction rdf:type ex:Feature ;
+    rdfs:label "3D Reconstruction" ;
+    rdfs:comment "The process of reconstructing the three-dimensional shape or structure of objects or scenes from multiple images or viewpoints." .
+
+ex:3dModelGeneration rdf:type ex:Feature ;
+    rdfs:label "3D Model Generation" ;
+    rdfs:comment "The process of generating a three-dimensional model or representation of an object or scene." .
+
+ex:MorphologicalReconstruction rdf:type ex:Feature ;
+    rdfs:label "Morphological Reconstruction" ;
+    rdfs:comment "The process of reconstructing or restoring the shape or morphology of objects or structures in an image or data." .
+
+ex:DepthEstimation rdf:type ex:Feature ;
+    rdfs:label "Depth Estimation" ;
+    rdfs:comment "The process of estimating the depth or distance information of objects or scenes from images or sensors." .
+
+ex:CurvatureEstimation rdf:type ex:Feature ;
+    rdfs:label "Curvature Estimation" ;
+    rdfs:comment "The process of estimating the curvature or shape properties of objects or surfaces." .
+
+ex:ShadingEstimation rdf:type ex:Feature ;
+    rdfs:label "Shading Estimation" ;
+    rdfs:comment "The process of estimating the shading or illumination properties of objects or scenes." .
+
+ex:Modelling rdf:type ex:Feature ;
+    rdfs:label "Modelling" ;
+    rdfs:comment "The process of creating or generating a mathematical or computational representation of an object, system, or phenomenon." .
+
+ex:Simulation rdf:type ex:Feature ;
+    rdfs:label "Simulation" ;
+    rdfs:comment "The process of creating a computer-based model or representation of a real-world system or process to study its behavior or performance." .
+
+ex:Visualization rdf:type ex:Feature ;
+    rdfs:label "Visualization" ;
+    rdfs:comment "The process of creating visual representations or graphical displays of data or information." .
+
+ex:Rendering rdf:type ex:Feature ;
+    rdfs:label "Rendering" ;
+    rdfs:comment "The process of generating or producing images or visual outputs from a three-dimensional scene or model." .
+
+ex:StatisticsMeasurement rdf:type ex:Feature ;
+    rdfs:label "Statistics Measurement" ;
+    rdfs:comment "The measurement or analysis of statistical properties or characteristics of data or signals." .
+
+ex:QualityMetricMeasurement rdf:type ex:Feature ;
+    rdfs:label "Quality Metric Measurement" ;
+    rdfs:comment "The measurement or assessment of the quality or fidelity of images, videos, or signals." .
+
+ex:DistributionMeasurements rdf:type ex:Feature ;
+    rdfs:label "Distribution Measurements" ;
+    rdfs:comment "The measurement or analysis of the statistical distribution or properties of data or signals." .
+
+ex:ImageQualiityAssessment rdf:type ex:Feature ;
+    rdfs:label "Image Quality Assessment" ;
+    rdfs:comment "The assessment or evaluation of the visual quality or fidelity of images." .
+
+ex:MeshGeneration rdf:type ex:Feature ;
+    rdfs:label "Mesh Generation" ;
+    rdfs:comment "The process of creating a mesh or network of interconnected vertices, edges, and faces to represent a three-dimensional object or surface." .
+
+ex:Voxelization rdf:type ex:Feature ;
+    rdfs:label "Voxelization" ;
+    rdfs:comment "The process of converting a three-dimensional object or scene into a regular grid or lattice of voxels." .
+
+ex:SurfaceParameterisation rdf:type ex:Feature ;
+    rdfs:label "Surface Parameterisation" ;
+    rdfs:comment "The process of mapping or parameterizing a surface or object onto a two-dimensional domain or representation." .
+
+ex:MorphologicalAnalysis rdf:type ex:Feature ;
+    rdfs:label "Morphological Analysis" ;
+    rdfs:comment "The analysis or study of the shape, structure, or morphology of objects or structures." .
+
+ex:FeatureDetection rdf:type ex:Feature ;
+    rdfs:label "Feature Detection" ;
+    rdfs:comment "The process of identifying or detecting specific features or patterns in an image or signal." .
+
+ex:Tracking rdf:type ex:Feature ;
+    rdfs:label "Tracking" ;
+    rdfs:comment "The process of following or tracing the movement or trajectory of objects or entities over time." .
+
+ex:VisualQuestionAnswering rdf:type ex:Feature ;
+    rdfs:label "Visual Question Answering" ;
+    rdfs:comment "The task of answering questions based on visual input, such as images or videos." .
+
+ex:Annotation rdfs:subClassOf ex:Annotation .
+ex:Labelling rdfs:subClassOf ex:Annotation .
+ex:Drawing rdfs:subClassOf ex:Annotation .
+ex:OpticalFlow rdfs:subClassOf ex:OpticalFlow .
+ex:DigitalImageCorrelation rdfs:subClassOf ex:OpticalFlow .
+ex:MotionEstimation rdfs:subClassOf ex:OpticalFlow .
+ex:Registration rdfs:subClassOf ex:OpticalFlow .
+ex:Stitching rdfs:subClassOf ex:OpticalFlow .
+ex:DriftCorrection rdfs:subClassOf ex:OpticalFlow .
+ex:Denoising rdfs:subClassOf ex:Denoising .
+ex:Deblurring rdfs:subClassOf ex:Denoising .
+ex:Smoothing rdfs:subClassOf ex:Denoising .
+ex:Deconvolution rdfs:subClassOf ex:Denoising .
+ex:Preprocessing rdfs:subClassOf ex:Preprocessing .
+ex:Filtering rdfs:subClassOf ex:Preprocessing .
+ex:ImageSimplification rdfs:subClassOf ex:Preprocessing .
+ex:ImageEnhancement rdfs:subClassOf ex:Preprocessing .
+ex:Segmentation rdfs:subClassOf ex:Segmentation .
+ex:Classification rdfs:subClassOf ex:Segmentation .
+ex:ObjectDetection rdfs:subClassOf ex:Segmentation .
+ex:ObjectRecognition rdfs:subClassOf ex:Segmentation .
+ex:Clustering rdfs:subClassOf ex:Segmentation .
+ex:Grouping rdfs:subClassOf ex:Segmentation .
+ex:PatternRecognition rdfs:subClassOf ex:Segmentation .
+ex:TemplateMatching rdfs:subClassOf ex:Segmentation .
+ex:InstanceSegmentation rdfs:subClassOf ex:Segmentation .
+ex:PixelClassification rdfs:subClassOf ex:Segmentation .
+ex:FeatureExtraction rdfs:subClassOf ex:FeatureExtraction .
+ex:DimensionalityReduction rdfs:subClassOf ex:FeatureExtraction .
+ex:DirectionalImageAnalysis rdfs:subClassOf ex:FeatureExtraction .
+ex:PoseEstimation rdfs:subClassOf ex:PoseEstimation .
+ex:PoseInformation rdfs:subClassOf ex:PoseEstimation .
+ex:PoseDetection rdfs:subClassOf ex:PoseEstimation .
+ex:OrientationAnalysis rdfs:subClassOf ex:PoseEstimation .
+ex:SceneReconstruction rdfs:subClassOf ex:SceneReconstruction .
+ex:3dReconstruction rdfs:subClassOf ex:SceneReconstruction .
+ex:3dModelGeneration rdfs:subClassOf ex:SceneReconstruction .
+ex:MorphologicalReconstruction rdfs:subClassOf ex:SceneReconstruction .
+ex:DepthEstimation rdfs:subClassOf ex:SceneReconstruction .
+ex:CurvatureEstimation rdfs:subClassOf ex:SceneReconstruction .
+ex:ShadingEstimation rdfs:subClassOf ex:SceneReconstruction .
+ex:Modelling rdfs:subClassOf ex:Modelling .
+ex:Simulation rdfs:subClassOf ex:Modelling .
+ex:Visualization rdfs:subClassOf ex:Visualization .
+ex:Rendering rdfs:subClassOf ex:Visualization .
+ex:StatisticsMeasurement rdfs:subClassOf ex:StatisticsMeasurement .
+ex:QualityMetricMeasurement rdfs:subClassOf ex:StatisticsMeasurement .
+ex:DistributionMeasurements rdfs:subClassOf ex:StatisticsMeasurement .
+ex:ImageQualiityAssessment rdfs:subClassOf ex:StatisticsMeasurement .
+ex:MeshGeneration rdfs:subClassOf ex:MeshGeneration .
+ex:Voxelization rdfs:subClassOf ex:MeshGeneration .
+ex:SurfaceParameterisation rdfs:subClassOf ex:MeshGeneration .
+ex:MorphologicalAnalysis rdfs:subClassOf ex:MorphologicalAnalysis .
+ex:FeatureDetection rdfs:subClassOf ex:MorphologicalAnalysis .
+ex:Tracking rdfs:subClassOf ex:Tracking .
+ex:VisualQuestionAnswering rdfs:subClassOf ex:VisualQuestionAnswering .
