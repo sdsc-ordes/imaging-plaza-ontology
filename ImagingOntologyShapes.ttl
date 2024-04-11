@@ -117,6 +117,7 @@ sh:property schema:SoftwareApplication-applicationCategory ,
               schema:Thing-image ,
               schema:CreativeWork-isAccessibleForFree ,
               schema:CreativeWork-isBasedOn ,
+              ex:isPluginModuleOfShape, 
               schema:CreativeWork-license ,
               schema:CreativeWork-maintainer ,
               schema:SoftwareApplication-memoryRequirements ,
@@ -198,7 +199,7 @@ ex:SoftwareApplication-imagingModalityShape
 schema:SoftwareApplication-applicationCategory
   a sh:PropertyShape ;
   sh:path schema:applicationCategory ;
-  sh:in ("Feature extraction" "Segmentation" "Conversion" );
+  sh:in ("Desktop app" "Plugin" "Web app" "Notebook" "Library") ;
   .
 schema:SoftwareApplication-processorRequirements
   a sh:PropertyShape ;
@@ -287,6 +288,12 @@ schema:CreativeWork-isBasedOn
   a sh:PropertyShape ;
   sh:path schema:isBasedOn ;
   sh:pattern "^http.*" ;
+  .
+
+ex:isPluginModuleOfShape
+  a sh:PropertyShape ;
+  sh:path ex:isPluginModuleOf ;
+  sh:in ("Fiji" "napari" "icy" "qupath" "OMERO" "pyxu") ;
   .
 
 schema:CreativeWork-keywords
