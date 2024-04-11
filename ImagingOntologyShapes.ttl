@@ -128,7 +128,6 @@ sh:property schema:SoftwareApplication-applicationCategory ,
               schema:SoftwareApplication-processorRequirements ,
               ex:SoftwareApplication-requiresGPUShape ,
               schema:SoftwareApplication-supportingData ,
-              schema:CreativeWork-creativeWorkStatus , 
               schema:Thing-url ,
               schema:Thing-identifier ,
               sd:SoftwareApplication-hasAcknowledgements ,
@@ -470,12 +469,6 @@ sd:SoftwareApplication-readme
     a sh:PropertyShape ;
     sh:path sd:readme ;
     sh:pattern "^http.*" ;
-  .
-
-schema:CreativeWork-creativeWorkStatus
-  a sh:PropertyShape ;
-  sh:path schema:creativeWorkStatus ;
-  sh:datatype xsd:string ;
   .
 
 schema:DataFeed

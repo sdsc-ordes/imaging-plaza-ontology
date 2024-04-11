@@ -184,10 +184,6 @@ ex:imagingModality a rdf:Property;
   rdfs:comment "Technique or method used to create images of the interior of a body or an object for which this software was designed.";
   rdfs:label "Imaging modality" .
 
-schema:creativeWorkStatus a rdf:Property;
-  rdfs:comment "The status of a creative work in terms of its stage in a lifecycle. e.g. Incomplete, Draft, Published, Obsolete.";
-  rdfs:label "Creative work status" .
-
 schema:keywords a rdf:Property;
   rdfs:comment "The keywords/tags used to describe this content."@en;
   rdfs:label "Keywords"@en .
