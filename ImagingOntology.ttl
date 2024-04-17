@@ -100,6 +100,11 @@ ex:isPluginModuleOf a rdf:Property;
   rdfs:comment "The resource for which this tool is a plugin or module." ;
   rdfs:label "Is plugin/module of" .
 
+ex:relatedToOrganization a rdf:Property ;
+  rdfs:comment "The lab/institution/group/project/organization to which a software is related and/or affiliated to" ;
+  rdfs:label "Related to organization" ;
+  .
+
 schema:email a rdf:Property;
   rdfs:comment "Email address.";
   rdfs:label "E-mail" .

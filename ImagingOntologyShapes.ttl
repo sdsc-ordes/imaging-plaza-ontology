@@ -117,7 +117,8 @@ sh:property schema:SoftwareApplication-applicationCategory ,
               schema:Thing-image ,
               schema:CreativeWork-isAccessibleForFree ,
               schema:CreativeWork-isBasedOn ,
-              ex:isPluginModuleOfShape, 
+              ex:isPluginModuleOfShape,
+              ex:relatedToOrganizationShape, 
               schema:CreativeWork-license ,
               schema:CreativeWork-maintainer ,
               schema:SoftwareApplication-memoryRequirements ,
@@ -193,19 +194,19 @@ ex:fairLevelShape a sh:PropertyShape ;
 ex:SoftwareApplication-imagingModalityShape 
   a sh:PropertyShape ;
   sh:path ex:imagingModality ;
-  sh:in ("MRI" "CAT" "X-Ray" "Any") ;
+  sh:datatype xsd:string ;
   .
 
 schema:SoftwareApplication-applicationCategory
   a sh:PropertyShape ;
   sh:path schema:applicationCategory ;
-  sh:in ("Desktop app" "Plugin" "Web app" "Notebook" "Library") ;
+  sh:datatype xsd:string ;
   .
 schema:SoftwareApplication-processorRequirements
   a sh:PropertyShape ;
   sh:path schema:processorRequirements ;
   sh:datatype xsd:string ;
-  sh:in ("ARM64" "AMD64")
+  sh:in ("ARM64" "AMD64" "None")
   .
 
 ex:SoftwareApplication-requiresGPUShape
@@ -293,7 +294,13 @@ schema:CreativeWork-isBasedOn
 ex:isPluginModuleOfShape
   a sh:PropertyShape ;
   sh:path ex:isPluginModuleOf ;
-  sh:in ("Fiji" "napari" "icy" "qupath" "OMERO" "pyxu") ;
+  sh:datatype xsd:string ;
+  .
+
+ex:relatedToOrganizationShape
+  a sh:PropertyShape ;
+  sh:path ex:relatedToOrganization ;
+  sh:datatype xsd:string ;
   .
 
 schema:CreativeWork-keywords
@@ -412,7 +419,7 @@ schema:CreativeWork-producer
 schema:SoftwareSourceCode-programmingLanguage
   a sh:PropertyShape ;
   sh:path schema:programmingLanguage ;
-  sh:class schema:ComputerLanguage ;
+  sh:datatype xsd:string ;
 .
 
 
