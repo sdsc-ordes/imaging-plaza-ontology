@@ -12,6 +12,12 @@
 @prefix ex: <https://epfl.ch/example/> .
 @prefix md4i: <http://w3id.org/nfdi4ing/metadata4ing#>.
 
+ex:EnumerationType a rdfs:Class ;
+    rdfs:subClassOf schema:Enumeration ;
+    rdfs:comment "EnumerationType class used to group all enumeration classes under" ;
+    rdfs:label "Enumeration Type" ;
+.
+
 ex:ImagingModalityEnum a rdfs:Class ;
     rdfs:comment "Enumeration class for imaging modality" ;
     rdfs:label "Imaging Modality Enumeration" ;
