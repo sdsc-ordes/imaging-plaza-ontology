@@ -14,8 +14,19 @@
 
 
 <https://epfl.ch/example/ImagingOntology>
-	a owl:Ontology ;
-	.
+    a owl:Ontology ;
+    dct:abstract "The Imaging Plaza ontology provides concepts (classes and properties) to model human and machine readable imaging software metadata. It is the result of re-using external pre-existing vocabularies such as schema.org and the software description ontology, together with custom imaging specific objects and properties." ;
+    dct:contributor "Robin Franken", "Carlos Vivar Rios" ;
+    dct:created "2024-04-01"^^xsd:date ;
+    dct:creator "Robin Franken" ;
+    dct:description "The Imaging Plaza ontology provides concepts (classes and properties) to model human and machine readable imaging software metadata. It is the result of re-using external pre-existing vocabularies such as schema.org and the software description ontology, together with custom imaging specific objects and properties. The ontology contains purely semantic information (labels, definitions etc.) and is meant to be used in conjuction with a graph of enumeration values and a graph containing SHACL shapes to provide more machine readable restrictions on values of properties." ;
+    dct:license <https://spdx.org/licenses/CC-BY-SA-4.0.html> ;
+    dct:modified "2024-05-06"^^xsd:date ;
+    dct:title "Imaging Plaza Ontology" ;
+    vann:preferredNamespacePrefix "ex" ;
+    vann:preferredNamespaceUri "https://epfl.ch/example/"^^xsd:string ;
+    owl:versionInfo "0.6.0"^^xsd:string 
+    .
 
 schema:SoftwareSourceCode
   a rdfs:Class ;
