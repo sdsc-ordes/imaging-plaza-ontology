@@ -323,24 +323,28 @@ schema:Grant
 .
 
 sd:FundingInformation
+    a rdfs:Class ;
     rdfs:comment "A class to represent the funding information of a software project"@en ;
     rdfs:label "Funding Information"@en ; 
     .
 
 sd:DatasetSpecification
+    a rdfs:Class ;
     rdfs:subClassOf <http://purl.org/linked-data/cube#DataStructureDefinition> ;
     rdfs:comment "Class designed to describe a type of input or output used or produced by a model. For example, Topoflow has several inputs. One of them is a text file with precipitation values. The representation of this input is an instance of a dataset specification."@en ;
     rdfs:label "Dataset Specification"@en ;
     .
 
 bio:FormalParameter
+    a rdfs:Class ;
     rdfs:subClassOf <http://purl.org/linked-data/cube#DataStructureDefinition> ;
     rdfs:comment "A FormalParameter is an identified variable used to stand for the actual value(s) that are consumed/produced by a set of steps"@en ;
     rdfs:label "Formal Parameter"@en ;
 
     .
 
-sd:SoftwareImage    
+sd:SoftwareImage
+    a rdfs:Class ;
     rdfs:subClassOf sd:Software ;
     rdfs:comment "An image that virtualizes the functionality of a given software. For example, a Docker container."@en ;
     rdfs:label "Software Image"@en ;
