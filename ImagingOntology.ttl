@@ -59,11 +59,6 @@ schema:maintainer a rdf:Property;
   rdfs:comment "A maintainer of a Dataset, software package or other Project. A maintainer is a Person or Organization that manages contributions to, and/or publication of, some (typically complex) artifact.";
   rdfs:label "Maintainer" .
 
-schema:name a rdf:Property;
-  rdfs:comment "The name of the item.";
-  rdfs:label "Name";
-  rdfs:subPropertyOf rdfs:label .
-
 schema:memoryRequirements a rdf:Property;
   rdfs:comment "Minimum RAM requirements in GB to run the software, 0 if not applicable.";
   rdfs:label "Memory requirements" .
