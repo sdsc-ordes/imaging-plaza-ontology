@@ -12,6 +12,7 @@
 @prefix ex: <https://epfl.ch/example/> .
 @prefix md4i: <http://w3id.org/nfdi4ing/metadata4ing#>.
 @prefix dct: <http://purl.org/dc/terms/>.
+@prefix vann: <http://purl.org/vocab/vann/>.
 
 <https://epfl.ch/example/ImagingOntology>
     a owl:Ontology ;
