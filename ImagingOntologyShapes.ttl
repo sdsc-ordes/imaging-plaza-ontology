@@ -467,10 +467,13 @@ sd:SoftwareApplication-hasExecutableInstructions
     sh:datatype xsd:string ;
     .                           
 
-sd:SoftwareApplication-hasExecutableNotebook
+imag:SoftwareApplication-hasExecutableNotebook
     a sh:PropertyShape ;
-    sh:path sd:hasExecutableNotebook ;
-    sh:pattern "^http.*" ;
+    sh:path imag:hasExecutableNotebook ;
+    sh:class imag:ExecutableNotebook ;
+    sh:property schema:Thing-url , 
+		schema:Thing-name , 
+		schema:Thing-description;
     .
 
 sd:SoftwareApplication-hasParameter
@@ -486,21 +489,20 @@ sd:SoftwareApplication-readme
   .
 
 schema:DataFeed
-a sh:NodeShape ;
-sh:property schema:Thing-description ,
+    a sh:NodeShape ;
+    sh:property schema:Thing-description ,
               schema:DataDownload-contentURL ,
               schema:Dataset-measurementTechnique ,
               schema:Thing-name ,
               schema:Dataset-variableMeasured ;
-              
-.   
+    .   
 
 schema:DataDownload-contentURL
   a sh:PropertyShape ;
   sh:path schema:contentUrl ;
   sh:pattern "^http.*" ;
   sh:minCount 1 ;
-.
+  .
 
 
 
