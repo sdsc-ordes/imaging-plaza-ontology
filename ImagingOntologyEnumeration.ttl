@@ -1,0 +1,551 @@
+@prefix schema: <http://schema.org/>.
+@prefix sd: <https://w3id.org/okn/o/sd#>.
+@prefix bio: <https://bioschemas.org/>.
+@prefix spe: <https://openschemas.github.io/spec-container/specifications/>.
+@prefix rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sh:   <http://www.w3.org/ns/shacl#> .
+@prefix xsd:  <http://www.w3.org/2001/XMLSchema#> .
+@prefix shsh: <http://www.w3.org/ns/shacl-shacl#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix ex: <https://epfl.ch/example/> .
+@prefix md4i: <http://w3id.org/nfdi4ing/metadata4ing#>.
+
+ex:EnumerationType a rdfs:Class ;
+    rdfs:subClassOf schema:Enumeration ;
+    rdfs:comment "EnumerationType class used to group all enumeration classes under" ;
+    rdfs:label "Enumeration Type" ;
+.
+
+ex:ImagingModalityEnum a rdfs:Class ;
+    rdfs:comment "Enumeration class for imaging modality" ;
+    rdfs:label "Imaging Modality Enumeration" ;
+    rdfs:subClassOf ex:EnumerationType ;
+.
+
+ex:MRI a ex:ImagingModalityEnum ;
+    rdfs:label "MRI" ;
+.
+
+ex:CAT a ex:ImagingModalityEnum ;
+    rdfs:label "CAT" ;
+.
+
+ex:XRay a ex:ImagingModalityEnum ;
+    rdfs:label "X-ray" ;
+.
+
+ex:Any a ex:ImagingModalityEnum ;
+    rdfs:label "Any" ;
+.
+
+ex:AffiliationEnum a rdfs:Class ;
+    rdfs:comment "Enumeration class for affiliation" ;
+    rdfs:label "Affiliation Enumeration" ;
+    rdfs:subClassOf ex:EnumerationType ;
+.
+
+ex:EPFL a ex:AffiliationEnum ;
+    rdfs:label "EPFL" ;
+.
+
+ex:UNIL a ex:AffiliationEnum ;
+    rdfs:label "UNIL" ;
+.
+
+ex:ETHZ a ex:AffiliationEnum ;
+    rdfs:label "ETHZ" ;
+.
+
+ex:UZH a ex:AffiliationEnum ;
+    rdfs:label "UZH" ;
+.
+
+ex:NoneAffiliation a ex:AffiliationEnum ;
+    rdfs:label "None" ;
+.
+
+ex:IsPluginModuleOfEnum a rdfs:Class ;
+    rdfs:comment "Enumeration class for plugin module" ;
+    rdfs:label "Plugin Module Enumeration" ;
+    rdfs:subClassOf ex:EnumerationType ;
+.
+
+ex:Fiji a ex:IsPluginModuleOfEnum ;
+    rdfs:label "Fiji" ;
+.
+
+ex:Napari a ex:IsPluginModuleOfEnum ;
+    rdfs:label "napari" ;
+.
+
+ex:Icy a ex:IsPluginModuleOfEnum ;
+    rdfs:label "icy" ;
+.
+
+ex:QuPath a ex:IsPluginModuleOfEnum ;
+    rdfs:label "qupath" ;
+.
+
+ex:OMERO a ex:IsPluginModuleOfEnum ;
+    rdfs:label "OMERO" ;
+.
+
+ex:Pyxu a ex:IsPluginModuleOfEnum ;
+    rdfs:label "pyxu" ;
+.
+
+ex:NonePluginModule a ex:IsPluginModuleOfEnum ;
+    rdfs:label "None" ;
+.
+
+ex:ApplicationCategoryEnum a rdfs:Class ;
+    rdfs:comment "Enumeration class for application category" ;
+    rdfs:label "Application Category Enumeration" ;
+    rdfs:subClassOf ex:EnumerationType ;
+.
+
+ex:DesktopApp a ex:ApplicationCategoryEnum ;
+    rdfs:label "Desktop app" ;
+.
+
+ex:Plugin a ex:ApplicationCategoryEnum ;
+    rdfs:label "Plugin" ;
+.
+
+ex:WebApp a ex:ApplicationCategoryEnum ;
+    rdfs:label "Web app" ;
+.
+
+ex:Notebook a ex:ApplicationCategoryEnum ;
+    rdfs:label "Notebook" ;
+.
+
+ex:Library a ex:ApplicationCategoryEnum ;
+    rdfs:label "Library" ;
+.
+
+ex:ImageObjectTagEnum a rdfs:Class ;
+    rdfs:comment "Enumeration class for image object tag" ;
+    rdfs:label "Image Object Tag Enumeration" ;
+    rdfs:subClassOf ex:EnumerationType ;
+.
+
+ex:Logo a ex:ImageObjectTagEnum ;
+    rdfs:label "logo" ;
+.
+
+ex:IllustrativeImage a ex:ImageObjectTagEnum ;
+    rdfs:label "illustrative image" ;
+.
+
+ex:BeforeImage a ex:ImageObjectTagEnum ;
+    rdfs:label "before image" ;
+.
+
+ex:AfterImage a ex:ImageObjectTagEnum ;
+    rdfs:label "after image" ;
+.
+
+ex:AnimatedImage a ex:ImageObjectTagEnum ;
+    rdfs:label "animated image" ;
+.
+
+ex:OperatingSystemEnum a rdfs:Class ;
+    rdfs:comment "Enumeration class for operating system" ;
+    rdfs:label "Operating System Enumeration" ;
+    rdfs:subClassOf ex:EnumerationType ;
+.
+
+ex:Windows a ex:OperatingSystemEnum ;
+    rdfs:label "Windows" ;
+.
+
+ex:Linux a ex:OperatingSystemEnum ;
+    rdfs:label "Linux" ;
+.
+
+ex:MacOS a ex:OperatingSystemEnum ;
+    rdfs:label "MacOS" ;
+.
+
+ex:OtherOS a ex:OperatingSystemEnum ;
+    rdfs:label "Other" ;
+.
+
+ex:ProcessorRequirementsEnum a rdfs:Class ;
+    rdfs:comment "Enumeration class for processor requirements" ;
+    rdfs:label "Processor Requirements Enumeration" ;
+    rdfs:subClassOf ex:EnumerationType ;
+.
+
+ex:ARM64 a ex:ProcessorRequirementsEnum ;
+    rdfs:label "ARM64" ;
+.
+
+ex:AMD64 a ex:ProcessorRequirementsEnum ;
+    rdfs:label "AMD64" ;
+.
+
+ex:NoneProcessorRequirement a ex:ProcessorRequirementsEnum ;
+    rdfs:label "None" ;
+.
+
+ex:FeatureEnum a rdfs:Class ;
+    rdfs:comment "Enumeration class for software features" ;
+    rdfs:label "Feature Enumeration" ;
+    rdfs:subClassOf ex:EnumerationType ;
+.
+
+ex:Annotation a ex:FeatureEnum ;
+    rdfs:label "Annotation" ;
+.
+
+ex:Labelling a ex:FeatureEnum ;
+    rdfs:label "Labelling" ;
+.
+
+ex:Drawing a ex:FeatureEnum ;
+    rdfs:label "Drawing" ;
+.
+
+ex:OpticalFlow a ex:FeatureEnum ;
+    rdfs:label "Optical flow" ;
+.
+
+ex:DigitalImageCorrelation a ex:FeatureEnum ;
+    rdfs:label "Digital image correlation" ;
+.
+
+ex:MotionEstimation a ex:FeatureEnum ;
+    rdfs:label "Motion estimation" ;
+.
+
+ex:Registration a ex:FeatureEnum ;
+    rdfs:label "Registration" ;
+.
+
+ex:Stitching a ex:FeatureEnum ;
+    rdfs:label "Stitching" ;
+.
+
+ex:DriftCorrection a ex:FeatureEnum ;
+    rdfs:label "Drift correction" ;
+.
+
+ex:Denoising a ex:FeatureEnum ;
+    rdfs:label "Denoising" ;
+.
+
+ex:Deblurring a ex:FeatureEnum ;
+    rdfs:label "Deblurring" ;
+.
+
+ex:Smoothing a ex:FeatureEnum ;
+    rdfs:label "Smoothing" ;
+.
+
+ex:Deconvolution a ex:FeatureEnum ;
+    rdfs:label "Deconvolution" ;
+.
+
+ex:Preprocessing a ex:FeatureEnum ;
+    rdfs:label "Preprocessing" ;
+.
+
+ex:Filtering a ex:FeatureEnum ;
+    rdfs:label "Filtering" ;
+.
+
+ex:ImageSimplification a ex:FeatureEnum ;
+    rdfs:label "Image simplification" ;
+.
+
+ex:ImageEnhancement a ex:FeatureEnum ;
+    rdfs:label "Image enhancement" ;
+.
+
+ex:Segmentation a ex:FeatureEnum ;
+    rdfs:label "Segmentation" ;
+.
+
+ex:Classification a ex:FeatureEnum ;
+    rdfs:label "Classification" ;
+.
+
+ex:ObjectDetection a ex:FeatureEnum ;
+    rdfs:label "Object detection" ;
+.
+
+ex:ObjectRecognition a ex:FeatureEnum ;
+    rdfs:label "Object recognition" ;
+.
+
+ex:Clustering a ex:FeatureEnum ;
+    rdfs:label "Clustering" ;
+.
+
+ex:Grouping a ex:FeatureEnum ;
+    rdfs:label "Grouping" ;
+.
+
+ex:PatternRecognition a ex:FeatureEnum ;
+    rdfs:label "Pattern recognition" ;
+.
+
+ex:TemplateMatching a ex:FeatureEnum ;
+    rdfs:label "Template matching" ;
+.
+
+ex:InstanceSegmentation a ex:FeatureEnum ;
+    rdfs:label "Instance segmentation" ;
+.
+
+ex:PixelClassification a ex:FeatureEnum ;
+    rdfs:label "Pixel classification" ;
+.
+
+ex:FeatureExtraction a ex:FeatureEnum ;
+    rdfs:label "Feature extraction" ;
+.
+
+ex:DimensionalityReduction a ex:FeatureEnum ;
+    rdfs:label "Dimensionality reduction" ;
+.
+
+ex:DirectionalImageAnalysis a ex:FeatureEnum ;
+    rdfs:label "Directional image analysis" ;
+.
+
+ex:PoseEstimation a ex:FeatureEnum ;
+    rdfs:label "Pose estimation" ;
+.
+
+ex:PoseInformation a ex:FeatureEnum ;
+    rdfs:label "Pose information" ;
+.
+
+ex:PoseDetection a ex:FeatureEnum ;
+    rdfs:label "Pose detection" ;
+.
+
+ex:OrientationAnalysis a ex:FeatureEnum ;
+    rdfs:label "Orientation analysis" ;
+.
+
+ex:SceneReconstruction a ex:FeatureEnum ;
+    rdfs:label "Scene reconstruction" ;
+.
+
+ex:Reconstruction3d a ex:FeatureEnum ;
+    rdfs:label "3d reconstruction" ;
+.
+
+ex:ModelGeneration3d a ex:FeatureEnum ;
+    rdfs:label "3d model generation" ;
+.
+
+ex:MorphologicalReconstruction a ex:FeatureEnum ;
+    rdfs:label "Morphological reconstruction" ;
+.
+
+ex:DepthEstimation a ex:FeatureEnum ;
+    rdfs:label "Depth estimation" ;
+.
+
+ex:CurvatureEstimation a ex:FeatureEnum ;
+    rdfs:label "Curvature estimation" ;
+.
+
+ex:ShadingEstimation a ex:FeatureEnum ;
+    rdfs:label "Shading estimation" ;
+.
+
+ex:Modelling a ex:FeatureEnum ;
+    rdfs:label "Modelling" ;
+.
+
+ex:Simulation a ex:FeatureEnum ;
+    rdfs:label "Simulation" ;
+.
+
+ex:Visualization a ex:FeatureEnum ;
+    rdfs:label "Visualization" ;
+.
+
+ex:Rendering a ex:FeatureEnum ;
+    rdfs:label "Rendering" ;
+.
+
+ex:StatisticsMeasurement a ex:FeatureEnum ;
+    rdfs:label "Statistics measurement" ;
+.
+
+ex:QualityMetricMeasurement a ex:FeatureEnum ;
+    rdfs:label "Quality metric measurement" ;
+.
+
+ex:DistributionMeasurements a ex:FeatureEnum ;
+    rdfs:label "Distribution measurements" ;
+.
+
+ex:ImageQualityAssessment a ex:FeatureEnum ;
+    rdfs:label "Image quality assessment" ;
+.
+
+ex:MeshGeneration a ex:FeatureEnum ;
+    rdfs:label "Mesh generation" ;
+.
+
+ex:Voxelization a ex:FeatureEnum ;
+    rdfs:label "Voxelization" ;
+.
+
+ex:SurfaceParameterisation a ex:FeatureEnum ;
+    rdfs:label "Surface parameterisation" ;
+.
+
+ex:MorphologicalAnalysis a ex:FeatureEnum ;
+    rdfs:label "Morphological analysis" ;
+.
+
+ex:FeatureDetection a ex:FeatureEnum ;
+    rdfs:label "Feature detection" ;
+.
+
+ex:Tracking a ex:FeatureEnum ;
+    rdfs:label "Tracking" ;
+.
+
+ex:VisualQuestionAnswering a ex:FeatureEnum ;
+    rdfs:label "Visual question answering" ;
+.
+
+ex:SoftwareRequirementsEnum a rdfs:Class ;
+    rdfs:comment "Enumeration class for software requirements" ;
+    rdfs:label "Software Requirements Enumeration" ;
+    rdfs:subClassOf ex:EnumerationType ;
+.
+
+ex:PyTorch_2_2 a ex:SoftwareRequirementsEnum ;
+    rdfs:label "PyTorch 2.2" ;
+.
+
+ex:PyTorch_2_1 a ex:SoftwareRequirementsEnum ;
+    rdfs:label "PyTorch 2.1" ;
+.
+
+ex:PyTorch_2_0 a ex:SoftwareRequirementsEnum ;
+    rdfs:label "PyTorch 2.0" ;
+.
+
+ex:PyTorch_1_13 a ex:SoftwareRequirementsEnum ;
+    rdfs:label "PyTorch 1.13" ;
+.
+
+ex:Tensorflow_2_15 a ex:SoftwareRequirementsEnum ;
+    rdfs:label "Tensorflow 2.15" ;
+.
+
+ex:Tensorflow_2_4 a ex:SoftwareRequirementsEnum ;
+    rdfs:label "Tensorflow 2.4" ;
+.
+
+ex:Tensorflow_2_2 a ex:SoftwareRequirementsEnum ;
+    rdfs:label "Tensorflow 2.2" ;
+.
+
+ex:Tensorflow_2_0 a ex:SoftwareRequirementsEnum ;
+    rdfs:label "Tensorflow 2.0" ;
+.
+
+ex:Tensorflow_1_8 a ex:SoftwareRequirementsEnum ;
+    rdfs:label "Tensorflow 1.8" ;
+.
+
+ex:Tensorflow_1_5 a ex:SoftwareRequirementsEnum ;
+    rdfs:label "Tensorflow 1.5" ;
+.
+
+ex:Tensorflow_1_4 a ex:SoftwareRequirementsEnum ;
+    rdfs:label "Tensorflow 1.4" ;
+.
+
+ex:CUDA_11_8 a ex:SoftwareRequirementsEnum ;
+    rdfs:label "CUDA 11.8" ;
+.
+
+ex:CUDA_12_1 a ex:SoftwareRequirementsEnum ;
+    rdfs:label "CUDA 12.1" ;
+.
+
+ex:CUDA_10_1 a ex:SoftwareRequirementsEnum ;
+    rdfs:label "CUDA 10.1" ;
+.
+
+ex:CUDA_9_0 a ex:SoftwareRequirementsEnum ;
+    rdfs:label "CUDA 9.0" ;
+.
+
+ex:NoneSoftwareRequirement a ex:SoftwareRequirementsEnum ;
+    rdfs:label "None" ;
+.
+
+ex:ComputerLanguageEnum a rdfs:Class ;
+    rdfs:comment "Enumeration class for computer languages" ;
+    rdfs:label "Computer Language Enumeration" ;
+    rdfs:subClassOf ex:EnumerationType ;
+.
+
+ex:Python a ex:ComputerLanguageEnum ;
+    rdfs:label "Python" ;
+.
+
+ex:Scala a ex:ComputerLanguageEnum ;
+    rdfs:label "Scala" ;
+.
+
+ex:Java a ex:ComputerLanguageEnum ;
+    rdfs:label "Java" ;
+.
+
+ex:JavaScript a ex:ComputerLanguageEnum ;
+    rdfs:label "JavaScript" ;
+.
+
+ex:GoLang a ex:ComputerLanguageEnum ;
+    rdfs:label "GoLang" ;
+.
+
+ex:Csharp a ex:ComputerLanguageEnum ;
+    rdfs:label "C#" ;
+.
+
+ex:C a ex:ComputerLanguageEnum ;
+    rdfs:label "C" ;
+.
+
+ex:Bash a ex:ComputerLanguageEnum ;
+    rdfs:label "bash" ;
+.
+
+ex:Shell a ex:ComputerLanguageEnum ;
+    rdfs:label "shell" ;
+.
+
+ex:R a ex:ComputerLanguageEnum ;
+    rdfs:label "R" ;
+.
+
+ex:Rust a ex:ComputerLanguageEnum ;
+    rdfs:label "Rust" ;
+.
+
+ex:Cplusplus a ex:ComputerLanguageEnum ;
+    rdfs:label "C++" ;
+.
+
+ex:MatLab a ex:ComputerLanguageEnum ;
+    rdfs:label "MATLAB" ;
+.
