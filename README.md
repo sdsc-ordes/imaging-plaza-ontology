@@ -12,4 +12,5 @@ This repo contains the SHACL shapes and the IP Ontology used for:
 - **v0.3**: Changed fair calculation.
 - **v0.4**: Fixed loose nodes for PySHACL.
 - **v0.5**: Updated definitions, cardinality of several shapes.
+- **v0.6**: Added ontology metadata.
 

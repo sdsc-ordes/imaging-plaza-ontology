@@ -11,11 +11,23 @@
 @prefix dcterms: <http://purl.org/dc/terms/> .
 @prefix ex: <https://epfl.ch/example/> .
 @prefix md4i: <http://w3id.org/nfdi4ing/metadata4ing#>.
-
+@prefix dct: <http://purl.org/dc/terms/>.
+@prefix vann: <http://purl.org/vocab/vann/>.
 
 <https://epfl.ch/example/ImagingOntology>
-	a owl:Ontology ;
-	.
+    a owl:Ontology ;
+    dct:abstract "The Imaging Plaza ontology provides concepts (classes and properties) to model human and machine readable imaging software metadata. It is the result of re-using external pre-existing vocabularies such as schema.org and the software description ontology, together with custom imaging specific objects and properties." ;
+    dct:contributor "Robin Franken", "Carlos Vivar Rios" ;
+    dct:created "2024-04-01"^^xsd:date ;
+    dct:creator "Robin Franken" ;
+    dct:description "The Imaging Plaza ontology provides concepts (classes and properties) to model human and machine readable imaging software metadata. It is the result of re-using external pre-existing vocabularies such as schema.org and the software description ontology, together with custom imaging specific objects and properties. The ontology contains purely semantic information (labels, definitions etc.) and is meant to be used in conjuction with a graph of enumeration values and a graph containing SHACL shapes to provide more machine readable restrictions on values of properties." ;
+    dct:license <https://spdx.org/licenses/CC-BY-SA-4.0.html> ;
+    dct:modified "2024-05-06"^^xsd:date ;
+    dct:title "Imaging Plaza Ontology" ;
+    vann:preferredNamespacePrefix "ex" ;
+    vann:preferredNamespaceUri "https://epfl.ch/example/"^^xsd:string ;
+    owl:versionInfo "0.6.0"^^xsd:string 
+    .
 
 schema:SoftwareSourceCode
   a rdfs:Class ;
@@ -46,11 +58,6 @@ schema:datePublished a rdf:Property;
 schema:maintainer a rdf:Property;
   rdfs:comment "A maintainer of a Dataset, software package or other Project. A maintainer is a Person or Organization that manages contributions to, and/or publication of, some (typically complex) artifact.";
   rdfs:label "Maintainer" .
-
-schema:name a rdf:Property;
-  rdfs:comment "The name of the item.";
-  rdfs:label "Name";
-  rdfs:subPropertyOf rdfs:label .
 
 schema:memoryRequirements a rdf:Property;
   rdfs:comment "Minimum RAM requirements in GB to run the software, 0 if not applicable.";
@@ -316,6 +323,7 @@ sd:FundingInformation a rdfs:Class ;
     rdfs:label "Funding Information"@en ; 
     .
 
+
 sd:DatasetSpecification a rdfs:Class ;
     rdfs:subClassOf <http://purl.org/linked-data/cube#DataStructureDefinition> ;
     rdfs:comment "Class designed to describe a type of input or output used or produced by a model. For example, Topoflow has several inputs. One of them is a text file with precipitation values. The representation of this input is an instance of a dataset specification."@en ;
@@ -333,7 +341,8 @@ imag:ExecutableNotebook a rdfs:Class ;
     rdfs:label "Executable Notebook"@en ;
     .
 
-sd:SoftwareImage    
+sd:SoftwareImage
+    a rdfs:Class ;
     rdfs:subClassOf sd:Software ;
     rdfs:comment "An image that virtualizes the functionality of a given software. For example, a Docker container."@en ;
     rdfs:label "Software Image"@en ;
