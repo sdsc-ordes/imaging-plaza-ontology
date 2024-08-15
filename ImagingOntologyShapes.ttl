@@ -11,6 +11,9 @@
 @prefix imag: <https://imaging-plaza.epfl.ch/ontology#> .
 @prefix md4i: <http://w3id.org/nfdi4ing/metadata4ing#>.
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix dct: <http://purl.org/dc/terms/>.
+@prefix vann: <http://purl.org/vocab/vann/>.
+
 
 <https://imaging-plaza.epfl.ch/ontology#>
 	a owl:Ontology ;
@@ -135,7 +138,7 @@ sh:property schema:SoftwareApplication-applicationCategory ,
               sd:SoftwareApplication-hasAcknowledgements ,
               sd:SoftwareApplication-hasDocumentation ,
               sd:SoftwareApplication-hasExecutableInstructions ,
-              sd:SoftwareApplication-hasExecutableNotebook ,
+              imag:SoftwareApplication-hasExecutableNotebook ,
               sd:SoftwareApplication-hasParameter ,
               sd:SoftwareApplication-readme ,
               sd:SoftwareApplication-hasFunding ,
@@ -471,9 +474,6 @@ imag:SoftwareApplication-hasExecutableNotebook
     a sh:PropertyShape ;
     sh:path imag:hasExecutableNotebook ;
     sh:class imag:ExecutableNotebook ;
-    sh:property schema:Thing-url , 
-		schema:Thing-name , 
-		schema:Thing-description;
     .
 
 sd:SoftwareApplication-hasParameter
@@ -596,6 +596,13 @@ sd:SoftwareImage    a sh:NodeShape ;
                 sd:SoftwareImage-availableInRegistry ;
     .
 
+imag:SoftwareApplication-hasExecutableNotebook a sh:NodeShape ;
+     sh:targetClass imag:ExecutableNotebook ;
+     sh:property schema:Thing-name ,
+		 schema:Thing-description ,
+		 schema:Thing-url .
+
+
 
 
 sd:SoftwareImage-availableInRegistry
@@ -628,4 +635,3 @@ md4i:hasRorIdShape
   sh:path md4i:hasRorId ;
   sh:pattern "^http.*" ;
   .
-
