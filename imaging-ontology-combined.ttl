@@ -11,45 +11,17 @@
 @prefix imag: <https://imaging-plaza.epfl.ch/ontology#> .
 @prefix md4i: <http://w3id.org/nfdi4ing/metadata4ing#>.
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-
-@prefix schema: <http://schema.org/>.
-@prefix sd: <https://w3id.org/okn/o/sd#>.
-@prefix bio: <https://bioschemas.org/>.
-@prefix spe: <https://openschemas.github.io/spec-container/specifications/>.
-@prefix rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
-@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix sh:   <http://www.w3.org/ns/shacl#> .
-@prefix xsd:  <http://www.w3.org/2001/XMLSchema#> .
-@prefix shsh: <http://www.w3.org/ns/shacl-shacl#> .
-@prefix owl: <http://www.w3.org/2002/07/owl#> .
-@prefix dcterms: <http://purl.org/dc/terms/> .
-@prefix imag: <https://imaging-plaza.epfl.ch/ontology#> .
-@prefix md4i: <http://w3id.org/nfdi4ing/metadata4ing#>.
 @prefix dct: <http://purl.org/dc/terms/>.
 @prefix vann: <http://purl.org/vocab/vann/>.
 
+
 <https://imaging-plaza.epfl.ch/ontology#>
-    a owl:Ontology ;
-    dct:abstract "The Imaging Plaza ontology provides concepts (classes and properties) to model human and machine readable imaging software metadata. It is the result of re-using external pre-existing vocabularies such as schema.org and the software description ontology, together with custom imaging specific objects and properties." ;
-    dct:contributor "Robin Franken", "Carlos Vivar Rios", "Edward Andò", "Laurène Donati", "Oksana Riba", "Mallory Wittwer", "Florian Aymanns", "Maud Barthélemy";
-    dct:created "2024-04-01"^^xsd:date ;
-    dct:creator "Oksana Riba", "Edward Andò", "Laurène Donati", "Robin Franken" ;
-    dct:description "The Imaging Plaza ontology provides concepts (classes and properties) to model human and machine readable imaging software metadata. It is the result of re-using external pre-existing vocabularies such as schema.org and the software description ontology, together with custom imaging specific objects and properties. The ontology contains purely semantic information (labels, definitions etc.) and is meant to be used in conjuction with a graph of enumeration values and a graph containing SHACL shapes to provide more machine readable restrictions on values of properties." ;
-    dct:license <https://spdx.org/licenses/CC-BY-SA-4.0.html> ;
-    dct:modified "2024-05-06"^^xsd:date ;
-    dct:title "Imaging Plaza Ontology" ;
-    vann:preferredNamespacePrefix "ex" ;
-    vann:preferredNamespaceUri "https://imaging-plaza.epfl.ch/ontology#"^^xsd:string ;
-    owl:versionInfo "0.6.0"^^xsd:string ;
-    sh:entailment sh:Rules ;
-	  sh:declare [
+	a owl:Ontology ;
+	sh:entailment sh:Rules ;
+	sh:declare [
 		sh:prefix "imag" ;
 		sh:namespace <https://imaging-plaza.epfl.ch/ontology#> ;
 	] .
-
-<https://imaging-plaza.epfl.ch/ontology#ImagingOntologyShapes>
-	a owl:Ontology ;
-.
 
 imag:fairlevel0Shape a sh:NodeShape    
 .
@@ -111,7 +83,7 @@ imag:fairlevel5Shape a sh:NodeShape ;
                   sh:minCount 1;
                   sh:message "Fair level 5"] ,
                  
-                  [sh:path sd:hasExecutableNotebook ;
+                  [sh:path imag:hasExecutableNotebook ;
                   sh:minCount 1;
                   sh:message "Fair level 5"];
       sh:and (imag:fairlevel4Shape) 
@@ -225,18 +197,19 @@ imag:fairLevelShape a sh:PropertyShape ;
 imag:SoftwareApplication-imagingModalityShape 
   a sh:PropertyShape ;
   sh:path imag:imagingModality ;
-  sh:class imag:ImagingModalityEnum ;
+  sh:datatype xsd:string ;
   .
 
 schema:SoftwareApplication-applicationCategory
   a sh:PropertyShape ;
   sh:path schema:applicationCategory ;
-  sh:class imag:ApplicationCategoryEnum ;
+  sh:datatype xsd:string ;
   .
 schema:SoftwareApplication-processorRequirements
   a sh:PropertyShape ;
   sh:path schema:processorRequirements ;
-  sh:class imag:ProcessorRequirementsEnum ;
+  sh:datatype xsd:string ;
+  sh:in ("ARM64" "AMD64" "None")
   .
 
 imag:SoftwareApplication-requiresGPUShape
@@ -292,7 +265,7 @@ schema:Thing-description
 schema:SoftwareApplication-featureList
   a sh:PropertyShape ;
   sh:path schema:featureList ;
-  sh:class imag:FeatureListEnum ;
+  sh:datatype xsd:string ;
 .
 
 schema:Thing-image
@@ -324,7 +297,7 @@ schema:CreativeWork-isBasedOn
 imag:isPluginModuleOfShape
   a sh:PropertyShape ;
   sh:path imag:isPluginModuleOf ;
-  sh:class imag:isPluginModuleOfEnum ;
+  sh:datatype xsd:string ;
   .
 
 imag:relatedToOrganizationShape
@@ -336,7 +309,8 @@ imag:relatedToOrganizationShape
 schema:CreativeWork-keywords
   a sh:PropertyShape ;
   sh:path schema:keywords ;
-  sh:class imag:ImageObjectTagEnum ;
+  sh:datatype xsd:string ;
+  sh:in ("logo" "illustrative image" "before image" "after image") ;
   sh:minCount 1 ;
   sh:maxCount 1 ;
 .
@@ -400,7 +374,7 @@ md4i:orcidIdShape
 schema:Person-affiliation
   a sh:PropertyShape ;
   sh:path schema:affiliation ;
-  sh:class imag:AffiliationEnum ;
+  sh:datatype xsd:string ;
 .
 
 schema:Organization
@@ -428,7 +402,7 @@ schema:Thing-name
 schema:SoftwareApplication-operatingSystem
   a sh:PropertyShape ;
   sh:path schema:operatingSystem ;
-  sh:class imag:OperatingSystemEnum ;
+  sh:in ("Linux" "Windows" "MacOS" "Other") ;
 .
 
 schema:CreativeWork-producer
@@ -448,14 +422,14 @@ schema:CreativeWork-producer
 schema:SoftwareSourceCode-programmingLanguage
   a sh:PropertyShape ;
   sh:path schema:programmingLanguage ;
-  sh:class imag:ComputerLanguageEnum ;
+  sh:datatype xsd:string ;
 .
 
 
 schema:SoftwareApplication-softwareRequirements
   a sh:PropertyShape ;
   sh:path schema:softwareRequirements ;
-  sh:class imag:SoftwareRequirementsEnum ;
+  sh:datatype xsd:string ;
 .
 
 schema:SoftwareApplication-softwareVersion
@@ -496,10 +470,13 @@ sd:SoftwareApplication-hasExecutableInstructions
     sh:datatype xsd:string ;
     .                           
 
-sd:SoftwareApplication-hasExecutableNotebook
+imag:SoftwareApplication-hasExecutableNotebook
     a sh:PropertyShape ;
-    sh:path sd:hasExecutableNotebook ;
-    sh:pattern "^http.*" ;
+    sh:path imag:hasExecutableNotebook ;
+    sh:class imag:ExecutableNotebook ;
+    sh:property schema:Thing-url , 
+		schema:Thing-name , 
+		schema:Thing-description;
     .
 
 sd:SoftwareApplication-hasParameter
@@ -515,21 +492,20 @@ sd:SoftwareApplication-readme
   .
 
 schema:DataFeed
-a sh:NodeShape ;
-sh:property schema:Thing-description ,
+    a sh:NodeShape ;
+    sh:property schema:Thing-description ,
               schema:DataDownload-contentURL ,
               schema:Dataset-measurementTechnique ,
               schema:Thing-name ,
               schema:Dataset-variableMeasured ;
-              
-.   
+    .   
 
 schema:DataDownload-contentURL
   a sh:PropertyShape ;
   sh:path schema:contentUrl ;
   sh:pattern "^http.*" ;
   sh:minCount 1 ;
-.
+  .
 
 
 
@@ -656,6 +632,20 @@ md4i:hasRorIdShape
   sh:pattern "^http.*" ;
   .
 
+<https://imaging-plaza.epfl.ch/ontology#>
+    a owl:Ontology ;
+    dct:abstract "The Imaging Plaza ontology provides concepts (classes and properties) to model human and machine readable imaging software metadata. It is the result of re-using external pre-existing vocabularies such as schema.org and the software description ontology, together with custom imaging specific objects and properties." ;
+    dct:contributor "Robin Franken", "Carlos Vivar Rios" ;
+    dct:created "2024-04-01"^^xsd:date ;
+    dct:creator "Robin Franken" ;
+    dct:description "The Imaging Plaza ontology provides concepts (classes and properties) to model human and machine readable imaging software metadata. It is the result of re-using external pre-existing vocabularies such as schema.org and the software description ontology, together with custom imaging specific objects and properties. The ontology contains purely semantic information (labels, definitions etc.) and is meant to be used in conjuction with a graph of enumeration values and a graph containing SHACL shapes to provide more machine readable restrictions on values of properties." ;
+    dct:license <https://spdx.org/licenses/CC-BY-SA-4.0.html> ;
+    dct:modified "2024-08-15"^^xsd:date ;
+    dct:title "Imaging Plaza Ontology" ;
+    vann:preferredNamespacePrefix "imag" ;
+    vann:preferredNamespaceUri "https://imaging-plaza.epfl.ch/ontology#"^^xsd:string ;
+    owl:versionInfo "0.7.0"^^xsd:string 
+    .
 
 schema:SoftwareSourceCode
   a rdfs:Class ;
@@ -878,7 +868,7 @@ sd:hasExecutableInstructions a rdf:Property;
   rdfs:comment "Human-readable instructions that indicate how a software component should be executed."@en;
   rdfs:label "Has executable instructions"@en .
 
-sd:hasExecutableNotebook a rdf:Property;
+imag:hasExecutableNotebook a rdf:Property;
   rdfs:comment "Property that links a software component with an executable notebook (e.g., Jupyter notebook)."@en;
   rdfs:label "Has executable notebook"@en .
 
@@ -946,25 +936,27 @@ schema:Grant
   rdfs:subClassOf schema:Intangible ;
 .
 
-sd:FundingInformation
-    a rdfs:Class ;
+sd:FundingInformation a rdfs:Class ;
     rdfs:comment "A class to represent the funding information of a software project"@en ;
     rdfs:label "Funding Information"@en ; 
     .
 
-sd:DatasetSpecification
-    a rdfs:Class ;
+
+sd:DatasetSpecification a rdfs:Class ;
     rdfs:subClassOf <http://purl.org/linked-data/cube#DataStructureDefinition> ;
     rdfs:comment "Class designed to describe a type of input or output used or produced by a model. For example, Topoflow has several inputs. One of them is a text file with precipitation values. The representation of this input is an instance of a dataset specification."@en ;
     rdfs:label "Dataset Specification"@en ;
     .
 
-bio:FormalParameter
-    a rdfs:Class ;
+bio:FormalParameter a rdfs:Class ;
     rdfs:subClassOf <http://purl.org/linked-data/cube#DataStructureDefinition> ;
     rdfs:comment "A FormalParameter is an identified variable used to stand for the actual value(s) that are consumed/produced by a set of steps"@en ;
     rdfs:label "Formal Parameter"@en ;
 
+    .
+imag:ExecutableNotebook a rdfs:Class ;
+    rdfs:comment "An object representing an executable notebook such as Jupyter Notebook" ;
+    rdfs:label "Executable Notebook"@en ;
     .
 
 sd:SoftwareImage
@@ -973,8 +965,6 @@ sd:SoftwareImage
     rdfs:comment "An image that virtualizes the functionality of a given software. For example, a Docker container."@en ;
     rdfs:label "Software Image"@en ;
     .
-
-
 
 imag:EnumerationType a rdfs:Class ;
     rdfs:subClassOf schema:Enumeration ;
