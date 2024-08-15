@@ -15,6 +15,7 @@
 @prefix vann: <http://purl.org/vocab/vann/>.
 
 
+
 <https://imaging-plaza.epfl.ch/ontology#>
 	a owl:Ontology ;
 	sh:entailment sh:Rules ;
@@ -138,7 +139,7 @@ sh:property schema:SoftwareApplication-applicationCategory ,
               sd:SoftwareApplication-hasAcknowledgements ,
               sd:SoftwareApplication-hasDocumentation ,
               sd:SoftwareApplication-hasExecutableInstructions ,
-              sd:SoftwareApplication-hasExecutableNotebook ,
+              imag:SoftwareApplication-hasExecutableNotebook ,
               sd:SoftwareApplication-hasParameter ,
               sd:SoftwareApplication-readme ,
               sd:SoftwareApplication-hasFunding ,
@@ -474,9 +475,6 @@ imag:SoftwareApplication-hasExecutableNotebook
     a sh:PropertyShape ;
     sh:path imag:hasExecutableNotebook ;
     sh:class imag:ExecutableNotebook ;
-    sh:property schema:Thing-url , 
-		schema:Thing-name , 
-		schema:Thing-description;
     .
 
 sd:SoftwareApplication-hasParameter
@@ -598,6 +596,13 @@ sd:SoftwareImage    a sh:NodeShape ;
                 schema:SoftwareApplication-softwareVersion ,
                 sd:SoftwareImage-availableInRegistry ;
     .
+
+imag:SoftwareApplication-hasExecutableNotebook a sh:NodeShape ;
+     sh:targetClass imag:ExecutableNotebook ;
+     sh:property schema:Thing-name ,
+		 schema:Thing-description ,
+		 schema:Thing-url .
+
 
 
 
