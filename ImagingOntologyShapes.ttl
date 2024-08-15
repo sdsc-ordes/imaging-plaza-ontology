@@ -80,7 +80,7 @@ ex:fairlevel5Shape a sh:NodeShape ;
                   sh:minCount 1;
                   sh:message "Fair level 5"] ,
                  
-                  [sh:path sd:hasExecutableNotebook ;
+                  [sh:path imag:hasExecutableNotebook ;
                   sh:minCount 1;
                   sh:message "Fair level 5"];
       sh:and (ex:fairlevel4Shape) 
