@@ -24,4 +24,4 @@ jobs:
           pip install -r requirements.txt
 
       - name: Run createSchemas.py
-        run: python createSchemas.py
+        run: python src/createSchemas.py
