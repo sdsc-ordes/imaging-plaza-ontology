@@ -26,3 +26,12 @@ jobs:
 
       - name: Run createSchemas.py
         run: python src/createSchemas.py
+      - name: Commit and push changes
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add schema.json
+          git commit -m "Update schema.json [from GitHub Actions]"
+          git push origin main
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
