@@ -1,9 +1,4 @@
 import rdflib
-import requests
-import os
-from dotenv import load_dotenv
-from SPARQLWrapper import SPARQLWrapper, JSON, QueryResult, TURTLE, CSV, JSONLD
-import pyshacl
 import json
 
 
