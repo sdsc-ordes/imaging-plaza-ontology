@@ -4,7 +4,7 @@ import os
 from dotenv import load_dotenv
 from SPARQLWrapper import SPARQLWrapper, JSON, QueryResult, TURTLE, CSV, JSONLD
 import pyshacl
-import json 
+import json
 
 
 def generate_schema_json(turtle_file: str) -> dict:
@@ -19,10 +19,12 @@ def generate_schema_json(turtle_file: str) -> dict:
     """
     data_g = rdflib.Graph()
     data_g.parse(turtle_file, format="turtle")
-    
+
     return data_g
 
+
 data_g = generate_schema_json("schemas/ImagingOntology.ttl")
+
 
 def extract_labels_and_placeholders(data_g: rdflib.Graph) -> dict:
     """
@@ -55,16 +57,17 @@ def extract_labels_and_placeholders(data_g: rdflib.Graph) -> dict:
         "published": "Published!",
         "save-draft": "Save draft",
         "value": "Value",
-        "general_table_action": "Action"
+        "general_table_action": "Action",
     }
     for row in result:
         iri = str(row.iri)
-        slug = iri.split('/')[-1].split('#')[-1]
+        slug = iri.split("/")[-1].split("#")[-1]
         if row.label:
             schema_json[f"{slug}_label"] = str(row.label)
         if row.comment:
             schema_json[f"{slug}_placeholder"] = str(row.comment)
     return schema_json
+
 
 schema_json = extract_labels_and_placeholders(data_g)
 
