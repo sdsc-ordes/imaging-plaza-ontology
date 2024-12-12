@@ -112,10 +112,6 @@ ex:relatedToOrganization a rdf:Property ;
   rdfs:label "Related to organization" ;
   .
 
-schema:email a rdf:Property;
-  rdfs:comment "Email address.";
-  rdfs:label "E-mail" .
-
 schema:familyName a rdf:Property;
   rdfs:comment "Family name. In the U.S., the last name of a Person.";
   rdfs:label "Family name" .
