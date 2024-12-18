@@ -234,7 +234,7 @@ sd:fundingSource a rdf:Property;
   rdfs:subPropertyOf owl:topObjectProperty .
 
 sd:readme a rdf:Property;
-  rdfs:comment "URl to the Readme file of a software component"@en;
+  rdfs:comment "URL to the Readme file of a software component"@en;
   rdfs:label "Readme"@en;
   rdfs:subPropertyOf <https://codemeta.github.io/terms/readme> .
 
