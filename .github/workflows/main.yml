@@ -52,6 +52,12 @@ jobs:
         env:
           SECOND_REPO_PAT: ${{ secrets.SECOND_REPO_PAT }}
 
+      - name: Verify remote branches debug
+        run: |
+          cd imaging-plaza-frontend-public
+          git fetch origin develop
+          git branch -r  # List all remote branches to verify 'origin/develop' exists
+
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v7
         with:
