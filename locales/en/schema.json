@@ -119,7 +119,7 @@
     "requiresGPU_placeholder": "Stipulates whether something requires a graphical processing unit such as a NVIDIA or AMD graphics card",
     "processorRequirements_placeholder": "Processor architecture required to run the application.",
     "hasInput_placeholder": "Property that links a model configuration to the input types expected by it.",
-    "hasOutput_placeholder": "Property that expresses what are the outputs of a model",
+    "hasOutput_placeholder": "Property that expresses what the outputs of a model are",
     "hasParameter_placeholder": "Property that indicates the parameters of a model configuration",
     "hasFunding_placeholder": "Property that links a software project to its funding information",
     "hasSoftwareImage_placeholder": "Function to link a function with its corresponding container",
