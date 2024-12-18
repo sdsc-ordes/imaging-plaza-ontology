@@ -64,7 +64,7 @@ schema:memoryRequirements a rdf:Property;
   rdfs:label "Memory requirements" .
 
 ex:fairLevel a rdf:Property;
-  rdfs:comment "A score of 1-5 rating the Findability, Accessibility, Interoperability and Reusability of a piece of software based on the presence of certain properties for an instance of software";
+  rdfs:comment "A score of 1-5 rating the Findability, Accessibility, Interoperability and Reusability of a piece of software.";
   rdfs:label "FAIR Level" .
 
 schema:affiliation a rdf:Property;
@@ -109,8 +109,7 @@ ex:isPluginModuleOf a rdf:Property;
 
 ex:relatedToOrganization a rdf:Property ;
   rdfs:comment "The lab/institution/group/project/organization to which a software is related and/or affiliated to" ;
-  rdfs:label "Related to organization" ;
-  .
+  rdfs:label "Related to organization" .
 
 schema:familyName a rdf:Property;
   rdfs:comment "Family name. In the U.S., the last name of a Person.";
