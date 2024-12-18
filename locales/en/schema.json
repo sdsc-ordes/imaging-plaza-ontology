@@ -126,7 +126,7 @@
     "fundingSource_placeholder": "Link to the organization funding a software/component",
     "readme_placeholder": "URL to the Readme file of a software component",
     "hasDocumentation_placeholder": "Pointer to the documentation of the model",
-    "hasExecutableInstructions_placeholder": "Human-readable instructions that indicate how a software component should be executed.",
+    "hasExecutableInstructions_placeholder": "URL to Human-readable instructions that indicate how a software component should be executed.",
     "hasExecutableNotebook_placeholder": "Property that links a software component with an executable notebook (e.g. Jupyter notebook).",
     "hasAcknowledgements_placeholder": "String with the people, organizations and other contributors acknowledged by the authors.",
     "fundingGrant_placeholder": "Grant number used for funding",
