@@ -212,7 +212,8 @@ schema:SoftwareApplication-processorRequirements
 ex:SoftwareApplication-requiresGPUShape
   a sh:PropertyShape ;
   sh:path ex:requiresGPU ;
-  sh:datatype xsd:boolean .
+  sh:datatype xsd:boolean 
+  .
 
 schema:CreativeWork-citation
   a sh:PropertyShape ;
