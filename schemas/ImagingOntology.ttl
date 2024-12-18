@@ -228,7 +228,7 @@ sd:hasSoftwareImage a rdf:Property;
   rdfs:label "Has software image"@en .
 
 sd:fundingSource a rdf:Property;
-  rdfs:comment "Link to the organization funding a software/component"@en;
+  rdfs:comment "Link to an organization funding a software/component"@en;
   rdfs:label "Funding source"@en;
   rdfs:subPropertyOf owl:topObjectProperty .
 
