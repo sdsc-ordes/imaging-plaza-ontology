@@ -39,11 +39,9 @@ jobs:
 
       - name: Clone second repository
         run: |
-          git clone "https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/sdsc-ordes/imaging-plaza-frontend-public.git"
+          git clone "https://x-access-token:${{ secrets.SECOND_REPO_PAT }}@github.com/sdsc-ordes/imaging-plaza-frontend-public.git"
           cd imaging-plaza-frontend-public
           git checkout develop
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Create new branch and commit changes
         run: |
