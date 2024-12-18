@@ -124,7 +124,7 @@
     "hasFunding_placeholder": "Property that links a software project to its funding information",
     "hasSoftwareImage_placeholder": "Function to link a function with its corresponding container",
     "fundingSource_placeholder": "Link to the organization funding a software component",
-    "readme_placeholder": "URl to the readme file of a software component",
+    "readme_placeholder": "URl to the Readme file of a software component",
     "hasDocumentation_placeholder": "Pointer to the documentation of the model",
     "hasExecutableInstructions_placeholder": "Human-readable instructions that indicate how a software component should be executed.",
     "hasExecutableNotebook_placeholder": "Property that links a software component with an executable notebook (e.g., Jupyter notebook).",
