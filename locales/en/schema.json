@@ -82,7 +82,7 @@
     "datePublished_placeholder": "Latest published git release date, else, the publish date of the doi.",
     "maintainer_placeholder": "A maintainer of a Dataset, software package or other Project. A maintainer is a Person or Organization that manages contributions to, and/or publication of, some (typically complex) artifact.",
     "memoryRequirements_placeholder": "Minimum RAM requirements in GB to run the software, 0 if not applicable.",
-    "fairLevel_placeholder": "A score of 1-5 rating the Findability, Accessibility, Interoperability and Reusability of a piece of software based on the presence of certain properties for an instance of software",
+    "fairLevel_placeholder": "A score of 1-5 rating the Findability, Accessibility, Interoperability and Reusability of a piece of software.",
     "affiliation_placeholder": "An organization that this person is affiliated with. For example, a university (EPFL/ETHZ), lab, company.",
     "applicationCategory_placeholder": "Type of software application, e.g. 'Plugin, gui, desktop app, library'.",
     "codeRepository_placeholder": "Primary link to the repository where the un-compiled, human readable code and related code is located (GitLab, GitHub, CodePlex etc.).",
