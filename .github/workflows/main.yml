@@ -39,7 +39,7 @@ jobs:
 
       - name: Clone second repository
         run: |
-          git clone https://github.com/sdsc-ordes/imaging-plaza-frontend-public.git
+          git clone https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/sdsc-ordes/imaging-plaza-frontend-public.git
           cd imaging-plaza-frontend-public
           git checkout develop
         env:
