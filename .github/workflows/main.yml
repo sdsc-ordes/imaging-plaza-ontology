@@ -40,16 +40,9 @@ jobs:
         env:
           SECOND_REPO_PAT: ${{ secrets.SECOND_REPO_PAT }}
 
-      - name: Clone second repository
+      - name: Clone and Create new branch and commit changes
         run: |
           git clone "https://x-access-token:${{ secrets.SECOND_REPO_PAT }}@github.com/sdsc-ordes/imaging-plaza-frontend-public.git"
-          cd imaging-plaza-frontend-public
-          git checkout develop
-        env:
-          SECOND_REPO_PAT: ${{ secrets.SECOND_REPO_PAT }}
-
-      - name: Create new branch and commit changes
-        run: |
           cd imaging-plaza-frontend-public
           git checkout -b update-schema-${{ github.run_id }}
           cp ../locales/en/schema.json locales/en/
