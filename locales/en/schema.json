@@ -108,7 +108,7 @@
     "url_placeholder": "Fill in any URL related to this repository. e.g. related lab or project website.",
     "identifier_placeholder": "Represents any kind of unique string to identify something, such as ISBNs, GTIN codes, UUIDs etc.",
     "defaultValue_placeholder": "The default value of the input. For properties that expect a literal, the default is a literal value, for properties that expect an object, it's an ID reference to one of the current values.",
-    "valueRequired_placeholder": "Whether the property must be filled in to complete the action.  Default is false.",
+    "valueRequired_placeholder": "Whether the property must be filled in to complete the action. Default is false.",
     "supportingData_placeholder": "Supporting data for a SoftwareApplication.",
     "distribution_placeholder": "A downloadable form of this dataset, at a specific location, in a specific format.",
     "encodingFormat_placeholder": "Expressed using a MIME format (http://www.iana.org/assignments/media-types/media-types.xhtml).",
