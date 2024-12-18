@@ -129,7 +129,7 @@
     "hasExecutableInstructions_placeholder": "URL to Human-readable instructions that indicate how a software component should be executed.",
     "hasExecutableNotebook_placeholder": "Property that links a software component with an executable notebook (e.g. Jupyter notebook).",
     "hasAcknowledgements_placeholder": "String with the people, organizations and other contributors acknowledged by the authors.",
-    "fundingGrant_placeholder": "Grant number used for funding",
+    "fundingGrant_placeholder": "Grant number used for the funding",
     "hasFormat_placeholder": "Format followed by a file. For example, txt, nc, etc.",
     "availableInRegistry_placeholder": "URL to registry of where software image can be found. For example, https://hub.docker.com/r/pytorch/pytorch",
     "hasDimensionality_placeholder": "Property to indicate dimensionality of the input or output of a dataset specification",
