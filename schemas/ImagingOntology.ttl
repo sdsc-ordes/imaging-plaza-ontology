@@ -165,7 +165,7 @@ schema:identifier a rdf:Property;
   rdfs:label "Identifier" .
 
 schema:defaultValue a rdf:Property;
-  rdfs:comment "The default value of the input.  For properties that expect a literal, the default is a literal value, for properties that expect an object, it's an ID reference to one of the current values.";
+  rdfs:comment "The default value of the input. For properties that expect a literal, the default is a literal value, for properties that expect an object, it's an ID reference to one of the current values.";
   rdfs:label "Default value" .
 
 schema:valueRequired a rdf:Property;
