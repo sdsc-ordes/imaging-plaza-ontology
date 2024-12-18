@@ -116,7 +116,7 @@
     "variableMeasured_placeholder": "The variables that are measured in some dataset, described as text.",
     "imagingModality_placeholder": "Technique or method used to create images of the interior of a body or an object for which this software was designed.",
     "keywords_placeholder": "The keywords/tags used to describe this content.",
-    "requiresGPU_placeholder": "Stipulates whether something requires a graphical processing unit such as a NVIDEA or AMD graphics card",
+    "requiresGPU_placeholder": "Stipulates whether something requires a graphical processing unit such as a NVIDIA or AMD graphics card",
     "processorRequirements_placeholder": "Processor architecture required to run the application.",
     "hasInput_placeholder": "Property that links a model configuration to the input types expected by it.",
     "hasOutput_placeholder": "Property that expresses what are the outputs of a model",
