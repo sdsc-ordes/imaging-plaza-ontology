@@ -56,9 +56,8 @@ jobs:
         uses: peter-evans/create-pull-request@v5
         with:
           token: ${{ secrets.SECOND_REPO_PAT }}
-          repository: sdsc-ordes/imaging-plaza-frontend-public
-          base: develop
-          head: update-schema-${{ github.run_id }}
+          branch: update-schema-${{ github.run_id }}  # This is the new branch name
+          base: develop  # The base branch you want to merge into (ensure 'develop' exists)
           title: "Update schema.json [from GitHub Actions]"
           body: |
             This PR updates the `schema.json` file in the `locales/en` directory.
