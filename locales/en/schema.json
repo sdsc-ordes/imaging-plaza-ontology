@@ -123,7 +123,7 @@
     "hasParameter_placeholder": "Property that indicates the parameters of a model configuration",
     "hasFunding_placeholder": "Property that links a software project to its funding information",
     "hasSoftwareImage_placeholder": "Function to link a function with its corresponding container",
-    "fundingSource_placeholder": "Link to the organization funding a software component",
+    "fundingSource_placeholder": "Link to the organization funding a software/component",
     "readme_placeholder": "URL to the Readme file of a software component",
     "hasDocumentation_placeholder": "Pointer to the documentation of the model",
     "hasExecutableInstructions_placeholder": "Human-readable instructions that indicate how a software component should be executed.",
