@@ -247,7 +247,7 @@ sd:hasExecutableInstructions a rdf:Property;
   rdfs:label "Has executable instructions"@en .
 
 sd:hasExecutableNotebook a rdf:Property;
-  rdfs:comment "Property that links a software component with an executable notebook (e.g., Jupyter notebook)."@en;
+  rdfs:comment "Property that links a software component with an executable notebook (e.g. Jupyter notebook)."@en;
   rdfs:label "Has executable notebook"@en .
 
 sd:hasAcknowledgements a rdf:Property;
