@@ -137,7 +137,7 @@ schema:legalName a rdf:Property;
   rdfs:label "Legal name" .
 
 schema:operatingSystem a rdf:Property;
-  rdfs:comment "Operating systems supported (Windows 7, OS X 10.6, Android 1.6).";
+  rdfs:comment "Operating systems supported (Windows 7/10/11, OS X 10.6, Android 1.6).";
   rdfs:label "Operating system" .
 
 schema:producer a rdf:Property;
