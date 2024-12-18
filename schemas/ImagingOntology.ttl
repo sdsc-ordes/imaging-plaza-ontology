@@ -169,7 +169,7 @@ schema:defaultValue a rdf:Property;
   rdfs:label "Default value" .
 
 schema:valueRequired a rdf:Property;
-  rdfs:comment "Whether the property must be filled in to complete the action.  Default is false.";
+  rdfs:comment "Whether the property must be filled in to complete the action. Default is false.";
   rdfs:label "Value required" .
 
 schema:supportingData a rdf:Property;
