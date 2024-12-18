@@ -254,7 +254,7 @@ sd:hasAcknowledgements a rdf:Property;
   rdfs:label "Has acknowledgements"@en .
 
 sd:fundingGrant a rdf:Property;
-  rdfs:comment "Grant number used for funding"@en;
+  rdfs:comment "Grant number used for the funding"@en;
   rdfs:label "Funding grant"@en;
   rdfs:subPropertyOf <https://codemeta.github.io/terms/funding> .
 
