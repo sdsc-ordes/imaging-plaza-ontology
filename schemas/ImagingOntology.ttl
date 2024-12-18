@@ -243,7 +243,7 @@ sd:hasDocumentation a rdf:Property;
   rdfs:label "Has documentation"@en .
 
 sd:hasExecutableInstructions a rdf:Property;
-  rdfs:comment "Human-readable instructions that indicate how a software component should be executed."@en;
+  rdfs:comment "URL to Human-readable instructions that indicate how a software component should be executed."@en;
   rdfs:label "Has executable instructions"@en .
 
 sd:hasExecutableNotebook a rdf:Property;
