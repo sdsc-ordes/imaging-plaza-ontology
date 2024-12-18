@@ -213,7 +213,7 @@ sd:hasInput a rdf:Property;
   rdfs:label "Has input"@en .
 
 sd:hasOutput a rdf:Property;
-  rdfs:comment "Property that expresses what are the outputs of a model"@en;
+  rdfs:comment "Property that expresses what the outputs of a model are"@en;
   rdfs:label "Has output"@en .
 
 sd:hasParameter a rdf:Property;
