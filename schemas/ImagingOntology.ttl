@@ -201,7 +201,7 @@ schema:keywords a rdf:Property;
   rdfs:label "Keywords"@en .
 
 ex:requiresGPU a rdf:Property;
-  rdfs:comment "Stipulates whether something requires a graphical processing unit such as a NVIDEA or AMD graphics card";
+  rdfs:comment "Stipulates whether something requires a graphical processing unit such as a NVIDIA or AMD graphics card";
   rdfs:label "Requires GPU" .
 
 schema:processorRequirements a rdf:Property;
