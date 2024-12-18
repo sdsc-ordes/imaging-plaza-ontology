@@ -100,7 +100,7 @@
     "orcidId_placeholder": "The ORCID ID of a person",
     "hasRorId_placeholder": "A Research Organization Registry identifier, that points to a research organization",
     "legalName_placeholder": "The official name of the organization, e.g. the registered company name.",
-    "operatingSystem_placeholder": "Operating systems supported (Windows 7, OS X 10.6, Android 1.6).",
+    "operatingSystem_placeholder": "Operating systems supported (Windows 7/10/11, OS X 10.6, Android 1.6).",
     "producer_placeholder": "The person or organization who produced the work (e.g. music album, movie, TV/radio series etc.).",
     "programmingLanguage_placeholder": "The computer programming language.",
     "softwareRequirements_placeholder": "Special third party dependencies (e.g. CUDA, Tensorflow etc. related requirements).",
