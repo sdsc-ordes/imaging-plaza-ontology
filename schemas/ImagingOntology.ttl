@@ -9,12 +9,12 @@
 @prefix shsh: <http://www.w3.org/ns/shacl-shacl#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
-@prefix ex: <https://epfl.ch/example/> .
+@prefix imag: <https://imaging-plaza.epfl.ch/ontology#> .
 @prefix md4i: <http://w3id.org/nfdi4ing/metadata4ing#>.
 @prefix dct: <http://purl.org/dc/terms/>.
 @prefix vann: <http://purl.org/vocab/vann/>.
 
-<https://epfl.ch/example/ImagingOntology>
+<https://imaging-plaza.epfl.ch/ontology#>
     a owl:Ontology ;
     dct:abstract "The Imaging Plaza ontology provides concepts (classes and properties) to model human and machine readable imaging software metadata. It is the result of re-using external pre-existing vocabularies such as schema.org and the software description ontology, together with custom imaging specific objects and properties." ;
     dct:contributor "Robin Franken", "Carlos Vivar Rios" ;
@@ -22,11 +22,11 @@
     dct:creator "Robin Franken" ;
     dct:description "The Imaging Plaza ontology provides concepts (classes and properties) to model human and machine readable imaging software metadata. It is the result of re-using external pre-existing vocabularies such as schema.org and the software description ontology, together with custom imaging specific objects and properties. The ontology contains purely semantic information (labels, definitions etc.) and is meant to be used in conjuction with a graph of enumeration values and a graph containing SHACL shapes to provide more machine readable restrictions on values of properties." ;
     dct:license <https://spdx.org/licenses/CC-BY-SA-4.0.html> ;
-    dct:modified "2024-05-06"^^xsd:date ;
+    dct:modified "2024-08-15"^^xsd:date ;
     dct:title "Imaging Plaza Ontology" ;
-    vann:preferredNamespacePrefix "ex" ;
-    vann:preferredNamespaceUri "https://epfl.ch/example/"^^xsd:string ;
-    owl:versionInfo "0.6.0"^^xsd:string 
+    vann:preferredNamespacePrefix "imag" ;
+    vann:preferredNamespaceUri "https://imaging-plaza.epfl.ch/ontology#"^^xsd:string ;
+    owl:versionInfo "0.7.0"^^xsd:string 
     .
 
 schema:SoftwareSourceCode
@@ -63,8 +63,8 @@ schema:memoryRequirements a rdf:Property;
   rdfs:comment "Minimum RAM requirements in GB to run the software, 0 if not applicable.";
   rdfs:label "Memory requirements" .
 
-ex:fairLevel a rdf:Property;
-  rdfs:comment "A score of 1-5 rating the Findability, Accessibility, Interoperability and Reusability of a piece of software.";
+imag:fairLevel a rdf:Property;
+  rdfs:comment "A score of 1-5 rating the Findability, Accessibility, Interoperability and Reusability of a piece of software based on the presence of certain properties for an instance of software";
   rdfs:label "FAIR Level" .
 
 schema:affiliation a rdf:Property;
@@ -103,11 +103,11 @@ schema:isBasedOn a rdf:Property;
   rdfs:comment "A resource from which this work is derived or from which it is a modification or adaption.";
   rdfs:label "Is based on" .
 
-ex:isPluginModuleOf a rdf:Property;
+imag:isPluginModuleOf a rdf:Property;
   rdfs:comment "The resource for which this tool is a plugin or module." ;
   rdfs:label "Is plugin/module of" .
 
-ex:relatedToOrganization a rdf:Property ;
+imag:relatedToOrganization a rdf:Property ;
   rdfs:comment "The lab/institution/group/project/organization to which a software is related and/or affiliated to" ;
   rdfs:label "Related to organization" .
 
@@ -191,7 +191,7 @@ schema:variableMeasured a rdf:Property;
   rdfs:comment "The variables that are measured in some dataset, described as text.";
   rdfs:label "Variable measured" .
 
-ex:imagingModality a rdf:Property;
+imag:imagingModality a rdf:Property;
   rdfs:comment "Technique or method used to create images of the interior of a body or an object for which this software was designed.";
   rdfs:label "Imaging modality" .
 
@@ -199,8 +199,8 @@ schema:keywords a rdf:Property;
   rdfs:comment "The keywords/tags used to describe this content."@en;
   rdfs:label "Keywords"@en .
 
-ex:requiresGPU a rdf:Property;
-  rdfs:comment "Stipulates whether something requires a graphical processing unit such as a NVIDIA or AMD graphics card";
+imag:requiresGPU a rdf:Property;
+  rdfs:comment "Stipulates whether something requires a graphical processing unit such as a NVIDEA or AMD graphics card";
   rdfs:label "Requires GPU" .
 
 schema:processorRequirements a rdf:Property;
@@ -245,8 +245,8 @@ sd:hasExecutableInstructions a rdf:Property;
   rdfs:comment "URL to Human-readable instructions that indicate how a software component should be executed."@en;
   rdfs:label "Has executable instructions"@en .
 
-sd:hasExecutableNotebook a rdf:Property;
-  rdfs:comment "Property that links a software component with an executable notebook (e.g. Jupyter notebook)."@en;
+imag:hasExecutableNotebook a rdf:Property;
+  rdfs:comment "Property that links a software component with an executable notebook (e.g., Jupyter notebook)."@en;
   rdfs:label "Has executable notebook"@en .
 
 sd:hasAcknowledgements a rdf:Property;
@@ -313,25 +313,27 @@ schema:Grant
   rdfs:subClassOf schema:Intangible ;
 .
 
-sd:FundingInformation
-    a rdfs:Class ;
+sd:FundingInformation a rdfs:Class ;
     rdfs:comment "A class to represent the funding information of a software project"@en ;
     rdfs:label "Funding Information"@en ; 
     .
 
-sd:DatasetSpecification
-    a rdfs:Class ;
+
+sd:DatasetSpecification a rdfs:Class ;
     rdfs:subClassOf <http://purl.org/linked-data/cube#DataStructureDefinition> ;
     rdfs:comment "Class designed to describe a type of input or output used or produced by a model. For example, Topoflow has several inputs. One of them is a text file with precipitation values. The representation of this input is an instance of a dataset specification."@en ;
     rdfs:label "Dataset Specification"@en ;
     .
 
-bio:FormalParameter
-    a rdfs:Class ;
+bio:FormalParameter a rdfs:Class ;
     rdfs:subClassOf <http://purl.org/linked-data/cube#DataStructureDefinition> ;
     rdfs:comment "A FormalParameter is an identified variable used to stand for the actual value(s) that are consumed/produced by a set of steps"@en ;
     rdfs:label "Formal Parameter"@en ;
 
+    .
+imag:ExecutableNotebook a rdfs:Class ;
+    rdfs:comment "An object representing an executable notebook such as Jupyter Notebook" ;
+    rdfs:label "Executable Notebook"@en ;
     .
 
 sd:SoftwareImage
