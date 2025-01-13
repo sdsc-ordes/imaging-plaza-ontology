@@ -29,7 +29,7 @@ with open(os.path.join(base_dir, "schemas/combined.ttl"), "w") as f:
     f.write(combined_content)
 
 #prepend prefixes from prefixes.ttl to the new combined file
-with open(os.path.join(base_dir, "schemas/combined_with_prefixes.ttl"), "w") as f:
+with open(os.path.join(base_dir, "schemas/ImagingOntologyCombined.ttl"), "w") as f:
     for line in open(os.path.join(base_dir, "schemas/prefixes.ttl")):
         f.write(line)
     f.write("\n")
