@@ -106,7 +106,7 @@
         sh:minCount 1;
         sh:message "Fair level 4"] ,
         
-        [sh:path sd:SoftwareConfiguration-hasSoftwareImage ;
+        [sh:path sd:hasSoftwareImage ;
         sh:minCount 1;
         sh:message "Fair level 4"] ;
     sh:and (imag:fairlevel3Shape)
@@ -117,11 +117,7 @@
         sh:property
         [sh:path sd:hasExecutableInstructions ;
         sh:minCount 1;
-        sh:message "Fair level 5"] ,
-           
-        [sh:path imag:hasExecutableNotebook ;
-        sh:minCount 1;
-        sh:message "Fair level 5"];
+        sh:message "Fair level 5"] ;
     sh:and (imag:fairlevel4Shape) 
   .
 
