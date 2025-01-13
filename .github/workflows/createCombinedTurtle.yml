@@ -2,8 +2,6 @@ name: Run createCombinedTurtle.py on push to /schemas
 
 on:
   push:
-    paths:
-      - 'schemas/**'
     paths-ignore:
       - 'schemas/ImagingOntologyCombined.ttl'
 
