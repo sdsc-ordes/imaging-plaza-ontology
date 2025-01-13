@@ -1,0 +1,15 @@
+prefix schema: <http://schema.org/>
+prefix sd: <https://w3id.org/okn/o/sd#>
+prefix bio: <https://bioschemas.org/>
+prefix spe: <https://openschemas.github.io/spec-container/specifications/>
+prefix rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+prefix sh:   <http://www.w3.org/ns/shacl#>
+prefix xsd:  <http://www.w3.org/2001/XMLSchema#>
+prefix shsh: <http://www.w3.org/ns/shacl-shacl#>
+prefix owl: <http://www.w3.org/2002/07/owl#>
+prefix dcterms: <http://purl.org/dc/terms/>
+prefix imag: <https://imaging-plaza.epfl.ch/ontology#>
+prefix md4i: <http://w3id.org/nfdi4ing/metadata4ing#>
+prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+prefix dct: <http://purl.org/dc/terms/>
+prefix vann: <http://purl.org/vocab/vann/>
