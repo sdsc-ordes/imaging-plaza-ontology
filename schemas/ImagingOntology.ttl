@@ -14,7 +14,6 @@
 @prefix dct: <http://purl.org/dc/terms/>.
 @prefix vann: <http://purl.org/vocab/vann/>.
 
-
 <https://imaging-plaza.epfl.ch/ontology#>
     a owl:Ontology ;
     dct:abstract "The Imaging Plaza ontology provides concepts (classes and properties) to model human and machine readable imaging software metadata. It is the result of re-using external pre-existing vocabularies such as schema.org and the software description ontology, together with custom imaging specific objects and properties." ;
