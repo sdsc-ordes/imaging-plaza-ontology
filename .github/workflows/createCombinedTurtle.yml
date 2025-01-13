@@ -47,7 +47,7 @@ jobs:
           cd imaging-plaza-fair-indicator-api
           git checkout -b combine-ontology-${{ github.run_id }}
           cp ../schemas/ImagingOntologyCombined.ttl imaging_plaza_fair_indicator_api/
-          git add schemas/ImagingOntologyCombined.ttl
+          git add imaging_plaza_fair_indicator_api/ImagingOntologyCombined.ttl
           git commit -m "Update ImagingOntologyCombined.ttl [from GitHub Actions]"
           git push https://x-access-token:${{ secrets.SECOND_REPO_PAT }}@github.com/sdsc-ordes/imaging-plaza-fair-indicator-api.git
           run: |
