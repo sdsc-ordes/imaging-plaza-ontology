@@ -22,72 +22,108 @@ prefix vann: <http://purl.org/vocab/vann/>
 		sh:prefix "imag" ;
 		sh:namespace <https://imaging-plaza.epfl.ch/ontology#> ;
 	] .
+  imag:fairlevel0Shape a sh:NodeShape    
+  .
 
-imag:fairlevel0Shape a sh:NodeShape    
-.
-imag:fairlevel1Shape a sh:NodeShape ;
-      sh:targetClass schema:SoftwareSourceCode ;
-			sh:property
-                  [sh:path schema:license ;
-                  sh:minCount 1;
-                  sh:message "Fair level 1"] ,
-                  
-                  [sh:path schema:citation ;
-                  sh:minCount 1;
-                  sh:message "Fair level 1"] ,
-                  
-                  [sh:path schema:name ;
-                  sh:minCount 1;
-                  sh:message "Fair level 1"];    
-.
+  imag:fairlevel1Shape a sh:NodeShape ;
+    sh:targetClass schema:SoftwareSourceCode ;
+        sh:property
+        [sh:path schema:license ;
+        sh:minCount 1;
+        sh:message "Fair level 1"] ,
+        
+        [sh:path schema:citation ;
+        sh:minCount 1;
+        sh:message "Fair level 1"] ,
+        
+        [sh:path schema:description ;
+        sh:minCount 1;
+        sh:message "Fair level 1"] ,
+        
+        [sh:path schema:url ;
+        sh:minCount 1;
+        sh:message "Fair level 1"] ,
+        
+        [sh:path schema:dateCreated ;
+        sh:minCount 1;
+        sh:message "Fair level 1"] ,
+        
+        [sh:path schema:datePublished ;
+        sh:minCount 1;
+        sh:message "Fair level 1"] ,
+        
+        [sh:path schema:image ;
+        sh:minCount 1;
+        sh:message "Fair level 1"] ,
+        
+        [sh:path schema:producer ;
+        sh:minCount 1;
+        sh:message "Fair level 1"] ,
+        
+        [sh:path schema:maintainer ;
+        sh:minCount 1;
+        sh:message "Fair level 1"];
+  .
 
-imag:fairlevel2Shape a sh:NodeShape ;
-      sh:targetClass schema:SoftwareSourceCode ;
-			sh:property 
-                  [sh:path sd:readme ;
-                  sh:minCount 1 ;
-                  sh:message "Fair level 2"] ;
-      sh:and (imag:fairlevel1Shape)
-.
+  imag:fairlevel2Shape a sh:NodeShape ;
+    sh:targetClass schema:SoftwareSourceCode ;
+        sh:property 
+        [sh:path sd:readme ;
+        sh:minCount 1 ;
+        sh:message "Fair level 2"] ,
+        
+        [sh:path schema:programmingLanguage ;
+        sh:minCount 1 ;
+        sh:message "Fair level 2"] ,
+        
+        [sh:path schema:featureList ;
+        sh:minCount 1 ;
+        sh:message "Fair level 2"] ;
+    sh:and (imag:fairlevel1Shape)
+  .
 
-imag:fairlevel3Shape a sh:NodeShape ;
-      sh:targetClass schema:SoftwareSourceCode ;
-			sh:property 
-                  [sh:path schema:softwareRequirements ;
-                  sh:minCount 1 ;
-                  sh:message "Fair level 3"] ;
-      sh:and (imag:fairlevel2Shape) 
-.
+  imag:fairlevel3Shape a sh:NodeShape ;
+    sh:targetClass schema:SoftwareSourceCode ;
+        sh:property 
+        [sh:path schema:softwareRequirements ;
+        sh:minCount 1 ;
+        sh:message "Fair level 3"] ,
+        
+        [sh:path schema:supportingData ;
+        sh:minCount 1 ;
+        sh:message "Fair level 3"] ;
+    sh:and (imag:fairlevel2Shape) 
+  .
 
-imag:fairlevel4Shape a sh:NodeShape ;
-      sh:targetClass schema:SoftwareSourceCode ;
-			sh:property 
-                  [sh:path schema:memoryRequirements ;
-                  sh:minCount 1;
-                  sh:message "Fair level 4"] ,
-                  
-                  [sh:path sd:hasDocumentation ;
-                  sh:minCount 1;
-                  sh:message "Fair level 4"] ,
-                  
-                  [sh:path sd:hasParameter ;
-                  sh:minCount 1;
-                  sh:message "Fair level 4"] ;
-      sh:and (imag:fairlevel3Shape)
-.
+  imag:fairlevel4Shape a sh:NodeShape ;
+    sh:targetClass schema:SoftwareSourceCode ;
+        sh:property 
+        [sh:path schema:memoryRequirements ;
+        sh:minCount 1;
+        sh:message "Fair level 4"] ,
+        
+        [sh:path sd:hasDocumentation ;
+        sh:minCount 1;
+        sh:message "Fair level 4"] ,
+        
+        [sh:path sd:SoftwareConfiguration-hasSoftwareImage ;
+        sh:minCount 1;
+        sh:message "Fair level 4"] ;
+    sh:and (imag:fairlevel3Shape)
+  .
 
-imag:fairlevel5Shape a sh:NodeShape ;
-      sh:targetClass schema:SoftwareSourceCode ;
-			sh:property
-                  [sh:path sd:hasExecutableInstructions ;
-                  sh:minCount 1;
-                  sh:message "Fair level 5"] ,
-                 
-                  [sh:path imag:hasExecutableNotebook ;
-                  sh:minCount 1;
-                  sh:message "Fair level 5"];
-      sh:and (imag:fairlevel4Shape) 
-.
+  imag:fairlevel5Shape a sh:NodeShape ;
+    sh:targetClass schema:SoftwareSourceCode ;
+        sh:property
+        [sh:path sd:hasExecutableInstructions ;
+        sh:minCount 1;
+        sh:message "Fair level 5"] ,
+           
+        [sh:path imag:hasExecutableNotebook ;
+        sh:minCount 1;
+        sh:message "Fair level 5"];
+    sh:and (imag:fairlevel4Shape) 
+  .
 
 imag:FeatureTaggerRule a sh:SPARQLRule ;
     sh:name "Feature tagger" ;
