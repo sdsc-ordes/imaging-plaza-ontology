@@ -1,4 +1,4 @@
-name: Run createSchemas.py on push to /schemas
+name: Run createCombinedTurtle.py on push to /schemas
 
 on:
   push:
