@@ -893,7 +893,7 @@ sd:hasDimensionality a rdf:Property;
   rdfs:label "Has dimensionality"@en .
 
 
-#_________________________________________#
+#_______________________________________#
 
 
 
