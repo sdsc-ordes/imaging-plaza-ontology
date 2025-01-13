@@ -8,7 +8,7 @@ on:
   workflow_dispatch: # Allows manual triggering of the workflow
 
 jobs:
-  run-create-schemas:
+  run-create-CombinedTurtle:
     runs-on: ubuntu-latest
 
     steps:
@@ -46,7 +46,7 @@ jobs:
           git clone "https://x-access-token:${{ secrets.SECOND_REPO_PAT }}@github.com/sdsc-ordes/imaging-plaza-fair-indicator-api.git"
           cd imaging-plaza-fair-indicator-api
           git checkout -b combine-ontology-${{ github.run_id }}
-          cp ../schemas/ImagingOntologyCombined.ttl schemas/
+          cp ../schemas/ImagingOntologyCombined.ttl imaging_plaza_fair_indicator_api/
           git add schemas/ImagingOntologyCombined.ttl
           git commit -m "Update ImagingOntologyCombined.ttl [from GitHub Actions]"
           git push https://x-access-token:${{ secrets.SECOND_REPO_PAT }}@github.com/sdsc-ordes/imaging-plaza-fair-indicator-api.git
