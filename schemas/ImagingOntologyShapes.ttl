@@ -146,11 +146,10 @@ sh:property schema:SoftwareApplication-applicationCategory ,
               imag:isPluginModuleOfShape,
               imag:relatedToOrganizationShape, 
               schema:CreativeWork-license ,
-              schema:CreativeWork-maintainer ,
+              schema:CreativeWork-author ,
               schema:SoftwareApplication-memoryRequirements ,
               schema:Thing-name ,
               schema:SoftwareApplication-operatingSystem ,
-              schema:CreativeWork-producer ,
               schema:SoftwareSourceCode-programmingLanguage ,
               schema:SoftwareApplication-softwareRequirements ,
               schema:SoftwareApplication-processorRequirements ,
@@ -345,9 +344,9 @@ schema:CreativeWork-license
   sh:minCount 1 ;
 .
 
-schema:CreativeWork-maintainer
+schema:CreativeWork-author
   a sh:PropertyShape ;
-  sh:path schema:maintainer ;
+  sh:path schema:author ;
   sh:minCount 1 ;
   sh:or (
       [
@@ -426,20 +425,6 @@ schema:SoftwareApplication-operatingSystem
   a sh:PropertyShape ;
   sh:path schema:operatingSystem ;
   sh:in ("Linux" "Windows" "MacOS" "Other") ;
-.
-
-schema:CreativeWork-producer
-  a sh:PropertyShape ;
-  sh:path schema:producer ;
-  sh:minCount 1 ;
-  sh:or (
-      [
-        sh:class schema:Organization ;
-      ]
-      [
-        sh:class schema:Person ;
-      ]
-    ) ;
 .
 
 schema:SoftwareSourceCode-programmingLanguage
