@@ -57,9 +57,9 @@ schema:datePublished a rdf:Property;
   rdfs:comment "Latest published git release date, else, the publish date of the doi.";
   rdfs:label "Date published" .
 
-schema:maintainer a rdf:Property;
-  rdfs:comment "A maintainer of a Dataset, software package or other Project. A maintainer is a Person or Organization that manages contributions to, and/or publication of, some (typically complex) artifact.";
-  rdfs:label "Maintainer" .
+schema:author a rdf:Property;
+  rdfs:comment "The author of the software, this can be organizations or people that are maintainers and/or producers of the software.";
+  rdfs:label "Author" .
 
 schema:memoryRequirements a rdf:Property;
   rdfs:comment "Minimum RAM requirements in GB to run the software, 0 if not applicable.";
@@ -140,10 +140,6 @@ schema:legalName a rdf:Property;
 schema:operatingSystem a rdf:Property;
   rdfs:comment "Operating systems supported (Windows 7/10/11, OS X 10.6, Android 1.6).";
   rdfs:label "Operating system" .
-
-schema:producer a rdf:Property;
-  rdfs:comment "The person or organization who produced the work (e.g. music album, movie, TV/radio series etc.).";
-  rdfs:label "Producer" .
 
 schema:programmingLanguage a rdf:Property;
   rdfs:comment "The computer programming language.";
