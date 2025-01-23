@@ -125,7 +125,7 @@ prefix vann: <http://purl.org/vocab/vann/>
         [sh:path sd:hasExecutableInstructions ;
         sh:minCount 1;
         sh:message "Fair level 5"] ;
-sh:and (imag:fairlevel4Shape)
+        sh:and (imag:fairlevel4Shape)
   .
 
 imag:FeatureTaggerRule a sh:SPARQLRule ;
@@ -376,9 +376,7 @@ schema:CreativeWork-author
 
 schema:Person
 a sh:NodeShape ;
-  sh:property schema:Person-email ;
-  sh:property schema:Person-familyName ;
-  sh:property schema:Person-givenName ;
+  sh:property schema:Thing-name ;
   sh:property md4i:orcidIdShape ;
   sh:property schema:Person-affiliation 
 .
