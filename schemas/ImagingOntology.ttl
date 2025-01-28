@@ -24,11 +24,11 @@
     dct:creator "Robin Franken" ;
     dct:description "The Imaging Plaza ontology provides concepts (classes and properties) to model human and machine readable imaging software metadata. It is the result of re-using external pre-existing vocabularies such as schema.org and the software description ontology, together with custom imaging specific objects and properties. The ontology contains purely semantic information (labels, definitions etc.) and is meant to be used in conjuction with a graph of enumeration values and a graph containing SHACL shapes to provide more machine readable restrictions on values of properties." ;
     dct:license <https://spdx.org/licenses/CC-BY-SA-4.0.html> ;
-    dct:modified "2024-08-15"^^xsd:date ;
+    dct:modified "2025-01-28"^^xsd:date ;
     dct:title "Imaging Plaza Ontology" ;
     vann:preferredNamespacePrefix "imag" ;
     vann:preferredNamespaceUri "https://imaging-plaza.epfl.ch/ontology#"^^xsd:string ;
-    owl:versionInfo "0.7.0"^^xsd:string 
+    owl:versionInfo "0.8.0"^^xsd:string 
     .
 
 schema:SoftwareSourceCode
