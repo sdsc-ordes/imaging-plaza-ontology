@@ -501,8 +501,25 @@ schema:DataFeed
               schema:DataDownload-contentURL ,
               schema:Dataset-measurementTechnique ,
               schema:Thing-name ,
-              schema:Dataset-variableMeasured ;
+              schema:Dataset-variableMeasured ,
+              imag:hasDicomMetadataShape ;
+
     .   
+
+imag:hasDicomMetadataShape a sh:NodeShape ;
+    sh:path imag:hasDicomMetadata ;
+    sh:datatype xsd:string ;
+    sh:node imag:DicomMetadata ;
+    .
+
+imag:DicomMetadata a sh:NodeShape, rdfs:Class ;
+    sh:property sphn:bodySite ;
+    sh:property imag:imagingModality ;
+    sh:property imag:dimensionality ;
+    sh:property dmib:hasPhysicalQuantity ;
+    sh:property imag:resolution ;
+    .
+
 
 schema:DataDownload-contentURL
   a sh:PropertyShape ;
