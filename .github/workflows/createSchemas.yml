@@ -36,7 +36,7 @@ jobs:
         run: |
           git add locales/en/schema.json
           git commit -m "Update schema.json [from GitHub Actions]"
-          git push origin main
+          git push origin develop
         env:
           SECOND_REPO_PAT: ${{ secrets.SECOND_REPO_PAT }}
 
