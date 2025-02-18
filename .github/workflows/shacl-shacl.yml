@@ -1,0 +1,44 @@
+name: SHACL Validation
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Perform SHACL Validation
+        id: shacl
+        run: |
+          DATAFILE=$(base64 -w 0 schemas/ImagingOntologyCombined.ttl)
+          SHAPESFILE=$(base64 -w 0 src/shacl-shacl.ttl)
+          RESPONSE=$(curl -s -w "\n%{http_code}" -X POST "http://imagingplazadev.epfl.ch:7200/validate" \
+            -H "Content-Type: application/json" \
+            -d "{\"datafile\": \"$DATAFILE\", \"shapesfile\": \"$SHAPESFILE\"}")
+          BODY=$(echo "$RESPONSE" | sed '$d')
+          HTTP_STATUS=$(echo "$RESPONSE" | tail -n1)
+          
+          echo "SHACL API Response: $BODY"
+          echo "HTTP Status: $HTTP_STATUS"
+          
+          if [[ "$HTTP_STATUS" -ne 200 ]]; then
+            echo "::error::SHACL validation request failed. HTTP Status: $HTTP_STATUS"
+            exit 1
+          fi
+          
+          if echo "$BODY" | grep -q '"conforms": false'; then
+            echo "::error::SHACL validation found errors."
+            exit 1
+          fi
+          
+          echo "SHACL validation passed!"
+
+      - name: Success message
+        if: success()
+        run: echo "✅ SHACL validation passed!"
