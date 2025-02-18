@@ -37,7 +37,7 @@ jobs:
         run: |
           git add schemas/ImagingOntologyCombined.ttl
           git commit -m "Update ImagingOntologyCombined.ttl [from GitHub Actions]"
-          git push origin main
+          git push origin develop
         env:
           SECOND_REPO_PAT: ${{ secrets.SECOND_REPO_PAT }}
 
