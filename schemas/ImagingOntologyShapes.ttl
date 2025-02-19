@@ -514,12 +514,26 @@ imag:hasDicomMetadataShape a sh:NodeShape ;
 
 imag:DicomMetadata a sh:NodeShape, rdfs:Class ;
     sh:property sphn:bodySite ;
-    sh:property imag:imagingModality ;
-    sh:property imag:dimensionality ;
+    sh:property imag:SoftwareApplication-imagingModalityShape  ;
+    sh:property sd:DatasetSpecification-hasDimensionality;
     sh:property dmib:hasPhysicalQuantity ;
     sh:property imag:resolution ;
     .
 
+imag:bodySiteShape a sh:PropertyShape ;
+    sh:path sphn:bodySite ;
+    sh:datatype xsd:string ;
+    .
+
+imag:hasPhysicalQuantityShape a sh:PropertyShape ;
+    sh:path dmib:hasPhysicalQuantity ;
+    sh:datatype xsd:string ;
+    .
+
+imag:resolutionShape a sh:PropertyShape ;
+    sh:path imag:resolution ;
+    sh:datatype xsd:string ;
+    .
 
 schema:DataDownload-contentURL
   a sh:PropertyShape ;
@@ -598,7 +612,6 @@ schema:PropertyValueSpecification-defaultValue
   a sh:PropertyShape ;
   sh:path schema:defaultValue ;
   sh:datatype xsd:string ;
-
 .
 
 schema:PropertyValueSpecification-valueRequired
