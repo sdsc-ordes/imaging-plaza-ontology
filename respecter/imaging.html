@@ -1,0 +1,7104 @@
+ <!-- respecter
+ Copyright 2022 - Swiss Data Science Center (SDSC)
+ A partnership between École Polytechnique Fédérale de Lausanne (EPFL) and
+ Eidgenössische Technische Hochschule Zürich (ETHZ). 
+ Licensed under the Apache License, Version 2.0 (the "License");
+ you may not use this file except in compliance with the License.
+ You may obtain a copy of the License at
+ 
+ http://www.apache.org/licenses/LICENSE-2.0
+ 
+ Unless required by applicable law or agreed to in writing, software
+ distributed under the License is distributed on an "AS IS" BASIS,
+ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ See the License for the specific language governing permissions and
+ limitations under the License. -->
+
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8" />
+  <title>Imaging Plaza Ontology</title>
+  <script src="https://www.w3.org/Tools/respec/respec-w3c" class="remove" defer></script>
+  <script class="remove">
+    // All config options at https://respec.org/docs/
+    var respecConfig = {
+      publishDate: "",
+      specStatus: "ED",
+      shortName: "ReSpecter",
+      github: "",
+      authors: [
+        
+    { name: "Oksana Riba" },
+    
+    { name: "Edward Andò" },
+    
+    { name: "Laurène Donati" },
+    
+    { name: "Robin Franken" },
+    
+      ],
+    editors: [
+    { name: "Robin Franken" },
+    
+    { name: "Carlos Vivar Rios" },
+    
+    { name: "Edward Andò" },
+    
+    { name: "Laurène Donati" },
+    
+    { name: "Oksana Riba" },
+    
+    { name: "Mallory Wittwer" },
+    
+    { name: "Florian Aymanns" },
+    
+    { name: "Maud Barthélemy" },
+    
+    ],
+    };
+  </script>
+</head>
+
+<body>
+  <section id="abstract">
+    <p>The Imaging Plaza ontology provides concepts (classes and properties) to model human and machine readable imaging software metadata. It is the result of re-using external pre-existing vocabularies such as schema.org and the software description ontology, together with custom imaging specific objects and properties.</p>
+  </section>
+
+  <section class="informative">
+    <h2>Introduction</h2>
+    <p>The Imaging Plaza ontology provides concepts (classes and properties) to model human and machine readable imaging software metadata. It is the result of re-using external pre-existing vocabularies such as schema.org and the software description ontology, together with custom imaging specific objects and properties. The ontology contains purely semantic information (labels, definitions etc.) and is meant to be used in conjuction with a graph of enumeration values and a graph containing SHACL shapes to provide more machine readable restrictions on values of properties.</p>
+    <aside class="note" title="ReSpecter status">
+      <p>"This ontology and the tool ReSpecter is still in active development. See <a
+          href='https://github.com/sdsc-ordes/respecter/'>ReSpecter</a> for more details on the tool."</p>
+    </aside>
+    <section>
+      <h3>Download File</h3>
+      <button onclick="downloadFile()">Download File</button>
+      <script>
+      function downloadFile() {
+          const link = document.createElement('a');
+          link.href = '';
+          link.download = 'ontology.ttl';
+          document.body.appendChild(link);
+          link.click();
+          document.body.removeChild(link);
+      }
+      </script>
+    </section> 
+  </section>
+
+  <section>
+    <h2>Classes</h2>
+
+    
+    <h3 id="">Software application</h3>
+    <table class="def">
+      
+         
+          <tr>
+            <td>
+              <p>Label</p>
+            </td>
+            <td>
+              <p>Software application</p>
+            </td>
+          </tr>
+        
+      
+         
+          <tr>
+            <td>
+              <p>Definition</p>
+            </td>
+            <td>
+              <p>A software application.</p>
+            </td>
+          </tr>
+        
+      
+        
+      
+         
+          <tr>
+            <td>
+              <p>Term</p>
+            </td>
+            <td>
+              <p><a href="http://schema.org/SoftwareSourceCode">schema:SoftwareSourceCode</a></p>
+            </td>
+          </tr>
+        
+      
+         
+          <tr>
+            <td>
+              <p>Property</p>
+            </td>
+            <td>
+              <p><a href="http://schema.org/featureList">schema:featureList</a>, <a href="https://w3id.org/okn/o/sd#readme">sd:readme</a>, <a href="#imagingModality">imag:imagingModality</a>, <a href="http://schema.org/conditionsOfAccess">schema:conditionsOfAccess</a>, <a href="https://w3id.org/okn/o/sd#hasParameter">sd:hasParameter</a>, <a href="#requiresGPU">imag:requiresGPU</a>, <a href="http://schema.org/image">schema:image</a>, <a href="http://schema.org/memoryRequirements">schema:memoryRequirements</a>, <a href="http://schema.org/programmingLanguage">schema:programmingLanguage</a>, <a href="http://schema.org/softwareRequirements">schema:softwareRequirements</a>, <a href="https://w3id.org/okn/o/sd#hasDocumentation">sd:hasDocumentation</a>, <a href="http://schema.org/codeRepository">schema:codeRepository</a>, <a href="http://schema.org/datePublished">schema:datePublished</a>, <a href="http://schema.org/description">schema:description</a>, <a href="http://schema.org/license">schema:license</a>, <a href="http://schema.org/identifier">schema:identifier</a>, <a href="#hasExecutableNotebook">imag:hasExecutableNotebook</a>, <a href="http://schema.org/dateCreated">schema:dateCreated</a>, <a href="http://schema.org/processorRequirements">schema:processorRequirements</a>, <a href="https://w3id.org/okn/o/sd#hasFunding">sd:hasFunding</a>, <a href="#fairLevel">imag:fairLevel</a>, <a href="https://w3id.org/okn/o/sd#hasAcknowledgements">sd:hasAcknowledgements</a>, <a href="http://schema.org/citation">schema:citation</a>, <a href="http://schema.org/name">schema:name</a>, <a href="https://w3id.org/okn/o/sd#hasExecutableInstructions">sd:hasExecutableInstructions</a>, <a href="http://schema.org/isAccessibleForFree">schema:isAccessibleForFree</a>, <a href="https://w3id.org/okn/o/sd#hasSoftwareImage">sd:hasSoftwareImage</a>, <a href="http://schema.org/isBasedOn">schema:isBasedOn</a>, <a href="http://schema.org/operatingSystem">schema:operatingSystem</a>, <a href="#relatedToOrganization">imag:relatedToOrganization</a>, <a href="#isPluginModuleOf">imag:isPluginModuleOf</a>, <a href="http://schema.org/url">schema:url</a>, <a href="http://schema.org/applicationCategory">schema:applicationCategory</a>, <a href="http://schema.org/supportingData">schema:supportingData</a>, <a href="http://schema.org/author">schema:author</a></p>
+            </td>
+          </tr>
+        
+      
+    </table>
+    
+    <h3 id="">Person</h3>
+    <table class="def">
+      
+         
+          <tr>
+            <td>
+              <p>Label</p>
+            </td>
+            <td>
+              <p>Person</p>
+            </td>
+          </tr>
+        
+      
+         
+          <tr>
+            <td>
+              <p>Definition</p>
+            </td>
+            <td>
+              <p>A person (alive, dead, undead, or fictional).</p>
+            </td>
+          </tr>
+        
+      
+        
+      
+         
+          <tr>
+            <td>
+              <p>Term</p>
+            </td>
+            <td>
+              <p><a href="http://schema.org/Person">schema:Person</a></p>
+            </td>
+          </tr>
+        
+      
+         
+          <tr>
+            <td>
+              <p>Property</p>
+            </td>
+            <td>
+              <p><a href="http://schema.org/name">schema:name</a>, <a href="http://schema.org/affiliation">schema:affiliation</a>, <a href="http://w3id.org/nfdi4ing/metadata4ing#orcidId">md4i:orcidId</a></p>
+            </td>
+          </tr>
+        
+      
+    </table>
+    
+    <h3 id="">Data feed</h3>
+    <table class="def">
+      
+         
+          <tr>
+            <td>
+              <p>Label</p>
+            </td>
+            <td>
+              <p>Data feed</p>
+            </td>
+          </tr>
+        
+      
+         
+          <tr>
+            <td>
+              <p>Definition</p>
+            </td>
+            <td>
+              <p>A single feed providing structured information about one or more entities or topics.</p>
+            </td>
+          </tr>
+        
+      
+        
+      
+         
+          <tr>
+            <td>
+              <p>Term</p>
+            </td>
+            <td>
+              <p><a href="http://schema.org/DataFeed">schema:DataFeed</a></p>
+            </td>
+          </tr>
+        
+      
+         
+          <tr>
+            <td>
+              <p>Property</p>
+            </td>
+            <td>
+              <p><a href="http://schema.org/name">schema:name</a>, <a href="http://schema.org/variableMeasured">schema:variableMeasured</a>, <a href="http://schema.org/measurementTechnique">schema:measurementTechnique</a>, <a href="http://schema.org/description">schema:description</a></p>
+            </td>
+          </tr>
+        
+      
+    </table>
+    
+    <h3 id="">Formal Parameter</h3>
+    <table class="def">
+      
+         
+          <tr>
+            <td>
+              <p>Label</p>
+            </td>
+            <td>
+              <p>Formal Parameter</p>
+            </td>
+          </tr>
+        
+      
+         
+          <tr>
+            <td>
+              <p>Definition</p>
+            </td>
+            <td>
+              <p>A FormalParameter is an identified variable used to stand for the actual value(s) that are consumed/produced by a set of steps</p>
+            </td>
+          </tr>
+        
+      
+        
+      
+         
+          <tr>
+            <td>
+              <p>Term</p>
+            </td>
+            <td>
+              <p><a href="https://bioschemas.org/FormalParameter">bio:FormalParameter</a></p>
+            </td>
+          </tr>
+        
+      
+         
+          <tr>
+            <td>
+              <p>Property</p>
+            </td>
+            <td>
+              <p><a href="http://schema.org/valueRequired">schema:valueRequired</a>, <a href="http://schema.org/description">schema:description</a>, <a href="http://schema.org/name">schema:name</a>, <a href="http://schema.org/defaultValue">schema:defaultValue</a>, <a href="https://w3id.org/okn/o/sd#hasFormat">sd:hasFormat</a>, <a href="https://w3id.org/okn/o/sd#hasDimensionality">sd:hasDimensionality</a>, <a href="http://schema.org/encodingFormat">schema:encodingFormat</a></p>
+            </td>
+          </tr>
+        
+      
+    </table>
+    
+    <h3 id="SoftwareImage">Software Image</h3>
+    <table class="def">
+      
+         
+          <tr>
+            <td>
+              <p>Label</p>
+            </td>
+            <td>
+              <p>Software Image</p>
+            </td>
+          </tr>
+        
+      
+         
+          <tr>
+            <td>
+              <p>Definition</p>
+            </td>
+            <td>
+              <p>An image that virtualizes the functionality of a given software. For example, a Docker container.</p>
+            </td>
+          </tr>
+        
+      
+        
+      
+         
+          <tr>
+            <td>
+              <p>Term</p>
+            </td>
+            <td>
+              <p><a href="https://w3id.org/okn/o/sd#SoftwareImage">sd:SoftwareImage</a></p>
+            </td>
+          </tr>
+        
+      
+         
+          <tr>
+            <td>
+              <p>Property</p>
+            </td>
+            <td>
+              <p><a href="http://schema.org/name">schema:name</a>, <a href="https://w3id.org/okn/o/sd#availableInRegistry">sd:availableInRegistry</a>, <a href="http://schema.org/softwareVersion">schema:softwareVersion</a>, <a href="http://schema.org/description">schema:description</a></p>
+            </td>
+          </tr>
+        
+      
+    </table>
+    
+    <h3 id="ExecutableNotebook">Executable Notebook</h3>
+    <table class="def">
+      
+         
+          <tr>
+            <td>
+              <p>Label</p>
+            </td>
+            <td>
+              <p>Executable Notebook</p>
+            </td>
+          </tr>
+        
+      
+         
+          <tr>
+            <td>
+              <p>Definition</p>
+            </td>
+            <td>
+              <p>An object representing an executable notebook such as Jupyter Notebook</p>
+            </td>
+          </tr>
+        
+      
+        
+      
+         
+          <tr>
+            <td>
+              <p>Term</p>
+            </td>
+            <td>
+              <p><a href="#ExecutableNotebook">imag:ExecutableNotebook</a></p>
+            </td>
+          </tr>
+        
+      
+         
+          <tr>
+            <td>
+              <p>Property</p>
+            </td>
+            <td>
+              <p><a href="http://schema.org/name">schema:name</a>, <a href="http://schema.org/url">schema:url</a>, <a href="http://schema.org/description">schema:description</a></p>
+            </td>
+          </tr>
+        
+      
+    </table>
+    
+    <h3 id="">Organization</h3>
+    <table class="def">
+      
+         
+          <tr>
+            <td>
+              <p>Label</p>
+            </td>
+            <td>
+              <p>Organization</p>
+            </td>
+          </tr>
+        
+      
+         
+          <tr>
+            <td>
+              <p>Definition</p>
+            </td>
+            <td>
+              <p>An organization such as a school, NGO, corporation, club, etc.</p>
+            </td>
+          </tr>
+        
+      
+        
+      
+         
+          <tr>
+            <td>
+              <p>Term</p>
+            </td>
+            <td>
+              <p><a href="http://schema.org/Organization">schema:Organization</a></p>
+            </td>
+          </tr>
+        
+      
+         
+          <tr>
+            <td>
+              <p>Property</p>
+            </td>
+            <td>
+              <p><a href="http://w3id.org/nfdi4ing/metadata4ing#hasRorId">md4i:hasRorId</a>, <a href="http://schema.org/legalName">schema:legalName</a></p>
+            </td>
+          </tr>
+        
+      
+    </table>
+    
+    <h3 id="FundingInformation">Funding Information</h3>
+    <table class="def">
+      
+         
+          <tr>
+            <td>
+              <p>Label</p>
+            </td>
+            <td>
+              <p>Funding Information</p>
+            </td>
+          </tr>
+        
+      
+         
+          <tr>
+            <td>
+              <p>Definition</p>
+            </td>
+            <td>
+              <p>A class to represent the funding information of a software project</p>
+            </td>
+          </tr>
+        
+      
+        
+      
+         
+          <tr>
+            <td>
+              <p>Term</p>
+            </td>
+            <td>
+              <p><a href="https://w3id.org/okn/o/sd#FundingInformation">sd:FundingInformation</a></p>
+            </td>
+          </tr>
+        
+      
+         
+          <tr>
+            <td>
+              <p>Property</p>
+            </td>
+            <td>
+              <p><a href="https://w3id.org/okn/o/sd#fundingGrant">sd:fundingGrant</a>, <a href="http://schema.org/identifier">schema:identifier</a>, <a href="https://w3id.org/okn/o/sd#fundingSource">sd:fundingSource</a></p>
+            </td>
+          </tr>
+        
+      
+    </table>
+    
+  </section>
+
+  <section>
+    <h2>Properties</h2>
+
+    
+    <h3 id="">License</h3>
+    <table class="def">
+      
+        
+          <tr>
+            <td>
+              <p>Label</p>
+            </td>
+            <td>
+              <p>License</p>
+            </td>
+          </tr>
+        
+      
+        
+          <tr>
+            <td>
+              <p>Definition</p>
+            </td>
+            <td>
+              <p>A license document that applies to this content, typically indicated by URL.</p>
+            </td>
+          </tr>
+        
+      
+       
+      
+        
+          <tr>
+            <td>
+              <p>Property</p>
+            </td>
+            <td>
+              <p><a href="http://schema.org/license">schema:license</a></p>
+            </td>
+          </tr>
+        
+      
+        
+          <tr>
+            <td>
+              <p>Domain</p>
+            </td>
+            <td>
+              <p><a href="http://schema.org/SoftwareSourceCode">schema:SoftwareSourceCode</a></p>
+            </td>
+          </tr>
+        
+      
+        
+          <tr>
+            <td>
+              <p>Range</p>
+            </td>
+            <td>
+              <p></p>
+            </td>
+          </tr>
+        
+      
+    </table>
+    
+    <h3 id="">Citation DOI</h3>
+    <table class="def">
+      
+        
+          <tr>
+            <td>
+              <p>Label</p>
+            </td>
+            <td>
+              <p>Citation DOI</p>
+            </td>
+          </tr>
+        
+      
+        
+          <tr>
+            <td>
+              <p>Definition</p>
+            </td>
+            <td>
+              <p>A DOI https URL citation to publication about this software. Use Zenodo to generate if needed. e.g. https://doi.org/10.1016/j.procs.2017.03.009</p>
+            </td>
+          </tr>
+        
+      
+       
+      
+        
+          <tr>
+            <td>
+              <p>Property</p>
+            </td>
+            <td>
+              <p><a href="http://schema.org/citation">schema:citation</a></p>
+            </td>
+          </tr>
+        
+      
+        
+          <tr>
+            <td>
+              <p>Domain</p>
+            </td>
+            <td>
+              <p><a href="http://schema.org/SoftwareSourceCode">schema:SoftwareSourceCode</a></p>
+            </td>
+          </tr>
+        
+      
+        
+          <tr>
+            <td>
+              <p>Range</p>
+            </td>
+            <td>
+              <p><a href="http://www.w3.org/2001/XMLSchema#string">xsd:string</a></p>
+            </td>
+          </tr>
+        
+      
+    </table>
+    
+    <h3 id="">Date created</h3>
+    <table class="def">
+      
+        
+          <tr>
+            <td>
+              <p>Label</p>
+            </td>
+            <td>
+              <p>Date created</p>
+            </td>
+          </tr>
+        
+      
+        
+          <tr>
+            <td>
+              <p>Definition</p>
+            </td>
+            <td>
+              <p>The date on which the repository was created.</p>
+            </td>
+          </tr>
+        
+      
+       
+      
+        
+          <tr>
+            <td>
+              <p>Property</p>
+            </td>
+            <td>
+              <p><a href="http://schema.org/dateCreated">schema:dateCreated</a></p>
+            </td>
+          </tr>
+        
+      
+        
+          <tr>
+            <td>
+              <p>Domain</p>
+            </td>
+            <td>
+              <p><a href="http://schema.org/SoftwareSourceCode">schema:SoftwareSourceCode</a></p>
+            </td>
+          </tr>
+        
+      
+        
+          <tr>
+            <td>
+              <p>Range</p>
+            </td>
+            <td>
+              <p><a href="http://www.w3.org/2001/XMLSchema#date">xsd:date</a></p>
+            </td>
+          </tr>
+        
+      
+    </table>
+    
+    <h3 id="">Date published</h3>
+    <table class="def">
+      
+        
+          <tr>
+            <td>
+              <p>Label</p>
+            </td>
+            <td>
+              <p>Date published</p>
+            </td>
+          </tr>
+        
+      
+        
+          <tr>
+            <td>
+              <p>Definition</p>
+            </td>
+            <td>
+              <p>Latest published git release date, else, the publish date of the doi.</p>
+            </td>
+          </tr>
+        
+      
+       
+      
+        
+          <tr>
+            <td>
+              <p>Property</p>
+            </td>
+            <td>
+              <p><a href="http://schema.org/datePublished">schema:datePublished</a></p>
+            </td>
+          </tr>
+        
+      
+        
+          <tr>
+            <td>
+              <p>Domain</p>
+            </td>
+            <td>
+              <p><a href="http://schema.org/SoftwareSourceCode">schema:SoftwareSourceCode</a></p>
+            </td>
+          </tr>
+        
+      
+        
+          <tr>
+            <td>
+              <p>Range</p>
+            </td>
+            <td>
+              <p><a href="http://www.w3.org/2001/XMLSchema#date">xsd:date</a></p>
+            </td>
+          </tr>
+        
+      
+    </table>
+    
+    <h3 id="">Author</h3>
+    <table class="def">
+      
+        
+          <tr>
+            <td>
+              <p>Label</p>
+            </td>
+            <td>
+              <p>Author</p>
+            </td>
+          </tr>
+        
+      
+        
+          <tr>
+            <td>
+              <p>Definition</p>
+            </td>
+            <td>
+              <p>The author of the software, this can be organizations or people that are maintainers and/or producers of the software.</p>
+            </td>
+          </tr>
+        
+      
+       
+      
+        
+          <tr>
+            <td>
+              <p>Property</p>
+            </td>
+            <td>
+              <p><a href="http://schema.org/author">schema:author</a></p>
+            </td>
+          </tr>
+        
+      
+        
+          <tr>
+            <td>
+              <p>Domain</p>
+            </td>
+            <td>
+              <p><a href="http://schema.org/SoftwareSourceCode">schema:SoftwareSourceCode</a></p>
+            </td>
+          </tr>
+        
+      
+        
+          <tr>
+            <td>
+              <p>Range</p>
+            </td>
+            <td>
+              <p><a href="http://schema.org/Organization">schema:Organization</a>, <a href="http://schema.org/Person">schema:Person</a></p>
+            </td>
+          </tr>
+        
+      
+    </table>
+    
+    <h3 id="">Memory requirements</h3>
+    <table class="def">
+      
+        
+          <tr>
+            <td>
+              <p>Label</p>
+            </td>
+            <td>
+              <p>Memory requirements</p>
+            </td>
+          </tr>
+        
+      
+        
+          <tr>
+            <td>
+              <p>Definition</p>
+            </td>
+            <td>
+              <p>Minimum RAM requirements in GB to run the software, 0 if not applicable.</p>
+            </td>
+          </tr>
+        
+      
+       
+      
+        
+          <tr>
+            <td>
+              <p>Property</p>
+            </td>
+            <td>
+              <p><a href="http://schema.org/memoryRequirements">schema:memoryRequirements</a></p>
+            </td>
+          </tr>
+        
+      
+        
+          <tr>
+            <td>
+              <p>Domain</p>
+            </td>
+            <td>
+              <p><a href="http://schema.org/SoftwareSourceCode">schema:SoftwareSourceCode</a></p>
+            </td>
+          </tr>
+        
+      
+        
+          <tr>
+            <td>
+              <p>Range</p>
+            </td>
+            <td>
+              <p>None, <a href="http://www.w3.org/2001/XMLSchema#string">xsd:string</a></p>
+            </td>
+          </tr>
+        
+      
+    </table>
+    
+    <h3 id="fairLevel">FAIR Level</h3>
+    <table class="def">
+      
+        
+          <tr>
+            <td>
+              <p>Label</p>
+            </td>
+            <td>
+              <p>FAIR Level</p>
+            </td>
+          </tr>
+        
+      
+        
+          <tr>
+            <td>
+              <p>Definition</p>
+            </td>
+            <td>
+              <p>A score of 1-5 rating the Findability, Accessibility, Interoperability and Reusability of a piece of software based on the presence of certain properties for an instance of software</p>
+            </td>
+          </tr>
+        
+      
+       
+      
+        
+          <tr>
+            <td>
+              <p>Property</p>
+            </td>
+            <td>
+              <p><a href="#fairLevel">imag:fairLevel</a></p>
+            </td>
+          </tr>
+        
+      
+        
+          <tr>
+            <td>
+              <p>Domain</p>
+            </td>
+            <td>
+              <p><a href="http://schema.org/SoftwareSourceCode">schema:SoftwareSourceCode</a></p>
+            </td>
+          </tr>
+        
+      
+        
+          <tr>
+            <td>
+              <p>Range</p>
+            </td>
+            <td>
+              <p><a href="http://www.w3.org/2001/XMLSchema#string">xsd:string</a></p>
+            </td>
+          </tr>
+        
+      
+    </table>
+    
+    <h3 id="">Affiliation</h3>
+    <table class="def">
+      
+        
+          <tr>
+            <td>
+              <p>Label</p>
+            </td>
+            <td>
+              <p>Affiliation</p>
+            </td>
+          </tr>
+        
+      
+        
+          <tr>
+            <td>
+              <p>Definition</p>
+            </td>
+            <td>
+              <p>An organization that this person is affiliated with. For example, a university (EPFL/ETHZ), lab, company.</p>
+            </td>
+          </tr>
+        
+      
+       
+      
+        
+          <tr>
+            <td>
+              <p>Property</p>
+            </td>
+            <td>
+              <p><a href="http://schema.org/affiliation">schema:affiliation</a></p>
+            </td>
+          </tr>
+        
+      
+        
+          <tr>
+            <td>
+              <p>Domain</p>
+            </td>
+            <td>
+              <p><a href="http://schema.org/Person">schema:Person</a></p>
+            </td>
+          </tr>
+        
+      
+        
+          <tr>
+            <td>
+              <p>Range</p>
+            </td>
+            <td>
+              <p><a href="#AffiliationEnum">imag:AffiliationEnum</a></p>
+            </td>
+          </tr>
+        
+      
+    </table>
+    
+    <h3 id="">Application category</h3>
+    <table class="def">
+      
+        
+          <tr>
+            <td>
+              <p>Label</p>
+            </td>
+            <td>
+              <p>Application category</p>
+            </td>
+          </tr>
+        
+      
+        
+          <tr>
+            <td>
+              <p>Definition</p>
+            </td>
+            <td>
+              <p>Type of software application, e.g. 'Plugin, gui, desktop app, library'.</p>
+            </td>
+          </tr>
+        
+      
+       
+      
+        
+          <tr>
+            <td>
+              <p>Property</p>
+            </td>
+            <td>
+              <p><a href="http://schema.org/applicationCategory">schema:applicationCategory</a></p>
+            </td>
+          </tr>
+        
+      
+        
+          <tr>
+            <td>
+              <p>Domain</p>
+            </td>
+            <td>
+              <p><a href="http://schema.org/SoftwareSourceCode">schema:SoftwareSourceCode</a></p>
+            </td>
+          </tr>
+        
+      
+        
+          <tr>
+            <td>
+              <p>Range</p>
+            </td>
+            <td>
+              <p><a href="#ApplicationCategoryEnum">imag:ApplicationCategoryEnum</a></p>
+            </td>
+          </tr>
+        
+      
+    </table>
+    
+    <h3 id="">Code repository</h3>
+    <table class="def">
+      
+        
+          <tr>
+            <td>
+              <p>Label</p>
+            </td>
+            <td>
+              <p>Code repository</p>
+            </td>
+          </tr>
+        
+      
+        
+          <tr>
+            <td>
+              <p>Definition</p>
+            </td>
+            <td>
+              <p>Primary link to the repository where the un-compiled, human readable code and related code is located (GitLab, GitHub, CodePlex etc.).</p>
+            </td>
+          </tr>
+        
+      
+       
+      
+        
+          <tr>
+            <td>
+              <p>Property</p>
+            </td>
+            <td>
+              <p><a href="http://schema.org/codeRepository">schema:codeRepository</a></p>
+            </td>
+          </tr>
+        
+      
+        
+          <tr>
+            <td>
+              <p>Domain</p>
+            </td>
+            <td>
+              <p><a href="http://schema.org/SoftwareSourceCode">schema:SoftwareSourceCode</a></p>
+            </td>
+          </tr>
+        
+      
+        
+          <tr>
+            <td>
+              <p>Range</p>
+            </td>
+            <td>
+              <p></p>
+            </td>
+          </tr>
+        
+      
+    </table>
+    
+    <h3 id="">Conditions of access</h3>
+    <table class="def">
+      
+        
+          <tr>
+            <td>
+              <p>Label</p>
+            </td>
+            <td>
+              <p>Conditions of access</p>
+            </td>
+          </tr>
+        
+      
+        
+          <tr>
+            <td>
+              <p>Definition</p>
+            </td>
+            <td>
+              <p>Conditions that affect the availability of, or method(s) of access to, an item. e.g. log-in required </p>
+            </td>
+          </tr>
+        
+      
+       
+      
+        
+          <tr>
+            <td>
+              <p>Property</p>
+            </td>
+            <td>
+              <p><a href="http://schema.org/conditionsOfAccess">schema:conditionsOfAccess</a></p>
+            </td>
+          </tr>
+        
+      
+        
+          <tr>
+            <td>
+              <p>Domain</p>
+            </td>
+            <td>
+              <p><a href="http://schema.org/SoftwareSourceCode">schema:SoftwareSourceCode</a></p>
+            </td>
+          </tr>
+        
+      
+        
+          <tr>
+            <td>
+              <p>Range</p>
+            </td>
+            <td>
+              <p><a href="http://www.w3.org/2001/XMLSchema#string">xsd:string</a></p>
+            </td>
+          </tr>
+        
+      
+    </table>
+    
+    <h3 id="">Description</h3>
+    <table class="def">
+      
+        
+          <tr>
+            <td>
+              <p>Label</p>
+            </td>
+            <td>
+              <p>Description</p>
+            </td>
+          </tr>
+        
+      
+        
+          <tr>
+            <td>
+              <p>Definition</p>
+            </td>
+            <td>
+              <p>A description of the item.</p>
+            </td>
+          </tr>
+        
+      
+       
+      
+        
+          <tr>
+            <td>
+              <p>Property</p>
+            </td>
+            <td>
+              <p><a href="http://schema.org/description">schema:description</a></p>
+            </td>
+          </tr>
+        
+      
+        
+          <tr>
+            <td>
+              <p>Domain</p>
+            </td>
+            <td>
+              <p><a href="http://schema.org/SoftwareSourceCode">schema:SoftwareSourceCode</a>, <a href="http://schema.org/DataFeed">schema:DataFeed</a>, <a href="https://bioschemas.org/FormalParameter">bio:FormalParameter</a>, <a href="#ExecutableNotebook">imag:ExecutableNotebook</a>, <a href="https://w3id.org/okn/o/sd#SoftwareImage">sd:SoftwareImage</a></p>
+            </td>
+          </tr>
+        
+      
+        
+          <tr>
+            <td>
+              <p>Range</p>
+            </td>
+            <td>
+              <p><a href="http://www.w3.org/2001/XMLSchema#string">xsd:string</a></p>
+            </td>
+          </tr>
+        
+      
+    </table>
+    
+    <h3 id="">Feature list</h3>
+    <table class="def">
+      
+        
+          <tr>
+            <td>
+              <p>Label</p>
+            </td>
+            <td>
+              <p>Feature list</p>
+            </td>
+          </tr>
+        
+      
+        
+          <tr>
+            <td>
+              <p>Definition</p>
+            </td>
+            <td>
+              <p>Features or modules provided by this application (and possibly required by other applications).</p>
+            </td>
+          </tr>
+        
+      
+       
+      
+        
+          <tr>
+            <td>
+              <p>Property</p>
+            </td>
+            <td>
+              <p><a href="http://schema.org/featureList">schema:featureList</a></p>
+            </td>
+          </tr>
+        
+      
+        
+          <tr>
+            <td>
+              <p>Domain</p>
+            </td>
+            <td>
+              <p><a href="http://schema.org/SoftwareSourceCode">schema:SoftwareSourceCode</a></p>
+            </td>
+          </tr>
+        
+      
+        
+          <tr>
+            <td>
+              <p>Range</p>
+            </td>
+            <td>
+              <p><a href="#FeatureListEnum">imag:FeatureListEnum</a></p>
+            </td>
+          </tr>
+        
+      
+    </table>
+    
+    <h3 id="">Image</h3>
+    <table class="def">
+      
+        
+          <tr>
+            <td>
+              <p>Label</p>
+            </td>
+            <td>
+              <p>Image</p>
+            </td>
+          </tr>
+        
+      
+        
+          <tr>
+            <td>
+              <p>Definition</p>
+            </td>
+            <td>
+              <p>An image of the item.</p>
+            </td>
+          </tr>
+        
+      
+       
+      
+        
+          <tr>
+            <td>
+              <p>Property</p>
+            </td>
+            <td>
+              <p><a href="http://schema.org/image">schema:image</a></p>
+            </td>
+          </tr>
+        
+      
+        
+          <tr>
+            <td>
+              <p>Domain</p>
+            </td>
+            <td>
+              <p><a href="http://schema.org/SoftwareSourceCode">schema:SoftwareSourceCode</a></p>
+            </td>
+          </tr>
+        
+      
+        
+          <tr>
+            <td>
+              <p>Range</p>
+            </td>
+            <td>
+              <p><a href="http://schema.org/ImageObject">schema:ImageObject</a></p>
+            </td>
+          </tr>
+        
+      
+    </table>
+    
+    <h3 id="">Is accessible for free</h3>
+    <table class="def">
+      
+        
+          <tr>
+            <td>
+              <p>Label</p>
+            </td>
+            <td>
+              <p>Is accessible for free</p>
+            </td>
+          </tr>
+        
+      
+        
+          <tr>
+            <td>
+              <p>Definition</p>
+            </td>
+            <td>
+              <p>A flag to signal that the item, event, or place is accessible for free.</p>
+            </td>
+          </tr>
+        
+      
+       
+      
+        
+          <tr>
+            <td>
+              <p>Property</p>
+            </td>
+            <td>
+              <p><a href="http://schema.org/isAccessibleForFree">schema:isAccessibleForFree</a></p>
+            </td>
+          </tr>
+        
+      
+        
+          <tr>
+            <td>
+              <p>Domain</p>
+            </td>
+            <td>
+              <p><a href="http://schema.org/SoftwareSourceCode">schema:SoftwareSourceCode</a></p>
+            </td>
+          </tr>
+        
+      
+        
+          <tr>
+            <td>
+              <p>Range</p>
+            </td>
+            <td>
+              <p><a href="http://www.w3.org/2001/XMLSchema#boolean">xsd:boolean</a></p>
+            </td>
+          </tr>
+        
+      
+    </table>
+    
+    <h3 id="">Is based on</h3>
+    <table class="def">
+      
+        
+          <tr>
+            <td>
+              <p>Label</p>
+            </td>
+            <td>
+              <p>Is based on</p>
+            </td>
+          </tr>
+        
+      
+        
+          <tr>
+            <td>
+              <p>Definition</p>
+            </td>
+            <td>
+              <p>A resource from which this work is derived or from which it is a modification or adaption.</p>
+            </td>
+          </tr>
+        
+      
+       
+      
+        
+          <tr>
+            <td>
+              <p>Property</p>
+            </td>
+            <td>
+              <p><a href="http://schema.org/isBasedOn">schema:isBasedOn</a></p>
+            </td>
+          </tr>
+        
+      
+        
+          <tr>
+            <td>
+              <p>Domain</p>
+            </td>
+            <td>
+              <p><a href="http://schema.org/SoftwareSourceCode">schema:SoftwareSourceCode</a></p>
+            </td>
+          </tr>
+        
+      
+        
+          <tr>
+            <td>
+              <p>Range</p>
+            </td>
+            <td>
+              <p></p>
+            </td>
+          </tr>
+        
+      
+    </table>
+    
+    <h3 id="isPluginModuleOf">Is plugin/module of</h3>
+    <table class="def">
+      
+        
+          <tr>
+            <td>
+              <p>Label</p>
+            </td>
+            <td>
+              <p>Is plugin/module of</p>
+            </td>
+          </tr>
+        
+      
+        
+          <tr>
+            <td>
+              <p>Definition</p>
+            </td>
+            <td>
+              <p>The resource for which this tool is a plugin or module.</p>
+            </td>
+          </tr>
+        
+      
+       
+      
+        
+          <tr>
+            <td>
+              <p>Property</p>
+            </td>
+            <td>
+              <p><a href="#isPluginModuleOf">imag:isPluginModuleOf</a></p>
+            </td>
+          </tr>
+        
+      
+        
+          <tr>
+            <td>
+              <p>Domain</p>
+            </td>
+            <td>
+              <p><a href="http://schema.org/SoftwareSourceCode">schema:SoftwareSourceCode</a></p>
+            </td>
+          </tr>
+        
+      
+        
+          <tr>
+            <td>
+              <p>Range</p>
+            </td>
+            <td>
+              <p><a href="#isPluginModuleOfEnum">imag:isPluginModuleOfEnum</a></p>
+            </td>
+          </tr>
+        
+      
+    </table>
+    
+    <h3 id="relatedToOrganization">Related to organization</h3>
+    <table class="def">
+      
+        
+          <tr>
+            <td>
+              <p>Label</p>
+            </td>
+            <td>
+              <p>Related to organization</p>
+            </td>
+          </tr>
+        
+      
+        
+          <tr>
+            <td>
+              <p>Definition</p>
+            </td>
+            <td>
+              <p>The lab/institution/group/project/organization to which a software is related and/or affiliated to</p>
+            </td>
+          </tr>
+        
+      
+       
+      
+        
+          <tr>
+            <td>
+              <p>Property</p>
+            </td>
+            <td>
+              <p><a href="#relatedToOrganization">imag:relatedToOrganization</a></p>
+            </td>
+          </tr>
+        
+      
+        
+          <tr>
+            <td>
+              <p>Domain</p>
+            </td>
+            <td>
+              <p><a href="http://schema.org/SoftwareSourceCode">schema:SoftwareSourceCode</a></p>
+            </td>
+          </tr>
+        
+      
+        
+          <tr>
+            <td>
+              <p>Range</p>
+            </td>
+            <td>
+              <p><a href="http://www.w3.org/2001/XMLSchema#string">xsd:string</a></p>
+            </td>
+          </tr>
+        
+      
+    </table>
+    
+    <h3 id="">Name</h3>
+    <table class="def">
+      
+        
+          <tr>
+            <td>
+              <p>Label</p>
+            </td>
+            <td>
+              <p>Name</p>
+            </td>
+          </tr>
+        
+      
+        
+          <tr>
+            <td>
+              <p>Definition</p>
+            </td>
+            <td>
+              <p>The name of a person, in the US their first and last name(s) seperated by spaces</p>
+            </td>
+          </tr>
+        
+      
+       
+      
+        
+          <tr>
+            <td>
+              <p>Property</p>
+            </td>
+            <td>
+              <p><a href="http://schema.org/name">schema:name</a></p>
+            </td>
+          </tr>
+        
+      
+        
+          <tr>
+            <td>
+              <p>Domain</p>
+            </td>
+            <td>
+              <p><a href="http://schema.org/SoftwareSourceCode">schema:SoftwareSourceCode</a>, <a href="http://schema.org/DataFeed">schema:DataFeed</a>, <a href="https://bioschemas.org/FormalParameter">bio:FormalParameter</a>, <a href="#ExecutableNotebook">imag:ExecutableNotebook</a>, <a href="https://w3id.org/okn/o/sd#SoftwareImage">sd:SoftwareImage</a>, <a href="http://schema.org/Person">schema:Person</a></p>
+            </td>
+          </tr>
+        
+      
+        
+          <tr>
+            <td>
+              <p>Range</p>
+            </td>
+            <td>
+              <p><a href="http://www.w3.org/2001/XMLSchema#string">xsd:string</a></p>
+            </td>
+          </tr>
+        
+      
+    </table>
+    
+    <h3 id="orcidId">Has ORCID ID</h3>
+    <table class="def">
+      
+        
+          <tr>
+            <td>
+              <p>Label</p>
+            </td>
+            <td>
+              <p>Has ORCID ID</p>
+            </td>
+          </tr>
+        
+      
+        
+          <tr>
+            <td>
+              <p>Definition</p>
+            </td>
+            <td>
+              <p>The ORCID ID of a person</p>
+            </td>
+          </tr>
+        
+      
+       
+      
+        
+          <tr>
+            <td>
+              <p>Property</p>
+            </td>
+            <td>
+              <p><a href="http://w3id.org/nfdi4ing/metadata4ing#orcidId">md4i:orcidId</a></p>
+            </td>
+          </tr>
+        
+      
+        
+          <tr>
+            <td>
+              <p>Domain</p>
+            </td>
+            <td>
+              <p><a href="http://schema.org/Person">schema:Person</a></p>
+            </td>
+          </tr>
+        
+      
+        
+          <tr>
+            <td>
+              <p>Range</p>
+            </td>
+            <td>
+              <p><a href="http://www.w3.org/2001/XMLSchema#string">xsd:string</a></p>
+            </td>
+          </tr>
+        
+      
+    </table>
+    
+    <h3 id="hasRorId">Has ROR ID</h3>
+    <table class="def">
+      
+        
+          <tr>
+            <td>
+              <p>Label</p>
+            </td>
+            <td>
+              <p>Has ROR ID</p>
+            </td>
+          </tr>
+        
+      
+        
+          <tr>
+            <td>
+              <p>Definition</p>
+            </td>
+            <td>
+              <p>A Research Organization Registry identifier, that points to a research organization</p>
+            </td>
+          </tr>
+        
+      
+       
+      
+        
+          <tr>
+            <td>
+              <p>Property</p>
+            </td>
+            <td>
+              <p><a href="http://w3id.org/nfdi4ing/metadata4ing#hasRorId">md4i:hasRorId</a></p>
+            </td>
+          </tr>
+        
+      
+        
+          <tr>
+            <td>
+              <p>Domain</p>
+            </td>
+            <td>
+              <p><a href="http://schema.org/Organization">schema:Organization</a></p>
+            </td>
+          </tr>
+        
+      
+        
+          <tr>
+            <td>
+              <p>Range</p>
+            </td>
+            <td>
+              <p></p>
+            </td>
+          </tr>
+        
+      
+    </table>
+    
+    <h3 id="">Legal name</h3>
+    <table class="def">
+      
+        
+          <tr>
+            <td>
+              <p>Label</p>
+            </td>
+            <td>
+              <p>Legal name</p>
+            </td>
+          </tr>
+        
+      
+        
+          <tr>
+            <td>
+              <p>Definition</p>
+            </td>
+            <td>
+              <p>The official name of the organization, e.g. the registered company name.</p>
+            </td>
+          </tr>
+        
+      
+       
+      
+        
+          <tr>
+            <td>
+              <p>Property</p>
+            </td>
+            <td>
+              <p><a href="http://schema.org/legalName">schema:legalName</a></p>
+            </td>
+          </tr>
+        
+      
+        
+          <tr>
+            <td>
+              <p>Domain</p>
+            </td>
+            <td>
+              <p><a href="http://schema.org/Organization">schema:Organization</a></p>
+            </td>
+          </tr>
+        
+      
+        
+          <tr>
+            <td>
+              <p>Range</p>
+            </td>
+            <td>
+              <p><a href="http://www.w3.org/2001/XMLSchema#string">xsd:string</a></p>
+            </td>
+          </tr>
+        
+      
+    </table>
+    
+    <h3 id="">Operating system</h3>
+    <table class="def">
+      
+        
+          <tr>
+            <td>
+              <p>Label</p>
+            </td>
+            <td>
+              <p>Operating system</p>
+            </td>
+          </tr>
+        
+      
+        
+          <tr>
+            <td>
+              <p>Definition</p>
+            </td>
+            <td>
+              <p>Operating systems supported (Windows 7/10/11, OS X 10.6, Android 1.6).</p>
+            </td>
+          </tr>
+        
+      
+       
+      
+        
+          <tr>
+            <td>
+              <p>Property</p>
+            </td>
+            <td>
+              <p><a href="http://schema.org/operatingSystem">schema:operatingSystem</a></p>
+            </td>
+          </tr>
+        
+      
+        
+          <tr>
+            <td>
+              <p>Domain</p>
+            </td>
+            <td>
+              <p><a href="http://schema.org/SoftwareSourceCode">schema:SoftwareSourceCode</a></p>
+            </td>
+          </tr>
+        
+      
+        
+          <tr>
+            <td>
+              <p>Range</p>
+            </td>
+            <td>
+              <p><a href="#OperatingSystemEnum">imag:OperatingSystemEnum</a></p>
+            </td>
+          </tr>
+        
+      
+    </table>
+    
+    <h3 id="">Programming Language</h3>
+    <table class="def">
+      
+        
+          <tr>
+            <td>
+              <p>Label</p>
+            </td>
+            <td>
+              <p>Programming Language</p>
+            </td>
+          </tr>
+        
+      
+        
+          <tr>
+            <td>
+              <p>Definition</p>
+            </td>
+            <td>
+              <p>The computer programming language.</p>
+            </td>
+          </tr>
+        
+      
+       
+      
+        
+          <tr>
+            <td>
+              <p>Property</p>
+            </td>
+            <td>
+              <p><a href="http://schema.org/programmingLanguage">schema:programmingLanguage</a></p>
+            </td>
+          </tr>
+        
+      
+        
+          <tr>
+            <td>
+              <p>Domain</p>
+            </td>
+            <td>
+              <p><a href="http://schema.org/SoftwareSourceCode">schema:SoftwareSourceCode</a></p>
+            </td>
+          </tr>
+        
+      
+        
+          <tr>
+            <td>
+              <p>Range</p>
+            </td>
+            <td>
+              <p><a href="#ComputerLanguageEnum">imag:ComputerLanguageEnum</a></p>
+            </td>
+          </tr>
+        
+      
+    </table>
+    
+    <h3 id="">Software requirements</h3>
+    <table class="def">
+      
+        
+          <tr>
+            <td>
+              <p>Label</p>
+            </td>
+            <td>
+              <p>Software requirements</p>
+            </td>
+          </tr>
+        
+      
+        
+          <tr>
+            <td>
+              <p>Definition</p>
+            </td>
+            <td>
+              <p>Special third party dependencies (e.g. CUDA, Tensorflow etc. related requirements).</p>
+            </td>
+          </tr>
+        
+      
+       
+      
+        
+          <tr>
+            <td>
+              <p>Property</p>
+            </td>
+            <td>
+              <p><a href="http://schema.org/softwareRequirements">schema:softwareRequirements</a></p>
+            </td>
+          </tr>
+        
+      
+        
+          <tr>
+            <td>
+              <p>Domain</p>
+            </td>
+            <td>
+              <p><a href="http://schema.org/SoftwareSourceCode">schema:SoftwareSourceCode</a></p>
+            </td>
+          </tr>
+        
+      
+        
+          <tr>
+            <td>
+              <p>Range</p>
+            </td>
+            <td>
+              <p><a href="#SoftwareRequirementsEnum">imag:SoftwareRequirementsEnum</a></p>
+            </td>
+          </tr>
+        
+      
+    </table>
+    
+    <h3 id="">Software version</h3>
+    <table class="def">
+      
+        
+          <tr>
+            <td>
+              <p>Label</p>
+            </td>
+            <td>
+              <p>Software version</p>
+            </td>
+          </tr>
+        
+      
+        
+          <tr>
+            <td>
+              <p>Definition</p>
+            </td>
+            <td>
+              <p>Version of the software instance.</p>
+            </td>
+          </tr>
+        
+      
+       
+      
+        
+          <tr>
+            <td>
+              <p>Property</p>
+            </td>
+            <td>
+              <p><a href="http://schema.org/softwareVersion">schema:softwareVersion</a></p>
+            </td>
+          </tr>
+        
+      
+        
+          <tr>
+            <td>
+              <p>Domain</p>
+            </td>
+            <td>
+              <p><a href="https://w3id.org/okn/o/sd#SoftwareImage">sd:SoftwareImage</a></p>
+            </td>
+          </tr>
+        
+      
+        
+          <tr>
+            <td>
+              <p>Range</p>
+            </td>
+            <td>
+              <p><a href="http://www.w3.org/2001/XMLSchema#string">xsd:string</a></p>
+            </td>
+          </tr>
+        
+      
+    </table>
+    
+    <h3 id="">URL</h3>
+    <table class="def">
+      
+        
+          <tr>
+            <td>
+              <p>Label</p>
+            </td>
+            <td>
+              <p>URL</p>
+            </td>
+          </tr>
+        
+      
+        
+          <tr>
+            <td>
+              <p>Definition</p>
+            </td>
+            <td>
+              <p>Fill in any URL related to this repository. e.g. related lab or project website.</p>
+            </td>
+          </tr>
+        
+      
+       
+      
+        
+          <tr>
+            <td>
+              <p>Property</p>
+            </td>
+            <td>
+              <p><a href="http://schema.org/url">schema:url</a></p>
+            </td>
+          </tr>
+        
+      
+        
+          <tr>
+            <td>
+              <p>Domain</p>
+            </td>
+            <td>
+              <p><a href="#ExecutableNotebook">imag:ExecutableNotebook</a>, <a href="http://schema.org/SoftwareSourceCode">schema:SoftwareSourceCode</a></p>
+            </td>
+          </tr>
+        
+      
+        
+          <tr>
+            <td>
+              <p>Range</p>
+            </td>
+            <td>
+              <p></p>
+            </td>
+          </tr>
+        
+      
+    </table>
+    
+    <h3 id="">Identifier</h3>
+    <table class="def">
+      
+        
+          <tr>
+            <td>
+              <p>Label</p>
+            </td>
+            <td>
+              <p>Identifier</p>
+            </td>
+          </tr>
+        
+      
+        
+          <tr>
+            <td>
+              <p>Definition</p>
+            </td>
+            <td>
+              <p>Represents any kind of unique string to identify something, such as ISBNs, GTIN codes, UUIDs etc.</p>
+            </td>
+          </tr>
+        
+      
+       
+      
+        
+          <tr>
+            <td>
+              <p>Property</p>
+            </td>
+            <td>
+              <p><a href="http://schema.org/identifier">schema:identifier</a></p>
+            </td>
+          </tr>
+        
+      
+        
+          <tr>
+            <td>
+              <p>Domain</p>
+            </td>
+            <td>
+              <p><a href="https://w3id.org/okn/o/sd#FundingInformation">sd:FundingInformation</a>, <a href="http://schema.org/SoftwareSourceCode">schema:SoftwareSourceCode</a></p>
+            </td>
+          </tr>
+        
+      
+        
+          <tr>
+            <td>
+              <p>Range</p>
+            </td>
+            <td>
+              <p><a href="http://www.w3.org/2001/XMLSchema#string">xsd:string</a></p>
+            </td>
+          </tr>
+        
+      
+    </table>
+    
+    <h3 id="">Default value</h3>
+    <table class="def">
+      
+        
+          <tr>
+            <td>
+              <p>Label</p>
+            </td>
+            <td>
+              <p>Default value</p>
+            </td>
+          </tr>
+        
+      
+        
+          <tr>
+            <td>
+              <p>Definition</p>
+            </td>
+            <td>
+              <p>The default value of the input. For properties that expect a literal, the default is a literal value, for properties that expect an object, it's an ID reference to one of the current values.</p>
+            </td>
+          </tr>
+        
+      
+       
+      
+        
+          <tr>
+            <td>
+              <p>Property</p>
+            </td>
+            <td>
+              <p><a href="http://schema.org/defaultValue">schema:defaultValue</a></p>
+            </td>
+          </tr>
+        
+      
+        
+          <tr>
+            <td>
+              <p>Domain</p>
+            </td>
+            <td>
+              <p><a href="https://bioschemas.org/FormalParameter">bio:FormalParameter</a></p>
+            </td>
+          </tr>
+        
+      
+        
+          <tr>
+            <td>
+              <p>Range</p>
+            </td>
+            <td>
+              <p><a href="http://www.w3.org/2001/XMLSchema#string">xsd:string</a></p>
+            </td>
+          </tr>
+        
+      
+    </table>
+    
+    <h3 id="">Value required</h3>
+    <table class="def">
+      
+        
+          <tr>
+            <td>
+              <p>Label</p>
+            </td>
+            <td>
+              <p>Value required</p>
+            </td>
+          </tr>
+        
+      
+        
+          <tr>
+            <td>
+              <p>Definition</p>
+            </td>
+            <td>
+              <p>Whether the property must be filled in to complete the action. Default is false.</p>
+            </td>
+          </tr>
+        
+      
+       
+      
+        
+          <tr>
+            <td>
+              <p>Property</p>
+            </td>
+            <td>
+              <p><a href="http://schema.org/valueRequired">schema:valueRequired</a></p>
+            </td>
+          </tr>
+        
+      
+        
+          <tr>
+            <td>
+              <p>Domain</p>
+            </td>
+            <td>
+              <p><a href="https://bioschemas.org/FormalParameter">bio:FormalParameter</a></p>
+            </td>
+          </tr>
+        
+      
+        
+          <tr>
+            <td>
+              <p>Range</p>
+            </td>
+            <td>
+              <p><a href="http://www.w3.org/2001/XMLSchema#boolean">xsd:boolean</a></p>
+            </td>
+          </tr>
+        
+      
+    </table>
+    
+    <h3 id="">Supporting data</h3>
+    <table class="def">
+      
+        
+          <tr>
+            <td>
+              <p>Label</p>
+            </td>
+            <td>
+              <p>Supporting data</p>
+            </td>
+          </tr>
+        
+      
+        
+          <tr>
+            <td>
+              <p>Definition</p>
+            </td>
+            <td>
+              <p>Supporting data for a SoftwareApplication.</p>
+            </td>
+          </tr>
+        
+      
+       
+      
+        
+          <tr>
+            <td>
+              <p>Property</p>
+            </td>
+            <td>
+              <p><a href="http://schema.org/supportingData">schema:supportingData</a></p>
+            </td>
+          </tr>
+        
+      
+        
+          <tr>
+            <td>
+              <p>Domain</p>
+            </td>
+            <td>
+              <p><a href="http://schema.org/SoftwareSourceCode">schema:SoftwareSourceCode</a></p>
+            </td>
+          </tr>
+        
+      
+        
+          <tr>
+            <td>
+              <p>Range</p>
+            </td>
+            <td>
+              <p><a href="http://schema.org/DataFeed">schema:DataFeed</a></p>
+            </td>
+          </tr>
+        
+      
+    </table>
+    
+    <h3 id="">Encoding format</h3>
+    <table class="def">
+      
+        
+          <tr>
+            <td>
+              <p>Label</p>
+            </td>
+            <td>
+              <p>Encoding format</p>
+            </td>
+          </tr>
+        
+      
+        
+          <tr>
+            <td>
+              <p>Definition</p>
+            </td>
+            <td>
+              <p>Expressed using a MIME format (http://www.iana.org/assignments/media-types/media-types.xhtml).</p>
+            </td>
+          </tr>
+        
+      
+       
+      
+        
+          <tr>
+            <td>
+              <p>Property</p>
+            </td>
+            <td>
+              <p><a href="http://schema.org/encodingFormat">schema:encodingFormat</a></p>
+            </td>
+          </tr>
+        
+      
+        
+          <tr>
+            <td>
+              <p>Domain</p>
+            </td>
+            <td>
+              <p><a href="https://bioschemas.org/FormalParameter">bio:FormalParameter</a></p>
+            </td>
+          </tr>
+        
+      
+        
+          <tr>
+            <td>
+              <p>Range</p>
+            </td>
+            <td>
+              <p></p>
+            </td>
+          </tr>
+        
+      
+    </table>
+    
+    <h3 id="">Measurement technique</h3>
+    <table class="def">
+      
+        
+          <tr>
+            <td>
+              <p>Label</p>
+            </td>
+            <td>
+              <p>Measurement technique</p>
+            </td>
+          </tr>
+        
+      
+        
+          <tr>
+            <td>
+              <p>Definition</p>
+            </td>
+            <td>
+              <p>A technique or technology used in a Dataset corresponding to the method used for measuring the corresponding variable(s).</p>
+            </td>
+          </tr>
+        
+      
+       
+      
+        
+          <tr>
+            <td>
+              <p>Property</p>
+            </td>
+            <td>
+              <p><a href="http://schema.org/measurementTechnique">schema:measurementTechnique</a></p>
+            </td>
+          </tr>
+        
+      
+        
+          <tr>
+            <td>
+              <p>Domain</p>
+            </td>
+            <td>
+              <p><a href="http://schema.org/DataFeed">schema:DataFeed</a></p>
+            </td>
+          </tr>
+        
+      
+        
+          <tr>
+            <td>
+              <p>Range</p>
+            </td>
+            <td>
+              <p><a href="http://www.w3.org/2001/XMLSchema#string">xsd:string</a></p>
+            </td>
+          </tr>
+        
+      
+    </table>
+    
+    <h3 id="">Variable measured</h3>
+    <table class="def">
+      
+        
+          <tr>
+            <td>
+              <p>Label</p>
+            </td>
+            <td>
+              <p>Variable measured</p>
+            </td>
+          </tr>
+        
+      
+        
+          <tr>
+            <td>
+              <p>Definition</p>
+            </td>
+            <td>
+              <p>The variables that are measured in some dataset, described as text.</p>
+            </td>
+          </tr>
+        
+      
+       
+      
+        
+          <tr>
+            <td>
+              <p>Property</p>
+            </td>
+            <td>
+              <p><a href="http://schema.org/variableMeasured">schema:variableMeasured</a></p>
+            </td>
+          </tr>
+        
+      
+        
+          <tr>
+            <td>
+              <p>Domain</p>
+            </td>
+            <td>
+              <p><a href="http://schema.org/DataFeed">schema:DataFeed</a></p>
+            </td>
+          </tr>
+        
+      
+        
+          <tr>
+            <td>
+              <p>Range</p>
+            </td>
+            <td>
+              <p><a href="http://www.w3.org/2001/XMLSchema#string">xsd:string</a></p>
+            </td>
+          </tr>
+        
+      
+    </table>
+    
+    <h3 id="imagingModality">Imaging modality</h3>
+    <table class="def">
+      
+        
+          <tr>
+            <td>
+              <p>Label</p>
+            </td>
+            <td>
+              <p>Imaging modality</p>
+            </td>
+          </tr>
+        
+      
+        
+          <tr>
+            <td>
+              <p>Definition</p>
+            </td>
+            <td>
+              <p>Technique or method used to create images of the interior of a body or an object for which this software was designed.</p>
+            </td>
+          </tr>
+        
+      
+       
+      
+        
+          <tr>
+            <td>
+              <p>Property</p>
+            </td>
+            <td>
+              <p><a href="#imagingModality">imag:imagingModality</a></p>
+            </td>
+          </tr>
+        
+      
+        
+          <tr>
+            <td>
+              <p>Domain</p>
+            </td>
+            <td>
+              <p><a href="http://schema.org/SoftwareSourceCode">schema:SoftwareSourceCode</a></p>
+            </td>
+          </tr>
+        
+      
+        
+          <tr>
+            <td>
+              <p>Range</p>
+            </td>
+            <td>
+              <p><a href="#ImagingModalityEnum">imag:ImagingModalityEnum</a></p>
+            </td>
+          </tr>
+        
+      
+    </table>
+    
+    <h3 id="requiresGPU">Requires GPU</h3>
+    <table class="def">
+      
+        
+          <tr>
+            <td>
+              <p>Label</p>
+            </td>
+            <td>
+              <p>Requires GPU</p>
+            </td>
+          </tr>
+        
+      
+        
+          <tr>
+            <td>
+              <p>Definition</p>
+            </td>
+            <td>
+              <p>Stipulates whether something requires a graphical processing unit such as a NVIDEA or AMD graphics card</p>
+            </td>
+          </tr>
+        
+      
+       
+      
+        
+          <tr>
+            <td>
+              <p>Property</p>
+            </td>
+            <td>
+              <p><a href="#requiresGPU">imag:requiresGPU</a></p>
+            </td>
+          </tr>
+        
+      
+        
+          <tr>
+            <td>
+              <p>Domain</p>
+            </td>
+            <td>
+              <p><a href="http://schema.org/SoftwareSourceCode">schema:SoftwareSourceCode</a></p>
+            </td>
+          </tr>
+        
+      
+        
+          <tr>
+            <td>
+              <p>Range</p>
+            </td>
+            <td>
+              <p><a href="http://www.w3.org/2001/XMLSchema#boolean">xsd:boolean</a></p>
+            </td>
+          </tr>
+        
+      
+    </table>
+    
+    <h3 id="">Processor requirements</h3>
+    <table class="def">
+      
+        
+          <tr>
+            <td>
+              <p>Label</p>
+            </td>
+            <td>
+              <p>Processor requirements</p>
+            </td>
+          </tr>
+        
+      
+        
+          <tr>
+            <td>
+              <p>Definition</p>
+            </td>
+            <td>
+              <p>Processor architecture required to run the application.</p>
+            </td>
+          </tr>
+        
+      
+       
+      
+        
+          <tr>
+            <td>
+              <p>Property</p>
+            </td>
+            <td>
+              <p><a href="http://schema.org/processorRequirements">schema:processorRequirements</a></p>
+            </td>
+          </tr>
+        
+      
+        
+          <tr>
+            <td>
+              <p>Domain</p>
+            </td>
+            <td>
+              <p><a href="http://schema.org/SoftwareSourceCode">schema:SoftwareSourceCode</a></p>
+            </td>
+          </tr>
+        
+      
+        
+          <tr>
+            <td>
+              <p>Range</p>
+            </td>
+            <td>
+              <p><a href="#ProcessorRequirementsEnum">imag:ProcessorRequirementsEnum</a></p>
+            </td>
+          </tr>
+        
+      
+    </table>
+    
+    <h3 id="hasParameter">Has parameter</h3>
+    <table class="def">
+      
+        
+          <tr>
+            <td>
+              <p>Label</p>
+            </td>
+            <td>
+              <p>Has parameter</p>
+            </td>
+          </tr>
+        
+      
+        
+          <tr>
+            <td>
+              <p>Definition</p>
+            </td>
+            <td>
+              <p>Property that indicates the parameters of a model configuration</p>
+            </td>
+          </tr>
+        
+      
+       
+      
+        
+          <tr>
+            <td>
+              <p>Property</p>
+            </td>
+            <td>
+              <p><a href="https://w3id.org/okn/o/sd#hasParameter">sd:hasParameter</a></p>
+            </td>
+          </tr>
+        
+      
+        
+          <tr>
+            <td>
+              <p>Domain</p>
+            </td>
+            <td>
+              <p><a href="http://schema.org/SoftwareSourceCode">schema:SoftwareSourceCode</a></p>
+            </td>
+          </tr>
+        
+      
+        
+          <tr>
+            <td>
+              <p>Range</p>
+            </td>
+            <td>
+              <p><a href="https://bioschemas.org/FormalParameter">bio:FormalParameter</a></p>
+            </td>
+          </tr>
+        
+      
+    </table>
+    
+    <h3 id="hasFunding">Has funding information</h3>
+    <table class="def">
+      
+        
+          <tr>
+            <td>
+              <p>Label</p>
+            </td>
+            <td>
+              <p>Has funding information</p>
+            </td>
+          </tr>
+        
+      
+        
+          <tr>
+            <td>
+              <p>Definition</p>
+            </td>
+            <td>
+              <p>Property that links a software project to its funding information</p>
+            </td>
+          </tr>
+        
+      
+       
+      
+        
+          <tr>
+            <td>
+              <p>Property</p>
+            </td>
+            <td>
+              <p><a href="https://w3id.org/okn/o/sd#hasFunding">sd:hasFunding</a></p>
+            </td>
+          </tr>
+        
+      
+        
+          <tr>
+            <td>
+              <p>Domain</p>
+            </td>
+            <td>
+              <p><a href="http://schema.org/SoftwareSourceCode">schema:SoftwareSourceCode</a></p>
+            </td>
+          </tr>
+        
+      
+        
+          <tr>
+            <td>
+              <p>Range</p>
+            </td>
+            <td>
+              <p><a href="https://w3id.org/okn/o/sd#FundingInformation">sd:FundingInformation</a></p>
+            </td>
+          </tr>
+        
+      
+    </table>
+    
+    <h3 id="hasSoftwareImage">Has software image</h3>
+    <table class="def">
+      
+        
+          <tr>
+            <td>
+              <p>Label</p>
+            </td>
+            <td>
+              <p>Has software image</p>
+            </td>
+          </tr>
+        
+      
+        
+          <tr>
+            <td>
+              <p>Definition</p>
+            </td>
+            <td>
+              <p>Function to link a function with its corresponding container</p>
+            </td>
+          </tr>
+        
+      
+       
+      
+        
+          <tr>
+            <td>
+              <p>Property</p>
+            </td>
+            <td>
+              <p><a href="https://w3id.org/okn/o/sd#hasSoftwareImage">sd:hasSoftwareImage</a></p>
+            </td>
+          </tr>
+        
+      
+        
+          <tr>
+            <td>
+              <p>Domain</p>
+            </td>
+            <td>
+              <p><a href="http://schema.org/SoftwareSourceCode">schema:SoftwareSourceCode</a></p>
+            </td>
+          </tr>
+        
+      
+        
+          <tr>
+            <td>
+              <p>Range</p>
+            </td>
+            <td>
+              <p><a href="https://w3id.org/okn/o/sd#SoftwareImage">sd:SoftwareImage</a></p>
+            </td>
+          </tr>
+        
+      
+    </table>
+    
+    <h3 id="fundingSource">Funding source</h3>
+    <table class="def">
+      
+        
+          <tr>
+            <td>
+              <p>Label</p>
+            </td>
+            <td>
+              <p>Funding source</p>
+            </td>
+          </tr>
+        
+      
+        
+          <tr>
+            <td>
+              <p>Definition</p>
+            </td>
+            <td>
+              <p>Link to an organization funding a software/component</p>
+            </td>
+          </tr>
+        
+      
+       
+      
+        
+          <tr>
+            <td>
+              <p>Property</p>
+            </td>
+            <td>
+              <p><a href="https://w3id.org/okn/o/sd#fundingSource">sd:fundingSource</a></p>
+            </td>
+          </tr>
+        
+      
+        
+          <tr>
+            <td>
+              <p>Domain</p>
+            </td>
+            <td>
+              <p><a href="https://w3id.org/okn/o/sd#FundingInformation">sd:FundingInformation</a></p>
+            </td>
+          </tr>
+        
+      
+        
+          <tr>
+            <td>
+              <p>Range</p>
+            </td>
+            <td>
+              <p><a href="http://schema.org/Organization">schema:Organization</a></p>
+            </td>
+          </tr>
+        
+      
+    </table>
+    
+    <h3 id="readme">Readme</h3>
+    <table class="def">
+      
+        
+          <tr>
+            <td>
+              <p>Label</p>
+            </td>
+            <td>
+              <p>Readme</p>
+            </td>
+          </tr>
+        
+      
+        
+          <tr>
+            <td>
+              <p>Definition</p>
+            </td>
+            <td>
+              <p>URL to the Readme file of a software component</p>
+            </td>
+          </tr>
+        
+      
+       
+      
+        
+          <tr>
+            <td>
+              <p>Property</p>
+            </td>
+            <td>
+              <p><a href="https://w3id.org/okn/o/sd#readme">sd:readme</a></p>
+            </td>
+          </tr>
+        
+      
+        
+          <tr>
+            <td>
+              <p>Domain</p>
+            </td>
+            <td>
+              <p><a href="http://schema.org/SoftwareSourceCode">schema:SoftwareSourceCode</a></p>
+            </td>
+          </tr>
+        
+      
+        
+          <tr>
+            <td>
+              <p>Range</p>
+            </td>
+            <td>
+              <p></p>
+            </td>
+          </tr>
+        
+      
+    </table>
+    
+    <h3 id="hasDocumentation">Has documentation</h3>
+    <table class="def">
+      
+        
+          <tr>
+            <td>
+              <p>Label</p>
+            </td>
+            <td>
+              <p>Has documentation</p>
+            </td>
+          </tr>
+        
+      
+        
+          <tr>
+            <td>
+              <p>Definition</p>
+            </td>
+            <td>
+              <p>Pointer to the documentation of the model</p>
+            </td>
+          </tr>
+        
+      
+       
+      
+        
+          <tr>
+            <td>
+              <p>Property</p>
+            </td>
+            <td>
+              <p><a href="https://w3id.org/okn/o/sd#hasDocumentation">sd:hasDocumentation</a></p>
+            </td>
+          </tr>
+        
+      
+        
+          <tr>
+            <td>
+              <p>Domain</p>
+            </td>
+            <td>
+              <p><a href="http://schema.org/SoftwareSourceCode">schema:SoftwareSourceCode</a></p>
+            </td>
+          </tr>
+        
+      
+        
+          <tr>
+            <td>
+              <p>Range</p>
+            </td>
+            <td>
+              <p></p>
+            </td>
+          </tr>
+        
+      
+    </table>
+    
+    <h3 id="hasExecutableInstructions">Has executable instructions</h3>
+    <table class="def">
+      
+        
+          <tr>
+            <td>
+              <p>Label</p>
+            </td>
+            <td>
+              <p>Has executable instructions</p>
+            </td>
+          </tr>
+        
+      
+        
+          <tr>
+            <td>
+              <p>Definition</p>
+            </td>
+            <td>
+              <p>URL to Human-readable instructions that indicate how a software component should be executed.</p>
+            </td>
+          </tr>
+        
+      
+       
+      
+        
+          <tr>
+            <td>
+              <p>Property</p>
+            </td>
+            <td>
+              <p><a href="https://w3id.org/okn/o/sd#hasExecutableInstructions">sd:hasExecutableInstructions</a></p>
+            </td>
+          </tr>
+        
+      
+        
+          <tr>
+            <td>
+              <p>Domain</p>
+            </td>
+            <td>
+              <p><a href="http://schema.org/SoftwareSourceCode">schema:SoftwareSourceCode</a></p>
+            </td>
+          </tr>
+        
+      
+        
+          <tr>
+            <td>
+              <p>Range</p>
+            </td>
+            <td>
+              <p><a href="http://www.w3.org/2001/XMLSchema#string">xsd:string</a></p>
+            </td>
+          </tr>
+        
+      
+    </table>
+    
+    <h3 id="hasExecutableNotebook">Has executable notebook</h3>
+    <table class="def">
+      
+        
+          <tr>
+            <td>
+              <p>Label</p>
+            </td>
+            <td>
+              <p>Has executable notebook</p>
+            </td>
+          </tr>
+        
+      
+        
+          <tr>
+            <td>
+              <p>Definition</p>
+            </td>
+            <td>
+              <p>Property that links a software component with an executable notebook (e.g., Jupyter notebook).</p>
+            </td>
+          </tr>
+        
+      
+       
+      
+        
+          <tr>
+            <td>
+              <p>Property</p>
+            </td>
+            <td>
+              <p><a href="#hasExecutableNotebook">imag:hasExecutableNotebook</a></p>
+            </td>
+          </tr>
+        
+      
+        
+          <tr>
+            <td>
+              <p>Domain</p>
+            </td>
+            <td>
+              <p><a href="http://schema.org/SoftwareSourceCode">schema:SoftwareSourceCode</a></p>
+            </td>
+          </tr>
+        
+      
+        
+          <tr>
+            <td>
+              <p>Range</p>
+            </td>
+            <td>
+              <p><a href="#ExecutableNotebook">imag:ExecutableNotebook</a></p>
+            </td>
+          </tr>
+        
+      
+    </table>
+    
+    <h3 id="hasAcknowledgements">Has acknowledgements</h3>
+    <table class="def">
+      
+        
+          <tr>
+            <td>
+              <p>Label</p>
+            </td>
+            <td>
+              <p>Has acknowledgements</p>
+            </td>
+          </tr>
+        
+      
+        
+          <tr>
+            <td>
+              <p>Definition</p>
+            </td>
+            <td>
+              <p>String with the people, organizations and other contributors acknowledged by the authors.</p>
+            </td>
+          </tr>
+        
+      
+       
+      
+        
+          <tr>
+            <td>
+              <p>Property</p>
+            </td>
+            <td>
+              <p><a href="https://w3id.org/okn/o/sd#hasAcknowledgements">sd:hasAcknowledgements</a></p>
+            </td>
+          </tr>
+        
+      
+        
+          <tr>
+            <td>
+              <p>Domain</p>
+            </td>
+            <td>
+              <p><a href="http://schema.org/SoftwareSourceCode">schema:SoftwareSourceCode</a></p>
+            </td>
+          </tr>
+        
+      
+        
+          <tr>
+            <td>
+              <p>Range</p>
+            </td>
+            <td>
+              <p><a href="http://www.w3.org/2001/XMLSchema#string">xsd:string</a></p>
+            </td>
+          </tr>
+        
+      
+    </table>
+    
+    <h3 id="fundingGrant">Funding grant</h3>
+    <table class="def">
+      
+        
+          <tr>
+            <td>
+              <p>Label</p>
+            </td>
+            <td>
+              <p>Funding grant</p>
+            </td>
+          </tr>
+        
+      
+        
+          <tr>
+            <td>
+              <p>Definition</p>
+            </td>
+            <td>
+              <p>Grant number used for funding</p>
+            </td>
+          </tr>
+        
+      
+       
+      
+        
+          <tr>
+            <td>
+              <p>Property</p>
+            </td>
+            <td>
+              <p><a href="https://w3id.org/okn/o/sd#fundingGrant">sd:fundingGrant</a></p>
+            </td>
+          </tr>
+        
+      
+        
+          <tr>
+            <td>
+              <p>Domain</p>
+            </td>
+            <td>
+              <p><a href="https://w3id.org/okn/o/sd#FundingInformation">sd:FundingInformation</a></p>
+            </td>
+          </tr>
+        
+      
+        
+          <tr>
+            <td>
+              <p>Range</p>
+            </td>
+            <td>
+              <p><a href="http://www.w3.org/2001/XMLSchema#string">xsd:string</a></p>
+            </td>
+          </tr>
+        
+      
+    </table>
+    
+    <h3 id="hasFormat">Has format</h3>
+    <table class="def">
+      
+        
+          <tr>
+            <td>
+              <p>Label</p>
+            </td>
+            <td>
+              <p>Has format</p>
+            </td>
+          </tr>
+        
+      
+        
+          <tr>
+            <td>
+              <p>Definition</p>
+            </td>
+            <td>
+              <p>Format followed by a file. For example, txt, nc, etc.</p>
+            </td>
+          </tr>
+        
+      
+       
+      
+        
+          <tr>
+            <td>
+              <p>Property</p>
+            </td>
+            <td>
+              <p><a href="https://w3id.org/okn/o/sd#hasFormat">sd:hasFormat</a></p>
+            </td>
+          </tr>
+        
+      
+        
+          <tr>
+            <td>
+              <p>Domain</p>
+            </td>
+            <td>
+              <p><a href="https://bioschemas.org/FormalParameter">bio:FormalParameter</a></p>
+            </td>
+          </tr>
+        
+      
+        
+          <tr>
+            <td>
+              <p>Range</p>
+            </td>
+            <td>
+              <p><a href="http://www.w3.org/2001/XMLSchema#string">xsd:string</a></p>
+            </td>
+          </tr>
+        
+      
+    </table>
+    
+    <h3 id="availableInRegistry">Available in registry</h3>
+    <table class="def">
+      
+        
+          <tr>
+            <td>
+              <p>Label</p>
+            </td>
+            <td>
+              <p>Available in registry</p>
+            </td>
+          </tr>
+        
+      
+        
+          <tr>
+            <td>
+              <p>Definition</p>
+            </td>
+            <td>
+              <p>URL to registry of where software image can be found. For example, https://hub.docker.com/r/pytorch/pytorch</p>
+            </td>
+          </tr>
+        
+      
+       
+      
+        
+          <tr>
+            <td>
+              <p>Property</p>
+            </td>
+            <td>
+              <p><a href="https://w3id.org/okn/o/sd#availableInRegistry">sd:availableInRegistry</a></p>
+            </td>
+          </tr>
+        
+      
+        
+          <tr>
+            <td>
+              <p>Domain</p>
+            </td>
+            <td>
+              <p><a href="https://w3id.org/okn/o/sd#SoftwareImage">sd:SoftwareImage</a></p>
+            </td>
+          </tr>
+        
+      
+        
+          <tr>
+            <td>
+              <p>Range</p>
+            </td>
+            <td>
+              <p></p>
+            </td>
+          </tr>
+        
+      
+    </table>
+    
+    <h3 id="hasDimensionality">Has dimensionality</h3>
+    <table class="def">
+      
+        
+          <tr>
+            <td>
+              <p>Label</p>
+            </td>
+            <td>
+              <p>Has dimensionality</p>
+            </td>
+          </tr>
+        
+      
+        
+          <tr>
+            <td>
+              <p>Definition</p>
+            </td>
+            <td>
+              <p>Property to indicate dimensionality of the input or output of a dataset specification</p>
+            </td>
+          </tr>
+        
+      
+       
+      
+        
+          <tr>
+            <td>
+              <p>Property</p>
+            </td>
+            <td>
+              <p><a href="https://w3id.org/okn/o/sd#hasDimensionality">sd:hasDimensionality</a></p>
+            </td>
+          </tr>
+        
+      
+        
+          <tr>
+            <td>
+              <p>Domain</p>
+            </td>
+            <td>
+              <p><a href="https://bioschemas.org/FormalParameter">bio:FormalParameter</a></p>
+            </td>
+          </tr>
+        
+      
+        
+          <tr>
+            <td>
+              <p>Range</p>
+            </td>
+            <td>
+              <p><a href="http://www.w3.org/2001/XMLSchema#integer">xsd:integer</a></p>
+            </td>
+          </tr>
+        
+      
+    </table>
+    
+  </section>
+
+
+  <section>
+    <h2>Enumeration Values</h2>
+
+    
+    
+    <h3 id="ImagingModalityEnum">Imaging Modality Enumeration</h3>
+    <table class="def">
+      <tr>
+        <td>Term</td>
+        <td><a href="#ImagingModalityEnum">imag:ImagingModalityEnum</a></td>
+      </tr>
+    </table>
+    
+    <h4 id="Any">Any</h4>
+    <table class="def">
+      
+         
+          <tr>
+            <td>
+              <p>Label</p>
+            </td>
+            <td>
+              <p>Any</p>
+            </td>
+          </tr>
+        
+      
+         
+          <tr>
+            <td>
+              <p>Definition</p>
+            </td>
+            <td>
+              <p></p>
+            </td>
+          </tr>
+        
+      
+        
+      
+         
+          <tr>
+            <td>
+              <p>Term</p>
+            </td>
+            <td>
+              <p><a href="#Any">imag:Any</a></p>
+            </td>
+          </tr>
+        
+      
+         
+          <tr>
+            <td>
+              <p>Groups</p>
+            </td>
+            <td>
+              <p><a href="#ImagingModalityEnum">imag:ImagingModalityEnum</a></p>
+            </td>
+          </tr>
+        
+      
+         
+          <tr>
+            <td>
+              <p>Property</p>
+            </td>
+            <td>
+              <p><a href="#imagingModality">imag:imagingModality</a></p>
+            </td>
+          </tr>
+        
+      
+    </table>
+    
+    <h4 id="CAT">CAT</h4>
+    <table class="def">
+      
+         
+          <tr>
+            <td>
+              <p>Label</p>
+            </td>
+            <td>
+              <p>CAT</p>
+            </td>
+          </tr>
+        
+      
+         
+          <tr>
+            <td>
+              <p>Definition</p>
+            </td>
+            <td>
+              <p></p>
+            </td>
+          </tr>
+        
+      
+        
+      
+         
+          <tr>
+            <td>
+              <p>Term</p>
+            </td>
+            <td>
+              <p><a href="#CAT">imag:CAT</a></p>
+            </td>
+          </tr>
+        
+      
+         
+          <tr>
+            <td>
+              <p>Groups</p>
+            </td>
+            <td>
+              <p><a href="#ImagingModalityEnum">imag:ImagingModalityEnum</a></p>
+            </td>
+          </tr>
+        
+      
+         
+          <tr>
+            <td>
+              <p>Property</p>
+            </td>
+            <td>
+              <p><a href="#imagingModality">imag:imagingModality</a></p>
+            </td>
+          </tr>
+        
+      
+    </table>
+    
+    <h4 id="MRI">MRI</h4>
+    <table class="def">
+      
+         
+          <tr>
+            <td>
+              <p>Label</p>
+            </td>
+            <td>
+              <p>MRI</p>
+            </td>
+          </tr>
+        
+      
+         
+          <tr>
+            <td>
+              <p>Definition</p>
+            </td>
+            <td>
+              <p></p>
+            </td>
+          </tr>
+        
+      
+        
+      
+         
+          <tr>
+            <td>
+              <p>Term</p>
+            </td>
+            <td>
+              <p><a href="#MRI">imag:MRI</a></p>
+            </td>
+          </tr>
+        
+      
+         
+          <tr>
+            <td>
+              <p>Groups</p>
+            </td>
+            <td>
+              <p><a href="#ImagingModalityEnum">imag:ImagingModalityEnum</a></p>
+            </td>
+          </tr>
+        
+      
+         
+          <tr>
+            <td>
+              <p>Property</p>
+            </td>
+            <td>
+              <p><a href="#imagingModality">imag:imagingModality</a></p>
+            </td>
+          </tr>
+        
+      
+    </table>
+    
+    <h4 id="XRay">X-ray</h4>
+    <table class="def">
+      
+         
+          <tr>
+            <td>
+              <p>Label</p>
+            </td>
+            <td>
+              <p>X-ray</p>
+            </td>
+          </tr>
+        
+      
+         
+          <tr>
+            <td>
+              <p>Definition</p>
+            </td>
+            <td>
+              <p></p>
+            </td>
+          </tr>
+        
+      
+        
+      
+         
+          <tr>
+            <td>
+              <p>Term</p>
+            </td>
+            <td>
+              <p><a href="#XRay">imag:XRay</a></p>
+            </td>
+          </tr>
+        
+      
+         
+          <tr>
+            <td>
+              <p>Groups</p>
+            </td>
+            <td>
+              <p><a href="#ImagingModalityEnum">imag:ImagingModalityEnum</a></p>
+            </td>
+          </tr>
+        
+      
+         
+          <tr>
+            <td>
+              <p>Property</p>
+            </td>
+            <td>
+              <p><a href="#imagingModality">imag:imagingModality</a></p>
+            </td>
+          </tr>
+        
+      
+    </table>
+    
+    
+    <h3 id="ApplicationCategoryEnum">Application Category Enumeration</h3>
+    <table class="def">
+      <tr>
+        <td>Term</td>
+        <td><a href="#ApplicationCategoryEnum">imag:ApplicationCategoryEnum</a></td>
+      </tr>
+    </table>
+    
+    <h4 id="DesktopApp">Desktop app</h4>
+    <table class="def">
+      
+         
+          <tr>
+            <td>
+              <p>Label</p>
+            </td>
+            <td>
+              <p>Desktop app</p>
+            </td>
+          </tr>
+        
+      
+         
+          <tr>
+            <td>
+              <p>Definition</p>
+            </td>
+            <td>
+              <p></p>
+            </td>
+          </tr>
+        
+      
+        
+      
+         
+          <tr>
+            <td>
+              <p>Term</p>
+            </td>
+            <td>
+              <p><a href="#DesktopApp">imag:DesktopApp</a></p>
+            </td>
+          </tr>
+        
+      
+         
+          <tr>
+            <td>
+              <p>Groups</p>
+            </td>
+            <td>
+              <p><a href="#ApplicationCategoryEnum">imag:ApplicationCategoryEnum</a></p>
+            </td>
+          </tr>
+        
+      
+         
+          <tr>
+            <td>
+              <p>Property</p>
+            </td>
+            <td>
+              <p><a href="http://schema.org/applicationCategory">schema:applicationCategory</a></p>
+            </td>
+          </tr>
+        
+      
+    </table>
+    
+    <h4 id="Library">Library</h4>
+    <table class="def">
+      
+         
+          <tr>
+            <td>
+              <p>Label</p>
+            </td>
+            <td>
+              <p>Library</p>
+            </td>
+          </tr>
+        
+      
+         
+          <tr>
+            <td>
+              <p>Definition</p>
+            </td>
+            <td>
+              <p></p>
+            </td>
+          </tr>
+        
+      
+        
+      
+         
+          <tr>
+            <td>
+              <p>Term</p>
+            </td>
+            <td>
+              <p><a href="#Library">imag:Library</a></p>
+            </td>
+          </tr>
+        
+      
+         
+          <tr>
+            <td>
+              <p>Groups</p>
+            </td>
+            <td>
+              <p><a href="#ApplicationCategoryEnum">imag:ApplicationCategoryEnum</a></p>
+            </td>
+          </tr>
+        
+      
+         
+          <tr>
+            <td>
+              <p>Property</p>
+            </td>
+            <td>
+              <p><a href="http://schema.org/applicationCategory">schema:applicationCategory</a></p>
+            </td>
+          </tr>
+        
+      
+    </table>
+    
+    <h4 id="Notebook">Notebook</h4>
+    <table class="def">
+      
+         
+          <tr>
+            <td>
+              <p>Label</p>
+            </td>
+            <td>
+              <p>Notebook</p>
+            </td>
+          </tr>
+        
+      
+         
+          <tr>
+            <td>
+              <p>Definition</p>
+            </td>
+            <td>
+              <p></p>
+            </td>
+          </tr>
+        
+      
+        
+      
+         
+          <tr>
+            <td>
+              <p>Term</p>
+            </td>
+            <td>
+              <p><a href="#Notebook">imag:Notebook</a></p>
+            </td>
+          </tr>
+        
+      
+         
+          <tr>
+            <td>
+              <p>Groups</p>
+            </td>
+            <td>
+              <p><a href="#ApplicationCategoryEnum">imag:ApplicationCategoryEnum</a></p>
+            </td>
+          </tr>
+        
+      
+         
+          <tr>
+            <td>
+              <p>Property</p>
+            </td>
+            <td>
+              <p><a href="http://schema.org/applicationCategory">schema:applicationCategory</a></p>
+            </td>
+          </tr>
+        
+      
+    </table>
+    
+    <h4 id="Plugin">Plugin</h4>
+    <table class="def">
+      
+         
+          <tr>
+            <td>
+              <p>Label</p>
+            </td>
+            <td>
+              <p>Plugin</p>
+            </td>
+          </tr>
+        
+      
+         
+          <tr>
+            <td>
+              <p>Definition</p>
+            </td>
+            <td>
+              <p></p>
+            </td>
+          </tr>
+        
+      
+        
+      
+         
+          <tr>
+            <td>
+              <p>Term</p>
+            </td>
+            <td>
+              <p><a href="#Plugin">imag:Plugin</a></p>
+            </td>
+          </tr>
+        
+      
+         
+          <tr>
+            <td>
+              <p>Groups</p>
+            </td>
+            <td>
+              <p><a href="#ApplicationCategoryEnum">imag:ApplicationCategoryEnum</a></p>
+            </td>
+          </tr>
+        
+      
+         
+          <tr>
+            <td>
+              <p>Property</p>
+            </td>
+            <td>
+              <p><a href="http://schema.org/applicationCategory">schema:applicationCategory</a></p>
+            </td>
+          </tr>
+        
+      
+    </table>
+    
+    <h4 id="WebApp">Web app</h4>
+    <table class="def">
+      
+         
+          <tr>
+            <td>
+              <p>Label</p>
+            </td>
+            <td>
+              <p>Web app</p>
+            </td>
+          </tr>
+        
+      
+         
+          <tr>
+            <td>
+              <p>Definition</p>
+            </td>
+            <td>
+              <p></p>
+            </td>
+          </tr>
+        
+      
+        
+      
+         
+          <tr>
+            <td>
+              <p>Term</p>
+            </td>
+            <td>
+              <p><a href="#WebApp">imag:WebApp</a></p>
+            </td>
+          </tr>
+        
+      
+         
+          <tr>
+            <td>
+              <p>Groups</p>
+            </td>
+            <td>
+              <p><a href="#ApplicationCategoryEnum">imag:ApplicationCategoryEnum</a></p>
+            </td>
+          </tr>
+        
+      
+         
+          <tr>
+            <td>
+              <p>Property</p>
+            </td>
+            <td>
+              <p><a href="http://schema.org/applicationCategory">schema:applicationCategory</a></p>
+            </td>
+          </tr>
+        
+      
+    </table>
+    
+    
+    <h3 id="ProcessorRequirementsEnum">Processor Requirements Enumeration</h3>
+    <table class="def">
+      <tr>
+        <td>Term</td>
+        <td><a href="#ProcessorRequirementsEnum">imag:ProcessorRequirementsEnum</a></td>
+      </tr>
+    </table>
+    
+    <h4 id="AMD64">AMD64</h4>
+    <table class="def">
+      
+         
+          <tr>
+            <td>
+              <p>Label</p>
+            </td>
+            <td>
+              <p>AMD64</p>
+            </td>
+          </tr>
+        
+      
+         
+          <tr>
+            <td>
+              <p>Definition</p>
+            </td>
+            <td>
+              <p></p>
+            </td>
+          </tr>
+        
+      
+        
+      
+         
+          <tr>
+            <td>
+              <p>Term</p>
+            </td>
+            <td>
+              <p><a href="#AMD64">imag:AMD64</a></p>
+            </td>
+          </tr>
+        
+      
+         
+          <tr>
+            <td>
+              <p>Groups</p>
+            </td>
+            <td>
+              <p><a href="#ProcessorRequirementsEnum">imag:ProcessorRequirementsEnum</a></p>
+            </td>
+          </tr>
+        
+      
+         
+          <tr>
+            <td>
+              <p>Property</p>
+            </td>
+            <td>
+              <p><a href="http://schema.org/processorRequirements">schema:processorRequirements</a></p>
+            </td>
+          </tr>
+        
+      
+    </table>
+    
+    <h4 id="ARM64">ARM64</h4>
+    <table class="def">
+      
+         
+          <tr>
+            <td>
+              <p>Label</p>
+            </td>
+            <td>
+              <p>ARM64</p>
+            </td>
+          </tr>
+        
+      
+         
+          <tr>
+            <td>
+              <p>Definition</p>
+            </td>
+            <td>
+              <p></p>
+            </td>
+          </tr>
+        
+      
+        
+      
+         
+          <tr>
+            <td>
+              <p>Term</p>
+            </td>
+            <td>
+              <p><a href="#ARM64">imag:ARM64</a></p>
+            </td>
+          </tr>
+        
+      
+         
+          <tr>
+            <td>
+              <p>Groups</p>
+            </td>
+            <td>
+              <p><a href="#ProcessorRequirementsEnum">imag:ProcessorRequirementsEnum</a></p>
+            </td>
+          </tr>
+        
+      
+         
+          <tr>
+            <td>
+              <p>Property</p>
+            </td>
+            <td>
+              <p><a href="http://schema.org/processorRequirements">schema:processorRequirements</a></p>
+            </td>
+          </tr>
+        
+      
+    </table>
+    
+    <h4 id="NoneSoftwareRequirement">None</h4>
+    <table class="def">
+      
+         
+          <tr>
+            <td>
+              <p>Label</p>
+            </td>
+            <td>
+              <p>None</p>
+            </td>
+          </tr>
+        
+      
+         
+          <tr>
+            <td>
+              <p>Definition</p>
+            </td>
+            <td>
+              <p></p>
+            </td>
+          </tr>
+        
+      
+        
+      
+         
+          <tr>
+            <td>
+              <p>Term</p>
+            </td>
+            <td>
+              <p><a href="#NoneSoftwareRequirement">imag:NoneSoftwareRequirement</a></p>
+            </td>
+          </tr>
+        
+      
+         
+          <tr>
+            <td>
+              <p>Groups</p>
+            </td>
+            <td>
+              <p><a href="#AffiliationEnum">imag:AffiliationEnum</a>, <a href="#SoftwareRequirementsEnum">imag:SoftwareRequirementsEnum</a>, <a href="#ProcessorRequirementsEnum">imag:ProcessorRequirementsEnum</a></p>
+            </td>
+          </tr>
+        
+      
+         
+          <tr>
+            <td>
+              <p>Property</p>
+            </td>
+            <td>
+              <p><a href="http://schema.org/affiliation">schema:affiliation</a>, <a href="http://schema.org/processorRequirements">schema:processorRequirements</a>, <a href="http://schema.org/softwareRequirements">schema:softwareRequirements</a></p>
+            </td>
+          </tr>
+        
+      
+    </table>
+    
+    
+    <h3 id="AffiliationEnum">Affiliation Enumeration</h3>
+    <table class="def">
+      <tr>
+        <td>Term</td>
+        <td><a href="#AffiliationEnum">imag:AffiliationEnum</a></td>
+      </tr>
+    </table>
+    
+    <h4 id="EPFL">EPFL</h4>
+    <table class="def">
+      
+         
+          <tr>
+            <td>
+              <p>Label</p>
+            </td>
+            <td>
+              <p>EPFL</p>
+            </td>
+          </tr>
+        
+      
+         
+          <tr>
+            <td>
+              <p>Definition</p>
+            </td>
+            <td>
+              <p></p>
+            </td>
+          </tr>
+        
+      
+        
+      
+         
+          <tr>
+            <td>
+              <p>Term</p>
+            </td>
+            <td>
+              <p><a href="#EPFL">imag:EPFL</a></p>
+            </td>
+          </tr>
+        
+      
+         
+          <tr>
+            <td>
+              <p>Groups</p>
+            </td>
+            <td>
+              <p><a href="#AffiliationEnum">imag:AffiliationEnum</a></p>
+            </td>
+          </tr>
+        
+      
+         
+          <tr>
+            <td>
+              <p>Property</p>
+            </td>
+            <td>
+              <p><a href="http://schema.org/affiliation">schema:affiliation</a></p>
+            </td>
+          </tr>
+        
+      
+    </table>
+    
+    <h4 id="ETHZ">ETHZ</h4>
+    <table class="def">
+      
+         
+          <tr>
+            <td>
+              <p>Label</p>
+            </td>
+            <td>
+              <p>ETHZ</p>
+            </td>
+          </tr>
+        
+      
+         
+          <tr>
+            <td>
+              <p>Definition</p>
+            </td>
+            <td>
+              <p></p>
+            </td>
+          </tr>
+        
+      
+        
+      
+         
+          <tr>
+            <td>
+              <p>Term</p>
+            </td>
+            <td>
+              <p><a href="#ETHZ">imag:ETHZ</a></p>
+            </td>
+          </tr>
+        
+      
+         
+          <tr>
+            <td>
+              <p>Groups</p>
+            </td>
+            <td>
+              <p><a href="#AffiliationEnum">imag:AffiliationEnum</a></p>
+            </td>
+          </tr>
+        
+      
+         
+          <tr>
+            <td>
+              <p>Property</p>
+            </td>
+            <td>
+              <p><a href="http://schema.org/affiliation">schema:affiliation</a></p>
+            </td>
+          </tr>
+        
+      
+    </table>
+    
+    <h4 id="NoneSoftwareRequirement">None</h4>
+    <table class="def">
+      
+         
+          <tr>
+            <td>
+              <p>Label</p>
+            </td>
+            <td>
+              <p>None</p>
+            </td>
+          </tr>
+        
+      
+         
+          <tr>
+            <td>
+              <p>Definition</p>
+            </td>
+            <td>
+              <p></p>
+            </td>
+          </tr>
+        
+      
+        
+      
+         
+          <tr>
+            <td>
+              <p>Term</p>
+            </td>
+            <td>
+              <p><a href="#NoneSoftwareRequirement">imag:NoneSoftwareRequirement</a></p>
+            </td>
+          </tr>
+        
+      
+         
+          <tr>
+            <td>
+              <p>Groups</p>
+            </td>
+            <td>
+              <p><a href="#AffiliationEnum">imag:AffiliationEnum</a>, <a href="#SoftwareRequirementsEnum">imag:SoftwareRequirementsEnum</a>, <a href="#ProcessorRequirementsEnum">imag:ProcessorRequirementsEnum</a></p>
+            </td>
+          </tr>
+        
+      
+         
+          <tr>
+            <td>
+              <p>Property</p>
+            </td>
+            <td>
+              <p><a href="http://schema.org/affiliation">schema:affiliation</a>, <a href="http://schema.org/processorRequirements">schema:processorRequirements</a>, <a href="http://schema.org/softwareRequirements">schema:softwareRequirements</a></p>
+            </td>
+          </tr>
+        
+      
+    </table>
+    
+    <h4 id="UNIL">UNIL</h4>
+    <table class="def">
+      
+         
+          <tr>
+            <td>
+              <p>Label</p>
+            </td>
+            <td>
+              <p>UNIL</p>
+            </td>
+          </tr>
+        
+      
+         
+          <tr>
+            <td>
+              <p>Definition</p>
+            </td>
+            <td>
+              <p></p>
+            </td>
+          </tr>
+        
+      
+        
+      
+         
+          <tr>
+            <td>
+              <p>Term</p>
+            </td>
+            <td>
+              <p><a href="#UNIL">imag:UNIL</a></p>
+            </td>
+          </tr>
+        
+      
+         
+          <tr>
+            <td>
+              <p>Groups</p>
+            </td>
+            <td>
+              <p><a href="#AffiliationEnum">imag:AffiliationEnum</a></p>
+            </td>
+          </tr>
+        
+      
+         
+          <tr>
+            <td>
+              <p>Property</p>
+            </td>
+            <td>
+              <p><a href="http://schema.org/affiliation">schema:affiliation</a></p>
+            </td>
+          </tr>
+        
+      
+    </table>
+    
+    <h4 id="UZH">UZH</h4>
+    <table class="def">
+      
+         
+          <tr>
+            <td>
+              <p>Label</p>
+            </td>
+            <td>
+              <p>UZH</p>
+            </td>
+          </tr>
+        
+      
+         
+          <tr>
+            <td>
+              <p>Definition</p>
+            </td>
+            <td>
+              <p></p>
+            </td>
+          </tr>
+        
+      
+        
+      
+         
+          <tr>
+            <td>
+              <p>Term</p>
+            </td>
+            <td>
+              <p><a href="#UZH">imag:UZH</a></p>
+            </td>
+          </tr>
+        
+      
+         
+          <tr>
+            <td>
+              <p>Groups</p>
+            </td>
+            <td>
+              <p><a href="#AffiliationEnum">imag:AffiliationEnum</a></p>
+            </td>
+          </tr>
+        
+      
+         
+          <tr>
+            <td>
+              <p>Property</p>
+            </td>
+            <td>
+              <p><a href="http://schema.org/affiliation">schema:affiliation</a></p>
+            </td>
+          </tr>
+        
+      
+    </table>
+    
+    
+    <h3 id="SoftwareRequirementsEnum">Software Requirements Enumeration</h3>
+    <table class="def">
+      <tr>
+        <td>Term</td>
+        <td><a href="#SoftwareRequirementsEnum">imag:SoftwareRequirementsEnum</a></td>
+      </tr>
+    </table>
+    
+    <h4 id="CUDA_10_1">CUDA 10.1</h4>
+    <table class="def">
+      
+         
+          <tr>
+            <td>
+              <p>Label</p>
+            </td>
+            <td>
+              <p>CUDA 10.1</p>
+            </td>
+          </tr>
+        
+      
+         
+          <tr>
+            <td>
+              <p>Definition</p>
+            </td>
+            <td>
+              <p></p>
+            </td>
+          </tr>
+        
+      
+        
+      
+         
+          <tr>
+            <td>
+              <p>Term</p>
+            </td>
+            <td>
+              <p><a href="#CUDA_10_1">imag:CUDA_10_1</a></p>
+            </td>
+          </tr>
+        
+      
+         
+          <tr>
+            <td>
+              <p>Groups</p>
+            </td>
+            <td>
+              <p><a href="#SoftwareRequirementsEnum">imag:SoftwareRequirementsEnum</a></p>
+            </td>
+          </tr>
+        
+      
+         
+          <tr>
+            <td>
+              <p>Property</p>
+            </td>
+            <td>
+              <p><a href="http://schema.org/softwareRequirements">schema:softwareRequirements</a></p>
+            </td>
+          </tr>
+        
+      
+    </table>
+    
+    <h4 id="CUDA_11_8">CUDA 11.8</h4>
+    <table class="def">
+      
+         
+          <tr>
+            <td>
+              <p>Label</p>
+            </td>
+            <td>
+              <p>CUDA 11.8</p>
+            </td>
+          </tr>
+        
+      
+         
+          <tr>
+            <td>
+              <p>Definition</p>
+            </td>
+            <td>
+              <p></p>
+            </td>
+          </tr>
+        
+      
+        
+      
+         
+          <tr>
+            <td>
+              <p>Term</p>
+            </td>
+            <td>
+              <p><a href="#CUDA_11_8">imag:CUDA_11_8</a></p>
+            </td>
+          </tr>
+        
+      
+         
+          <tr>
+            <td>
+              <p>Groups</p>
+            </td>
+            <td>
+              <p><a href="#SoftwareRequirementsEnum">imag:SoftwareRequirementsEnum</a></p>
+            </td>
+          </tr>
+        
+      
+         
+          <tr>
+            <td>
+              <p>Property</p>
+            </td>
+            <td>
+              <p><a href="http://schema.org/softwareRequirements">schema:softwareRequirements</a></p>
+            </td>
+          </tr>
+        
+      
+    </table>
+    
+    <h4 id="CUDA_12_1">CUDA 12.1</h4>
+    <table class="def">
+      
+         
+          <tr>
+            <td>
+              <p>Label</p>
+            </td>
+            <td>
+              <p>CUDA 12.1</p>
+            </td>
+          </tr>
+        
+      
+         
+          <tr>
+            <td>
+              <p>Definition</p>
+            </td>
+            <td>
+              <p></p>
+            </td>
+          </tr>
+        
+      
+        
+      
+         
+          <tr>
+            <td>
+              <p>Term</p>
+            </td>
+            <td>
+              <p><a href="#CUDA_12_1">imag:CUDA_12_1</a></p>
+            </td>
+          </tr>
+        
+      
+         
+          <tr>
+            <td>
+              <p>Groups</p>
+            </td>
+            <td>
+              <p><a href="#SoftwareRequirementsEnum">imag:SoftwareRequirementsEnum</a></p>
+            </td>
+          </tr>
+        
+      
+         
+          <tr>
+            <td>
+              <p>Property</p>
+            </td>
+            <td>
+              <p><a href="http://schema.org/softwareRequirements">schema:softwareRequirements</a></p>
+            </td>
+          </tr>
+        
+      
+    </table>
+    
+    <h4 id="CUDA_9_0">CUDA 9.0</h4>
+    <table class="def">
+      
+         
+          <tr>
+            <td>
+              <p>Label</p>
+            </td>
+            <td>
+              <p>CUDA 9.0</p>
+            </td>
+          </tr>
+        
+      
+         
+          <tr>
+            <td>
+              <p>Definition</p>
+            </td>
+            <td>
+              <p></p>
+            </td>
+          </tr>
+        
+      
+        
+      
+         
+          <tr>
+            <td>
+              <p>Term</p>
+            </td>
+            <td>
+              <p><a href="#CUDA_9_0">imag:CUDA_9_0</a></p>
+            </td>
+          </tr>
+        
+      
+         
+          <tr>
+            <td>
+              <p>Groups</p>
+            </td>
+            <td>
+              <p><a href="#SoftwareRequirementsEnum">imag:SoftwareRequirementsEnum</a></p>
+            </td>
+          </tr>
+        
+      
+         
+          <tr>
+            <td>
+              <p>Property</p>
+            </td>
+            <td>
+              <p><a href="http://schema.org/softwareRequirements">schema:softwareRequirements</a></p>
+            </td>
+          </tr>
+        
+      
+    </table>
+    
+    <h4 id="NoneSoftwareRequirement">None</h4>
+    <table class="def">
+      
+         
+          <tr>
+            <td>
+              <p>Label</p>
+            </td>
+            <td>
+              <p>None</p>
+            </td>
+          </tr>
+        
+      
+         
+          <tr>
+            <td>
+              <p>Definition</p>
+            </td>
+            <td>
+              <p></p>
+            </td>
+          </tr>
+        
+      
+        
+      
+         
+          <tr>
+            <td>
+              <p>Term</p>
+            </td>
+            <td>
+              <p><a href="#NoneSoftwareRequirement">imag:NoneSoftwareRequirement</a></p>
+            </td>
+          </tr>
+        
+      
+         
+          <tr>
+            <td>
+              <p>Groups</p>
+            </td>
+            <td>
+              <p><a href="#AffiliationEnum">imag:AffiliationEnum</a>, <a href="#SoftwareRequirementsEnum">imag:SoftwareRequirementsEnum</a>, <a href="#ProcessorRequirementsEnum">imag:ProcessorRequirementsEnum</a></p>
+            </td>
+          </tr>
+        
+      
+         
+          <tr>
+            <td>
+              <p>Property</p>
+            </td>
+            <td>
+              <p><a href="http://schema.org/affiliation">schema:affiliation</a>, <a href="http://schema.org/processorRequirements">schema:processorRequirements</a>, <a href="http://schema.org/softwareRequirements">schema:softwareRequirements</a></p>
+            </td>
+          </tr>
+        
+      
+    </table>
+    
+    <h4 id="PyTorch_1_13">PyTorch 1.13</h4>
+    <table class="def">
+      
+         
+          <tr>
+            <td>
+              <p>Label</p>
+            </td>
+            <td>
+              <p>PyTorch 1.13</p>
+            </td>
+          </tr>
+        
+      
+         
+          <tr>
+            <td>
+              <p>Definition</p>
+            </td>
+            <td>
+              <p></p>
+            </td>
+          </tr>
+        
+      
+        
+      
+         
+          <tr>
+            <td>
+              <p>Term</p>
+            </td>
+            <td>
+              <p><a href="#PyTorch_1_13">imag:PyTorch_1_13</a></p>
+            </td>
+          </tr>
+        
+      
+         
+          <tr>
+            <td>
+              <p>Groups</p>
+            </td>
+            <td>
+              <p><a href="#SoftwareRequirementsEnum">imag:SoftwareRequirementsEnum</a></p>
+            </td>
+          </tr>
+        
+      
+         
+          <tr>
+            <td>
+              <p>Property</p>
+            </td>
+            <td>
+              <p><a href="http://schema.org/softwareRequirements">schema:softwareRequirements</a></p>
+            </td>
+          </tr>
+        
+      
+    </table>
+    
+    <h4 id="PyTorch_2_0">PyTorch 2.0</h4>
+    <table class="def">
+      
+         
+          <tr>
+            <td>
+              <p>Label</p>
+            </td>
+            <td>
+              <p>PyTorch 2.0</p>
+            </td>
+          </tr>
+        
+      
+         
+          <tr>
+            <td>
+              <p>Definition</p>
+            </td>
+            <td>
+              <p></p>
+            </td>
+          </tr>
+        
+      
+        
+      
+         
+          <tr>
+            <td>
+              <p>Term</p>
+            </td>
+            <td>
+              <p><a href="#PyTorch_2_0">imag:PyTorch_2_0</a></p>
+            </td>
+          </tr>
+        
+      
+         
+          <tr>
+            <td>
+              <p>Groups</p>
+            </td>
+            <td>
+              <p><a href="#SoftwareRequirementsEnum">imag:SoftwareRequirementsEnum</a></p>
+            </td>
+          </tr>
+        
+      
+         
+          <tr>
+            <td>
+              <p>Property</p>
+            </td>
+            <td>
+              <p><a href="http://schema.org/softwareRequirements">schema:softwareRequirements</a></p>
+            </td>
+          </tr>
+        
+      
+    </table>
+    
+    <h4 id="PyTorch_2_1">PyTorch 2.1</h4>
+    <table class="def">
+      
+         
+          <tr>
+            <td>
+              <p>Label</p>
+            </td>
+            <td>
+              <p>PyTorch 2.1</p>
+            </td>
+          </tr>
+        
+      
+         
+          <tr>
+            <td>
+              <p>Definition</p>
+            </td>
+            <td>
+              <p></p>
+            </td>
+          </tr>
+        
+      
+        
+      
+         
+          <tr>
+            <td>
+              <p>Term</p>
+            </td>
+            <td>
+              <p><a href="#PyTorch_2_1">imag:PyTorch_2_1</a></p>
+            </td>
+          </tr>
+        
+      
+         
+          <tr>
+            <td>
+              <p>Groups</p>
+            </td>
+            <td>
+              <p><a href="#SoftwareRequirementsEnum">imag:SoftwareRequirementsEnum</a></p>
+            </td>
+          </tr>
+        
+      
+         
+          <tr>
+            <td>
+              <p>Property</p>
+            </td>
+            <td>
+              <p><a href="http://schema.org/softwareRequirements">schema:softwareRequirements</a></p>
+            </td>
+          </tr>
+        
+      
+    </table>
+    
+    <h4 id="PyTorch_2_2">PyTorch 2.2</h4>
+    <table class="def">
+      
+         
+          <tr>
+            <td>
+              <p>Label</p>
+            </td>
+            <td>
+              <p>PyTorch 2.2</p>
+            </td>
+          </tr>
+        
+      
+         
+          <tr>
+            <td>
+              <p>Definition</p>
+            </td>
+            <td>
+              <p></p>
+            </td>
+          </tr>
+        
+      
+        
+      
+         
+          <tr>
+            <td>
+              <p>Term</p>
+            </td>
+            <td>
+              <p><a href="#PyTorch_2_2">imag:PyTorch_2_2</a></p>
+            </td>
+          </tr>
+        
+      
+         
+          <tr>
+            <td>
+              <p>Groups</p>
+            </td>
+            <td>
+              <p><a href="#SoftwareRequirementsEnum">imag:SoftwareRequirementsEnum</a></p>
+            </td>
+          </tr>
+        
+      
+         
+          <tr>
+            <td>
+              <p>Property</p>
+            </td>
+            <td>
+              <p><a href="http://schema.org/softwareRequirements">schema:softwareRequirements</a></p>
+            </td>
+          </tr>
+        
+      
+    </table>
+    
+    <h4 id="Tensorflow_1_4">Tensorflow 1.4</h4>
+    <table class="def">
+      
+         
+          <tr>
+            <td>
+              <p>Label</p>
+            </td>
+            <td>
+              <p>Tensorflow 1.4</p>
+            </td>
+          </tr>
+        
+      
+         
+          <tr>
+            <td>
+              <p>Definition</p>
+            </td>
+            <td>
+              <p></p>
+            </td>
+          </tr>
+        
+      
+        
+      
+         
+          <tr>
+            <td>
+              <p>Term</p>
+            </td>
+            <td>
+              <p><a href="#Tensorflow_1_4">imag:Tensorflow_1_4</a></p>
+            </td>
+          </tr>
+        
+      
+         
+          <tr>
+            <td>
+              <p>Groups</p>
+            </td>
+            <td>
+              <p><a href="#SoftwareRequirementsEnum">imag:SoftwareRequirementsEnum</a></p>
+            </td>
+          </tr>
+        
+      
+         
+          <tr>
+            <td>
+              <p>Property</p>
+            </td>
+            <td>
+              <p><a href="http://schema.org/softwareRequirements">schema:softwareRequirements</a></p>
+            </td>
+          </tr>
+        
+      
+    </table>
+    
+    <h4 id="Tensorflow_1_5">Tensorflow 1.5</h4>
+    <table class="def">
+      
+         
+          <tr>
+            <td>
+              <p>Label</p>
+            </td>
+            <td>
+              <p>Tensorflow 1.5</p>
+            </td>
+          </tr>
+        
+      
+         
+          <tr>
+            <td>
+              <p>Definition</p>
+            </td>
+            <td>
+              <p></p>
+            </td>
+          </tr>
+        
+      
+        
+      
+         
+          <tr>
+            <td>
+              <p>Term</p>
+            </td>
+            <td>
+              <p><a href="#Tensorflow_1_5">imag:Tensorflow_1_5</a></p>
+            </td>
+          </tr>
+        
+      
+         
+          <tr>
+            <td>
+              <p>Groups</p>
+            </td>
+            <td>
+              <p><a href="#SoftwareRequirementsEnum">imag:SoftwareRequirementsEnum</a></p>
+            </td>
+          </tr>
+        
+      
+         
+          <tr>
+            <td>
+              <p>Property</p>
+            </td>
+            <td>
+              <p><a href="http://schema.org/softwareRequirements">schema:softwareRequirements</a></p>
+            </td>
+          </tr>
+        
+      
+    </table>
+    
+    <h4 id="Tensorflow_1_8">Tensorflow 1.8</h4>
+    <table class="def">
+      
+         
+          <tr>
+            <td>
+              <p>Label</p>
+            </td>
+            <td>
+              <p>Tensorflow 1.8</p>
+            </td>
+          </tr>
+        
+      
+         
+          <tr>
+            <td>
+              <p>Definition</p>
+            </td>
+            <td>
+              <p></p>
+            </td>
+          </tr>
+        
+      
+        
+      
+         
+          <tr>
+            <td>
+              <p>Term</p>
+            </td>
+            <td>
+              <p><a href="#Tensorflow_1_8">imag:Tensorflow_1_8</a></p>
+            </td>
+          </tr>
+        
+      
+         
+          <tr>
+            <td>
+              <p>Groups</p>
+            </td>
+            <td>
+              <p><a href="#SoftwareRequirementsEnum">imag:SoftwareRequirementsEnum</a></p>
+            </td>
+          </tr>
+        
+      
+         
+          <tr>
+            <td>
+              <p>Property</p>
+            </td>
+            <td>
+              <p><a href="http://schema.org/softwareRequirements">schema:softwareRequirements</a></p>
+            </td>
+          </tr>
+        
+      
+    </table>
+    
+    <h4 id="Tensorflow_2_0">Tensorflow 2.0</h4>
+    <table class="def">
+      
+         
+          <tr>
+            <td>
+              <p>Label</p>
+            </td>
+            <td>
+              <p>Tensorflow 2.0</p>
+            </td>
+          </tr>
+        
+      
+         
+          <tr>
+            <td>
+              <p>Definition</p>
+            </td>
+            <td>
+              <p></p>
+            </td>
+          </tr>
+        
+      
+        
+      
+         
+          <tr>
+            <td>
+              <p>Term</p>
+            </td>
+            <td>
+              <p><a href="#Tensorflow_2_0">imag:Tensorflow_2_0</a></p>
+            </td>
+          </tr>
+        
+      
+         
+          <tr>
+            <td>
+              <p>Groups</p>
+            </td>
+            <td>
+              <p><a href="#SoftwareRequirementsEnum">imag:SoftwareRequirementsEnum</a></p>
+            </td>
+          </tr>
+        
+      
+         
+          <tr>
+            <td>
+              <p>Property</p>
+            </td>
+            <td>
+              <p><a href="http://schema.org/softwareRequirements">schema:softwareRequirements</a></p>
+            </td>
+          </tr>
+        
+      
+    </table>
+    
+    <h4 id="Tensorflow_2_15">Tensorflow 2.15</h4>
+    <table class="def">
+      
+         
+          <tr>
+            <td>
+              <p>Label</p>
+            </td>
+            <td>
+              <p>Tensorflow 2.15</p>
+            </td>
+          </tr>
+        
+      
+         
+          <tr>
+            <td>
+              <p>Definition</p>
+            </td>
+            <td>
+              <p></p>
+            </td>
+          </tr>
+        
+      
+        
+      
+         
+          <tr>
+            <td>
+              <p>Term</p>
+            </td>
+            <td>
+              <p><a href="#Tensorflow_2_15">imag:Tensorflow_2_15</a></p>
+            </td>
+          </tr>
+        
+      
+         
+          <tr>
+            <td>
+              <p>Groups</p>
+            </td>
+            <td>
+              <p><a href="#SoftwareRequirementsEnum">imag:SoftwareRequirementsEnum</a></p>
+            </td>
+          </tr>
+        
+      
+         
+          <tr>
+            <td>
+              <p>Property</p>
+            </td>
+            <td>
+              <p><a href="http://schema.org/softwareRequirements">schema:softwareRequirements</a></p>
+            </td>
+          </tr>
+        
+      
+    </table>
+    
+    <h4 id="Tensorflow_2_2">Tensorflow 2.2</h4>
+    <table class="def">
+      
+         
+          <tr>
+            <td>
+              <p>Label</p>
+            </td>
+            <td>
+              <p>Tensorflow 2.2</p>
+            </td>
+          </tr>
+        
+      
+         
+          <tr>
+            <td>
+              <p>Definition</p>
+            </td>
+            <td>
+              <p></p>
+            </td>
+          </tr>
+        
+      
+        
+      
+         
+          <tr>
+            <td>
+              <p>Term</p>
+            </td>
+            <td>
+              <p><a href="#Tensorflow_2_2">imag:Tensorflow_2_2</a></p>
+            </td>
+          </tr>
+        
+      
+         
+          <tr>
+            <td>
+              <p>Groups</p>
+            </td>
+            <td>
+              <p><a href="#SoftwareRequirementsEnum">imag:SoftwareRequirementsEnum</a></p>
+            </td>
+          </tr>
+        
+      
+         
+          <tr>
+            <td>
+              <p>Property</p>
+            </td>
+            <td>
+              <p><a href="http://schema.org/softwareRequirements">schema:softwareRequirements</a></p>
+            </td>
+          </tr>
+        
+      
+    </table>
+    
+    <h4 id="Tensorflow_2_4">Tensorflow 2.4</h4>
+    <table class="def">
+      
+         
+          <tr>
+            <td>
+              <p>Label</p>
+            </td>
+            <td>
+              <p>Tensorflow 2.4</p>
+            </td>
+          </tr>
+        
+      
+         
+          <tr>
+            <td>
+              <p>Definition</p>
+            </td>
+            <td>
+              <p></p>
+            </td>
+          </tr>
+        
+      
+        
+      
+         
+          <tr>
+            <td>
+              <p>Term</p>
+            </td>
+            <td>
+              <p><a href="#Tensorflow_2_4">imag:Tensorflow_2_4</a></p>
+            </td>
+          </tr>
+        
+      
+         
+          <tr>
+            <td>
+              <p>Groups</p>
+            </td>
+            <td>
+              <p><a href="#SoftwareRequirementsEnum">imag:SoftwareRequirementsEnum</a></p>
+            </td>
+          </tr>
+        
+      
+         
+          <tr>
+            <td>
+              <p>Property</p>
+            </td>
+            <td>
+              <p><a href="http://schema.org/softwareRequirements">schema:softwareRequirements</a></p>
+            </td>
+          </tr>
+        
+      
+    </table>
+    
+    
+    <h3 id="ImageObjectTagEnum">Image Object Tag Enumeration</h3>
+    <table class="def">
+      <tr>
+        <td>Term</td>
+        <td><a href="#ImageObjectTagEnum">imag:ImageObjectTagEnum</a></td>
+      </tr>
+    </table>
+    
+    <h4 id="AfterImage">after image</h4>
+    <table class="def">
+      
+         
+          <tr>
+            <td>
+              <p>Label</p>
+            </td>
+            <td>
+              <p>after image</p>
+            </td>
+          </tr>
+        
+      
+         
+          <tr>
+            <td>
+              <p>Definition</p>
+            </td>
+            <td>
+              <p></p>
+            </td>
+          </tr>
+        
+      
+        
+      
+         
+          <tr>
+            <td>
+              <p>Term</p>
+            </td>
+            <td>
+              <p><a href="#AfterImage">imag:AfterImage</a></p>
+            </td>
+          </tr>
+        
+      
+         
+          <tr>
+            <td>
+              <p>Groups</p>
+            </td>
+            <td>
+              <p><a href="#ImageObjectTagEnum">imag:ImageObjectTagEnum</a></p>
+            </td>
+          </tr>
+        
+      
+         
+          <tr>
+            <td>
+              <p>Property</p>
+            </td>
+            <td>
+              <p><a href="http://schema.org/keywords">schema:keywords</a></p>
+            </td>
+          </tr>
+        
+      
+    </table>
+    
+    <h4 id="AnimatedImage">animated image</h4>
+    <table class="def">
+      
+         
+          <tr>
+            <td>
+              <p>Label</p>
+            </td>
+            <td>
+              <p>animated image</p>
+            </td>
+          </tr>
+        
+      
+         
+          <tr>
+            <td>
+              <p>Definition</p>
+            </td>
+            <td>
+              <p></p>
+            </td>
+          </tr>
+        
+      
+        
+      
+         
+          <tr>
+            <td>
+              <p>Term</p>
+            </td>
+            <td>
+              <p><a href="#AnimatedImage">imag:AnimatedImage</a></p>
+            </td>
+          </tr>
+        
+      
+         
+          <tr>
+            <td>
+              <p>Groups</p>
+            </td>
+            <td>
+              <p><a href="#ImageObjectTagEnum">imag:ImageObjectTagEnum</a></p>
+            </td>
+          </tr>
+        
+      
+         
+          <tr>
+            <td>
+              <p>Property</p>
+            </td>
+            <td>
+              <p><a href="http://schema.org/keywords">schema:keywords</a></p>
+            </td>
+          </tr>
+        
+      
+    </table>
+    
+    <h4 id="BeforeImage">before image</h4>
+    <table class="def">
+      
+         
+          <tr>
+            <td>
+              <p>Label</p>
+            </td>
+            <td>
+              <p>before image</p>
+            </td>
+          </tr>
+        
+      
+         
+          <tr>
+            <td>
+              <p>Definition</p>
+            </td>
+            <td>
+              <p></p>
+            </td>
+          </tr>
+        
+      
+        
+      
+         
+          <tr>
+            <td>
+              <p>Term</p>
+            </td>
+            <td>
+              <p><a href="#BeforeImage">imag:BeforeImage</a></p>
+            </td>
+          </tr>
+        
+      
+         
+          <tr>
+            <td>
+              <p>Groups</p>
+            </td>
+            <td>
+              <p><a href="#ImageObjectTagEnum">imag:ImageObjectTagEnum</a></p>
+            </td>
+          </tr>
+        
+      
+         
+          <tr>
+            <td>
+              <p>Property</p>
+            </td>
+            <td>
+              <p><a href="http://schema.org/keywords">schema:keywords</a></p>
+            </td>
+          </tr>
+        
+      
+    </table>
+    
+    <h4 id="IllustrativeImage">illustrative image</h4>
+    <table class="def">
+      
+         
+          <tr>
+            <td>
+              <p>Label</p>
+            </td>
+            <td>
+              <p>illustrative image</p>
+            </td>
+          </tr>
+        
+      
+         
+          <tr>
+            <td>
+              <p>Definition</p>
+            </td>
+            <td>
+              <p></p>
+            </td>
+          </tr>
+        
+      
+        
+      
+         
+          <tr>
+            <td>
+              <p>Term</p>
+            </td>
+            <td>
+              <p><a href="#IllustrativeImage">imag:IllustrativeImage</a></p>
+            </td>
+          </tr>
+        
+      
+         
+          <tr>
+            <td>
+              <p>Groups</p>
+            </td>
+            <td>
+              <p><a href="#ImageObjectTagEnum">imag:ImageObjectTagEnum</a></p>
+            </td>
+          </tr>
+        
+      
+         
+          <tr>
+            <td>
+              <p>Property</p>
+            </td>
+            <td>
+              <p><a href="http://schema.org/keywords">schema:keywords</a></p>
+            </td>
+          </tr>
+        
+      
+    </table>
+    
+    <h4 id="Logo">logo</h4>
+    <table class="def">
+      
+         
+          <tr>
+            <td>
+              <p>Label</p>
+            </td>
+            <td>
+              <p>logo</p>
+            </td>
+          </tr>
+        
+      
+         
+          <tr>
+            <td>
+              <p>Definition</p>
+            </td>
+            <td>
+              <p></p>
+            </td>
+          </tr>
+        
+      
+        
+      
+         
+          <tr>
+            <td>
+              <p>Term</p>
+            </td>
+            <td>
+              <p><a href="#Logo">imag:Logo</a></p>
+            </td>
+          </tr>
+        
+      
+         
+          <tr>
+            <td>
+              <p>Groups</p>
+            </td>
+            <td>
+              <p><a href="#ImageObjectTagEnum">imag:ImageObjectTagEnum</a></p>
+            </td>
+          </tr>
+        
+      
+         
+          <tr>
+            <td>
+              <p>Property</p>
+            </td>
+            <td>
+              <p><a href="http://schema.org/keywords">schema:keywords</a></p>
+            </td>
+          </tr>
+        
+      
+    </table>
+    
+    
+    <h3 id="OperatingSystemEnum">Operating System Enumeration</h3>
+    <table class="def">
+      <tr>
+        <td>Term</td>
+        <td><a href="#OperatingSystemEnum">imag:OperatingSystemEnum</a></td>
+      </tr>
+    </table>
+    
+    <h4 id="Linux">Linux</h4>
+    <table class="def">
+      
+         
+          <tr>
+            <td>
+              <p>Label</p>
+            </td>
+            <td>
+              <p>Linux</p>
+            </td>
+          </tr>
+        
+      
+         
+          <tr>
+            <td>
+              <p>Definition</p>
+            </td>
+            <td>
+              <p></p>
+            </td>
+          </tr>
+        
+      
+        
+      
+         
+          <tr>
+            <td>
+              <p>Term</p>
+            </td>
+            <td>
+              <p><a href="#Linux">imag:Linux</a></p>
+            </td>
+          </tr>
+        
+      
+         
+          <tr>
+            <td>
+              <p>Groups</p>
+            </td>
+            <td>
+              <p><a href="#OperatingSystemEnum">imag:OperatingSystemEnum</a></p>
+            </td>
+          </tr>
+        
+      
+         
+          <tr>
+            <td>
+              <p>Property</p>
+            </td>
+            <td>
+              <p><a href="http://schema.org/operatingSystem">schema:operatingSystem</a></p>
+            </td>
+          </tr>
+        
+      
+    </table>
+    
+    <h4 id="MacOS">MacOS</h4>
+    <table class="def">
+      
+         
+          <tr>
+            <td>
+              <p>Label</p>
+            </td>
+            <td>
+              <p>MacOS</p>
+            </td>
+          </tr>
+        
+      
+         
+          <tr>
+            <td>
+              <p>Definition</p>
+            </td>
+            <td>
+              <p></p>
+            </td>
+          </tr>
+        
+      
+        
+      
+         
+          <tr>
+            <td>
+              <p>Term</p>
+            </td>
+            <td>
+              <p><a href="#MacOS">imag:MacOS</a></p>
+            </td>
+          </tr>
+        
+      
+         
+          <tr>
+            <td>
+              <p>Groups</p>
+            </td>
+            <td>
+              <p><a href="#OperatingSystemEnum">imag:OperatingSystemEnum</a></p>
+            </td>
+          </tr>
+        
+      
+         
+          <tr>
+            <td>
+              <p>Property</p>
+            </td>
+            <td>
+              <p><a href="http://schema.org/operatingSystem">schema:operatingSystem</a></p>
+            </td>
+          </tr>
+        
+      
+    </table>
+    
+    <h4 id="OtherOS">Other</h4>
+    <table class="def">
+      
+         
+          <tr>
+            <td>
+              <p>Label</p>
+            </td>
+            <td>
+              <p>Other</p>
+            </td>
+          </tr>
+        
+      
+         
+          <tr>
+            <td>
+              <p>Definition</p>
+            </td>
+            <td>
+              <p></p>
+            </td>
+          </tr>
+        
+      
+        
+      
+         
+          <tr>
+            <td>
+              <p>Term</p>
+            </td>
+            <td>
+              <p><a href="#OtherOS">imag:OtherOS</a></p>
+            </td>
+          </tr>
+        
+      
+         
+          <tr>
+            <td>
+              <p>Groups</p>
+            </td>
+            <td>
+              <p><a href="#OperatingSystemEnum">imag:OperatingSystemEnum</a></p>
+            </td>
+          </tr>
+        
+      
+         
+          <tr>
+            <td>
+              <p>Property</p>
+            </td>
+            <td>
+              <p><a href="http://schema.org/operatingSystem">schema:operatingSystem</a></p>
+            </td>
+          </tr>
+        
+      
+    </table>
+    
+    <h4 id="Windows">Windows</h4>
+    <table class="def">
+      
+         
+          <tr>
+            <td>
+              <p>Label</p>
+            </td>
+            <td>
+              <p>Windows</p>
+            </td>
+          </tr>
+        
+      
+         
+          <tr>
+            <td>
+              <p>Definition</p>
+            </td>
+            <td>
+              <p></p>
+            </td>
+          </tr>
+        
+      
+        
+      
+         
+          <tr>
+            <td>
+              <p>Term</p>
+            </td>
+            <td>
+              <p><a href="#Windows">imag:Windows</a></p>
+            </td>
+          </tr>
+        
+      
+         
+          <tr>
+            <td>
+              <p>Groups</p>
+            </td>
+            <td>
+              <p><a href="#OperatingSystemEnum">imag:OperatingSystemEnum</a></p>
+            </td>
+          </tr>
+        
+      
+         
+          <tr>
+            <td>
+              <p>Property</p>
+            </td>
+            <td>
+              <p><a href="http://schema.org/operatingSystem">schema:operatingSystem</a></p>
+            </td>
+          </tr>
+        
+      
+    </table>
+    
+    
+    <h3 id="ComputerLanguageEnum">Computer Language Enumeration</h3>
+    <table class="def">
+      <tr>
+        <td>Term</td>
+        <td><a href="#ComputerLanguageEnum">imag:ComputerLanguageEnum</a></td>
+      </tr>
+    </table>
+    
+    <h4 id="C">C</h4>
+    <table class="def">
+      
+         
+          <tr>
+            <td>
+              <p>Label</p>
+            </td>
+            <td>
+              <p>C</p>
+            </td>
+          </tr>
+        
+      
+         
+          <tr>
+            <td>
+              <p>Definition</p>
+            </td>
+            <td>
+              <p></p>
+            </td>
+          </tr>
+        
+      
+        
+      
+         
+          <tr>
+            <td>
+              <p>Term</p>
+            </td>
+            <td>
+              <p><a href="#C">imag:C</a></p>
+            </td>
+          </tr>
+        
+      
+         
+          <tr>
+            <td>
+              <p>Groups</p>
+            </td>
+            <td>
+              <p><a href="#ComputerLanguageEnum">imag:ComputerLanguageEnum</a></p>
+            </td>
+          </tr>
+        
+      
+         
+          <tr>
+            <td>
+              <p>Property</p>
+            </td>
+            <td>
+              <p><a href="http://schema.org/programmingLanguage">schema:programmingLanguage</a></p>
+            </td>
+          </tr>
+        
+      
+    </table>
+    
+    <h4 id="Csharp">C#</h4>
+    <table class="def">
+      
+         
+          <tr>
+            <td>
+              <p>Label</p>
+            </td>
+            <td>
+              <p>C#</p>
+            </td>
+          </tr>
+        
+      
+         
+          <tr>
+            <td>
+              <p>Definition</p>
+            </td>
+            <td>
+              <p></p>
+            </td>
+          </tr>
+        
+      
+        
+      
+         
+          <tr>
+            <td>
+              <p>Term</p>
+            </td>
+            <td>
+              <p><a href="#Csharp">imag:Csharp</a></p>
+            </td>
+          </tr>
+        
+      
+         
+          <tr>
+            <td>
+              <p>Groups</p>
+            </td>
+            <td>
+              <p><a href="#ComputerLanguageEnum">imag:ComputerLanguageEnum</a></p>
+            </td>
+          </tr>
+        
+      
+         
+          <tr>
+            <td>
+              <p>Property</p>
+            </td>
+            <td>
+              <p><a href="http://schema.org/programmingLanguage">schema:programmingLanguage</a></p>
+            </td>
+          </tr>
+        
+      
+    </table>
+    
+    <h4 id="Cplusplus">C++</h4>
+    <table class="def">
+      
+         
+          <tr>
+            <td>
+              <p>Label</p>
+            </td>
+            <td>
+              <p>C++</p>
+            </td>
+          </tr>
+        
+      
+         
+          <tr>
+            <td>
+              <p>Definition</p>
+            </td>
+            <td>
+              <p></p>
+            </td>
+          </tr>
+        
+      
+        
+      
+         
+          <tr>
+            <td>
+              <p>Term</p>
+            </td>
+            <td>
+              <p><a href="#Cplusplus">imag:Cplusplus</a></p>
+            </td>
+          </tr>
+        
+      
+         
+          <tr>
+            <td>
+              <p>Groups</p>
+            </td>
+            <td>
+              <p><a href="#ComputerLanguageEnum">imag:ComputerLanguageEnum</a></p>
+            </td>
+          </tr>
+        
+      
+         
+          <tr>
+            <td>
+              <p>Property</p>
+            </td>
+            <td>
+              <p><a href="http://schema.org/programmingLanguage">schema:programmingLanguage</a></p>
+            </td>
+          </tr>
+        
+      
+    </table>
+    
+    <h4 id="GoLang">GoLang</h4>
+    <table class="def">
+      
+         
+          <tr>
+            <td>
+              <p>Label</p>
+            </td>
+            <td>
+              <p>GoLang</p>
+            </td>
+          </tr>
+        
+      
+         
+          <tr>
+            <td>
+              <p>Definition</p>
+            </td>
+            <td>
+              <p></p>
+            </td>
+          </tr>
+        
+      
+        
+      
+         
+          <tr>
+            <td>
+              <p>Term</p>
+            </td>
+            <td>
+              <p><a href="#GoLang">imag:GoLang</a></p>
+            </td>
+          </tr>
+        
+      
+         
+          <tr>
+            <td>
+              <p>Groups</p>
+            </td>
+            <td>
+              <p><a href="#ComputerLanguageEnum">imag:ComputerLanguageEnum</a></p>
+            </td>
+          </tr>
+        
+      
+         
+          <tr>
+            <td>
+              <p>Property</p>
+            </td>
+            <td>
+              <p><a href="http://schema.org/programmingLanguage">schema:programmingLanguage</a></p>
+            </td>
+          </tr>
+        
+      
+    </table>
+    
+    <h4 id="Java">Java</h4>
+    <table class="def">
+      
+         
+          <tr>
+            <td>
+              <p>Label</p>
+            </td>
+            <td>
+              <p>Java</p>
+            </td>
+          </tr>
+        
+      
+         
+          <tr>
+            <td>
+              <p>Definition</p>
+            </td>
+            <td>
+              <p></p>
+            </td>
+          </tr>
+        
+      
+        
+      
+         
+          <tr>
+            <td>
+              <p>Term</p>
+            </td>
+            <td>
+              <p><a href="#Java">imag:Java</a></p>
+            </td>
+          </tr>
+        
+      
+         
+          <tr>
+            <td>
+              <p>Groups</p>
+            </td>
+            <td>
+              <p><a href="#ComputerLanguageEnum">imag:ComputerLanguageEnum</a></p>
+            </td>
+          </tr>
+        
+      
+         
+          <tr>
+            <td>
+              <p>Property</p>
+            </td>
+            <td>
+              <p><a href="http://schema.org/programmingLanguage">schema:programmingLanguage</a></p>
+            </td>
+          </tr>
+        
+      
+    </table>
+    
+    <h4 id="JavaScript">JavaScript</h4>
+    <table class="def">
+      
+         
+          <tr>
+            <td>
+              <p>Label</p>
+            </td>
+            <td>
+              <p>JavaScript</p>
+            </td>
+          </tr>
+        
+      
+         
+          <tr>
+            <td>
+              <p>Definition</p>
+            </td>
+            <td>
+              <p></p>
+            </td>
+          </tr>
+        
+      
+        
+      
+         
+          <tr>
+            <td>
+              <p>Term</p>
+            </td>
+            <td>
+              <p><a href="#JavaScript">imag:JavaScript</a></p>
+            </td>
+          </tr>
+        
+      
+         
+          <tr>
+            <td>
+              <p>Groups</p>
+            </td>
+            <td>
+              <p><a href="#ComputerLanguageEnum">imag:ComputerLanguageEnum</a></p>
+            </td>
+          </tr>
+        
+      
+         
+          <tr>
+            <td>
+              <p>Property</p>
+            </td>
+            <td>
+              <p><a href="http://schema.org/programmingLanguage">schema:programmingLanguage</a></p>
+            </td>
+          </tr>
+        
+      
+    </table>
+    
+    <h4 id="MatLab">MATLAB</h4>
+    <table class="def">
+      
+         
+          <tr>
+            <td>
+              <p>Label</p>
+            </td>
+            <td>
+              <p>MATLAB</p>
+            </td>
+          </tr>
+        
+      
+         
+          <tr>
+            <td>
+              <p>Definition</p>
+            </td>
+            <td>
+              <p></p>
+            </td>
+          </tr>
+        
+      
+        
+      
+         
+          <tr>
+            <td>
+              <p>Term</p>
+            </td>
+            <td>
+              <p><a href="#MatLab">imag:MatLab</a></p>
+            </td>
+          </tr>
+        
+      
+         
+          <tr>
+            <td>
+              <p>Groups</p>
+            </td>
+            <td>
+              <p><a href="#ComputerLanguageEnum">imag:ComputerLanguageEnum</a></p>
+            </td>
+          </tr>
+        
+      
+         
+          <tr>
+            <td>
+              <p>Property</p>
+            </td>
+            <td>
+              <p><a href="http://schema.org/programmingLanguage">schema:programmingLanguage</a></p>
+            </td>
+          </tr>
+        
+      
+    </table>
+    
+    <h4 id="Python">Python</h4>
+    <table class="def">
+      
+         
+          <tr>
+            <td>
+              <p>Label</p>
+            </td>
+            <td>
+              <p>Python</p>
+            </td>
+          </tr>
+        
+      
+         
+          <tr>
+            <td>
+              <p>Definition</p>
+            </td>
+            <td>
+              <p></p>
+            </td>
+          </tr>
+        
+      
+        
+      
+         
+          <tr>
+            <td>
+              <p>Term</p>
+            </td>
+            <td>
+              <p><a href="#Python">imag:Python</a></p>
+            </td>
+          </tr>
+        
+      
+         
+          <tr>
+            <td>
+              <p>Groups</p>
+            </td>
+            <td>
+              <p><a href="#ComputerLanguageEnum">imag:ComputerLanguageEnum</a></p>
+            </td>
+          </tr>
+        
+      
+         
+          <tr>
+            <td>
+              <p>Property</p>
+            </td>
+            <td>
+              <p><a href="http://schema.org/programmingLanguage">schema:programmingLanguage</a></p>
+            </td>
+          </tr>
+        
+      
+    </table>
+    
+    <h4 id="R">R</h4>
+    <table class="def">
+      
+         
+          <tr>
+            <td>
+              <p>Label</p>
+            </td>
+            <td>
+              <p>R</p>
+            </td>
+          </tr>
+        
+      
+         
+          <tr>
+            <td>
+              <p>Definition</p>
+            </td>
+            <td>
+              <p></p>
+            </td>
+          </tr>
+        
+      
+        
+      
+         
+          <tr>
+            <td>
+              <p>Term</p>
+            </td>
+            <td>
+              <p><a href="#R">imag:R</a></p>
+            </td>
+          </tr>
+        
+      
+         
+          <tr>
+            <td>
+              <p>Groups</p>
+            </td>
+            <td>
+              <p><a href="#ComputerLanguageEnum">imag:ComputerLanguageEnum</a></p>
+            </td>
+          </tr>
+        
+      
+         
+          <tr>
+            <td>
+              <p>Property</p>
+            </td>
+            <td>
+              <p><a href="http://schema.org/programmingLanguage">schema:programmingLanguage</a></p>
+            </td>
+          </tr>
+        
+      
+    </table>
+    
+    <h4 id="Rust">Rust</h4>
+    <table class="def">
+      
+         
+          <tr>
+            <td>
+              <p>Label</p>
+            </td>
+            <td>
+              <p>Rust</p>
+            </td>
+          </tr>
+        
+      
+         
+          <tr>
+            <td>
+              <p>Definition</p>
+            </td>
+            <td>
+              <p></p>
+            </td>
+          </tr>
+        
+      
+        
+      
+         
+          <tr>
+            <td>
+              <p>Term</p>
+            </td>
+            <td>
+              <p><a href="#Rust">imag:Rust</a></p>
+            </td>
+          </tr>
+        
+      
+         
+          <tr>
+            <td>
+              <p>Groups</p>
+            </td>
+            <td>
+              <p><a href="#ComputerLanguageEnum">imag:ComputerLanguageEnum</a></p>
+            </td>
+          </tr>
+        
+      
+         
+          <tr>
+            <td>
+              <p>Property</p>
+            </td>
+            <td>
+              <p><a href="http://schema.org/programmingLanguage">schema:programmingLanguage</a></p>
+            </td>
+          </tr>
+        
+      
+    </table>
+    
+    <h4 id="Scala">Scala</h4>
+    <table class="def">
+      
+         
+          <tr>
+            <td>
+              <p>Label</p>
+            </td>
+            <td>
+              <p>Scala</p>
+            </td>
+          </tr>
+        
+      
+         
+          <tr>
+            <td>
+              <p>Definition</p>
+            </td>
+            <td>
+              <p></p>
+            </td>
+          </tr>
+        
+      
+        
+      
+         
+          <tr>
+            <td>
+              <p>Term</p>
+            </td>
+            <td>
+              <p><a href="#Scala">imag:Scala</a></p>
+            </td>
+          </tr>
+        
+      
+         
+          <tr>
+            <td>
+              <p>Groups</p>
+            </td>
+            <td>
+              <p><a href="#ComputerLanguageEnum">imag:ComputerLanguageEnum</a></p>
+            </td>
+          </tr>
+        
+      
+         
+          <tr>
+            <td>
+              <p>Property</p>
+            </td>
+            <td>
+              <p><a href="http://schema.org/programmingLanguage">schema:programmingLanguage</a></p>
+            </td>
+          </tr>
+        
+      
+    </table>
+    
+    <h4 id="Bash">bash</h4>
+    <table class="def">
+      
+         
+          <tr>
+            <td>
+              <p>Label</p>
+            </td>
+            <td>
+              <p>bash</p>
+            </td>
+          </tr>
+        
+      
+         
+          <tr>
+            <td>
+              <p>Definition</p>
+            </td>
+            <td>
+              <p></p>
+            </td>
+          </tr>
+        
+      
+        
+      
+         
+          <tr>
+            <td>
+              <p>Term</p>
+            </td>
+            <td>
+              <p><a href="#Bash">imag:Bash</a></p>
+            </td>
+          </tr>
+        
+      
+         
+          <tr>
+            <td>
+              <p>Groups</p>
+            </td>
+            <td>
+              <p><a href="#ComputerLanguageEnum">imag:ComputerLanguageEnum</a></p>
+            </td>
+          </tr>
+        
+      
+         
+          <tr>
+            <td>
+              <p>Property</p>
+            </td>
+            <td>
+              <p><a href="http://schema.org/programmingLanguage">schema:programmingLanguage</a></p>
+            </td>
+          </tr>
+        
+      
+    </table>
+    
+    <h4 id="Shell">shell</h4>
+    <table class="def">
+      
+         
+          <tr>
+            <td>
+              <p>Label</p>
+            </td>
+            <td>
+              <p>shell</p>
+            </td>
+          </tr>
+        
+      
+         
+          <tr>
+            <td>
+              <p>Definition</p>
+            </td>
+            <td>
+              <p></p>
+            </td>
+          </tr>
+        
+      
+        
+      
+         
+          <tr>
+            <td>
+              <p>Term</p>
+            </td>
+            <td>
+              <p><a href="#Shell">imag:Shell</a></p>
+            </td>
+          </tr>
+        
+      
+         
+          <tr>
+            <td>
+              <p>Groups</p>
+            </td>
+            <td>
+              <p><a href="#ComputerLanguageEnum">imag:ComputerLanguageEnum</a></p>
+            </td>
+          </tr>
+        
+      
+         
+          <tr>
+            <td>
+              <p>Property</p>
+            </td>
+            <td>
+              <p><a href="http://schema.org/programmingLanguage">schema:programmingLanguage</a></p>
+            </td>
+          </tr>
+        
+      
+    </table>
+    
+    
+  </section>
+</body>
+
+
+</html>
