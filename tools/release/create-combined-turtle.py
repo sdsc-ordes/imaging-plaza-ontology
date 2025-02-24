@@ -1,3 +1,5 @@
+# TODO: replace python script with rdfpipe / sop
+# script.sh onto-dir/ -> cat ontodir/*ttl -> serialize to all formats -> gzip
 from rdflib import Graph
 import os
 
