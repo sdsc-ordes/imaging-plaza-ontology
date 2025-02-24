@@ -1,0 +1,34 @@
+name: Include ontology assets in the release
+
+on:
+  push:
+    tags:
+      - "v*"
+
+jobs:
+
+  build:
+    uses: ./.github/workflows/build.yml
+    with:
+      is_release: true
+
+  make_release:
+    runs-on: ubuntu-latest
+    needs:
+      build
+
+    steps:
+
+      - uses: actions/checkout@v4
+
+      - name: get schema assets
+        uses: actions/download-artifact@v4.1.8
+        with:
+          name: schema-bundle
+          path: build/
+
+      - name: create release
+        uses: softprops/action-gh-release@v2
+        with:
+          files: build/*
+
