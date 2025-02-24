@@ -1,32 +1,32 @@
 import rdflib
 import json
 
+DATA_G = generate_schema_json("schemas/ImagingOntology.ttl")
 
 def generate_schema_json(turtle_file: str) -> dict:
     """
     Generate schema JSON from rdflib.Graph.
 
     Args:
-        data_g: The rdflib.Graph object containing the data.
+        DATA_G: The rdflib.Graph object containing the data.
 
     Returns:
         The schema as a dictionary.
     """
-    data_g = rdflib.Graph()
-    data_g.parse(turtle_file, format="turtle")
+    DATA_G = rdflib.Graph()
+    DATA_G.parse(turtle_file, format="turtle")
 
-    return data_g
-
-
-data_g = generate_schema_json("schemas/ImagingOntology.ttl")
+    return DATA_G
 
 
-def extract_labels_and_placeholders(data_g: rdflib.Graph) -> dict:
+
+
+def extract_labels_and_placeholders(DATA_G: rdflib.Graph) -> dict:
     """
     Extract labels and placeholders from rdflib.Graph.
 
     Args:
-        data_g: The rdflib.Graph object containing the data.
+        DATA_G: The rdflib.Graph object containing the data.
 
     Returns:
         The extracted labels and placeholders as a dictionary.
@@ -44,7 +44,7 @@ def extract_labels_and_placeholders(data_g: rdflib.Graph) -> dict:
         }
     }
     """
-    result = data_g.query(query)
+    result = DATA_G.query(query)
     schema_json = {
         "@type_label": "Type",
         "add_modal_button": "Add {{type}}",
@@ -64,7 +64,7 @@ def extract_labels_and_placeholders(data_g: rdflib.Graph) -> dict:
     return schema_json
 
 
-schema_json = extract_labels_and_placeholders(data_g)
+schema_json = extract_labels_and_placeholders(DATA_G)
 
 with open("locales/en/schema.json", "w") as f:
     json.dump(schema_json, f, indent=4)
