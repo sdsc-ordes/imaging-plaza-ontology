@@ -1,0 +1,41 @@
+name: Build ontology assets
+
+on:
+  workflow_call:
+    inputs:
+      is_release:
+        required: true
+        type: boolean
+
+jobs:
+
+  build:
+    runs-on: ubuntu-latest
+    container:
+      image: ghcr.io/typst/typst:latest
+
+    steps:
+
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r tools/python/requirements.txt
+
+      - name: build
+        run: |
+          python tools/python/build/create-schemas.py src/imaging-ontology/ build/
+          python tools/python/build/create-combined-turtle.py src/imaging-ontology/ build/
+
+      - name: upload assets in artifacts
+        uses: actions/upload-artifact@v4
+        if: ${{ inputs.is_release }}
+        with:
+          name: schema-bundle
+          path: build/*
