@@ -11,8 +11,6 @@ jobs:
 
   build:
     runs-on: ubuntu-latest
-    container:
-      image: ghcr.io/typst/typst:latest
 
     steps:
 
