@@ -30,9 +30,7 @@ jobs:
       - name: build
         #print cwd
         run: |
-          pwd
-          ls
-          bash ./tools/bash/build/create-combined-turtle.sh
+          bash ./tools/bash/build/create-combined-turtle.sh src/imaging-ontology/
           python ./tools/python/build/create-schemas.py src/imaging-ontology/ build/
 
       - name: upload assets in artifacts
