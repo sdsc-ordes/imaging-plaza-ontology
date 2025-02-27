@@ -28,8 +28,8 @@ jobs:
 
       - name: build
         run: |
+          bash tools/bash/build/create-combined-turtle.sh
           python tools/python/build/create-schemas.py src/imaging-ontology/ build/
-          python tools/python/build/create-combined-turtle.py src/imaging-ontology/ build/
 
       - name: upload assets in artifacts
         uses: actions/upload-artifact@v4

@@ -1,17 +1,19 @@
 import rdflib
 import json
 
-DATA_G = generate_schema_json("schemas/ImagingOntology.ttl")
+import os
 
-def generate_schema_json(turtle_file: str) -> dict:
+
+
+def generate_schema_graph(turtle_file: str) -> rdflib.Graph:
     """
-    Generate schema JSON from rdflib.Graph.
+    Generate rdflib.Graph from a Turtle file.
 
     Args:
-        DATA_G: The rdflib.Graph object containing the data.
+        turtle_file: The path to the Turtle file.
 
     Returns:
-        The schema as a dictionary.
+        The rdflib.Graph object containing the data.
     """
     DATA_G = rdflib.Graph()
     DATA_G.parse(turtle_file, format="turtle")
@@ -63,8 +65,9 @@ def extract_labels_and_placeholders(DATA_G: rdflib.Graph) -> dict:
             schema_json[f"{slug}_placeholder"] = str(row.comment)
     return schema_json
 
+DATA_G = generate_schema_graph(str(os.getcwd()) + "/build/ontology_combined.turtle" )
 
 schema_json = extract_labels_and_placeholders(DATA_G)
-
-with open("locales/en/schema.json", "w") as f:
+os.makedirs(str(os.getcwd()) + "/build/locales/en", exist_ok=True)
+with open(str(os.getcwd()) + "/build/locales/en/schema.json", "w") as f:
     json.dump(schema_json, f, indent=4)
