@@ -1,0 +1,22 @@
+name: Main and PR pipeline
+
+on:
+  push:
+    branches:
+      - main
+
+  workflow_call:
+
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  checks:
+    uses: ./.github/workflows/checks.yml
+
+  build:
+    uses: ./.github/workflows/build.yml
+    with:
+      is_release: false
+

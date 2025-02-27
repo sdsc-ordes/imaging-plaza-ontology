@@ -1,32 +1,34 @@
 import rdflib
 import json
 
+import os
 
-def generate_schema_json(turtle_file: str) -> dict:
+
+
+def generate_schema_graph(turtle_file: str) -> rdflib.Graph:
     """
-    Generate schema JSON from rdflib.Graph.
+    Generate rdflib.Graph from a Turtle file.
 
     Args:
-        data_g: The rdflib.Graph object containing the data.
+        turtle_file: The path to the Turtle file.
 
     Returns:
-        The schema as a dictionary.
+        The rdflib.Graph object containing the data.
     """
-    data_g = rdflib.Graph()
-    data_g.parse(turtle_file, format="turtle")
+    DATA_G = rdflib.Graph()
+    DATA_G.parse(turtle_file, format="turtle")
 
-    return data_g
-
-
-data_g = generate_schema_json("schemas/ImagingOntology.ttl")
+    return DATA_G
 
 
-def extract_labels_and_placeholders(data_g: rdflib.Graph) -> dict:
+
+
+def extract_labels_and_placeholders(DATA_G: rdflib.Graph) -> dict:
     """
     Extract labels and placeholders from rdflib.Graph.
 
     Args:
-        data_g: The rdflib.Graph object containing the data.
+        DATA_G: The rdflib.Graph object containing the data.
 
     Returns:
         The extracted labels and placeholders as a dictionary.
@@ -44,7 +46,7 @@ def extract_labels_and_placeholders(data_g: rdflib.Graph) -> dict:
         }
     }
     """
-    result = data_g.query(query)
+    result = DATA_G.query(query)
     schema_json = {
         "@type_label": "Type",
         "add_modal_button": "Add {{type}}",
@@ -63,8 +65,9 @@ def extract_labels_and_placeholders(data_g: rdflib.Graph) -> dict:
             schema_json[f"{slug}_placeholder"] = str(row.comment)
     return schema_json
 
+DATA_G = generate_schema_graph(str(os.getcwd()) + "/build/ontology_combined.turtle" )
 
-schema_json = extract_labels_and_placeholders(data_g)
-
-with open("locales/en/schema.json", "w") as f:
+schema_json = extract_labels_and_placeholders(DATA_G)
+os.makedirs(str(os.getcwd()) + "/build/locales/en", exist_ok=True)
+with open(str(os.getcwd()) + "/build/locales/en/schema.json", "w") as f:
     json.dump(schema_json, f, indent=4)
