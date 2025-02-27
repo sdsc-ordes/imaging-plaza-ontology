@@ -28,7 +28,10 @@ jobs:
           pip install -r tools/python/requirements.txt
 
       - name: build
+        #print cwd
         run: |
+          pwd
+          ls
           bash tools/bash/build/create-combined-turtle.sh
           python tools/python/build/create-schemas.py src/imaging-ontology/ build/
 
