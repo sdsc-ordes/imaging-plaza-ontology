@@ -6,6 +6,7 @@ on:
       is_release:
         required: true
         type: boolean
+  workflow_dispatch:
 
 jobs:
 
