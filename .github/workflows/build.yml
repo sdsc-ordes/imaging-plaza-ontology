@@ -1,12 +1,11 @@
 name: Build ontology assets
 
 on:
-  workflow_dispatch:
-  # workflow_call:
-  #   inputs:
-  #     is_release:
-  #       required: true
-  #       type: boolean
+  workflow_call:
+    inputs:
+      is_release:
+        required: true
+        type: boolean
 
 jobs:
 
@@ -28,7 +27,6 @@ jobs:
           pip install -r tools/python/requirements.txt
 
       - name: build
-        #print cwd
         run: |
           bash ./tools/bash/build/create-combined-turtle.sh src/imaging-ontology/
           python ./tools/python/build/create-schemas.py src/imaging-ontology/ build/
