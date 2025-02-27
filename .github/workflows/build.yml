@@ -1,11 +1,11 @@
 name: Build ontology assets
 
 on:
-  workflow_call:
-    inputs:
-      is_release:
-        required: true
-        type: boolean
+  # workflow_call:
+  #   inputs:
+  #     is_release:
+  #       required: true
+  #       type: boolean
   workflow_dispatch:
 
 jobs:
