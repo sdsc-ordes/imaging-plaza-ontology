@@ -549,3 +549,29 @@ imag:Cplusplus a imag:ComputerLanguageEnum ;
 imag:MatLab a imag:ComputerLanguageEnum ;
     rdfs:label "MATLAB" ;
 .
+
+imag:hostTypeEnumeration a rdfs:Class ;
+    rdfs:comment "Enumeration class for host type" ;
+    rdfs:label "Host Type Enumeration" ;
+    rdfs:subClassOf imag:EnumerationType ;
+.
+
+imag:PlazaGradioApplication a imag:hostTypeEnumeration ;
+    rdfs:label "Plaza Gradio Application" ;
+    .
+
+imag:RenkuProject a imag:hostTypeEnumeration ;
+    rdfs:label "Renku Project" ;
+    .
+
+imag:GoogleColab a imag:hostTypeEnumeration ;
+    rdfs:label "Google Colab" ;
+    .
+
+imag:Wasm a imag:hostTypeEnumeration ;
+    rdfs:label "WebAssembly" ;
+    .
+
+imag:Other a imag:hostTypeEnumeration ;
+    rdfs:label "Other" ;
+    .

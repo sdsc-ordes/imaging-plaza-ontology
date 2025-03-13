@@ -167,7 +167,8 @@ sh:property schema:SoftwareApplication-applicationCategory ,
               sd:SoftwareApplication-hasFunding ,
               sd:SoftwareConfiguration-hasSoftwareImage ,
               imag:SoftwareApplication-imagingModalityShape ,
-              imag:fairLevelShape ;
+              imag:fairLevelShape ,
+              imag:SoftwareApplication-runnableExampleShape ;
  sh:rule [
 		a sh:TripleRule ;
 		sh:subject sh:this ;
@@ -657,4 +658,25 @@ md4i:hasRorIdShape
   a sh:PropertyShape ;
   sh:path md4i:hasRorId ;
   sh:pattern "^http.*" ;
+  .
+
+imag:SoftwareApplication-RunnableExampleShape
+  a sh:PropertyShape ;
+  sh:path imag:runnableExample ;
+  sh:class imag:RunnableExampleShape ;
+  .
+
+imag:RunnableExampleShape
+  a sh:NodeShape ;
+  sh:property schema:Thing-description ,
+              schema:Thing-url ,
+              schema:Thing-name ,
+              imag:hostTypeShape 
+              .
+
+
+imag:hostType a sh:PropertyShape ;
+  sh:path imag:hostType ;
+  sh:datatype xsd:string ;
+  sh:in ("plaza-gradio-application" "renku-project" "google-colab" "wasm" "other") ;
   .
