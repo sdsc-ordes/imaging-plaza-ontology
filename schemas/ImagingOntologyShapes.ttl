@@ -503,7 +503,6 @@ schema:DataFeed
               schema:Thing-name ,
               schema:Dataset-variableMeasured ,
               imag:hasDicomMetadataShape ;
-
     .   
 
 imag:hasDicomMetadataShape a sh:NodeShape ;
@@ -516,22 +515,10 @@ imag:DicomMetadata a sh:NodeShape, rdfs:Class ;
     sh:property sphn:bodySite ;
     sh:property imag:SoftwareApplication-imagingModalityShape  ;
     sh:property sd:DatasetSpecification-hasDimensionality;
-    sh:property dmib:hasPhysicalQuantity ;
-    sh:property imag:resolution ;
     .
 
 imag:bodySiteShape a sh:PropertyShape ;
     sh:path sphn:bodySite ;
-    sh:datatype xsd:string ;
-    .
-
-imag:hasPhysicalQuantityShape a sh:PropertyShape ;
-    sh:path dmib:hasPhysicalQuantity ;
-    sh:datatype xsd:string ;
-    .
-
-imag:resolutionShape a sh:PropertyShape ;
-    sh:path imag:resolution ;
     sh:datatype xsd:string ;
     .
 

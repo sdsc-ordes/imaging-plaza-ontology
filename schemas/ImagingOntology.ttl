@@ -271,15 +271,6 @@ sd:hasDimensionality a rdf:Property;
 sphn:bodySite a rdf:Property;
   rdfs:comment "The part of the body that is being imaged."@en;
   rdfs:label "Body site"@en .
-
-dmib:hasPhysicalQuantity a rdf:Property;
-  rdfs:comment "Property to indicate the physical quantity of the input or output of a dataset specification"@en;
-  rdfs:label "Has physical quantity"@en .
-
-imag:resolution a rdf:Property ;
-  rdfs:comment "The resolution of the image." ;
-  rdfs:label "Resolution" .
-
 #_______________________________________#
 
 
