@@ -11,6 +11,7 @@
 @prefix dcterms: <http://purl.org/dc/terms/> .
 @prefix imag: <https://imaging-plaza.epfl.ch/ontology#> .
 @prefix md4i: <http://w3id.org/nfdi4ing/metadata4ing#>.
+@prefix sphn: <https://biomedit.ch/rdf/sphn-schema/sphn#>.
 
 imag:EnumerationType a rdfs:Class ;
     rdfs:subClassOf schema:Enumeration ;
