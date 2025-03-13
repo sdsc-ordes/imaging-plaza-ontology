@@ -182,7 +182,8 @@ sh:property schema:SoftwareApplication-applicationCategory ,
               sd:SoftwareApplication-hasFunding ,
               sd:SoftwareConfiguration-hasSoftwareImage ,
               imag:SoftwareApplication-imagingModalityShape ,
-              imag:fairLevelShape ;
+              imag:fairLevelShape ,
+              imag:SoftwareApplication-runnableExampleShape ;
  sh:rule [
 		a sh:TripleRule ;
 		sh:subject sh:this ;
@@ -516,8 +517,26 @@ schema:DataFeed
               schema:DataDownload-contentURL ,
               schema:Dataset-measurementTechnique ,
               schema:Thing-name ,
-              schema:Dataset-variableMeasured ;
+              schema:Dataset-variableMeasured ,
+              imag:hasDicomMetadataShape ;
     .   
+
+imag:hasDicomMetadataShape a sh:NodeShape ;
+    sh:path imag:hasDicomMetadata ;
+    sh:datatype xsd:string ;
+    sh:node imag:DicomMetadata ;
+    .
+
+imag:DicomMetadata a sh:NodeShape, rdfs:Class ;
+    sh:property sphn:bodySite ;
+    sh:property imag:SoftwareApplication-imagingModalityShape  ;
+    sh:property sd:DatasetSpecification-hasDimensionality;
+    .
+
+imag:bodySiteShape a sh:PropertyShape ;
+    sh:path sphn:bodySite ;
+    sh:datatype xsd:string ;
+    .
 
 schema:DataDownload-contentURL
   a sh:PropertyShape ;
@@ -596,7 +615,6 @@ schema:PropertyValueSpecification-defaultValue
   a sh:PropertyShape ;
   sh:path schema:defaultValue ;
   sh:datatype xsd:string ;
-
 .
 
 schema:PropertyValueSpecification-valueRequired
@@ -623,7 +641,13 @@ imag:ExecutableNotebook a sh:NodeShape ;
 		 schema:Thing-description ,
 		 schema:Thing-url .
 
-
+imag:RunnableExampleShape
+  a sh:NodeShape ;
+  sh:property schema:Thing-description ,
+              schema:Thing-url ,
+              schema:Thing-name ,
+              imag:hostTypeShape 
+              .
 
 
 sd:SoftwareImage-availableInRegistry
@@ -656,6 +680,19 @@ md4i:hasRorIdShape
   sh:path md4i:hasRorId ;
   sh:pattern "^http.*" ;
   .
+
+imag:SoftwareApplication-RunnableExampleShape
+  a sh:PropertyShape ;
+  sh:path imag:runnableExample ;
+  sh:class imag:RunnableExample ;
+  .
+
+
+imag:hostType a sh:PropertyShape ;
+  sh:path imag:hostType ;
+  sh:datatype xsd:string ;
+  sh:in ("plaza-gradio-application" "renku-project" "google-colab" "wasm" "other") ;
+  .@prefix schema: <http://schema.org/>.
 
 
 
@@ -911,7 +948,13 @@ sd:hasDimensionality a rdf:Property;
   rdfs:comment "Property to indicate dimensionality of the input or output of a dataset specification"@en;
   rdfs:label "Has dimensionality"@en .
 
+sphn:bodySite a rdf:Property;
+  rdfs:comment "The part of the body that is being imaged."@en;
+  rdfs:label "Body site"@en .
 
+imag:runnableExample a rdf:Property ;
+  rdfs:comment "A runnable example of the software component"@en ;
+  rdfs:label "Runnable example" .
 #_______________________________________#
 
 
@@ -952,6 +995,11 @@ schema:Grant
   rdfs:comment "A grant, typically financial or otherwise quantifiable, of resources." ;
   rdfs:label "Grant" ;
   rdfs:subClassOf schema:Intangible ;
+.
+
+imag:RunnableExample a rdfs:Class ;
+  rdfs:comment "A runnable example of the software component"@en ;
+  rdfs:label "Runnable example" ;
 .
 
 sd:FundingInformation a rdfs:Class ;
@@ -1523,3 +1571,29 @@ imag:Cplusplus a imag:ComputerLanguageEnum ;
 imag:MatLab a imag:ComputerLanguageEnum ;
     rdfs:label "MATLAB" ;
 .
+
+imag:hostTypeEnumeration a rdfs:Class ;
+    rdfs:comment "Enumeration class for host type" ;
+    rdfs:label "Host Type Enumeration" ;
+    rdfs:subClassOf imag:EnumerationType ;
+.
+
+imag:PlazaGradioApplication a imag:hostTypeEnumeration ;
+    rdfs:label "Plaza Gradio Application" ;
+    .
+
+imag:RenkuProject a imag:hostTypeEnumeration ;
+    rdfs:label "Renku Project" ;
+    .
+
+imag:GoogleColab a imag:hostTypeEnumeration ;
+    rdfs:label "Google Colab" ;
+    .
+
+imag:Wasm a imag:hostTypeEnumeration ;
+    rdfs:label "WebAssembly" ;
+    .
+
+imag:Other a imag:hostTypeEnumeration ;
+    rdfs:label "Other" ;
+    .
