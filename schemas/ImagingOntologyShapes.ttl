@@ -626,7 +626,13 @@ imag:ExecutableNotebook a sh:NodeShape ;
 		 schema:Thing-description ,
 		 schema:Thing-url .
 
-
+imag:RunnableExampleShape
+  a sh:NodeShape ;
+  sh:property schema:Thing-description ,
+              schema:Thing-url ,
+              schema:Thing-name ,
+              imag:hostTypeShape 
+              .
 
 
 sd:SoftwareImage-availableInRegistry
@@ -665,14 +671,6 @@ imag:SoftwareApplication-RunnableExampleShape
   sh:path imag:runnableExample ;
   sh:class imag:RunnableExampleShape ;
   .
-
-imag:RunnableExampleShape
-  a sh:NodeShape ;
-  sh:property schema:Thing-description ,
-              schema:Thing-url ,
-              schema:Thing-name ,
-              imag:hostTypeShape 
-              .
 
 
 imag:hostType a sh:PropertyShape ;
