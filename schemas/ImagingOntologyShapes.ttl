@@ -669,7 +669,7 @@ md4i:hasRorIdShape
 imag:SoftwareApplication-RunnableExampleShape
   a sh:PropertyShape ;
   sh:path imag:runnableExample ;
-  sh:class imag:RunnableExampleShape ;
+  sh:class imag:RunnableExample ;
   .
 
 
