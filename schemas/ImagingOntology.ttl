@@ -275,6 +275,14 @@ sphn:bodySite a rdf:Property;
 imag:runnableExample a rdf:Property ;
   rdfs:comment "A runnable example of the software component"@en ;
   rdfs:label "Runnable example" .
+
+dmib:hasPhysicalQuantity a rdf:Property;
+  rdfs:comment "Property to indicate the physical quantity of the input or output of a dataset specification"@en;
+  rdfs:label "Has physical quantity"@en .
+
+imag:resolution a rdf:Property ;
+  rdfs:comment "The resolution of the image." ;
+  rdfs:label "Resolution" .
 #_______________________________________#
 
 
