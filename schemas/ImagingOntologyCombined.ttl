@@ -14,6 +14,7 @@ prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 prefix dct: <http://purl.org/dc/terms/>
 prefix vann: <http://purl.org/vocab/vann/>
 prefix sphn: <https://biomedit.ch/rdf/sphn-schema/sphn#>
+prefix dmib: <https://biomedit.ch/rdf/sphn-schema/dmib#>
 prefix schema: <http://schema.org/>
 prefix sd: <https://w3id.org/okn/o/sd#>
 prefix bio: <https://bioschemas.org/>
@@ -30,7 +31,7 @@ prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 prefix dct: <http://purl.org/dc/terms/>
 prefix vann: <http://purl.org/vocab/vann/>
 prefix sphn: <https://biomedit.ch/rdf/sphn-schema/sphn#>
-
+prefix dmib: <https://biomedit.ch/rdf/sphn-schema/dmib#>
 
 <https://imaging-plaza.epfl.ch/ontology#>
 	a owl:Ontology ;
@@ -525,14 +526,25 @@ schema:DataFeed
 
 imag:hasDicomMetadataShape a sh:NodeShape ;
     sh:path imag:hasDicomMetadata ;
-    sh:datatype xsd:string ;
     sh:node imag:DicomMetadata ;
     .
 
 imag:DicomMetadata a sh:NodeShape, rdfs:Class ;
-    sh:property sphn:bodySite ;
+    sh:property sphn:bodySiteShape ;
     sh:property imag:SoftwareApplication-imagingModalityShape  ;
     sh:property sd:DatasetSpecification-hasDimensionality;
+    sh:property dmib:hasPhysicalQuantityShape ;
+    sh:property imag:resolutionShape ;
+    .
+
+imag:hasPhysicalQuantityShape a sh:PropertyShape ;
+    sh:path dmib:hasPhysicalQuantity ;
+    sh:datatype xsd:string ;
+    .
+
+imag:resolutionShape a sh:PropertyShape ;
+    sh:path imag:resolution ;
+    sh:datatype xsd:string ;
     .
 
 imag:bodySiteShape a sh:PropertyShape ;
@@ -956,6 +968,14 @@ sphn:bodySite a rdf:Property;
 imag:runnableExample a rdf:Property ;
   rdfs:comment "A runnable example of the software component"@en ;
   rdfs:label "Runnable example" .
+
+dmib:hasPhysicalQuantity a rdf:Property;
+  rdfs:comment "Property to indicate the physical quantity of the input or output of a dataset specification"@en;
+  rdfs:label "Has physical quantity"@en .
+
+imag:resolution a rdf:Property ;
+  rdfs:comment "The resolution of the image." ;
+  rdfs:label "Resolution" .
 #_______________________________________#
 
 

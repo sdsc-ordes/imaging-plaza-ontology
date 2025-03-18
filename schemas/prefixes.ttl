@@ -14,3 +14,4 @@ prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 prefix dct: <http://purl.org/dc/terms/>
 prefix vann: <http://purl.org/vocab/vann/>
 prefix sphn: <https://biomedit.ch/rdf/sphn-schema/sphn#>
+prefix dmib: <https://biomedit.ch/rdf/sphn-schema/dmib#>
