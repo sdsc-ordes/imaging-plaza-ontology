@@ -509,12 +509,11 @@ schema:DataFeed
 
 imag:hasDicomMetadataShape a sh:NodeShape ;
     sh:path imag:hasDicomMetadata ;
-    sh:datatype xsd:string ;
     sh:node imag:DicomMetadata ;
     .
 
 imag:DicomMetadata a sh:NodeShape, rdfs:Class ;
-    sh:property sphn:bodySite ;
+    sh:property sphn:bodySiteShape ;
     sh:property imag:SoftwareApplication-imagingModalityShape  ;
     sh:property sd:DatasetSpecification-hasDimensionality;
     .
