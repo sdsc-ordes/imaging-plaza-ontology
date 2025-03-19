@@ -13,6 +13,8 @@ prefix md4i: <http://w3id.org/nfdi4ing/metadata4ing#>
 prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 prefix dct: <http://purl.org/dc/terms/>
 prefix vann: <http://purl.org/vocab/vann/>
+prefix sphn: <https://biomedit.ch/rdf/sphn-schema/sphn#>
+prefix dmib: <https://biomedit.ch/rdf/sphn-schema/dmib#>
 prefix schema: <http://schema.org/>
 prefix sd: <https://w3id.org/okn/o/sd#>
 prefix bio: <https://bioschemas.org/>
@@ -28,7 +30,8 @@ prefix md4i: <http://w3id.org/nfdi4ing/metadata4ing#>
 prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 prefix dct: <http://purl.org/dc/terms/>
 prefix vann: <http://purl.org/vocab/vann/>
-
+prefix sphn: <https://biomedit.ch/rdf/sphn-schema/sphn#>
+prefix dmib: <https://biomedit.ch/rdf/sphn-schema/dmib#>
 
 <https://imaging-plaza.epfl.ch/ontology#>
 	a owl:Ontology ;
@@ -182,7 +185,8 @@ sh:property schema:SoftwareApplication-applicationCategory ,
               sd:SoftwareApplication-hasFunding ,
               sd:SoftwareConfiguration-hasSoftwareImage ,
               imag:SoftwareApplication-imagingModalityShape ,
-              imag:fairLevelShape ;
+              imag:fairLevelShape ,
+              imag:SoftwareApplication-runnableExampleShape ;
  sh:rule [
 		a sh:TripleRule ;
 		sh:subject sh:this ;
@@ -516,8 +520,37 @@ schema:DataFeed
               schema:DataDownload-contentURL ,
               schema:Dataset-measurementTechnique ,
               schema:Thing-name ,
-              schema:Dataset-variableMeasured ;
+              schema:Dataset-variableMeasured ,
+              imag:hasDicomMetadataShape ;
     .   
+
+imag:hasDicomMetadataShape a sh:NodeShape ;
+    sh:path imag:hasDicomMetadata ;
+    sh:node imag:DicomMetadata ;
+    .
+
+imag:DicomMetadata a sh:NodeShape, rdfs:Class ;
+    sh:property sphn:bodySiteShape ;
+    sh:property imag:SoftwareApplication-imagingModalityShape  ;
+    sh:property sd:DatasetSpecification-hasDimensionality;
+    sh:property dmib:hasPhysicalQuantityShape ;
+    sh:property imag:resolutionShape ;
+    .
+
+imag:hasPhysicalQuantityShape a sh:PropertyShape ;
+    sh:path dmib:hasPhysicalQuantity ;
+    sh:datatype xsd:string ;
+    .
+
+imag:resolutionShape a sh:PropertyShape ;
+    sh:path imag:resolution ;
+    sh:datatype xsd:string ;
+    .
+
+imag:bodySiteShape a sh:PropertyShape ;
+    sh:path sphn:bodySite ;
+    sh:datatype xsd:string ;
+    .
 
 schema:DataDownload-contentURL
   a sh:PropertyShape ;
@@ -596,7 +629,6 @@ schema:PropertyValueSpecification-defaultValue
   a sh:PropertyShape ;
   sh:path schema:defaultValue ;
   sh:datatype xsd:string ;
-
 .
 
 schema:PropertyValueSpecification-valueRequired
@@ -623,7 +655,13 @@ imag:ExecutableNotebook a sh:NodeShape ;
 		 schema:Thing-description ,
 		 schema:Thing-url .
 
-
+imag:RunnableExampleShape
+  a sh:NodeShape ;
+  sh:property schema:Thing-description ,
+              schema:Thing-url ,
+              schema:Thing-name ,
+              imag:hostTypeShape 
+              .
 
 
 sd:SoftwareImage-availableInRegistry
@@ -657,6 +695,18 @@ md4i:hasRorIdShape
   sh:pattern "^http.*" ;
   .
 
+imag:SoftwareApplication-RunnableExampleShape
+  a sh:PropertyShape ;
+  sh:path imag:runnableExample ;
+  sh:class imag:RunnableExample ;
+  .
+
+
+imag:hostType a sh:PropertyShape ;
+  sh:path imag:hostType ;
+  sh:datatype xsd:string ;
+  sh:in ("plaza-gradio-application" "renku-project" "google-colab" "wasm" "other") ;
+  .@prefix schema: <http://schema.org/>.
 
 
 <https://imaging-plaza.epfl.ch/ontology#>
@@ -667,11 +717,11 @@ md4i:hasRorIdShape
     dct:creator "Robin Franken" ;
     dct:description "The Imaging Plaza ontology provides concepts (classes and properties) to model human and machine readable imaging software metadata. It is the result of re-using external pre-existing vocabularies such as schema.org and the software description ontology, together with custom imaging specific objects and properties. The ontology contains purely semantic information (labels, definitions etc.) and is meant to be used in conjuction with a graph of enumeration values and a graph containing SHACL shapes to provide more machine readable restrictions on values of properties." ;
     dct:license <https://spdx.org/licenses/CC-BY-SA-4.0.html> ;
-    dct:modified "2024-08-15"^^xsd:date ;
+    dct:modified "2025-01-28"^^xsd:date ;
     dct:title "Imaging Plaza Ontology" ;
     vann:preferredNamespacePrefix "imag" ;
     vann:preferredNamespaceUri "https://imaging-plaza.epfl.ch/ontology#"^^xsd:string ;
-    owl:versionInfo "0.7.0"^^xsd:string 
+    owl:versionInfo "0.8.0"^^xsd:string 
     .
 
 schema:SoftwareSourceCode
@@ -911,7 +961,21 @@ sd:hasDimensionality a rdf:Property;
   rdfs:comment "Property to indicate dimensionality of the input or output of a dataset specification"@en;
   rdfs:label "Has dimensionality"@en .
 
+sphn:bodySite a rdf:Property;
+  rdfs:comment "The part of the body that is being imaged."@en;
+  rdfs:label "Body site"@en .
 
+imag:runnableExample a rdf:Property ;
+  rdfs:comment "A runnable example of the software component"@en ;
+  rdfs:label "Runnable example" .
+
+dmib:hasPhysicalQuantity a rdf:Property;
+  rdfs:comment "Property to indicate the physical quantity of the input or output of a dataset specification"@en;
+  rdfs:label "Has physical quantity"@en .
+
+imag:resolution a rdf:Property ;
+  rdfs:comment "The resolution of the image." ;
+  rdfs:label "Resolution" .
 #_______________________________________#
 
 
@@ -952,6 +1016,11 @@ schema:Grant
   rdfs:comment "A grant, typically financial or otherwise quantifiable, of resources." ;
   rdfs:label "Grant" ;
   rdfs:subClassOf schema:Intangible ;
+.
+
+imag:RunnableExample a rdfs:Class ;
+  rdfs:comment "A runnable example of the software component"@en ;
+  rdfs:label "Runnable example" ;
 .
 
 sd:FundingInformation a rdfs:Class ;
@@ -1523,3 +1592,29 @@ imag:Cplusplus a imag:ComputerLanguageEnum ;
 imag:MatLab a imag:ComputerLanguageEnum ;
     rdfs:label "MATLAB" ;
 .
+
+imag:hostTypeEnumeration a rdfs:Class ;
+    rdfs:comment "Enumeration class for host type" ;
+    rdfs:label "Host Type Enumeration" ;
+    rdfs:subClassOf imag:EnumerationType ;
+.
+
+imag:PlazaGradioApplication a imag:hostTypeEnumeration ;
+    rdfs:label "Plaza Gradio Application" ;
+    .
+
+imag:RenkuProject a imag:hostTypeEnumeration ;
+    rdfs:label "Renku Project" ;
+    .
+
+imag:GoogleColab a imag:hostTypeEnumeration ;
+    rdfs:label "Google Colab" ;
+    .
+
+imag:Wasm a imag:hostTypeEnumeration ;
+    rdfs:label "WebAssembly" ;
+    .
+
+imag:Other a imag:hostTypeEnumeration ;
+    rdfs:label "Other" ;
+    .

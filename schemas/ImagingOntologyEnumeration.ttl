@@ -11,6 +11,8 @@
 @prefix dcterms: <http://purl.org/dc/terms/> .
 @prefix imag: <https://imaging-plaza.epfl.ch/ontology#> .
 @prefix md4i: <http://w3id.org/nfdi4ing/metadata4ing#>.
+@prefix sphn: <https://biomedit.ch/rdf/sphn-schema/sphn#>.
+@prefix dmib: <https://biomedit.ch/rdf/sphn-schema/dmib#> .
 
 imag:EnumerationType a rdfs:Class ;
     rdfs:subClassOf schema:Enumeration ;
@@ -549,3 +551,29 @@ imag:Cplusplus a imag:ComputerLanguageEnum ;
 imag:MatLab a imag:ComputerLanguageEnum ;
     rdfs:label "MATLAB" ;
 .
+
+imag:hostTypeEnumeration a rdfs:Class ;
+    rdfs:comment "Enumeration class for host type" ;
+    rdfs:label "Host Type Enumeration" ;
+    rdfs:subClassOf imag:EnumerationType ;
+.
+
+imag:PlazaGradioApplication a imag:hostTypeEnumeration ;
+    rdfs:label "Plaza Gradio Application" ;
+    .
+
+imag:RenkuProject a imag:hostTypeEnumeration ;
+    rdfs:label "Renku Project" ;
+    .
+
+imag:GoogleColab a imag:hostTypeEnumeration ;
+    rdfs:label "Google Colab" ;
+    .
+
+imag:Wasm a imag:hostTypeEnumeration ;
+    rdfs:label "WebAssembly" ;
+    .
+
+imag:Other a imag:hostTypeEnumeration ;
+    rdfs:label "Other" ;
+    .
