@@ -15,23 +15,7 @@ prefix dct: <http://purl.org/dc/terms/>
 prefix vann: <http://purl.org/vocab/vann/>
 prefix sphn: <https://biomedit.ch/rdf/sphn-schema/sphn#>
 prefix dmib: <https://biomedit.ch/rdf/sphn-schema/dmib#>
-prefix schema: <http://schema.org/>
-prefix sd: <https://w3id.org/okn/o/sd#>
-prefix bio: <https://bioschemas.org/>
-prefix spe: <https://openschemas.github.io/spec-container/specifications/>
-prefix rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
-prefix sh:   <http://www.w3.org/ns/shacl#>
-prefix xsd:  <http://www.w3.org/2001/XMLSchema#>
-prefix shsh: <http://www.w3.org/ns/shacl-shacl#>
-prefix owl: <http://www.w3.org/2002/07/owl#>
-prefix dcterms: <http://purl.org/dc/terms/>
-prefix imag: <https://imaging-plaza.epfl.ch/ontology#>
-prefix md4i: <http://w3id.org/nfdi4ing/metadata4ing#>
-prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>
-prefix dct: <http://purl.org/dc/terms/>
-prefix vann: <http://purl.org/vocab/vann/>
-prefix sphn: <https://biomedit.ch/rdf/sphn-schema/sphn#>
-prefix dmib: <https://biomedit.ch/rdf/sphn-schema/dmib#>
+
 
 <https://imaging-plaza.epfl.ch/ontology#>
 	a owl:Ontology ;
@@ -706,8 +690,7 @@ imag:hostType a sh:PropertyShape ;
   sh:path imag:hostType ;
   sh:datatype xsd:string ;
   sh:in ("plaza-gradio-application" "renku-project" "google-colab" "wasm" "other") ;
-  .@prefix schema: <http://schema.org/>.
-
+  .
 
 <https://imaging-plaza.epfl.ch/ontology#>
     a owl:Ontology ;
@@ -1593,28 +1576,28 @@ imag:MatLab a imag:ComputerLanguageEnum ;
     rdfs:label "MATLAB" ;
 .
 
-imag:hostTypeEnumeration a rdfs:Class ;
+imag:HostTypeEnumeration a rdfs:Class ;
     rdfs:comment "Enumeration class for host type" ;
     rdfs:label "Host Type Enumeration" ;
     rdfs:subClassOf imag:EnumerationType ;
 .
 
-imag:PlazaGradioApplication a imag:hostTypeEnumeration ;
+imag:PlazaGradioApplication a imag:HostTypeEnumeration ;
     rdfs:label "Plaza Gradio Application" ;
     .
 
-imag:RenkuProject a imag:hostTypeEnumeration ;
+imag:RenkuProject a imag:HostTypeEnumeration ;
     rdfs:label "Renku Project" ;
     .
 
-imag:GoogleColab a imag:hostTypeEnumeration ;
+imag:GoogleColab a imag:HostTypeEnumeration ;
     rdfs:label "Google Colab" ;
     .
 
-imag:Wasm a imag:hostTypeEnumeration ;
+imag:Wasm a imag:HostTypeEnumeration ;
     rdfs:label "WebAssembly" ;
     .
 
-imag:Other a imag:hostTypeEnumeration ;
+imag:Other a imag:HostTypeEnumeration ;
     rdfs:label "Other" ;
     .
