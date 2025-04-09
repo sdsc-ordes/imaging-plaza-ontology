@@ -575,6 +575,7 @@ imag:Wasm a imag:HostTypeEnumeration ;
     rdfs:label "WebAssembly" ;
     .
 
+
 imag:OtherHostType a imag:HostTypeEnumeration ;
     rdfs:label "Other" ;
     .
