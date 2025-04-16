@@ -11,7 +11,12 @@ jobs:
     uses: ./.github/workflows/build.yml
     with:
       is_release: true
-
+  shacl_check:
+    uses: ./.github/workflows/checks.yml
+    with:
+      check_type: shacl
+    needs:
+      - build
   make_release:
     runs-on: ubuntu-latest
     needs:
