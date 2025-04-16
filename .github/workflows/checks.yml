@@ -2,6 +2,11 @@ name: quality and correctness checks on the schema
 
 on:
   workflow_call:
+    inputs:
+      is_release:
+        required: false
+        type: boolean
+
 
 jobs:
   quality_checks:
