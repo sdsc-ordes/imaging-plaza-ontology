@@ -13,7 +13,8 @@ prefix md4i: <http://w3id.org/nfdi4ing/metadata4ing#>
 prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 prefix dct: <http://purl.org/dc/terms/>
 prefix vann: <http://purl.org/vocab/vann/>
-
+prefix sphn: <https://biomedit.ch/rdf/sphn-schema/sphn#>
+prefix dmib: <https://biomedit.ch/rdf/sphn-schema/dmib#>
 
 <https://imaging-plaza.epfl.ch/ontology#>
 	a owl:Ontology ;
@@ -167,7 +168,8 @@ sh:property schema:SoftwareApplication-applicationCategory ,
               sd:SoftwareApplication-hasFunding ,
               sd:SoftwareConfiguration-hasSoftwareImage ,
               imag:SoftwareApplication-imagingModalityShape ,
-              imag:fairLevelShape ;
+              imag:fairLevelShape ,
+              imag:SoftwareApplication-runnableExampleShape ;
  sh:rule [
 		a sh:TripleRule ;
 		sh:subject sh:this ;
@@ -501,8 +503,37 @@ schema:DataFeed
               schema:DataDownload-contentURL ,
               schema:Dataset-measurementTechnique ,
               schema:Thing-name ,
-              schema:Dataset-variableMeasured ;
+              schema:Dataset-variableMeasured ,
+              imag:hasDicomMetadataShape ;
     .   
+
+imag:hasDicomMetadataShape a sh:NodeShape ;
+    sh:path imag:hasDicomMetadata ;
+    sh:node imag:DicomMetadata ;
+    .
+
+imag:DicomMetadata a sh:NodeShape, rdfs:Class ;
+    sh:property sphn:bodySiteShape ;
+    sh:property imag:SoftwareApplication-imagingModalityShape  ;
+    sh:property sd:DatasetSpecification-hasDimensionality;
+    sh:property dmib:hasPhysicalQuantityShape ;
+    sh:property imag:resolutionShape ;
+    .
+
+imag:hasPhysicalQuantityShape a sh:PropertyShape ;
+    sh:path dmib:hasPhysicalQuantity ;
+    sh:datatype xsd:string ;
+    .
+
+imag:resolutionShape a sh:PropertyShape ;
+    sh:path imag:resolution ;
+    sh:datatype xsd:string ;
+    .
+
+imag:bodySiteShape a sh:PropertyShape ;
+    sh:path sphn:bodySite ;
+    sh:datatype xsd:string ;
+    .
 
 schema:DataDownload-contentURL
   a sh:PropertyShape ;
@@ -581,7 +612,6 @@ schema:PropertyValueSpecification-defaultValue
   a sh:PropertyShape ;
   sh:path schema:defaultValue ;
   sh:datatype xsd:string ;
-
 .
 
 schema:PropertyValueSpecification-valueRequired
@@ -608,7 +638,13 @@ imag:ExecutableNotebook a sh:NodeShape ;
 		 schema:Thing-description ,
 		 schema:Thing-url .
 
-
+imag:RunnableExampleShape
+  a sh:NodeShape ;
+  sh:property schema:Thing-description ,
+              schema:Thing-url ,
+              schema:Thing-name ,
+              imag:hostTypeShape 
+              .
 
 
 sd:SoftwareImage-availableInRegistry
@@ -640,4 +676,17 @@ md4i:hasRorIdShape
   a sh:PropertyShape ;
   sh:path md4i:hasRorId ;
   sh:pattern "^http.*" ;
+  .
+
+imag:SoftwareApplication-RunnableExampleShape
+  a sh:PropertyShape ;
+  sh:path imag:runnableExample ;
+  sh:class imag:RunnableExample ;
+  .
+
+
+imag:hostTypeShape a sh:PropertyShape ;
+  sh:path imag:hostType ;
+  sh:datatype xsd:string ;
+  sh:in ("plaza-gradio-application" "renku-project" "google-colab" "wasm" "other") ;
   .

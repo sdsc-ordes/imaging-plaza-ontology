@@ -13,7 +13,8 @@
 @prefix md4i: <http://w3id.org/nfdi4ing/metadata4ing#>.
 @prefix dct: <http://purl.org/dc/terms/>.
 @prefix vann: <http://purl.org/vocab/vann/>.
-
+@prefix sphn: <https://biomedit.ch/rdf/sphn-schema/sphn#> .
+@prefix dmib: <https://biomedit.ch/rdf/sphn-schema/dmib#> .
 
 
 <https://imaging-plaza.epfl.ch/ontology#>
@@ -264,11 +265,29 @@ sd:availableInRegistry a rdf:Property;
   rdfs:comment "URL to registry of where software image can be found. For example, https://hub.docker.com/r/pytorch/pytorch"@en;
   rdfs:label "Available in registry"@en .
 
+imag:hostType a rdf:Property ;
+  rdfs:comment "The type of host that the software component is running on. For example, plaza-gradio-application, renku-project, google-colab, wasm, other"@en;
+  rdfs:label "Host type"@en .
+
 sd:hasDimensionality a rdf:Property;
   rdfs:comment "Property to indicate dimensionality of the input or output of a dataset specification"@en;
   rdfs:label "Has dimensionality"@en .
 
+sphn:bodySite a rdf:Property;
+  rdfs:comment "The part of the body that is being imaged."@en;
+  rdfs:label "Body site"@en .
 
+imag:runnableExample a rdf:Property ;
+  rdfs:comment "A runnable example of the software component"@en ;
+  rdfs:label "Runnable example" .
+
+dmib:hasPhysicalQuantity a rdf:Property;
+  rdfs:comment "Property to indicate the physical quantity of the input or output of a dataset specification"@en;
+  rdfs:label "Has physical quantity"@en .
+
+imag:resolution a rdf:Property ;
+  rdfs:comment "The resolution of the image." ;
+  rdfs:label "Resolution" .
 #_______________________________________#
 
 
@@ -309,6 +328,11 @@ schema:Grant
   rdfs:comment "A grant, typically financial or otherwise quantifiable, of resources." ;
   rdfs:label "Grant" ;
   rdfs:subClassOf schema:Intangible ;
+.
+
+imag:RunnableExample a rdfs:Class ;
+  rdfs:comment "A runnable example of the software component"@en ;
+  rdfs:label "Runnable example" ;
 .
 
 sd:FundingInformation a rdfs:Class ;
