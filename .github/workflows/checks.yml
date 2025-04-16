@@ -20,7 +20,13 @@ jobs:
         run: |
           python -m pip install --upgrade pip
           pip install -r tools/python/requirements.txt
-
+      
+      - name: Download schema bundle
+        uses: actions/download-artifact@v4
+        with:
+          name: schema-bundle
+          path: build/
+      
       - name: Shape validation
         run: |
           python tools/python/checks/shacl.py
