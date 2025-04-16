@@ -19,8 +19,6 @@ jobs:
     runs-on: ubuntu-latest
     needs:
       build
-      shacl
-
 
     steps:
 
