@@ -2,7 +2,12 @@
 # script.sh onto-dir/ -> cat ontodir/*ttl -> serialize to all formats -> gzip
 
 #!/bin/bash
-
+# Define an associative array for format to extension mapping
+declare -A fmt2ext=(
+    ["turtle"]="ttl"
+    ["json-ld"]="jsonld"
+    ["nt"]="nt"
+)
 # Check if an argument (ontology directory) is provided
 if [ "$#" -ne 1 ]; then
     echo "Usage: $0 <ontology-directory>"
@@ -24,8 +29,9 @@ FORMATS=("json-ld" "nt" "turtle")
 
 # Convert to multiple formats using rdfpipe and create a single gzip
 for format in "${FORMATS[@]}"; do
-    python -m rdflib.tools.rdfpipe -i turtle -o "$format" "$COMBINED_FILE" > "$OUTPUT_DIR/ontology_combined.$format"
-    echo "Generated: $OUTPUT_DIR/ontology_combined.$format"
+ext=${fmt2ext[$format]}
+    python -m rdflib.tools.rdfpipe -i turtle -o "$format" "$COMBINED_FILE" > "$OUTPUT_DIR/ontology_combined.$ext"
+    echo "Generated: $OUTPUT_DIR/ontology_combined.$ext"
 done
 
 
