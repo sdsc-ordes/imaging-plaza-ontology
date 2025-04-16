@@ -30,10 +30,10 @@ schema:DataFeed a rdfs:Class,
         schema:Dataset-variableMeasured,
         schema:Thing-description,
         schema:Thing-name,
-        dmib:hasPhysicalQuantityShape,
-        sphn:bodySiteShape,
         imag:SoftwareApplication-imagingModalityShape,
+        imag:bodySiteShape,
         imag:datasetFormatShape,
+        imag:hasPhysicalQuantityShape,
         imag:resolutionShape,
         sd:DatasetSpecification-hasDimensionality .
 
@@ -107,36 +107,6 @@ schema:SoftwareSourceCode a rdfs:Class,
         sd:SoftwareApplication-readme,
         sd:SoftwareConfiguration-hasSoftwareImage ;
     sh:rule [ a sh:TripleRule ;
-            sh:condition imag:fairlevel0Shape ;
-            sh:object "Fair level 0" ;
-            sh:predicate imag:fairLevel ;
-            sh:subject sh:this ],
-        [ a sh:TripleRule ;
-            sh:condition imag:fairlevel1Shape ;
-            sh:object "Fair level 1" ;
-            sh:predicate imag:fairLevel ;
-            sh:subject sh:this ],
-        [ a sh:TripleRule ;
-            sh:condition imag:fairlevel2Shape ;
-            sh:object "Fair level 2" ;
-            sh:predicate imag:fairLevel ;
-            sh:subject sh:this ],
-        [ a sh:TripleRule ;
-            sh:condition imag:fairlevel3Shape ;
-            sh:object "Fair level 3" ;
-            sh:predicate imag:fairLevel ;
-            sh:subject sh:this ],
-        [ a sh:TripleRule ;
-            sh:condition imag:fairlevel4Shape ;
-            sh:object "Fair level 4" ;
-            sh:predicate imag:fairLevel ;
-            sh:subject sh:this ],
-        [ a sh:TripleRule ;
-            sh:condition imag:fairlevel5Shape ;
-            sh:object "Fair level 5" ;
-            sh:predicate imag:fairLevel ;
-            sh:subject sh:this ],
-        [ a sh:TripleRule ;
             sh:condition imag:fairlevel0Shape ;
             sh:object "Fair level 0" ;
             sh:predicate imag:fairLevel ;
@@ -249,9 +219,14 @@ imag:ProcessorRequirementsEnum a rdfs:Class ;
     rdfs:comment "Enumeration class for processor requirements" ;
     rdfs:subClassOf imag:EnumerationType .
 
-imag:RunnableExample a rdfs:Class ;
+imag:RunnableExample a rdfs:Class,
+        sh:NodeShape ;
     rdfs:label "Runnable example" ;
-    rdfs:comment "A runnable example of the software component"@en .
+    rdfs:comment "A runnable example of the software component"@en ;
+    sh:property schema:Thing-description,
+        schema:Thing-name,
+        schema:Thing-url,
+        imag:hostTypeShape .
 
 imag:SoftwareRequirementsEnum a rdfs:Class ;
     rdfs:label "Software Requirements Enumeration" ;
@@ -588,12 +563,6 @@ imag:Rendering rdfs:label "Rendering" ;
 imag:RenkuProject a imag:HostTypeEnumeration ;
     rdfs:label "Renku Project" .
 
-imag:RunnableExampleShape a sh:NodeShape ;
-    sh:property schema:Thing-description,
-        schema:Thing-name,
-        schema:Thing-url,
-        imag:hostTypeShape .
-
 imag:Rust a imag:ComputerLanguageEnum ;
     rdfs:label "Rust" .
 
@@ -611,10 +580,6 @@ imag:Simulation rdfs:label "Simulation" ;
 
 imag:Smoothing rdfs:label "Smoothing" ;
     rdfs:subClassOf imag:Denoising .
-
-imag:SoftwareApplication-RunnableExampleShape a sh:PropertyShape ;
-    sh:class imag:RunnableExample ;
-    sh:path imag:runnableExample .
 
 imag:Stitching rdfs:label "Stitching" ;
     rdfs:subClassOf imag:OpticalFlow .
@@ -676,14 +641,6 @@ imag:Windows a imag:OperatingSystemEnum ;
 imag:XRay a imag:ImagingModalityEnum ;
     rdfs:label "X-ray" .
 
-imag:bodySiteShape a sh:PropertyShape ;
-    sh:datatype xsd:string ;
-    sh:path sphn:bodySite .
-
-imag:hasPhysicalQuantityShape a sh:PropertyShape ;
-    sh:datatype xsd:string ;
-    sh:path dmib:hasPhysicalQuantity .
-
 sd:hasInput a rdf:Property ;
     rdfs:label "Has input"@en ;
     rdfs:comment "Property that links a model configuration to the input types expected by it."@en .
@@ -694,8 +651,7 @@ sd:hasOutput a rdf:Property ;
 
 schema:CreativeWork-author a sh:PropertyShape ;
     sh:minCount 1 ;
-    sh:or ( [ sh:class schema:Organization ] [ sh:class schema:Person ] ),
-        ( [ sh:class schema:Organization ] [ sh:class schema:Person ] ) ;
+    sh:or ( [ sh:class schema:Organization ] [ sh:class schema:Person ] ) ;
     sh:path schema:author .
 
 schema:CreativeWork-citation a sh:PropertyShape ;
@@ -733,8 +689,7 @@ schema:CreativeWork-isBasedOn a sh:PropertyShape ;
 
 schema:CreativeWork-keywords a sh:PropertyShape ;
     sh:datatype xsd:string ;
-    sh:in ( "logo" "illustrative image" "before image" "after image" ),
-        ( "logo" "illustrative image" "before image" "after image" ) ;
+    sh:in ( "logo" "illustrative image" "before image" "after image" ) ;
     sh:maxCount 1 ;
     sh:minCount 1 ;
     sh:path schema:keywords .
@@ -783,19 +738,16 @@ schema:SoftwareApplication-featureList a sh:PropertyShape ;
     sh:path schema:featureList .
 
 schema:SoftwareApplication-memoryRequirements a sh:PropertyShape ;
-    sh:or ( [ sh:datatype xsd:string ] [ sh:hasValue "None" ] ),
-        ( [ sh:datatype xsd:string ] [ sh:hasValue "None" ] ) ;
+    sh:or ( [ sh:datatype xsd:string ] [ sh:hasValue "None" ] ) ;
     sh:path schema:memoryRequirements .
 
 schema:SoftwareApplication-operatingSystem a sh:PropertyShape ;
-    sh:in ( "Linux" "Windows" "MacOS" "Other" ),
-        ( "Linux" "Windows" "MacOS" "Other" ) ;
+    sh:in ( "Linux" "Windows" "MacOS" "Other" ) ;
     sh:path schema:operatingSystem .
 
 schema:SoftwareApplication-processorRequirements a sh:PropertyShape ;
     sh:datatype xsd:string ;
-    sh:in ( "ARM64" "AMD64" "None" ),
-        ( "ARM64" "AMD64" "None" ) ;
+    sh:in ( "ARM64" "AMD64" "None" ) ;
     sh:path schema:processorRequirements .
 
 schema:SoftwareApplication-softwareRequirements a sh:PropertyShape ;
@@ -935,6 +887,23 @@ sphn:bodySite a rdf:Property ;
     rdfs:label "Body site"@en ;
     rdfs:comment "The part of the body that is being imaged."@en .
 
+imag: a owl:Ontology ;
+    dcterms:abstract "The Imaging Plaza ontology provides concepts (classes and properties) to model human and machine readable imaging software metadata. It is the result of re-using external pre-existing vocabularies such as schema.org and the software description ontology, together with custom imaging specific objects and properties." ;
+    dcterms:contributor "Carlos Vivar Rios",
+        "Robin Franken" ;
+    dcterms:created "2024-04-01"^^xsd:date ;
+    dcterms:creator "Robin Franken" ;
+    dcterms:description "The Imaging Plaza ontology provides concepts (classes and properties) to model human and machine readable imaging software metadata. It is the result of re-using external pre-existing vocabularies such as schema.org and the software description ontology, together with custom imaging specific objects and properties. The ontology contains purely semantic information (labels, definitions etc.) and is meant to be used in conjuction with a graph of enumeration values and a graph containing SHACL shapes to provide more machine readable restrictions on values of properties." ;
+    dcterms:license <https://spdx.org/licenses/CC-BY-SA-4.0.html> ;
+    dcterms:modified "2025-01-28"^^xsd:date ;
+    dcterms:title "Imaging Plaza Ontology" ;
+    vann:preferredNamespacePrefix "imag" ;
+    vann:preferredNamespaceUri "https://imaging-plaza.epfl.ch/ontology#"^^xsd:string ;
+    owl:versionInfo "0.8.0"^^xsd:string ;
+    sh:declare [ sh:namespace imag: ;
+            sh:prefix "imag" ] ;
+    sh:entailment sh:Rules .
+
 imag:Annotation rdfs:label "Annotation" ;
     rdfs:subClassOf imag:FeatureEnum .
 
@@ -970,14 +939,21 @@ imag:SoftwareApplication-requiresGPUShape a sh:PropertyShape ;
     sh:datatype xsd:boolean ;
     sh:path imag:requiresGPU .
 
+imag:SoftwareApplication-runnableExampleShape a sh:PropertyShape ;
+    sh:class imag:RunnableExample ;
+    sh:path imag:runnableExample .
+
+imag:bodySiteShape a sh:PropertyShape ;
+    sh:datatype xsd:string ;
+    sh:path sphn:bodySite .
+
 imag:datasetFormat a rdf:Property ;
     rdfs:label "Dataset format"@en ;
     rdfs:comment "The format of the dataset. For example, dicom, nifti, tiff, png, jpg, etc."@en .
 
 imag:datasetFormatShape a sh:PropertyShape ;
     sh:datatype xsd:string ;
-    sh:in ( "DICOM (Digital Imaging and Communications in Medicine)" "NIfTI (Neuroimaging Informatics Technology Initiative)" "MINC (Medical Imaging NetCDF)" "NRRD (Nearly Raw Raster Data)" "HDF5 (Hierarchical Data Format)" "Parquet" "CSV/TSV (Tabular Data)" "JSON/XML (Structured Data Formats)" "JPEG/PNG/TIFF (Standard Image Formats)" "RAW (Unprocessed Binary Data)" "Other" ),
-        ( "DICOM (Digital Imaging and Communications in Medicine)" "NIfTI (Neuroimaging Informatics Technology Initiative)" "MINC (Medical Imaging NetCDF)" "NRRD (Nearly Raw Raster Data)" "HDF5 (Hierarchical Data Format)" "Parquet" "CSV/TSV (Tabular Data)" "JSON/XML (Structured Data Formats)" "JPEG/PNG/TIFF (Standard Image Formats)" "RAW (Unprocessed Binary Data)" "Other" ) ;
+    sh:in ( "DICOM (Digital Imaging and Communications in Medicine)" "NIfTI (Neuroimaging Informatics Technology Initiative)" "MINC (Medical Imaging NetCDF)" "NRRD (Nearly Raw Raster Data)" "HDF5 (Hierarchical Data Format)" "Parquet" "CSV/TSV (Tabular Data)" "JSON/XML (Structured Data Formats)" "JPEG/PNG/TIFF (Standard Image Formats)" "RAW (Unprocessed Binary Data)" "Other" ) ;
     sh:path imag:datasetFormat .
 
 imag:fairLevelShape a sh:PropertyShape ;
@@ -985,9 +961,22 @@ imag:fairLevelShape a sh:PropertyShape ;
     sh:minCount 1 ;
     sh:path imag:fairLevel .
 
+imag:fairlevel0Shape a sh:NodeShape .
+
+imag:fairlevel5Shape a sh:NodeShape ;
+    sh:and ( imag:fairlevel4Shape ) ;
+    sh:property [ sh:message "Fair level 5" ;
+            sh:minCount 1 ;
+            sh:path sd:hasExecutableInstructions ] ;
+    sh:targetClass schema:SoftwareSourceCode .
+
 imag:hasExecutableNotebook a rdf:Property ;
     rdfs:label "Has executable notebook"@en ;
     rdfs:comment "Property that links a software component with an executable notebook (e.g., Jupyter notebook)."@en .
+
+imag:hasPhysicalQuantityShape a sh:PropertyShape ;
+    sh:datatype xsd:string ;
+    sh:path dmib:hasPhysicalQuantity .
 
 imag:hostType a rdf:Property ;
     rdfs:label "Host type"@en ;
@@ -995,8 +984,7 @@ imag:hostType a rdf:Property ;
 
 imag:hostTypeShape a sh:PropertyShape ;
     sh:datatype xsd:string ;
-    sh:in ( "plaza-gradio-application" "renku-project" "google-colab" "wasm" "other" ),
-        ( "plaza-gradio-application" "renku-project" "google-colab" "wasm" "other" ) ;
+    sh:in ( "plaza-gradio-application" "renku-project" "google-colab" "wasm" "other" ) ;
     sh:path imag:hostType .
 
 imag:imagingModality a rdf:Property ;
@@ -1120,56 +1108,6 @@ schema:Thing-identifier a sh:PropertyShape ;
     sh:minCount 1 ;
     sh:path schema:identifier .
 
-imag: a owl:Ontology ;
-    dcterms:abstract "The Imaging Plaza ontology provides concepts (classes and properties) to model human and machine readable imaging software metadata. It is the result of re-using external pre-existing vocabularies such as schema.org and the software description ontology, together with custom imaging specific objects and properties." ;
-    dcterms:contributor "Carlos Vivar Rios",
-        "Robin Franken" ;
-    dcterms:created "2024-04-01"^^xsd:date ;
-    dcterms:creator "Robin Franken" ;
-    dcterms:description "The Imaging Plaza ontology provides concepts (classes and properties) to model human and machine readable imaging software metadata. It is the result of re-using external pre-existing vocabularies such as schema.org and the software description ontology, together with custom imaging specific objects and properties. The ontology contains purely semantic information (labels, definitions etc.) and is meant to be used in conjuction with a graph of enumeration values and a graph containing SHACL shapes to provide more machine readable restrictions on values of properties." ;
-    dcterms:license <https://spdx.org/licenses/CC-BY-SA-4.0.html> ;
-    dcterms:modified "2025-01-28"^^xsd:date ;
-    dcterms:title "Imaging Plaza Ontology" ;
-    vann:preferredNamespacePrefix "imag" ;
-    vann:preferredNamespaceUri "https://imaging-plaza.epfl.ch/ontology#"^^xsd:string ;
-    owl:versionInfo "0.8.0"^^xsd:string ;
-    sh:declare [ sh:namespace imag: ;
-            sh:prefix "imag" ],
-        [ sh:namespace imag: ;
-            sh:prefix "imag" ] ;
-    sh:entailment sh:Rules .
-
-imag:FeatureExtraction rdfs:label "Feature extraction" ;
-    rdfs:subClassOf imag:FeatureEnum .
-
-imag:MeshGeneration rdfs:label "Mesh generation" ;
-    rdfs:subClassOf imag:FeatureEnum .
-
-imag:Preprocessing rdfs:label "Preprocessing" ;
-    rdfs:subClassOf imag:FeatureEnum .
-
-imag:SoftwareApplication-imagingModalityShape a sh:PropertyShape ;
-    sh:datatype xsd:string ;
-    sh:path imag:imagingModality .
-
-imag:fairlevel0Shape a sh:NodeShape .
-
-imag:fairlevel5Shape a sh:NodeShape ;
-    sh:and ( imag:fairlevel4Shape ),
-        ( imag:fairlevel4Shape ) ;
-    sh:property [ sh:message "Fair level 5" ;
-            sh:minCount 1 ;
-            sh:path sd:hasExecutableInstructions ],
-        [ sh:message "Fair level 5" ;
-            sh:minCount 1 ;
-            sh:path sd:hasExecutableInstructions ] ;
-    sh:targetClass schema:SoftwareSourceCode .
-
-sd:DatasetSpecification-hasDimensionality a sh:PropertyShape ;
-    sh:datatype xsd:integer ;
-    sh:minExclusive 0 ;
-    sh:path sd:hasDimensionality .
-
 schema:citation a rdf:Property ;
     rdfs:label "Citation DOI" ;
     rdfs:comment "A DOI https URL citation to publication about this software. Use Zenodo to generate if needed. e.g. https://doi.org/10.1016/j.procs.2017.03.009" .
@@ -1218,38 +1156,18 @@ schema:url a rdf:Property ;
     rdfs:label "URL" ;
     rdfs:comment "Fill in any URL related to this repository. e.g. related lab or project website." .
 
-imag:Denoising rdfs:label "Denoising" ;
+imag:FeatureExtraction rdfs:label "Feature extraction" ;
     rdfs:subClassOf imag:FeatureEnum .
 
-imag:Drawing rdfs:label "Drawing" ;
+imag:MeshGeneration rdfs:label "Mesh generation" ;
     rdfs:subClassOf imag:FeatureEnum .
 
-imag:PoseEstimation rdfs:label "Pose estimation" ;
+imag:Preprocessing rdfs:label "Preprocessing" ;
     rdfs:subClassOf imag:FeatureEnum .
 
-imag:StatisticsMeasurement rdfs:label "Statistics measurement" ;
-    rdfs:subClassOf imag:FeatureEnum .
-
-sd:hasDocumentation a rdf:Property ;
-    rdfs:label "Has documentation"@en ;
-    rdfs:comment "Pointer to the documentation of the model"@en .
-
-sd:hasExecutableInstructions a rdf:Property ;
-    rdfs:label "Has executable instructions"@en ;
-    rdfs:comment "URL to Human-readable instructions that indicate how a software component should be executed."@en .
-
-sd:hasSoftwareImage a rdf:Property ;
-    rdfs:label "Has software image"@en ;
-    rdfs:comment "Function to link a function with its corresponding container"@en .
-
-sd:readme a rdf:Property ;
-    rdfs:label "Readme"@en ;
-    rdfs:comment "URL to the Readme file of a software component"@en ;
-    rdfs:subPropertyOf <https://codemeta.github.io/terms/readme> .
-
-schema:Thing-url a sh:PropertyShape ;
-    sh:path schema:url ;
-    sh:pattern "^http.*" .
+imag:SoftwareApplication-imagingModalityShape a sh:PropertyShape ;
+    sh:datatype xsd:string ;
+    sh:path imag:imagingModality .
 
 imag:fairlevel1Shape a sh:NodeShape ;
     sh:property [ sh:message "Fair level 1" ;
@@ -1269,46 +1187,15 @@ imag:fairlevel1Shape a sh:NodeShape ;
             sh:path schema:dateCreated ],
         [ sh:message "Fair level 1" ;
             sh:minCount 1 ;
-            sh:path schema:license ],
-        [ sh:message "Fair level 1" ;
-            sh:minCount 1 ;
-            sh:path schema:citation ],
-        [ sh:message "Fair level 1" ;
-            sh:minCount 1 ;
-            sh:path schema:description ],
-        [ sh:message "Fair level 1" ;
-            sh:minCount 1 ;
-            sh:path schema:url ],
-        [ sh:message "Fair level 1" ;
-            sh:minCount 1 ;
-            sh:path schema:dateCreated ],
-        [ sh:message "Fair level 1" ;
-            sh:minCount 1 ;
             sh:path schema:datePublished ],
-        [ sh:message "Fair level 1" ;
-            sh:minCount 1 ;
-            sh:path schema:datePublished ],
-        [ sh:message "Fair level 1" ;
-            sh:minCount 1 ;
-            sh:path schema:image ],
         [ sh:message "Fair level 1" ;
             sh:minCount 1 ;
             sh:path schema:image ] ;
     sh:targetClass schema:SoftwareSourceCode .
 
 imag:fairlevel2Shape a sh:NodeShape ;
-    sh:and ( imag:fairlevel1Shape ),
-        ( imag:fairlevel1Shape ) ;
+    sh:and ( imag:fairlevel1Shape ) ;
     sh:property [ sh:message "Fair level 2" ;
-            sh:minCount 1 ;
-            sh:path schema:programmingLanguage ],
-        [ sh:message "Fair level 2" ;
-            sh:minCount 1 ;
-            sh:path schema:featureList ],
-        [ sh:message "Fair level 2" ;
-            sh:minCount 1 ;
-            sh:path sd:readme ],
-        [ sh:message "Fair level 2" ;
             sh:minCount 1 ;
             sh:path schema:programmingLanguage ],
         [ sh:message "Fair level 2" ;
@@ -1320,15 +1207,8 @@ imag:fairlevel2Shape a sh:NodeShape ;
     sh:targetClass schema:SoftwareSourceCode .
 
 imag:fairlevel3Shape a sh:NodeShape ;
-    sh:and ( imag:fairlevel2Shape ),
-        ( imag:fairlevel2Shape ) ;
+    sh:and ( imag:fairlevel2Shape ) ;
     sh:property [ sh:message "Fair level 3" ;
-            sh:minCount 1 ;
-            sh:path schema:softwareRequirements ],
-        [ sh:message "Fair level 3" ;
-            sh:minCount 1 ;
-            sh:path schema:supportingData ],
-        [ sh:message "Fair level 3" ;
             sh:minCount 1 ;
             sh:path schema:softwareRequirements ],
         [ sh:message "Fair level 3" ;
@@ -1337,18 +1217,8 @@ imag:fairlevel3Shape a sh:NodeShape ;
     sh:targetClass schema:SoftwareSourceCode .
 
 imag:fairlevel4Shape a sh:NodeShape ;
-    sh:and ( imag:fairlevel3Shape ),
-        ( imag:fairlevel3Shape ) ;
+    sh:and ( imag:fairlevel3Shape ) ;
     sh:property [ sh:message "Fair level 4" ;
-            sh:minCount 1 ;
-            sh:path schema:memoryRequirements ],
-        [ sh:message "Fair level 4" ;
-            sh:minCount 1 ;
-            sh:path sd:hasDocumentation ],
-        [ sh:message "Fair level 4" ;
-            sh:minCount 1 ;
-            sh:path sd:hasSoftwareImage ],
-        [ sh:message "Fair level 4" ;
             sh:minCount 1 ;
             sh:path schema:memoryRequirements ],
         [ sh:message "Fair level 4" ;
@@ -1358,6 +1228,44 @@ imag:fairlevel4Shape a sh:NodeShape ;
             sh:minCount 1 ;
             sh:path sd:hasSoftwareImage ] ;
     sh:targetClass schema:SoftwareSourceCode .
+
+sd:DatasetSpecification-hasDimensionality a sh:PropertyShape ;
+    sh:datatype xsd:integer ;
+    sh:minExclusive 0 ;
+    sh:path sd:hasDimensionality .
+
+sd:hasDocumentation a rdf:Property ;
+    rdfs:label "Has documentation"@en ;
+    rdfs:comment "Pointer to the documentation of the model"@en .
+
+sd:hasExecutableInstructions a rdf:Property ;
+    rdfs:label "Has executable instructions"@en ;
+    rdfs:comment "URL to Human-readable instructions that indicate how a software component should be executed."@en .
+
+sd:hasSoftwareImage a rdf:Property ;
+    rdfs:label "Has software image"@en ;
+    rdfs:comment "Function to link a function with its corresponding container"@en .
+
+sd:readme a rdf:Property ;
+    rdfs:label "Readme"@en ;
+    rdfs:comment "URL to the Readme file of a software component"@en ;
+    rdfs:subPropertyOf <https://codemeta.github.io/terms/readme> .
+
+imag:Denoising rdfs:label "Denoising" ;
+    rdfs:subClassOf imag:FeatureEnum .
+
+imag:Drawing rdfs:label "Drawing" ;
+    rdfs:subClassOf imag:FeatureEnum .
+
+imag:PoseEstimation rdfs:label "Pose estimation" ;
+    rdfs:subClassOf imag:FeatureEnum .
+
+imag:StatisticsMeasurement rdfs:label "Statistics measurement" ;
+    rdfs:subClassOf imag:FeatureEnum .
+
+schema:Thing-url a sh:PropertyShape ;
+    sh:path schema:url ;
+    sh:pattern "^http.*" .
 
 imag:OpticalFlow rdfs:label "Optical flow" ;
     rdfs:subClassOf imag:FeatureEnum .
@@ -1377,10 +1285,10 @@ schema:Thing-name a sh:PropertyShape ;
     sh:minCount 1 ;
     sh:path schema:name .
 
-imag:Segmentation rdfs:label "Segmentation" ;
-    rdfs:subClassOf imag:FeatureEnum .
-
 imag:fairLevel a rdf:Property ;
     rdfs:label "FAIR Level" ;
     rdfs:comment "A score of 1-5 rating the Findability, Accessibility, Interoperability and Reusability of a piece of software based on the presence of certain properties for an instance of software" .
+
+imag:Segmentation rdfs:label "Segmentation" ;
+    rdfs:subClassOf imag:FeatureEnum .
 

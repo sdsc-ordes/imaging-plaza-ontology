@@ -505,10 +505,10 @@ schema:DataFeed
               schema:Thing-name ,
               schema:Dataset-variableMeasured ,
               imag:datasetFormatShape ,
-              sphn:bodySiteShape ,
+              imag:bodySiteShape ,
               imag:SoftwareApplication-imagingModalityShape  ,
               sd:DatasetSpecification-hasDimensionality ,
-              dmib:hasPhysicalQuantityShape ,
+              imag:hasPhysicalQuantityShape ,
               imag:resolutionShape ;
     .
 
@@ -646,7 +646,7 @@ imag:ExecutableNotebook a sh:NodeShape ;
 		 schema:Thing-description ,
 		 schema:Thing-url .
 
-imag:RunnableExampleShape
+imag:RunnableExample
   a sh:NodeShape ;
   sh:property schema:Thing-description ,
               schema:Thing-url ,
@@ -686,7 +686,7 @@ md4i:hasRorIdShape
   sh:pattern "^http.*" ;
   .
 
-imag:SoftwareApplication-RunnableExampleShape
+imag:SoftwareApplication-runnableExampleShape
   a sh:PropertyShape ;
   sh:path imag:runnableExample ;
   sh:class imag:RunnableExample ;
