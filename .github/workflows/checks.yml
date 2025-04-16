@@ -4,7 +4,7 @@ on:
   workflow_call:
     inputs:
       is_release:
-        required: false
+        required: true
         type: boolean
 
 
