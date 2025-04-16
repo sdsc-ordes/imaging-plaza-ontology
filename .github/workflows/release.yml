@@ -11,17 +11,20 @@ jobs:
     uses: ./.github/workflows/build.yml
     with:
       is_release: true
+
   shacl:
     uses: ./.github/workflows/checks.yml
     with:
       is_release: true
+    needs: build 
+
   make_release:
     runs-on: ubuntu-latest
     needs:
       - build
       - shacl
-    steps:
 
+    steps:
       - uses: actions/checkout@v4
 
       - name: get schema assets
@@ -34,4 +37,3 @@ jobs:
         uses: softprops/action-gh-release@v2
         with:
           files: build/*
-
