@@ -16,7 +16,7 @@ fi
 
 ONTO_DIR="$1"
 OUTPUT_DIR="build"
-COMBINED_FILE="$OUTPUT_DIR/ontology_combined.ttl"
+COMBINED_FILE="$OUTPUT_DIR/ontology_combined_init.ttl"
 
 # Create output directory if it doesn't exist
 mkdir -p "$OUTPUT_DIR"
@@ -36,7 +36,7 @@ done
 
 
 # replace any string "schema1" in the combined file with "schema" line by line
-sed -i 's/schema1/schema/g' $OUTPUT_DIR/ontology_combined.$format
+sed -i 's/schema1/schema/g' $OUTPUT_DIR/ontology_combined.$ext
 
 # remove ontology_combined.ttl
 rm "$COMBINED_FILE"
