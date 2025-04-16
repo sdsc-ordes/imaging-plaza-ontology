@@ -269,6 +269,10 @@ imag:hostType a rdf:Property ;
   rdfs:comment "The type of host that the software component is running on. For example, plaza-gradio-application, renku-project, google-colab, wasm, other"@en;
   rdfs:label "Host type"@en .
 
+imag:datasetFormat a rdf:Property ;
+  rdfs:comment "The format of the dataset. For example, dicom, nifti, tiff, png, jpg, etc."@en;
+  rdfs:label "Dataset format"@en .
+
 sd:hasDimensionality a rdf:Property;
   rdfs:comment "Property to indicate dimensionality of the input or output of a dataset specification"@en;
   rdfs:label "Has dimensionality"@en .

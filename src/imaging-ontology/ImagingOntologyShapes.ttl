@@ -504,20 +504,28 @@ schema:DataFeed
               schema:Dataset-measurementTechnique ,
               schema:Thing-name ,
               schema:Dataset-variableMeasured ,
-              imag:hasDicomMetadataShape ;
-    .   
-
-imag:hasDicomMetadataShape a sh:NodeShape ;
-    sh:path imag:hasDicomMetadata ;
-    sh:node imag:DicomMetadata ;
+              imag:datasetFormatShape ,
+              sphn:bodySiteShape ,
+              imag:SoftwareApplication-imagingModalityShape  ,
+              sd:DatasetSpecification-hasDimensionality ,
+              dmib:hasPhysicalQuantityShape ,
+              imag:resolutionShape ;
     .
 
-imag:DicomMetadata a sh:NodeShape, rdfs:Class ;
-    sh:property sphn:bodySiteShape ;
-    sh:property imag:SoftwareApplication-imagingModalityShape  ;
-    sh:property sd:DatasetSpecification-hasDimensionality;
-    sh:property dmib:hasPhysicalQuantityShape ;
-    sh:property imag:resolutionShape ;
+imag:datasetFormatShape a sh:PropertyShape ;
+    sh:path imag:datasetFormat ;
+    sh:datatype xsd:string ;
+    sh:in ("DICOM (Digital Imaging and Communications in Medicine)"
+               "NIfTI (Neuroimaging Informatics Technology Initiative)"
+               "MINC (Medical Imaging NetCDF)"
+               "NRRD (Nearly Raw Raster Data)"
+               "HDF5 (Hierarchical Data Format)"
+               "Parquet"
+               "CSV/TSV (Tabular Data)"
+               "JSON/XML (Structured Data Formats)"
+               "JPEG/PNG/TIFF (Standard Image Formats)"
+               "RAW (Unprocessed Binary Data)"
+               "Other") ;
     .
 
 imag:hasPhysicalQuantityShape a sh:PropertyShape ;
