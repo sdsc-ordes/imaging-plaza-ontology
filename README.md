@@ -16,3 +16,4 @@ This repo contains the SHACL shapes and the IP Ontology used for:
 - **v0.7**: Internalize & objectify hasExecutableNotebook, update prefixes from ex: to imag:
 - **v0.8**: Update FAIR levels, contributors+producers become authors. First+Last name becomes schema:name.
 - **v0.9**: Support for runnable examples, dicom dataset properties, spelling mistakes.
+

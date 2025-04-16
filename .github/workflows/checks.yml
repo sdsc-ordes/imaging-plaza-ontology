@@ -1,4 +1,4 @@
-name: Build ontology assets
+name: quality and correctness checks on the schema
 
 on:
   workflow_call:
@@ -9,13 +9,12 @@ on:
 
 
 jobs:
-
-  build:
+  quality_checks:
     runs-on: ubuntu-latest
 
     steps:
-
-      - uses: actions/checkout@v4
+      - name: Checkout repository
+        uses: actions/checkout@v4
 
       - name: Set up Python
         uses: actions/setup-python@v5
@@ -26,15 +25,13 @@ jobs:
         run: |
           python -m pip install --upgrade pip
           pip install -r tools/python/requirements.txt
-
-      - name: build
-        run: |
-          bash ./tools/bash/build/create-combined-turtle.sh src/imaging-ontology/
-          python ./tools/python/build/create-schemas.py 
-
-      - name: upload assets in artifacts
-        uses: actions/upload-artifact@v4
-        if: ${{ inputs.is_release }}
+      
+      - name: Download schema bundle
+        uses: actions/download-artifact@v4
         with:
           name: schema-bundle
-          path: build/*
+          path: build/
+      
+      - name: Shape validation
+        run: |
+          python tools/python/checks/shacl.py
