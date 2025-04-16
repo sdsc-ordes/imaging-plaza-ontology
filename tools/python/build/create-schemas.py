@@ -65,7 +65,7 @@ def extract_labels_and_placeholders(DATA_G: rdflib.Graph) -> dict:
             schema_json[f"{slug}_placeholder"] = str(row.comment)
     return schema_json
 
-DATA_G = generate_schema_graph(str(os.getcwd()) + "/src/imaging-ontology/ImagingOntologyCombined.ttl" )
+DATA_G = generate_schema_graph(str(os.getcwd()) + "/build/ontology_combined.turtle" )
 
 schema_json = extract_labels_and_placeholders(DATA_G)
 os.makedirs(str(os.getcwd()) + "/build/locales/en", exist_ok=True)

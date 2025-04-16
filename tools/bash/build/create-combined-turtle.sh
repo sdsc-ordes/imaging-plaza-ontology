@@ -9,7 +9,7 @@ if [ "$#" -ne 1 ]; then
     exit 1
 fi
 
-ONTO_DIR="$1/src/imaging-ontology"
+ONTO_DIR="$1"
 OUTPUT_DIR="build"
 COMBINED_FILE="$OUTPUT_DIR/ontology_combined.ttl"
 

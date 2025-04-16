@@ -214,7 +214,6 @@ imag:OpticalFlow rdfs:subClassOf imag:FeatureEnum ;
 
 imag:DigitalImageCorrelation rdfs:subClassOf imag:OpticalFlow ;
     rdfs:label "Digital image correlation" ;
-    cat:category "Blue" ;
 .
 
 imag:MotionEstimation rdfs:subClassOf imag:OpticalFlow ;
