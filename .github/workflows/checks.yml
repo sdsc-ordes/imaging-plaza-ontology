@@ -1,18 +1,18 @@
-name: quality and correctness checks on the schema
+name: SHACL validation
 
 on:
+  pull_request:
+    paths:
+      - 'schema/**'
+
   workflow_call:
     inputs:
       is_release:
         required: true
         type: boolean
 
-  pull_request:
-    branches:
-      - '**'
-
 jobs:
-  quality_checks:
+  validate:
     runs-on: ubuntu-latest
 
     steps:
@@ -28,13 +28,12 @@ jobs:
         run: |
           python -m pip install --upgrade pip
           pip install -r tools/python/requirements.txt
-      
-      - name: Download schema bundle
-        uses: actions/download-artifact@v4
-        with:
-          name: schema-bundle
-          path: build/
-      
-      - name: Shape validation
+
+      - name: Build ontology bundle
+        run: |
+          bash ./tools/bash/build/create-combined-turtle.sh src/imaging-ontology/
+          python ./tools/python/build/create-schemas.py 
+
+      - name: SHACL validation
         run: |
           python tools/python/checks/shacl.py
