@@ -1,15 +1,16 @@
 name: SHACL validation
 
 on:
-  pull_request:
-    paths:
-      - 'schema/**'
-
   workflow_call:
     inputs:
       is_release:
-        required: true
+        required: false
         type: boolean
+        default: false
+
+  pull_request:
+    paths:
+      - 'schema/**'
 
 jobs:
   validate:

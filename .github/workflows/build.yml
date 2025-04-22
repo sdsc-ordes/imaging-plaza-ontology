@@ -4,9 +4,9 @@ on:
   workflow_call:
     inputs:
       is_release:
-        required: true
+        required: false
         type: boolean
-
+        default: false
 
 jobs:
 
