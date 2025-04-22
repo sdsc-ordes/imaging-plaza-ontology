@@ -27,6 +27,8 @@ def run_shacl_validation(data_file, shapes_file):
             print("The ontology conforms to the shacl-shacl shapes.")
         else:
             print("The ontology does not conform to the shacl-shacl shapes.")
+            print("Results graph:")
+            print(results_graph.serialize(format='turtle'))
         return conforms
     except Exception as e:
         print(f"An error occurred during SHACL validation: {e}")
