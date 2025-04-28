@@ -22,7 +22,10 @@ COMBINED_FILE="$OUTPUT_DIR/ontology_combined_init.ttl"
 mkdir -p "$OUTPUT_DIR"
 
 # Concatenate all TTL files in the directory
-cat "$ONTO_DIR"/*.ttl > "$COMBINED_FILE"
+for file in "$ONTO_DIR"/*.ttl; do
+    cat "$file" >> "$COMBINED_FILE"
+    echo "" >> "$COMBINED_FILE"
+done
 
 # Define output formats
 FORMATS=("json-ld" "nt" "turtle")
