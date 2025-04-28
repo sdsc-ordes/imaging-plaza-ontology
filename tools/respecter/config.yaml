@@ -1,6 +1,6 @@
 ontology:
-  uri_base: "https://epfl.ch/example"
-  separator: "/"
+  uri_base: "https://imaging-plaza.epfl.ch/ontology"
+  separator: "#"
 
 type:
   class: <http://www.w3.org/2000/01/rdf-schema#Class> 
@@ -30,3 +30,6 @@ prefix:
   dcterms: <http://purl.org/dc/terms/> 
   ex: <https://epfl.ch/example/> 
   md4i: <http://w3id.org/nfdi4ing/metadata4ing#>
+  dmib: <https://biomedit.ch/rdf/sphn-schema/dmib#>
+  sphn: <https://biomedit.ch/rdf/sphn-schema/sphn#>
+`

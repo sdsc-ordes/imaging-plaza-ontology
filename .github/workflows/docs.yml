@@ -1,25 +1,36 @@
-# name: Build ontology docs
+name: Build ReSpec HTML page
 
-# on:
-#   workflow_call:
+on:
+  push:
+    branches:
+      - main
+  pull_request:
 
-# jobs:
+jobs:
+  build-respec:
+    runs-on: ubuntu-latest
 
-#   build:
-#     runs-on: ubuntu-latest
+    steps:
+      - name: Checkout ontology repository
+        uses: actions/checkout@v4
 
-#     steps:
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'  # or whichever you prefer
 
-#       - uses: actions/checkout@v4
+      - name: Install respecter
+        run: |
+          pip install git+https://github.com/sdsc-ordes/respecter
 
-#       - name: Set up Python
-#         uses: actions/setup-python@v5
-#         with:
-#           python-version: '3.12'
+      - name: Generate ReSpec HTML
+        run: |
+          respecter ./build/ontology_combined.ttl \
+            --config ./tools/respecter/config.yaml \
+            --output ./docs/index.html
 
-#       - name: Install dependencies
-#         run: |
-#           python -m pip install --upgrade pip
-#           pip install 
-
-# TODO: BUILD DOCUMENTATION USING RESPECTER
+      - name: Upload generated HTML
+        uses: actions/upload-artifact@v4
+        with:
+          name: respec-html
+          path: ./docs/index.html
