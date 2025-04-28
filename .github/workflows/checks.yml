@@ -2,12 +2,6 @@ name: SHACL validation
 
 on:
   workflow_call:
-    inputs:
-      is_release:
-        required: false
-        type: boolean
-        default: false
-
   pull_request:
     paths:
       - 'src/imaging-ontology/**'
