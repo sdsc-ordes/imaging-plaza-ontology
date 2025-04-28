@@ -22,7 +22,8 @@ jobs:
 
       - name: Install respecter
         run: |
-          pip install git+https://github.com/sdsc-ordes/respecter
+          git clone https://github.com/sdsc-ordes/respecter.git
+          pip install -e respecter
 
       - name: Generate ReSpec HTML
         run: |
