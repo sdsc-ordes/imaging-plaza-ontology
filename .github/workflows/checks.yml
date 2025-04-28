@@ -27,7 +27,7 @@ jobs:
       - name: Build ontology bundle
         run: |
           bash ./tools/bash/build/create-combined-turtle.sh src/imaging-ontology/
-          python ./tools/python/build/create-schemas.py 
+          python ./tools/python/build/create-schemas.py --input build/ontology_combined.ttl --output build/locales/en/schema.json
 
       - name: SHACL validation
         run: |
