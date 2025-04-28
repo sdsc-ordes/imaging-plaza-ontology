@@ -1,24 +1,22 @@
 import rdflib
 import json
+from pathlib import Path
+import argparse
 
 
-def generate_schema_json(turtle_file: str) -> dict:
+def generate_schema_graph(turtle_file: Path) -> rdflib.Graph:
     """
-    Generate schema JSON from rdflib.Graph.
+    Generate rdflib.Graph from a Turtle file.
 
     Args:
-        data_g: The rdflib.Graph object containing the data.
+        turtle_file: The path to the Turtle file.
 
     Returns:
-        The schema as a dictionary.
+        The rdflib.Graph object containing the data.
     """
     data_g = rdflib.Graph()
     data_g.parse(turtle_file, format="turtle")
-
     return data_g
-
-
-data_g = generate_schema_json("schemas/ImagingOntology.ttl")
 
 
 def extract_labels_and_placeholders(data_g: rdflib.Graph) -> dict:
@@ -64,7 +62,28 @@ def extract_labels_and_placeholders(data_g: rdflib.Graph) -> dict:
     return schema_json
 
 
-schema_json = extract_labels_and_placeholders(data_g)
+if __name__ == "__main__":
+    parser = argparse.ArgumentParser(description="Extract labels and placeholders from ontology TTL file.")
+    parser.add_argument(
+        "--input",
+        required=True,
+        type=Path,
+        help="Path to the input Turtle (.ttl) file."
+    )
+    parser.add_argument(
+        "--output",
+        required=True,
+        type=Path,
+        help="Path to the output JSON file."
+    )
+    args = parser.parse_args()
 
-with open("locales/en/schema.json", "w") as f:
-    json.dump(schema_json, f, indent=4)
+    print(f"Generating schema from {args.input}...")
+    data_g = generate_schema_graph(args.input)
+    schema_json = extract_labels_and_placeholders(data_g)
+
+    args.output.parent.mkdir(parents=True, exist_ok=True)
+    with args.output.open("w") as f:
+        json.dump(schema_json, f, indent=4)
+
+    print(f"Schema JSON written to {args.output}")

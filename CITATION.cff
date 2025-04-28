@@ -1,0 +1,22 @@
+# This CITATION.cff file was generated with cffinit.
+# Visit https://bit.ly/cffinit to generate yours today!
+
+cff-version: 1.2.0
+title: Imaging Plaza Ontology
+message: >-
+  If you use this dataset, please cite it using the metadata
+  from this file.
+type: dataset
+authors:
+  - given-names: Robin
+    family-names: Franken
+    email: robin.franken@epfl.ch
+    affiliation: EPFL
+    orcid: 'https://orcid.org/0009-0008-0143-9118'
+  - given-names: Carlos
+    family-names: Vivar Rios
+    orcid: 'https://orcid.org/0000-0002-8076-2034'
+    email: carlos.vivarrios@epfl.ch
+    affiliation: EPFL
+url: 'https://imaging-plaza.epfl.ch/'
+license: CC-BY-4.0

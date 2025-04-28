@@ -1,21 +1,18 @@
-name: Build ontology assets
+name: SHACL validation
 
 on:
   workflow_call:
-    inputs:
-      is_release:
-        required: false
-        type: boolean
-        default: false
+  pull_request:
+    paths:
+      - 'src/imaging-ontology/**'
 
 jobs:
-
-  build:
+  validate:
     runs-on: ubuntu-latest
 
     steps:
-
-      - uses: actions/checkout@v4
+      - name: Checkout repository
+        uses: actions/checkout@v4
 
       - name: Set up Python
         uses: actions/setup-python@v5
@@ -27,14 +24,12 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r tools/python/requirements.txt
 
-      - name: build
+      - name: Build ontology bundle
         run: |
           bash ./tools/bash/build/create-combined-turtle.sh src/imaging-ontology/
           python ./tools/python/build/create-schemas.py --input build/ontology_combined.ttl --output build/locales/en/schema.json
 
-      - name: upload assets in artifacts
-        uses: actions/upload-artifact@v4
-        if: ${{ inputs.is_release }}
-        with:
-          name: schema-bundle
-          path: build/*
+      - name: SHACL validation
+        run: |
+          python tools/python/checks/shacl.py build/ontology_combined.ttl src/quality-checks/shacl-shacl.ttl
+
