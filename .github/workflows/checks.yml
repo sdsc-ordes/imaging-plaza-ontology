@@ -31,4 +31,5 @@ jobs:
 
       - name: SHACL validation
         run: |
-          python tools/python/checks/shacl.py
+          python tools/python/checks/shacl.py build/ontology_combined.ttl src/quality-checks/shacl-shacl.ttl
+

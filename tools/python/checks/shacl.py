@@ -32,8 +32,12 @@ def run_shacl_validation(data_file, shapes_file):
 
 
 if __name__ == "__main__":
-    data_file = "build/ontology_combined.ttl"
-    shapes_file = "src/quality-checks/shacl-shacl.ttl"
+    if len(sys.argv) != 3:
+        print(f"Usage: python {sys.argv[0]} <data_file> <shapes_file>")
+        sys.exit(1)
+
+    data_file = sys.argv[1]
+    shapes_file = sys.argv[2]
 
     print(f"Running SHACL validation on {data_file} with shapes {shapes_file}...")
     conforms = run_shacl_validation(data_file, shapes_file)
