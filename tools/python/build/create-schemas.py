@@ -1,11 +1,10 @@
 import rdflib
 import json
+from pathlib import Path
+import argparse
 
-import os
 
-
-
-def generate_schema_graph(turtle_file: str) -> rdflib.Graph:
+def generate_schema_graph(turtle_file: Path) -> rdflib.Graph:
     """
     Generate rdflib.Graph from a Turtle file.
 
@@ -15,20 +14,17 @@ def generate_schema_graph(turtle_file: str) -> rdflib.Graph:
     Returns:
         The rdflib.Graph object containing the data.
     """
-    DATA_G = rdflib.Graph()
-    DATA_G.parse(turtle_file, format="turtle")
-
-    return DATA_G
-
+    data_g = rdflib.Graph()
+    data_g.parse(turtle_file, format="turtle")
+    return data_g
 
 
-
-def extract_labels_and_placeholders(DATA_G: rdflib.Graph) -> dict:
+def extract_labels_and_placeholders(data_g: rdflib.Graph) -> dict:
     """
     Extract labels and placeholders from rdflib.Graph.
 
     Args:
-        DATA_G: The rdflib.Graph object containing the data.
+        data_g: The rdflib.Graph object containing the data.
 
     Returns:
         The extracted labels and placeholders as a dictionary.
@@ -46,7 +42,7 @@ def extract_labels_and_placeholders(DATA_G: rdflib.Graph) -> dict:
         }
     }
     """
-    result = DATA_G.query(query)
+    result = data_g.query(query)
     schema_json = {
         "@type_label": "Type",
         "add_modal_button": "Add {{type}}",
@@ -65,9 +61,29 @@ def extract_labels_and_placeholders(DATA_G: rdflib.Graph) -> dict:
             schema_json[f"{slug}_placeholder"] = str(row.comment)
     return schema_json
 
-DATA_G = generate_schema_graph(str(os.getcwd()) + "/build/ontology_combined.ttl" )
 
-schema_json = extract_labels_and_placeholders(DATA_G)
-os.makedirs(str(os.getcwd()) + "/build/locales/en", exist_ok=True)
-with open(str(os.getcwd()) + "/build/locales/en/schema.json", "w") as f:
-    json.dump(schema_json, f, indent=4)
+if __name__ == "__main__":
+    parser = argparse.ArgumentParser(description="Extract labels and placeholders from ontology TTL file.")
+    parser.add_argument(
+        "--input",
+        required=True,
+        type=Path,
+        help="Path to the input Turtle (.ttl) file."
+    )
+    parser.add_argument(
+        "--output",
+        required=True,
+        type=Path,
+        help="Path to the output JSON file."
+    )
+    args = parser.parse_args()
+
+    print(f"Generating schema from {args.input}...")
+    data_g = generate_schema_graph(args.input)
+    schema_json = extract_labels_and_placeholders(data_g)
+
+    args.output.parent.mkdir(parents=True, exist_ok=True)
+    with args.output.open("w") as f:
+        json.dump(schema_json, f, indent=4)
+
+    print(f"Schema JSON written to {args.output}")
