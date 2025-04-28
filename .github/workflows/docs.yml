@@ -27,7 +27,7 @@ jobs:
 
       - name: Generate ReSpec HTML
         run: |
-          respecter ./build/ontology_combined.ttl \
+          respecter run ./build/ontology_combined.ttl \
             --config ./tools/respecter/config.yaml \
             --output ./docs/index.html
 
