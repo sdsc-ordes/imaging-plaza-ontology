@@ -918,7 +918,7 @@ imag:FeatureTaggerRule a sh:SPARQLRule ;
 			WHERE {
 				$this schema:featureList ?feature .
                 ?featureClass rdfs:label ?feature .
-				?featureClass rdfs:subClassOf ?parentFeature.
+				?featureClass rdfs:subClassOf ?parentFeature .
                 ?parentFeature rdfs:label ?parentFeatureLabel .
 			}
 			""" ;
