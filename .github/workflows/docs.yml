@@ -1,11 +1,13 @@
 name: Generate respecter HTML
 
 on:
-  workflow_run:
-    workflows: ["Build ontology assets"]
-    types:
-      - completed
-
+  # workflow_run:
+  #   workflows: ["Build ontology assets"]
+  #   types:
+  #     - completed
+  push:
+    branches:
+      - respecter-ci
 jobs:
   generate-docs:
     runs-on: ubuntu-latest
