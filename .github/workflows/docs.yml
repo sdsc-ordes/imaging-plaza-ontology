@@ -1,15 +1,15 @@
-name: Build ReSpec HTML page
+name: Generate respecter HTML
 
 on:
-  push:
-    branches:
-      - main
-  pull_request:
+  workflow_run:
+    workflows: ["Build ontology assets"]
+    types:
+      - completed
 
 jobs:
-  build-respec:
+  generate-docs:
     runs-on: ubuntu-latest
-
+    if: ${{ github.event.workflow_run.conclusion == 'success' }}
     steps:
       - name: Checkout ontology repository
         uses: actions/checkout@v4
@@ -17,7 +17,7 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v4
         with:
-          python-version: '3.11'  # or whichever you prefer
+          python-version: '3.12'
 
       - name: Install respecter
         run: |
