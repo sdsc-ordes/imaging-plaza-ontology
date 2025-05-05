@@ -46,7 +46,7 @@ schema:citation a rdf:Property;
   rdfs:comment "A DOI https URL citation to publication about this software. Use Zenodo to generate if needed. e.g. https://doi.org/10.1016/j.procs.2017.03.009";
   rdfs:label "Citation DOI" .
 
-schema:contentURL a rdf:Property;
+schema:contentUrl a rdf:Property;
   rdfs:comment "Actual bytes of the media object, for example the image file or video file.";
   rdfs:label "Content URL".
 
