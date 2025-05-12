@@ -7,8 +7,85 @@
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix sh:   <http://www.w3.org/ns/shacl#> .
 @prefix xsd:  <http://www.w3.org/2001/XMLSchema#> .
-
+@prefix ordes: <http://www.datascience.ch/ordes#> .
 @prefix shsh: <http://www.w3.org/ns/shacl-shacl#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix imag: <https://imaging-plaza.epfl.ch/ontology#> .
+
+
+ordes:pathShape a sh:NodeShape ;
+	sh:targetObjectsOf sh:path ;
+	sh:property [
+		sh:path rdf:type ;
+		sh:hasValue rdf:Property ;
+	] .
+
+ordes:conceptShape a sh:NodeShape ;
+	sh:targetClass rdf:Property, rdfs:Class ;
+	 sh:or (
+        [ sh:path rdfs:comment ; sh:minCount 1 ]
+        [ sh:path skos:definition ; sh:minCount 1 ]
+    ) ;
+	sh:or (
+        [ sh:path rdfs:label ; sh:minCount 1 ]
+        [ sh:path skos:prefLabel ; sh:minCount 1 ]
+    ) .
+
+ordes:TargetClassNotDeclaredShape
+    a sh:NodeShape ;
+    sh:targetObjectsOf sh:targetClass ;
+    sh:sparql [
+        a sh:SPARQLConstraint ;
+        sh:message "This class is targeted in a shape but is not declared as an rdfs:Class." ;
+        sh:select """
+		PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+        SELECT ?this WHERE {
+            FILTER NOT EXISTS {
+                ?this a rdfs:Class .
+            }
+        }
+        """ ;
+    ] .
+
+ordes:nodeShapeWithoutNodeOrProperty a sh:NodeShape ;
+	sh:targetClass sh:NodeShape ;
+	sh:sparql [
+		a sh:SPARQLConstraint ;
+		sh:message "This shape does not have a sh:node or a sh:property, and is therefore useless." ;
+		sh:select """
+		PREFIX sh: <http://www.w3.org/ns/shacl#>
+		SELECT ?this WHERE {
+			FILTER NOT EXISTS {
+				?this (sh:node|sh:property) ?target .
+			}
+		}
+		""" ;
+	] .
+
+ordes:EnumerationClassHasInstancesShape
+    a sh:NodeShape ;
+    sh:target [
+        a sh:SPARQLTarget ;
+        sh:select """
+		PREFIX imag: <https://imaging-plaza.epfl.ch/ontology#>
+            SELECT ?enumClass WHERE {
+                ?enumClass a imag:EnumerationType .
+            }
+        """ ;
+    ] ;
+    sh:sparql [
+        a sh:SPARQLConstraint ;
+        sh:message "Enumeration class has no instances." ;
+        sh:select """
+            SELECT ?this WHERE {
+                FILTER NOT EXISTS {
+                    ?instance a ?this .
+                }
+            }
+        """ ;
+    ] .
+
+
 
 shsh:
 	rdfs:label "SHACL for SHACL"@en ;
