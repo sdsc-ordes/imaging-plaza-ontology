@@ -13,6 +13,7 @@
 @prefix md4i: <http://w3id.org/nfdi4ing/metadata4ing#>.
 @prefix sphn: <https://biomedit.ch/rdf/sphn-schema/sphn#>.
 @prefix dmib: <https://biomedit.ch/rdf/sphn-schema/dmib#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
 
 imag:EnumerationType a rdfs:Class ;
     rdfs:subClassOf schema:Enumeration ;

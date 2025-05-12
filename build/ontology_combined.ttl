@@ -11,6 +11,7 @@
 @prefix schema: <http://schema.org/> .
 @prefix sd: <https://w3id.org/okn/o/sd#> .
 @prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
 @prefix sphn: <https://biomedit.ch/rdf/sphn-schema/sphn#> .
 @prefix vann: <http://purl.org/vocab/vann/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
@@ -41,11 +42,6 @@ schema:Grant a rdfs:Class ;
     rdfs:label "Grant" ;
     rdfs:comment "A grant, typically financial or otherwise quantifiable, of resources." ;
     rdfs:subClassOf schema:Intangible .
-
-schema:ImagingObject a rdfs:Class,
-        sh:NodeShape ;
-    sh:property schema:CreativeWork-keywords,
-        schema:Thing-url .
 
 schema:Organization a rdfs:Class,
         sh:NodeShape ;
@@ -194,6 +190,11 @@ imag:HostTypeEnumeration a rdfs:Class ;
     rdfs:comment "Enumeration class for host type" ;
     rdfs:subClassOf imag:EnumerationType .
 
+imag:ImageObject a rdfs:Class ;
+    rdfs:label "Image object" ;
+    rdfs:comment "An image of the software, typically a screenshot, before/after or a logo." ;
+    rdfs:subClassOf schema:Intangible .
+
 imag:ImageObjectTagEnum a rdfs:Class ;
     rdfs:label "Image Object Tag Enumeration" ;
     rdfs:comment "Enumeration class for image object tag" ;
@@ -256,10 +257,6 @@ sd:SoftwareImage a rdfs:Class,
         schema:Thing-name,
         sd:SoftwareImage-availableInRegistry .
 
-schema:Person-email a sh:PropertyShape ;
-    sh:datatype xsd:string ;
-    sh:path schema:email .
-
 schema:Person-familyName a sh:PropertyShape ;
     sh:datatype xsd:string ;
     sh:minCount 1 ;
@@ -269,10 +266,6 @@ schema:Person-givenName a sh:PropertyShape ;
     sh:datatype xsd:string ;
     sh:minCount 1 ;
     sh:path schema:givenName .
-
-schema:contentURL a rdf:Property ;
-    rdfs:label "Content URL" ;
-    rdfs:comment "Actual bytes of the media object, for example the image file or video file." .
 
 schema:distribution a rdf:Property ;
     rdfs:label "Distribution" ;
@@ -320,11 +313,13 @@ imag:CUDA_12_1 a imag:SoftwareRequirementsEnum ;
 imag:CUDA_9_0 a imag:SoftwareRequirementsEnum ;
     rdfs:label "CUDA 9.0" .
 
-imag:Classification rdfs:label "Classification" ;
-    rdfs:subClassOf imag:Segmentation .
+imag:Classification a imag:FeatureEnum ;
+    rdfs:label "Classification" ;
+    skos:broader imag:Segmentation .
 
-imag:Clustering rdfs:label "Clustering" ;
-    rdfs:subClassOf imag:Segmentation .
+imag:Clustering a imag:FeatureEnum ;
+    rdfs:label "Clustering" ;
+    skos:broader imag:Segmentation .
 
 imag:Cplusplus a imag:ComputerLanguageEnum ;
     rdfs:label "C++" .
@@ -332,38 +327,47 @@ imag:Cplusplus a imag:ComputerLanguageEnum ;
 imag:Csharp a imag:ComputerLanguageEnum ;
     rdfs:label "C#" .
 
-imag:CurvatureEstimation rdfs:label "Curvature estimation" ;
-    rdfs:subClassOf imag:SceneReconstruction .
+imag:CurvatureEstimation a imag:FeatureEnum ;
+    rdfs:label "Curvature estimation" ;
+    skos:broader imag:SceneReconstruction .
 
 imag:DICOM a imag:DatasetFormatEnumeration ;
     rdfs:label "DICOM (Medical Imaging Format)" .
 
-imag:Deblurring rdfs:label "Deblurring" ;
-    rdfs:subClassOf imag:Denoising .
+imag:Deblurring a imag:FeatureEnum ;
+    rdfs:label "Deblurring" ;
+    skos:broader imag:Denoising .
 
-imag:Deconvolution rdfs:label "Deconvolution" ;
-    rdfs:subClassOf imag:Denoising .
+imag:Deconvolution a imag:FeatureEnum ;
+    rdfs:label "Deconvolution" ;
+    skos:broader imag:Denoising .
 
-imag:DepthEstimation rdfs:label "Depth estimation" ;
-    rdfs:subClassOf imag:SceneReconstruction .
+imag:DepthEstimation a imag:FeatureEnum ;
+    rdfs:label "Depth estimation" ;
+    skos:broader imag:SceneReconstruction .
 
 imag:DesktopApp a imag:ApplicationCategoryEnum ;
     rdfs:label "Desktop app" .
 
-imag:DigitalImageCorrelation rdfs:label "Digital image correlation" ;
-    rdfs:subClassOf imag:OpticalFlow .
+imag:DigitalImageCorrelation a imag:FeatureEnum ;
+    rdfs:label "Digital image correlation" ;
+    skos:broader imag:OpticalFlow .
 
-imag:DimensionalityReduction rdfs:label "Dimensionality reduction" ;
-    rdfs:subClassOf imag:FeatureExtraction .
+imag:DimensionalityReduction a imag:FeatureEnum ;
+    rdfs:label "Dimensionality reduction" ;
+    skos:broader imag:FeatureExtraction .
 
-imag:DirectionalImageAnalysis rdfs:label "Directional image analysis" ;
-    rdfs:subClassOf imag:FeatureExtraction .
+imag:DirectionalImageAnalysis a imag:FeatureEnum ;
+    rdfs:label "Directional image analysis" ;
+    skos:broader imag:FeatureExtraction .
 
-imag:DistributionMeasurements rdfs:label "Distribution measurements" ;
-    rdfs:subClassOf imag:StatisticsMeasurement .
+imag:DistributionMeasurements a imag:FeatureEnum ;
+    rdfs:label "Distribution measurements" ;
+    skos:broader imag:StatisticsMeasurement .
 
-imag:DriftCorrection rdfs:label "Drift correction" ;
-    rdfs:subClassOf imag:OpticalFlow .
+imag:DriftCorrection a imag:FeatureEnum ;
+    rdfs:label "Drift correction" ;
+    skos:broader imag:OpticalFlow .
 
 imag:EPFL a imag:AffiliationEnum ;
     rdfs:label "EPFL" .
@@ -371,14 +375,16 @@ imag:EPFL a imag:AffiliationEnum ;
 imag:ETHZ a imag:AffiliationEnum ;
     rdfs:label "ETHZ" .
 
-imag:FeatureDetection rdfs:label "Feature detection" ;
-    rdfs:subClassOf imag:MorphologicalAnalysis .
+imag:FeatureDetection a imag:FeatureEnum ;
+    rdfs:label "Feature detection" ;
+    skos:broader imag:MorphologicalAnalysis .
 
 imag:Fiji a imag:IsPluginModuleOfEnum ;
     rdfs:label "Fiji" .
 
-imag:Filtering rdfs:label "Filtering" ;
-    rdfs:subClassOf imag:Preprocessing .
+imag:Filtering a imag:FeatureEnum ;
+    rdfs:label "Filtering" ;
+    skos:broader imag:Preprocessing .
 
 imag:GoLang a imag:ComputerLanguageEnum ;
     rdfs:label "GoLang" .
@@ -386,8 +392,9 @@ imag:GoLang a imag:ComputerLanguageEnum ;
 imag:GoogleColab a imag:HostTypeEnumeration ;
     rdfs:label "Google Colab" .
 
-imag:Grouping rdfs:label "Grouping" ;
-    rdfs:subClassOf imag:Segmentation .
+imag:Grouping a imag:FeatureEnum ;
+    rdfs:label "Grouping" ;
+    skos:broader imag:Segmentation .
 
 imag:HDF5 a imag:DatasetFormatEnumeration ;
     rdfs:label "HDF5 (Hierarchical Data Format)" .
@@ -398,17 +405,21 @@ imag:Icy a imag:IsPluginModuleOfEnum ;
 imag:IllustrativeImage a imag:ImageObjectTagEnum ;
     rdfs:label "illustrative image" .
 
-imag:ImageEnhancement rdfs:label "Image enhancement" ;
-    rdfs:subClassOf imag:Drawing .
+imag:ImageEnhancement a imag:FeatureEnum ;
+    rdfs:label "Image enhancement" ;
+    skos:broader imag:Drawing .
 
-imag:ImageQualityAssessment rdfs:label "Image quality assessment" ;
-    rdfs:subClassOf imag:StatisticsMeasurement .
+imag:ImageQualityAssessment a imag:FeatureEnum ;
+    rdfs:label "Image quality assessment" ;
+    skos:broader imag:StatisticsMeasurement .
 
-imag:ImageSimplification rdfs:label "Image simplification" ;
-    rdfs:subClassOf imag:Preprocessing .
+imag:ImageSimplification a imag:FeatureEnum ;
+    rdfs:label "Image simplification" ;
+    skos:broader imag:Preprocessing .
 
-imag:InstanceSegmentation rdfs:label "Instance segmentation" ;
-    rdfs:subClassOf imag:Segmentation .
+imag:InstanceSegmentation a imag:FeatureEnum ;
+    rdfs:label "Instance segmentation" ;
+    skos:broader imag:Segmentation .
 
 imag:JPEG_PNG_TIFF a imag:DatasetFormatEnumeration ;
     rdfs:label "JPEG/PNG/TIFF (Standard Image Formats)" .
@@ -422,8 +433,9 @@ imag:Java a imag:ComputerLanguageEnum ;
 imag:JavaScript a imag:ComputerLanguageEnum ;
     rdfs:label "JavaScript" .
 
-imag:Labelling rdfs:label "Labelling" ;
-    rdfs:subClassOf imag:Annotation .
+imag:Labelling a imag:FeatureEnum ;
+    rdfs:label "Labelling" ;
+    skos:broader imag:Annotation .
 
 imag:Library a imag:ApplicationCategoryEnum ;
     rdfs:label "Library" .
@@ -446,14 +458,17 @@ imag:MacOS a imag:OperatingSystemEnum ;
 imag:MatLab a imag:ComputerLanguageEnum ;
     rdfs:label "MATLAB" .
 
-imag:ModelGeneration3d rdfs:label "3d model generation" ;
-    rdfs:subClassOf imag:SceneReconstruction .
+imag:ModelGeneration3d a imag:FeatureEnum ;
+    rdfs:label "3d model generation" ;
+    skos:broader imag:SceneReconstruction .
 
-imag:MorphologicalReconstruction rdfs:label "Morphological reconstruction" ;
-    rdfs:subClassOf imag:SceneReconstruction .
+imag:MorphologicalReconstruction a imag:FeatureEnum ;
+    rdfs:label "Morphological reconstruction" ;
+    skos:broader imag:SceneReconstruction .
 
-imag:MotionEstimation rdfs:label "Motion estimation" ;
-    rdfs:subClassOf imag:OpticalFlow .
+imag:MotionEstimation a imag:FeatureEnum ;
+    rdfs:label "Motion estimation" ;
+    skos:broader imag:OpticalFlow .
 
 imag:NIfTI a imag:DatasetFormatEnumeration ;
     rdfs:label "NIfTI (Neuroimaging Informatics Technology Initiative)" .
@@ -482,14 +497,17 @@ imag:Notebook a imag:ApplicationCategoryEnum ;
 imag:OMERO a imag:IsPluginModuleOfEnum ;
     rdfs:label "OMERO" .
 
-imag:ObjectDetection rdfs:label "Object detection" ;
-    rdfs:subClassOf imag:Segmentation .
+imag:ObjectDetection a imag:FeatureEnum ;
+    rdfs:label "Object detection" ;
+    skos:broader imag:Segmentation .
 
-imag:ObjectRecognition rdfs:label "Object recognition" ;
-    rdfs:subClassOf imag:Segmentation .
+imag:ObjectRecognition a imag:FeatureEnum ;
+    rdfs:label "Object recognition" ;
+    skos:broader imag:Segmentation .
 
-imag:OrientationAnalysis rdfs:label "Orientation analysis" ;
-    rdfs:subClassOf imag:PoseEstimation .
+imag:OrientationAnalysis a imag:FeatureEnum ;
+    rdfs:label "Orientation analysis" ;
+    skos:broader imag:PoseEstimation .
 
 imag:OtherDatasetFormat a imag:DatasetFormatEnumeration ;
     rdfs:label "Other" .
@@ -503,11 +521,13 @@ imag:OtherOS a imag:OperatingSystemEnum ;
 imag:Parquet a imag:DatasetFormatEnumeration ;
     rdfs:label "Parquet" .
 
-imag:PatternRecognition rdfs:label "Pattern recognition" ;
-    rdfs:subClassOf imag:Segmentation .
+imag:PatternRecognition a imag:FeatureEnum ;
+    rdfs:label "Pattern recognition" ;
+    skos:broader imag:Segmentation .
 
-imag:PixelClassification rdfs:label "Pixel classification" ;
-    rdfs:subClassOf imag:Segmentation .
+imag:PixelClassification a imag:FeatureEnum ;
+    rdfs:label "Pixel classification" ;
+    skos:broader imag:Segmentation .
 
 imag:PlazaGradioApplication a imag:HostTypeEnumeration ;
     rdfs:label "Plaza Gradio Application" .
@@ -515,11 +535,13 @@ imag:PlazaGradioApplication a imag:HostTypeEnumeration ;
 imag:Plugin a imag:ApplicationCategoryEnum ;
     rdfs:label "Plugin" .
 
-imag:PoseDetection rdfs:label "Pose detection" ;
-    rdfs:subClassOf imag:PoseEstimation .
+imag:PoseDetection a imag:FeatureEnum ;
+    rdfs:label "Pose detection" ;
+    skos:broader imag:PoseEstimation .
 
-imag:PoseInformation rdfs:label "Pose information" ;
-    rdfs:subClassOf imag:PoseEstimation .
+imag:PoseInformation a imag:FeatureEnum ;
+    rdfs:label "Pose information" ;
+    skos:broader imag:PoseEstimation .
 
 imag:PyTorch_1_13 a imag:SoftwareRequirementsEnum ;
     rdfs:label "PyTorch 1.13" .
@@ -542,8 +564,9 @@ imag:Pyxu a imag:IsPluginModuleOfEnum ;
 imag:QuPath a imag:IsPluginModuleOfEnum ;
     rdfs:label "qupath" .
 
-imag:QualityMetricMeasurement rdfs:label "Quality metric measurement" ;
-    rdfs:subClassOf imag:StatisticsMeasurement .
+imag:QualityMetricMeasurement a imag:FeatureEnum ;
+    rdfs:label "Quality metric measurement" ;
+    skos:broader imag:StatisticsMeasurement .
 
 imag:R a imag:ComputerLanguageEnum ;
     rdfs:label "R" .
@@ -551,14 +574,17 @@ imag:R a imag:ComputerLanguageEnum ;
 imag:RAW a imag:DatasetFormatEnumeration ;
     rdfs:label "RAW (Unprocessed Binary Data)" .
 
-imag:Reconstruction3d rdfs:label "3d reconstruction" ;
-    rdfs:subClassOf imag:SceneReconstruction .
+imag:Reconstruction3d a imag:FeatureEnum ;
+    rdfs:label "3d reconstruction" ;
+    skos:broader imag:SceneReconstruction .
 
-imag:Registration rdfs:label "Registration" ;
-    rdfs:subClassOf imag:OpticalFlow .
+imag:Registration a imag:FeatureEnum ;
+    rdfs:label "Registration" ;
+    skos:broader imag:OpticalFlow .
 
-imag:Rendering rdfs:label "Rendering" ;
-    rdfs:subClassOf imag:Drawing .
+imag:Rendering a imag:FeatureEnum ;
+    rdfs:label "Rendering" ;
+    skos:broader imag:Drawing .
 
 imag:RenkuProject a imag:HostTypeEnumeration ;
     rdfs:label "Renku Project" .
@@ -569,26 +595,32 @@ imag:Rust a imag:ComputerLanguageEnum ;
 imag:Scala a imag:ComputerLanguageEnum ;
     rdfs:label "Scala" .
 
-imag:ShadingEstimation rdfs:label "Shading estimation" ;
-    rdfs:subClassOf imag:SceneReconstruction .
+imag:ShadingEstimation a imag:FeatureEnum ;
+    rdfs:label "Shading estimation" ;
+    skos:broader imag:SceneReconstruction .
 
 imag:Shell a imag:ComputerLanguageEnum ;
     rdfs:label "shell" .
 
-imag:Simulation rdfs:label "Simulation" ;
-    rdfs:subClassOf imag:Modelling .
+imag:Simulation a imag:FeatureEnum ;
+    rdfs:label "Simulation" ;
+    skos:broader imag:Modelling .
 
-imag:Smoothing rdfs:label "Smoothing" ;
-    rdfs:subClassOf imag:Denoising .
+imag:Smoothing a imag:FeatureEnum ;
+    rdfs:label "Smoothing" ;
+    skos:broader imag:Denoising .
 
-imag:Stitching rdfs:label "Stitching" ;
-    rdfs:subClassOf imag:OpticalFlow .
+imag:Stitching a imag:FeatureEnum ;
+    rdfs:label "Stitching" ;
+    skos:broader imag:OpticalFlow .
 
-imag:SurfaceParameterisation rdfs:label "Surface parameterisation" ;
-    rdfs:subClassOf imag:MeshGeneration .
+imag:SurfaceParameterisation a imag:FeatureEnum ;
+    rdfs:label "Surface parameterisation" ;
+    skos:broader imag:MeshGeneration .
 
-imag:TemplateMatching rdfs:label "Template matching" ;
-    rdfs:subClassOf imag:Segmentation .
+imag:TemplateMatching a imag:FeatureEnum ;
+    rdfs:label "Template matching" ;
+    skos:broader imag:Segmentation .
 
 imag:Tensorflow_1_4 a imag:SoftwareRequirementsEnum ;
     rdfs:label "Tensorflow 1.4" .
@@ -611,8 +643,8 @@ imag:Tensorflow_2_2 a imag:SoftwareRequirementsEnum ;
 imag:Tensorflow_2_4 a imag:SoftwareRequirementsEnum ;
     rdfs:label "Tensorflow 2.4" .
 
-imag:Tracking rdfs:label "Tracking" ;
-    rdfs:subClassOf imag:FeatureEnum .
+imag:Tracking a imag:FeatureEnum ;
+    rdfs:label "Tracking" .
 
 imag:UNIL a imag:AffiliationEnum ;
     rdfs:label "UNIL" .
@@ -620,14 +652,16 @@ imag:UNIL a imag:AffiliationEnum ;
 imag:UZH a imag:AffiliationEnum ;
     rdfs:label "UZH" .
 
-imag:VisualQuestionAnswering rdfs:label "Visual question answering" ;
-    rdfs:subClassOf imag:FeatureEnum .
+imag:VisualQuestionAnswering a imag:FeatureEnum ;
+    rdfs:label "Visual question answering" .
 
-imag:Visualization rdfs:label "Visualization" ;
-    rdfs:subClassOf imag:Drawing .
+imag:Visualization a imag:FeatureEnum ;
+    rdfs:label "Visualization" ;
+    skos:broader imag:Drawing .
 
-imag:Voxelization rdfs:label "Voxelization" ;
-    rdfs:subClassOf imag:MeshGeneration .
+imag:Voxelization a imag:FeatureEnum ;
+    rdfs:label "Voxelization" ;
+    skos:broader imag:MeshGeneration .
 
 imag:Wasm a imag:HostTypeEnumeration ;
     rdfs:label "WebAssembly" .
@@ -711,6 +745,10 @@ schema:Dataset-measurementTechnique a sh:PropertyShape ;
 schema:Dataset-variableMeasured a sh:PropertyShape ;
     sh:datatype xsd:string ;
     sh:path schema:variableMeasured .
+
+schema:ImageObject a sh:NodeShape ;
+    sh:property schema:CreativeWork-keywords,
+        schema:Thing-url .
 
 schema:Organization-legalName a sh:PropertyShape ;
     sh:datatype xsd:string ;
@@ -798,6 +836,10 @@ schema:codeRepository a rdf:Property ;
 schema:conditionsOfAccess a rdf:Property ;
     rdfs:label "Conditions of access" ;
     rdfs:comment "Conditions that affect the availability of, or method(s) of access to, an item. e.g. log-in required " .
+
+schema:contentUrl a rdf:Property ;
+    rdfs:label "Content URL" ;
+    rdfs:comment "Actual bytes of the media object, for example the image file or video file." .
 
 schema:defaultValue a rdf:Property ;
     rdfs:label "Default value" ;
@@ -904,13 +946,14 @@ imag: a owl:Ontology ;
             sh:prefix "imag" ] ;
     sh:entailment sh:Rules .
 
-imag:Annotation rdfs:label "Annotation" ;
-    rdfs:subClassOf imag:FeatureEnum .
+imag:Annotation a imag:FeatureEnum ;
+    rdfs:label "Annotation" .
 
 imag:FeatureTaggerRule a sh:SPARQLRule ;
     sh:construct """
     PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
     PREFIX schema: <http://schema.org/>
+    PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
 			CONSTRUCT {
 				$this schema:featureList ?parentFeatureLabel .
                 $this schema:featureList ?feature .
@@ -918,18 +961,18 @@ imag:FeatureTaggerRule a sh:SPARQLRule ;
 			WHERE {
 				$this schema:featureList ?feature .
                 ?featureClass rdfs:label ?feature .
-				?featureClass rdfs:subClassOf ?parentFeature.
+				?featureClass skos:broader ?parentFeature.
                 ?parentFeature rdfs:label ?parentFeatureLabel .
 			}
 			""" ;
     sh:description "This shape is used to extend the initial tagging of a software with it's higher level tags, for ease of retrieval/filtering" ;
     sh:name "Feature tagger" .
 
-imag:Modelling rdfs:label "Modelling" ;
-    rdfs:subClassOf imag:FeatureEnum .
+imag:Modelling a imag:FeatureEnum ;
+    rdfs:label "Modelling" .
 
-imag:MorphologicalAnalysis rdfs:label "Morphological analysis" ;
-    rdfs:subClassOf imag:FeatureEnum .
+imag:MorphologicalAnalysis a imag:FeatureEnum ;
+    rdfs:label "Morphological analysis" .
 
 imag:SoftwareApplication-hasExecutableNotebook a sh:PropertyShape ;
     sh:class imag:ExecutableNotebook ;
@@ -1156,14 +1199,14 @@ schema:url a rdf:Property ;
     rdfs:label "URL" ;
     rdfs:comment "Fill in any URL related to this repository. e.g. related lab or project website." .
 
-imag:FeatureExtraction rdfs:label "Feature extraction" ;
-    rdfs:subClassOf imag:FeatureEnum .
+imag:FeatureExtraction a imag:FeatureEnum ;
+    rdfs:label "Feature extraction" .
 
-imag:MeshGeneration rdfs:label "Mesh generation" ;
-    rdfs:subClassOf imag:FeatureEnum .
+imag:MeshGeneration a imag:FeatureEnum ;
+    rdfs:label "Mesh generation" .
 
-imag:Preprocessing rdfs:label "Preprocessing" ;
-    rdfs:subClassOf imag:FeatureEnum .
+imag:Preprocessing a imag:FeatureEnum ;
+    rdfs:label "Preprocessing" .
 
 imag:SoftwareApplication-imagingModalityShape a sh:PropertyShape ;
     sh:datatype xsd:string ;
@@ -1251,24 +1294,24 @@ sd:readme a rdf:Property ;
     rdfs:comment "URL to the Readme file of a software component"@en ;
     rdfs:subPropertyOf <https://codemeta.github.io/terms/readme> .
 
-imag:Denoising rdfs:label "Denoising" ;
-    rdfs:subClassOf imag:FeatureEnum .
+imag:Denoising a imag:FeatureEnum ;
+    rdfs:label "Denoising" .
 
-imag:Drawing rdfs:label "Drawing" ;
-    rdfs:subClassOf imag:FeatureEnum .
+imag:Drawing a imag:FeatureEnum ;
+    rdfs:label "Drawing" .
 
-imag:PoseEstimation rdfs:label "Pose estimation" ;
-    rdfs:subClassOf imag:FeatureEnum .
+imag:PoseEstimation a imag:FeatureEnum ;
+    rdfs:label "Pose estimation" .
 
-imag:StatisticsMeasurement rdfs:label "Statistics measurement" ;
-    rdfs:subClassOf imag:FeatureEnum .
+imag:StatisticsMeasurement a imag:FeatureEnum ;
+    rdfs:label "Statistics measurement" .
 
 schema:Thing-url a sh:PropertyShape ;
     sh:path schema:url ;
     sh:pattern "^http.*" .
 
-imag:OpticalFlow rdfs:label "Optical flow" ;
-    rdfs:subClassOf imag:FeatureEnum .
+imag:OpticalFlow a imag:FeatureEnum ;
+    rdfs:label "Optical flow" .
 
 schema:Thing-description a sh:PropertyShape ;
     sh:datatype xsd:string ;
@@ -1276,8 +1319,8 @@ schema:Thing-description a sh:PropertyShape ;
     sh:minCount 1 ;
     sh:path schema:description .
 
-imag:SceneReconstruction rdfs:label "Scene reconstruction" ;
-    rdfs:subClassOf imag:FeatureEnum .
+imag:SceneReconstruction a imag:FeatureEnum ;
+    rdfs:label "Scene reconstruction" .
 
 schema:Thing-name a sh:PropertyShape ;
     sh:datatype xsd:string ;
@@ -1289,6 +1332,6 @@ imag:fairLevel a rdf:Property ;
     rdfs:label "FAIR Level" ;
     rdfs:comment "A score of 1-5 rating the Findability, Accessibility, Interoperability and Reusability of a piece of software based on the presence of certain properties for an instance of software" .
 
-imag:Segmentation rdfs:label "Segmentation" ;
-    rdfs:subClassOf imag:FeatureEnum .
+imag:Segmentation a imag:FeatureEnum ;
+    rdfs:label "Segmentation" .
 

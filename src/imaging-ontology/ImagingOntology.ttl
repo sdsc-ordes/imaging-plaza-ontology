@@ -15,7 +15,7 @@
 @prefix vann: <http://purl.org/vocab/vann/>.
 @prefix sphn: <https://biomedit.ch/rdf/sphn-schema/sphn#> .
 @prefix dmib: <https://biomedit.ch/rdf/sphn-schema/dmib#> .
-
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
 
 <https://imaging-plaza.epfl.ch/ontology#>
     a owl:Ontology ;
