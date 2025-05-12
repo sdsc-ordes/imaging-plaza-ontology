@@ -120,6 +120,7 @@ imag:FeatureTaggerRule a sh:SPARQLRule ;
 	sh:construct """
     PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
     PREFIX schema: <http://schema.org/>
+    PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
 			CONSTRUCT {
 				$this schema:featureList ?parentFeatureLabel .
                 $this schema:featureList ?feature .
@@ -127,7 +128,7 @@ imag:FeatureTaggerRule a sh:SPARQLRule ;
 			WHERE {
 				$this schema:featureList ?feature .
                 ?featureClass rdfs:label ?feature .
-				?featureClass rdfs:subClassOf ?parentFeature.
+				?featureClass skos:broader ?parentFeature.
                 ?parentFeature rdfs:label ?parentFeatureLabel .
 			}
 			""" .
@@ -300,8 +301,8 @@ schema:Thing-image
   sh:minCount 1 ;
 .
 
-schema:ImagingObject 
-  a sh:NodeShape, rdfs:Class ;
+schema:ImageObject 
+  a sh:NodeShape ;
   sh:property schema:Thing-url ;
   sh:property schema:CreativeWork-keywords ;
   .
@@ -366,12 +367,6 @@ a sh:NodeShape ;
   sh:property schema:Thing-name ;
   sh:property md4i:orcidIdShape ;
   sh:property schema:Person-affiliation 
-.
-
-schema:Person-email
-  a sh:PropertyShape ;
-  sh:path schema:email ;
-  sh:datatype xsd:string ;
 .
 
 schema:Person-familyName
