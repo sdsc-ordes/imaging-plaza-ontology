@@ -103,11 +103,6 @@ schema:SoftwareSourceCode a rdfs:Class,
         sd:SoftwareApplication-readme,
         sd:SoftwareConfiguration-hasSoftwareImage ;
     sh:rule [ a sh:TripleRule ;
-            sh:condition imag:fairlevel0Shape ;
-            sh:object "Fair level 0" ;
-            sh:predicate imag:fairLevel ;
-            sh:subject sh:this ],
-        [ a sh:TripleRule ;
             sh:condition imag:fairlevel1Shape ;
             sh:object "Fair level 1" ;
             sh:predicate imag:fairLevel ;
@@ -1320,15 +1315,15 @@ schema:Thing-description a sh:PropertyShape ;
 imag:SceneReconstruction a imag:FeatureEnum ;
     rdfs:label "Scene reconstruction" .
 
+imag:fairLevel a rdf:Property ;
+    rdfs:label "FAIR Level" ;
+    rdfs:comment "A score of 1-5 rating the Findability, Accessibility, Interoperability and Reusability of a piece of software based on the presence of certain properties for an instance of software" .
+
 schema:Thing-name a sh:PropertyShape ;
     sh:datatype xsd:string ;
     sh:maxLength 60 ;
     sh:minCount 1 ;
     sh:path schema:name .
-
-imag:fairLevel a rdf:Property ;
-    rdfs:label "FAIR Level" ;
-    rdfs:comment "A score of 1-5 rating the Findability, Accessibility, Interoperability and Reusability of a piece of software based on the presence of certain properties for an instance of software" .
 
 imag:Segmentation a imag:FeatureEnum ;
     rdfs:label "Segmentation" .

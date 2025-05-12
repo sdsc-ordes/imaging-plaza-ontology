@@ -169,13 +169,7 @@ sh:property schema:SoftwareApplication-applicationCategory ,
               sd:SoftwareConfiguration-hasSoftwareImage ,
               imag:SoftwareApplication-imagingModalityShape ,
               imag:fairLevelShape ,
-              imag:SoftwareApplication-runnableExampleShape ;
- sh:rule [
-		a sh:TripleRule ;
-		sh:subject sh:this ;
-		sh:predicate imag:fairLevel ;
-		sh:object "Fair level 0" ;
-		sh:condition imag:fairlevel0Shape ];      
+              imag:SoftwareApplication-runnableExampleShape ;   
   sh:rule [
 		a sh:TripleRule ;
 		sh:subject sh:this ;
