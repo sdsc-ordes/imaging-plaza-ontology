@@ -24,8 +24,6 @@ prefix skos: <http://www.w3.org/2004/02/skos/core#>
 		sh:prefix "imag" ;
 		sh:namespace <https://imaging-plaza.epfl.ch/ontology#> ;
 	] .
-  imag:fairlevel0Shape a sh:NodeShape    
-  .
 
   imag:fairlevel1Shape a sh:NodeShape ;
     sh:targetClass schema:SoftwareSourceCode ;

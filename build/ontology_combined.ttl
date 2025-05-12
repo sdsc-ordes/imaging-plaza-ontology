@@ -1004,8 +1004,6 @@ imag:fairLevelShape a sh:PropertyShape ;
     sh:minCount 1 ;
     sh:path imag:fairLevel .
 
-imag:fairlevel0Shape a sh:NodeShape .
-
 imag:fairlevel5Shape a sh:NodeShape ;
     sh:and ( imag:fairlevel4Shape ) ;
     sh:property [ sh:message "Fair level 5" ;
