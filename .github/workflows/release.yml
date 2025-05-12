@@ -9,13 +9,9 @@ jobs:
 
   build:
     uses: ./.github/workflows/build.yml
-    with:
-      is_release: true
 
   checks:
     uses: ./.github/workflows/checks.yml
-    with:
-      is_release: true
     needs: build 
 
   make_release:
