@@ -24,7 +24,6 @@ def run_shacl_validation(data_file, shapes_file):
     conforms, results_graph, results_text = validate(
         data_graph=data_graph,
         shacl_graph=shapes_graph,
-        inference='rdfs',
         debug=False
     )
     logging.info("Validation Results:")
