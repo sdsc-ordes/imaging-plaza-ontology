@@ -15,7 +15,7 @@
 @prefix vann: <http://purl.org/vocab/vann/>.
 @prefix sphn: <https://biomedit.ch/rdf/sphn-schema/sphn#> .
 @prefix dmib: <https://biomedit.ch/rdf/sphn-schema/dmib#> .
-
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
 
 <https://imaging-plaza.epfl.ch/ontology#>
     a owl:Ontology ;
@@ -318,6 +318,11 @@ schema:ComputerLanguage
   rdfs:subClassOf schema:Intangible ;
 .
 
+imag:ImageObject a rdfs:Class ;
+  rdfs:comment "An image of the software, typically a screenshot, before/after or a logo." ;
+  rdfs:label "Image object" ;
+  rdfs:subClassOf schema:Intangible ;
+.
 
 schema:DataFeed
   a rdfs:Class ;
