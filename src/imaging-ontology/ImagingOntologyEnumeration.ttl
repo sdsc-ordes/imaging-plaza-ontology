@@ -13,6 +13,7 @@
 @prefix md4i: <http://w3id.org/nfdi4ing/metadata4ing#>.
 @prefix sphn: <https://biomedit.ch/rdf/sphn-schema/sphn#>.
 @prefix dmib: <https://biomedit.ch/rdf/sphn-schema/dmib#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
 
 imag:EnumerationType a rdfs:Class ;
     rdfs:subClassOf schema:Enumeration ;
@@ -200,227 +201,268 @@ imag:FeatureEnum a rdfs:Class ;
     rdfs:subClassOf imag:EnumerationType ;
 .
 
-imag:Annotation rdfs:subClassOf imag:FeatureEnum ;
+imag:Annotation a imag:FeatureEnum ;
     rdfs:label "Annotation" ;
 .
 
-imag:Labelling rdfs:subClassOf imag:Annotation ;
+imag:Labelling a imag:FeatureEnum ;
+    skos:broader imag:Annotation ;
     rdfs:label "Labelling" ;
 .
 
-imag:OpticalFlow rdfs:subClassOf imag:FeatureEnum ;
+imag:OpticalFlow a imag:FeatureEnum ;
     rdfs:label "Optical flow" ;
 .
 
-imag:DigitalImageCorrelation rdfs:subClassOf imag:OpticalFlow ;
+imag:DigitalImageCorrelation a imag:FeatureEnum ;
+    skos:broader imag:OpticalFlow ;
     rdfs:label "Digital image correlation" ;
 .
 
-imag:MotionEstimation rdfs:subClassOf imag:OpticalFlow ;
+imag:MotionEstimation a imag:FeatureEnum ;
+    skos:broader imag:OpticalFlow ;
     rdfs:label "Motion estimation" ;
 .
 
-imag:Registration rdfs:subClassOf imag:OpticalFlow ;
+imag:Registration a imag:FeatureEnum ;
+    skos:broader imag:OpticalFlow ;
     rdfs:label "Registration" ;
 .
 
-imag:Stitching rdfs:subClassOf imag:OpticalFlow ;
+imag:Stitching a imag:FeatureEnum ;
+    skos:broader imag:OpticalFlow ;
     rdfs:label "Stitching" ;
 .
 
-imag:DriftCorrection rdfs:subClassOf imag:OpticalFlow ;
+imag:DriftCorrection a imag:FeatureEnum ;
+    skos:broader imag:OpticalFlow ;
     rdfs:label "Drift correction" ;
 .
 
-imag:Denoising rdfs:subClassOf imag:FeatureEnum ;
+imag:Denoising a imag:FeatureEnum ;
     rdfs:label "Denoising" ;
 .
 
-imag:Deblurring rdfs:subClassOf imag:Denoising ;
+imag:Deblurring a imag:FeatureEnum ;
+    skos:broader imag:Denoising ;
     rdfs:label "Deblurring" ;
 .
 
-imag:Smoothing rdfs:subClassOf imag:Denoising ;
+imag:Smoothing a imag:FeatureEnum ;
+    skos:broader imag:Denoising ;
     rdfs:label "Smoothing" ;
 .
 
-imag:Deconvolution rdfs:subClassOf imag:Denoising ;
+imag:Deconvolution a imag:FeatureEnum ;
+    skos:broader imag:Denoising ;
     rdfs:label "Deconvolution" ;
 .
 
-imag:Preprocessing rdfs:subClassOf imag:FeatureEnum ;
+imag:Preprocessing a imag:FeatureEnum ;
     rdfs:label "Preprocessing" ;
 .
 
-imag:Filtering rdfs:subClassOf imag:Preprocessing ;
+imag:Filtering a imag:FeatureEnum ;
+    skos:broader imag:Preprocessing ;
     rdfs:label "Filtering" ;
 .
 
-imag:ImageSimplification rdfs:subClassOf imag:Preprocessing ;
+imag:ImageSimplification a imag:FeatureEnum ;
+    skos:broader imag:Preprocessing ;
     rdfs:label "Image simplification" ;
 .
 
-imag:Segmentation rdfs:subClassOf imag:FeatureEnum ;
+imag:Segmentation a imag:FeatureEnum ;
     rdfs:label "Segmentation" ;
 .
 
-imag:Classification rdfs:subClassOf imag:Segmentation ;
+imag:Classification a imag:FeatureEnum ;
+    skos:broader imag:Segmentation ;
     rdfs:label "Classification" ;
 .
 
-imag:ObjectDetection rdfs:subClassOf imag:Segmentation ;
+imag:ObjectDetection a imag:FeatureEnum ;
+    skos:broader imag:Segmentation ;
     rdfs:label "Object detection" ;
 .
 
-imag:ObjectRecognition rdfs:subClassOf imag:Segmentation ;
+imag:ObjectRecognition a imag:FeatureEnum ;
+    skos:broader imag:Segmentation ;
     rdfs:label "Object recognition" ;
 .
 
-imag:Clustering rdfs:subClassOf imag:Segmentation ;
+imag:Clustering a imag:FeatureEnum ;
+    skos:broader imag:Segmentation ;
     rdfs:label "Clustering" ;
 .
 
-imag:Grouping rdfs:subClassOf imag:Segmentation ;
+imag:Grouping a imag:FeatureEnum ;
+    skos:broader imag:Segmentation ;
     rdfs:label "Grouping" ;
 .
 
-imag:PatternRecognition rdfs:subClassOf imag:Segmentation ;
+imag:PatternRecognition a imag:FeatureEnum ;
+    skos:broader imag:Segmentation ;
     rdfs:label "Pattern recognition" ;
 .
 
-imag:TemplateMatching rdfs:subClassOf imag:Segmentation ;
+imag:TemplateMatching a imag:FeatureEnum ;
+    skos:broader imag:Segmentation ;
     rdfs:label "Template matching" ;
 .
 
-imag:InstanceSegmentation rdfs:subClassOf imag:Segmentation ;
+imag:InstanceSegmentation a imag:FeatureEnum ;
+    skos:broader imag:Segmentation ;
     rdfs:label "Instance segmentation" ;
 .
 
-imag:PixelClassification rdfs:subClassOf imag:Segmentation ;
+imag:PixelClassification a imag:FeatureEnum ;
+    skos:broader imag:Segmentation ;
     rdfs:label "Pixel classification" ;
 .
 
-imag:FeatureExtraction rdfs:subClassOf imag:FeatureEnum ;
+imag:FeatureExtraction a imag:FeatureEnum ;
     rdfs:label "Feature extraction" ;
 .
 
-imag:DimensionalityReduction rdfs:subClassOf imag:FeatureExtraction ;
+imag:DimensionalityReduction a imag:FeatureEnum ;
+    skos:broader imag:FeatureExtraction ;
     rdfs:label "Dimensionality reduction" ;
 .
 
-imag:DirectionalImageAnalysis rdfs:subClassOf imag:FeatureExtraction ;
+imag:DirectionalImageAnalysis a imag:FeatureEnum ;
+    skos:broader imag:FeatureExtraction ;
     rdfs:label "Directional image analysis" ;
 .
 
-imag:PoseEstimation rdfs:subClassOf imag:FeatureEnum ;
+imag:PoseEstimation a imag:FeatureEnum ;
     rdfs:label "Pose estimation" ;
 .
 
-imag:PoseInformation rdfs:subClassOf  imag:PoseEstimation ;
+imag:PoseInformation a imag:FeatureEnum ;
+    skos:broader  imag:PoseEstimation ;
     rdfs:label "Pose information" ;
 .
 
-imag:PoseDetection rdfs:subClassOf  imag:PoseEstimation ;
+imag:PoseDetection a imag:FeatureEnum ;
+    skos:broader  imag:PoseEstimation ;
     rdfs:label "Pose detection" ;
 .
 
-imag:OrientationAnalysis rdfs:subClassOf  imag:PoseEstimation ;
+imag:OrientationAnalysis a imag:FeatureEnum ;
+    skos:broader  imag:PoseEstimation ;
     rdfs:label "Orientation analysis" ;
 .
 
-imag:SceneReconstruction rdfs:subClassOf imag:FeatureEnum ;
+imag:SceneReconstruction a imag:FeatureEnum ;
     rdfs:label "Scene reconstruction" ;
 .
 
-imag:Reconstruction3d rdfs:subClassOf imag:SceneReconstruction ;
+imag:Reconstruction3d a imag:FeatureEnum ;
+    skos:broader imag:SceneReconstruction ;
     rdfs:label "3d reconstruction" ;
 .
 
-imag:ModelGeneration3d rdfs:subClassOf imag:SceneReconstruction ;
+imag:ModelGeneration3d a imag:FeatureEnum ;
+    skos:broader imag:SceneReconstruction ;
     rdfs:label "3d model generation" ;
 .
 
-imag:MorphologicalReconstruction rdfs:subClassOf imag:SceneReconstruction ;
+imag:MorphologicalReconstruction a imag:FeatureEnum ;
+    skos:broader imag:SceneReconstruction ;
     rdfs:label "Morphological reconstruction" ;
 .
 
-imag:DepthEstimation rdfs:subClassOf imag:SceneReconstruction ;
+imag:DepthEstimation a imag:FeatureEnum ;
+    skos:broader imag:SceneReconstruction ;
     rdfs:label "Depth estimation" ;
 .
 
-imag:CurvatureEstimation rdfs:subClassOf imag:SceneReconstruction ;
+imag:CurvatureEstimation a imag:FeatureEnum ;
+    skos:broader imag:SceneReconstruction ;
     rdfs:label "Curvature estimation" ;
 .
 
-imag:ShadingEstimation rdfs:subClassOf imag:SceneReconstruction ;
+imag:ShadingEstimation a imag:FeatureEnum ;
+    skos:broader imag:SceneReconstruction ;
     rdfs:label "Shading estimation" ;
 .
 
-imag:Modelling rdfs:subClassOf imag:FeatureEnum ;
+imag:Modelling a imag:FeatureEnum ;
     rdfs:label "Modelling" ;
 .
 
-imag:Simulation rdfs:subClassOf imag:Modelling ;
+imag:Simulation a imag:FeatureEnum ;
+    skos:broader imag:Modelling ;
     rdfs:label "Simulation" ;
 .
 
-imag:Drawing rdfs:subClassOf imag:FeatureEnum ;
+imag:Drawing a imag:FeatureEnum ;
     rdfs:label "Drawing" ;
 .
 
-imag:Visualization rdfs:subClassOf imag:Drawing ;
+imag:Visualization a imag:FeatureEnum ;
+    skos:broader imag:Drawing ;
     rdfs:label "Visualization" ;
 .
 
-imag:Rendering rdfs:subClassOf imag:Drawing ;
+imag:Rendering a imag:FeatureEnum ;
+    skos:broader imag:Drawing ;
     rdfs:label "Rendering" ;
 .
 
-imag:ImageEnhancement rdfs:subClassOf imag:Drawing ;
+imag:ImageEnhancement a imag:FeatureEnum ;
+    skos:broader imag:Drawing ;
     rdfs:label "Image enhancement" ;
 .
 
-imag:StatisticsMeasurement rdfs:subClassOf imag:FeatureEnum ;
+imag:StatisticsMeasurement a imag:FeatureEnum ;
     rdfs:label "Statistics measurement" ;
 .
 
-imag:QualityMetricMeasurement rdfs:subClassOf imag:StatisticsMeasurement ;
+imag:QualityMetricMeasurement a imag:FeatureEnum ;
+    skos:broader imag:StatisticsMeasurement ;
     rdfs:label "Quality metric measurement" ;
 .
 
-imag:DistributionMeasurements rdfs:subClassOf imag:StatisticsMeasurement ;
+imag:DistributionMeasurements a imag:FeatureEnum ;
+    skos:broader imag:StatisticsMeasurement ;
     rdfs:label "Distribution measurements" ;
 .
 
-imag:ImageQualityAssessment rdfs:subClassOf imag:StatisticsMeasurement ;
+imag:ImageQualityAssessment a imag:FeatureEnum ;
+    skos:broader imag:StatisticsMeasurement ;
     rdfs:label "Image quality assessment" ;
 .
 
-imag:MeshGeneration rdfs:subClassOf imag:FeatureEnum ;
+imag:MeshGeneration a imag:FeatureEnum ;
     rdfs:label "Mesh generation" ;
 .
 
-imag:Voxelization rdfs:subClassOf imag:MeshGeneration ;
+imag:Voxelization a imag:FeatureEnum ;
+    skos:broader imag:MeshGeneration ;
     rdfs:label "Voxelization" ;
 .
 
-imag:SurfaceParameterisation rdfs:subClassOf imag:MeshGeneration ;
+imag:SurfaceParameterisation a imag:FeatureEnum ;
+    skos:broader imag:MeshGeneration ;
     rdfs:label "Surface parameterisation" ;
 .
 
-imag:MorphologicalAnalysis rdfs:subClassOf imag:FeatureEnum ;
+imag:MorphologicalAnalysis a imag:FeatureEnum ;
     rdfs:label "Morphological analysis" ;
 .
 
-imag:FeatureDetection rdfs:subClassOf imag:MorphologicalAnalysis  ;
+imag:FeatureDetection a imag:FeatureEnum ;
+    skos:broader imag:MorphologicalAnalysis  ;
     rdfs:label "Feature detection" ;
 .
 
-imag:Tracking rdfs:subClassOf imag:FeatureEnum ;
+imag:Tracking a imag:FeatureEnum ;
     rdfs:label "Tracking" ;
 .
 
-imag:VisualQuestionAnswering rdfs:subClassOf imag:FeatureEnum ;
+imag:VisualQuestionAnswering a imag:FeatureEnum ;
     rdfs:label "Visual question answering" ;
 .
 

@@ -15,6 +15,7 @@ prefix dct: <http://purl.org/dc/terms/>
 prefix vann: <http://purl.org/vocab/vann/>
 prefix sphn: <https://biomedit.ch/rdf/sphn-schema/sphn#>
 prefix dmib: <https://biomedit.ch/rdf/sphn-schema/dmib#>
+prefix skos: <http://www.w3.org/2004/02/skos/core#>
 
 <https://imaging-plaza.epfl.ch/ontology#>
 	a owl:Ontology ;
@@ -23,8 +24,6 @@ prefix dmib: <https://biomedit.ch/rdf/sphn-schema/dmib#>
 		sh:prefix "imag" ;
 		sh:namespace <https://imaging-plaza.epfl.ch/ontology#> ;
 	] .
-  imag:fairlevel0Shape a sh:NodeShape    
-  .
 
   imag:fairlevel1Shape a sh:NodeShape ;
     sh:targetClass schema:SoftwareSourceCode ;
@@ -120,6 +119,7 @@ imag:FeatureTaggerRule a sh:SPARQLRule ;
 	sh:construct """
     PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
     PREFIX schema: <http://schema.org/>
+    PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
 			CONSTRUCT {
 				$this schema:featureList ?parentFeatureLabel .
                 $this schema:featureList ?feature .
@@ -127,7 +127,7 @@ imag:FeatureTaggerRule a sh:SPARQLRule ;
 			WHERE {
 				$this schema:featureList ?feature .
                 ?featureClass rdfs:label ?feature .
-				?featureClass rdfs:subClassOf ?parentFeature.
+				?featureClass skos:broader ?parentFeature.
                 ?parentFeature rdfs:label ?parentFeatureLabel .
 			}
 			""" .
@@ -169,13 +169,7 @@ sh:property schema:SoftwareApplication-applicationCategory ,
               sd:SoftwareConfiguration-hasSoftwareImage ,
               imag:SoftwareApplication-imagingModalityShape ,
               imag:fairLevelShape ,
-              imag:SoftwareApplication-runnableExampleShape ;
- sh:rule [
-		a sh:TripleRule ;
-		sh:subject sh:this ;
-		sh:predicate imag:fairLevel ;
-		sh:object "Fair level 0" ;
-		sh:condition imag:fairlevel0Shape ];      
+              imag:SoftwareApplication-runnableExampleShape ;   
   sh:rule [
 		a sh:TripleRule ;
 		sh:subject sh:this ;
@@ -300,8 +294,8 @@ schema:Thing-image
   sh:minCount 1 ;
 .
 
-schema:ImagingObject 
-  a sh:NodeShape, rdfs:Class ;
+schema:ImageObject 
+  a sh:NodeShape ;
   sh:property schema:Thing-url ;
   sh:property schema:CreativeWork-keywords ;
   .
@@ -366,12 +360,6 @@ a sh:NodeShape ;
   sh:property schema:Thing-name ;
   sh:property md4i:orcidIdShape ;
   sh:property schema:Person-affiliation 
-.
-
-schema:Person-email
-  a sh:PropertyShape ;
-  sh:path schema:email ;
-  sh:datatype xsd:string ;
 .
 
 schema:Person-familyName

@@ -15,7 +15,7 @@
 @prefix vann: <http://purl.org/vocab/vann/>.
 @prefix sphn: <https://biomedit.ch/rdf/sphn-schema/sphn#> .
 @prefix dmib: <https://biomedit.ch/rdf/sphn-schema/dmib#> .
-
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
 
 <https://imaging-plaza.epfl.ch/ontology#>
     a owl:Ontology ;
@@ -25,11 +25,11 @@
     dct:creator "Robin Franken" ;
     dct:description "The Imaging Plaza ontology provides concepts (classes and properties) to model human and machine readable imaging software metadata. It is the result of re-using external pre-existing vocabularies such as schema.org and the software description ontology, together with custom imaging specific objects and properties. The ontology contains purely semantic information (labels, definitions etc.) and is meant to be used in conjuction with a graph of enumeration values and a graph containing SHACL shapes to provide more machine readable restrictions on values of properties." ;
     dct:license <https://spdx.org/licenses/CC-BY-SA-4.0.html> ;
-    dct:modified "2025-01-28"^^xsd:date ;
+    dct:modified "2025-05-12"^^xsd:date ;
     dct:title "Imaging Plaza Ontology" ;
     vann:preferredNamespacePrefix "imag" ;
     vann:preferredNamespaceUri "https://imaging-plaza.epfl.ch/ontology#"^^xsd:string ;
-    owl:versionInfo "0.8.0"^^xsd:string 
+    owl:versionInfo "1.0.0"^^xsd:string 
     .
 
 schema:SoftwareSourceCode
@@ -46,7 +46,7 @@ schema:citation a rdf:Property;
   rdfs:comment "A DOI https URL citation to publication about this software. Use Zenodo to generate if needed. e.g. https://doi.org/10.1016/j.procs.2017.03.009";
   rdfs:label "Citation DOI" .
 
-schema:contentURL a rdf:Property;
+schema:contentUrl a rdf:Property;
   rdfs:comment "Actual bytes of the media object, for example the image file or video file.";
   rdfs:label "Content URL".
 
@@ -318,6 +318,11 @@ schema:ComputerLanguage
   rdfs:subClassOf schema:Intangible ;
 .
 
+imag:ImageObject a rdfs:Class ;
+  rdfs:comment "An image of the software, typically a screenshot, before/after or a logo." ;
+  rdfs:label "Image object" ;
+  rdfs:subClassOf schema:Intangible ;
+.
 
 schema:DataFeed
   a rdfs:Class ;
