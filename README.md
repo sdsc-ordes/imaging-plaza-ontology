@@ -5,7 +5,7 @@ This repo contains the SHACL shapes and the IP Ontology used for:
 - Fair Calculation
 
 ## Basic Schema Diagram (UML)
-
+UML schema generated using https://shacl-play.sparna.fr/play/draw
 ![ontology_combined](https://github.com/user-attachments/assets/6b8cafae-9e2c-4dbc-a3e0-f1915f343d81)
 
 ## Changelog
