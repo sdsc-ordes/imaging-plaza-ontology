@@ -49,7 +49,7 @@ jobs:
           git add build/
 
           if ! git diff --cached --quiet; then
-            git commit -m "Update generated build files [skip ci]"
+            git commit -m "Update generated build files"
             git push origin main
           else
             echo "No changes in build folder, nothing to commit."
