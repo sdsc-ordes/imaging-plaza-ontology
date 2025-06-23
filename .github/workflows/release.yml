@@ -1,4 +1,4 @@
-name: Include ontology assets in the release
+name: Release workflow
 
 on:
   push:
@@ -10,7 +10,7 @@ jobs:
   build:
     uses: ./.github/workflows/build.yml
     with:
-      is_release: true
+      is_release: true  # optional, now unused
 
   checks:
     uses: ./.github/workflows/checks.yml
@@ -23,16 +23,13 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Get schema assets
+      - name: Download built assets
         uses: actions/download-artifact@v4
         with:
           name: schema-bundle
           path: build/
 
-      - name: List downloaded assets
-        run: ls -R build/
-
-      - name: Create release
+      - name: Create GitHub release
         uses: softprops/action-gh-release@v2
         with:
           files: build/*

@@ -6,14 +6,22 @@ on:
       is_release:
         required: false
         type: boolean
+        default: false
+  push:
+    branches:
+      - main
+    tags:
+      - "v*"
+  pull_request:
+    branches:
+      - main
+
 
 jobs:
-
   build:
     runs-on: ubuntu-latest
 
     steps:
-
       - uses: actions/checkout@v4
 
       - name: Set up Python
@@ -26,14 +34,13 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r tools/python/requirements.txt
 
-      - name: build
+      - name: Build ontology assets
         run: |
           bash ./tools/bash/build/create-combined-turtle.sh src/imaging-ontology/
           python ./tools/python/build/create-schemas.py --input build/ontology_combined.ttl --output build/locales/en/schema.json
 
-      - name: upload assets in artifacts
+      - name: Upload schema bundle as artifact
         uses: actions/upload-artifact@v4
-        if: ${{ inputs.is_release }}
         with:
           name: schema-bundle
           path: build/*
