@@ -29,7 +29,7 @@
     dct:title "Imaging Plaza Ontology" ;
     vann:preferredNamespacePrefix "imag" ;
     vann:preferredNamespaceUri "https://imaging-plaza.epfl.ch/ontology#"^^xsd:string ;
-    owl:versionInfo "1.0.1"^^xsd:string 
+    owl:versionInfo "1.0.2"^^xsd:string 
     .
 
 schema:SoftwareSourceCode
