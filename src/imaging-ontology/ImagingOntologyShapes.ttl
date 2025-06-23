@@ -600,7 +600,6 @@ sd:DatasetSpecification-hasDimensionality
     a sh:PropertyShape ;
     sh:path sd:hasDimensionality ;
     sh:datatype xsd:integer ;
-    sh:minExclusive 0 ;
     .
 
 sd:DatasetSpecification-hasFormat
