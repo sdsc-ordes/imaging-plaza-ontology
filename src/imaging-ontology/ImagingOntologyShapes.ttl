@@ -26,6 +26,7 @@ prefix skos: <http://www.w3.org/2004/02/skos/core#>
 	] .
 
   imag:fairlevel1Shape a sh:NodeShape ;
+    sh:description "This shape defines the minimum requirements for a software to be considered FAIR level 1 compliant. It includes basic metadata and identifiers." ;
     sh:targetClass schema:SoftwareSourceCode ;
         sh:property
         [sh:path schema:license ;
@@ -58,6 +59,7 @@ prefix skos: <http://www.w3.org/2004/02/skos/core#>
   .
 
   imag:fairlevel2Shape a sh:NodeShape ;
+    sh:description "This shape defines the requirements for a software to be considered FAIR level 2 compliant. It builds upon level 1 and adds more detailed metadata." ;
     sh:targetClass schema:SoftwareSourceCode ;
         sh:property 
         [sh:path sd:readme ;
@@ -75,6 +77,7 @@ prefix skos: <http://www.w3.org/2004/02/skos/core#>
   .
 
   imag:fairlevel3Shape a sh:NodeShape ;
+    sh:description "This shape defines the requirements for a software to be considered FAIR level 3 compliant. It builds upon level 2 and adds more detailed metadata and requirements." ;
     sh:targetClass schema:SoftwareSourceCode ;
         sh:property 
         [sh:path schema:softwareRequirements ;
@@ -88,6 +91,7 @@ prefix skos: <http://www.w3.org/2004/02/skos/core#>
   .
 
   imag:fairlevel4Shape a sh:NodeShape ;
+    sh:description "This shape defines the requirements for a software to be considered FAIR level 4 compliant. It builds upon level 3 and adds more detailed metadata and requirements." ;
     sh:targetClass schema:SoftwareSourceCode ;
         sh:property 
         [sh:path schema:memoryRequirements ;
@@ -105,6 +109,7 @@ prefix skos: <http://www.w3.org/2004/02/skos/core#>
   .
 
   imag:fairlevel5Shape a sh:NodeShape ;
+    sh:description "This shape defines the requirements for a software to be considered FAIR level 5 compliant. This is the highest level that can be achieved on the imaging plaza. It builds upon level 4 and adds more detailed metadata and requirements." ;
     sh:targetClass schema:SoftwareSourceCode ;
         sh:property
         [sh:path sd:hasExecutableInstructions ;
