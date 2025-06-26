@@ -52,6 +52,11 @@ jobs:
 
           if ! git diff --cached --quiet; then
             git commit -m "Update generated build files"
+
+            # Fetch latest main and rebase
+            git fetch origin main
+            git rebase origin/main
+
             git push origin main
           else
             echo "No changes in build folder, nothing to commit."
