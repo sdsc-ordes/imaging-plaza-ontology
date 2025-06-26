@@ -295,7 +295,6 @@ imag:resolution a rdf:Property ;
 #_______________________________________#
 
 
-
 schema:Person
   a rdfs:Class ;
   rdfs:comment "A person (alive, dead, undead, or fictional)." ;
