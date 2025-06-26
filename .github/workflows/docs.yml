@@ -3,10 +3,10 @@ name: SHACL Documentation Generation
 on:
   push:
     paths:
-      - 'build/ontology/**'
+      - 'src/imaging-ontology/**'
   pull_request:
     paths:
-      - 'build/ontology/**'
+      - 'src/imaging-ontology/**'
 
 jobs:
   generate-docs:
