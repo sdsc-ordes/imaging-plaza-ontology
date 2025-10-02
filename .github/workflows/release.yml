@@ -1,4 +1,4 @@
-name: Include ontology assets in the release
+name: Release workflow
 
 on:
   push:
@@ -8,30 +8,9 @@ on:
 jobs:
 
   build:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-
-      - name: Set up Python
-        uses: actions/setup-python@v5
-        with:
-          python-version: '3.12'
-
-      - name: Install dependencies
-        run: |
-          python -m pip install --upgrade pip
-          pip install -r tools/python/requirements.txt
-
-      - name: Build ontology assets
-        run: |
-          bash ./tools/bash/build/create-combined-turtle.sh src/imaging-ontology/
-          python ./tools/python/build/create-schemas.py --input build/ontology_combined.ttl --output build/locales/en/schema.json
-
-      - name: Upload schema bundle
-        uses: actions/upload-artifact@v4
-        with:
-          name: schema-bundle
-          path: build/*
+    uses: ./.github/workflows/build.yml
+    with:
+      is_release: true  # optional, now unused
 
   checks:
     uses: ./.github/workflows/checks.yml
@@ -44,13 +23,13 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Get schema assets
-        uses: actions/download-artifact@v4.1.8
+      - name: Download built assets
+        uses: actions/download-artifact@v4
         with:
           name: schema-bundle
           path: build/
 
-      - name: Create release
+      - name: Create GitHub release
         uses: softprops/action-gh-release@v2
         with:
           files: build/*
