@@ -66,7 +66,7 @@ imag:UZH a imag:AffiliationEnum ;
 .
 
 imag:NoneAffiliation a imag:AffiliationEnum ;
-    rdfs:label "None" ;
+    rdfs:label "No affiliation" ;
 .
 
 imag:IsPluginModuleOfEnum a rdfs:Class ;
@@ -97,10 +97,6 @@ imag:OMERO a imag:IsPluginModuleOfEnum ;
 
 imag:Pyxu a imag:IsPluginModuleOfEnum ;
     rdfs:label "pyxu" ;
-.
-
-imag:NonePluginModule a imag:IsPluginModuleOfEnum ;
-    rdfs:label "None" ;
 .
 
 imag:ApplicationCategoryEnum a rdfs:Class ;
@@ -174,7 +170,7 @@ imag:MacOS a imag:OperatingSystemEnum ;
 .
 
 imag:OtherOS a imag:OperatingSystemEnum ;
-    rdfs:label "Other" ;
+    rdfs:label "Other OS" ;
 .
 
 imag:ProcessorRequirementsEnum a rdfs:Class ;
@@ -192,7 +188,7 @@ imag:AMD64 a imag:ProcessorRequirementsEnum ;
 .
 
 imag:NoneProcessorRequirement a imag:ProcessorRequirementsEnum ;
-    rdfs:label "None" ;
+    rdfs:label "No processor requirements" ;
 .
 
 imag:FeatureEnum a rdfs:Class ;
@@ -533,7 +529,7 @@ imag:CUDA_9_0 a imag:SoftwareRequirementsEnum ;
 .
 
 imag:NoneSoftwareRequirement a imag:SoftwareRequirementsEnum ;
-    rdfs:label "None" ;
+    rdfs:label "No software requirements" ;
 .
 
 imag:ComputerLanguageEnum a rdfs:Class ;
@@ -618,7 +614,7 @@ imag:Wasm a imag:HostTypeEnumeration ;
 
 
 imag:OtherHostType a imag:HostTypeEnumeration ;
-    rdfs:label "Other" ;
+    rdfs:label "Other host type" ;
     .
 
 imag:DatasetFormatEnumeration a rdfs:Class ;
@@ -668,5 +664,5 @@ imag:RAW a imag:DatasetFormatEnumeration ;
 .
 
 imag:OtherDatasetFormat a imag:DatasetFormatEnumeration ;
-    rdfs:label "Other" ;
+    rdfs:label "Other format" ;
 .
